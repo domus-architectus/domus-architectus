@@ -78,7 +78,7 @@ body {
 /* Секция с Гербом */
 .hero-section {
     text-align: center;
-    padding: 60px 20px 40px;
+    padding: 60px 20px 20px;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -107,6 +107,23 @@ body {
     font-size: 1.1rem;
     color: #8c8c8c;
     font-style: italic;
+}
+
+/* Новый блок интро автора (SEO-маркер) */
+.author-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 0 5%;
+    font-style: italic;
+    opacity: 0.9;
+    line-height: 1.7;
+    color: #cccccc;
+}
+
+.author-intro strong {
+    color: #d4af37;
+    font-weight: 600;
 }
 
 /* Манифест — Сетка Кодекса */
@@ -154,7 +171,7 @@ body {
 
 /* Навигационные карты-кнопки */
 .navigation-blocks {
-    padding: 60px 5%;
+    padding: 40px 5%;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -306,6 +323,7 @@ body {
     background-color: #24A1DE; /* Фирменный цвет TG */
     border-color: #24A1DE;
     color: #ffffff;
+    transform: translateY(-2px);
 }
 
 /* Подвал (Футер) */
@@ -360,50 +378,7 @@ body {
     min-height: 300px;
 }
 
-/* Адаптивность для планшетов и мобильных телефонов */
-@media (max-width: 768px) {
-    .main-header {
-        flex-direction: column;
-        gap: 15px;
-        position: relative; /* На мобилках отключаем липкость */
-        top: auto;        /* Сброс фиксации верхнего отступа */
-        padding: 15px 20px;
-    }
-    .main-nav {
-        margin-left: 0;
-    }
-    .main-nav a {
-        margin: 0 10px;
-        font-size: 0.9rem;
-    }
-    .main-title {
-        font-size: 1.8rem;
-    }
-    .subtitle {
-        font-size: 1rem;
-    }
-    .hero-section {
-        padding: 40px 15px 20px;
-    }
-    .guestbook-section {
-        padding: 10px 15px 40px;
-    }
-    .guestbook-container {
-        padding: 15px;
-    }
-}
-
-/* Дополнительная адаптивность для узких экранов смартфонов */
-@media (max-width: 480px) {
-    .donation-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .btn-donate {
-        justify-content: center;
-    }
-}
+/* Список книг */
 .books-list {
     max-width: 800px; /* Узкий блок читается легче */
     margin: 40px auto;
@@ -433,4 +408,53 @@ body {
 
 .read-link:hover {
     color: #d4af37;
+}
+
+/* Адаптивность для планшетов и мобильных телефонов */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        position: relative; /* На мобилках отключаем липкость */
+        top: auto;        /* Сброс фиксации верхнего отступа */
+        padding: 15px 20px;
+    }
+    .main-nav {
+        margin-left: 0;
+    }
+    .main-nav a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+    .main-title {
+        font-size: 1.8rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+    .author-intro {
+        margin-bottom: 30px;
+        font-size: 0.95rem;
+    }
+    .hero-section {
+        padding: 40px 15px 20px;
+    }
+    .guestbook-section {
+        padding: 10px 15px 40px;
+    }
+    .guestbook-container {
+        padding: 15px;
+    }
+}
+
+/* Дополнительная адаптивность для узких экранов смартфонов */
+@media (max-width: 480px) {
+    .donation-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn-donate {
+        justify-content: center;
+    }
 }
