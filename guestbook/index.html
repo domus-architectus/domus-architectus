@@ -13,6 +13,25 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <style>
+        .books-list-container { padding: 100px 5%; text-align: center; max-width: 800px; margin: 0 auto; }
+        .buy-btn {
+            display: inline-block;
+            background: linear-gradient(180deg, #d4af37, #aa841b);
+            color: #000;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        .buy-btn:hover { background: #ffffff; color: #000000; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
+    </style>
 </head>
 <body>
 
@@ -25,29 +44,14 @@
         </nav>
     </header>
 
-    <main class="hero-section">
-        <h1 class="main-title">Гостевая Книга</h1>
-        <p class="subtitle">Здесь фиксируются результаты. Если Кодекс, книги или музыка проекта помогли тебе перестроить структуру своей жизни — оставь свой отзыв. Твое слово имеет вес.</p>
+    <main class="books-list-container">
+        <h1 class="main-title" style="color: #d4af37;">Обсуждение закрыто</h1>
+        <p style="color: #a6a6a6; line-height: 1.6; margin-top: 20px;">
+            Здесь не место для суеты и пустых дискуссий. Все обсуждения, смыслы и прямой диалог происходят в канале. 
+            Присоединяйтесь к единомышленникам там, где куется реальность.
+        </p>
+        <a href="https://t.me/AntiKrizis_Strateg" class="buy-btn" target="_blank" rel="noopener">Перейти в Telegram</a>
     </main>
-
-    <section class="guestbook-section">
-        <div class="guestbook-container">
-            
-            <div class="tg-widget-container-wide">
-                <script async src="https://telegram.org/js/telegram-widget.js?22" 
-                        data-telegram-discussion="AntiKrizis_Strateg" 
-                        data-comments-limit="10" 
-                        data-dark="1" 
-                        data-width="100%">
-                </script>
-            </div>
-            
-            <p class="tg-fallback" style="margin-top: 25px; text-align: center;">
-                Вы также можете оставить свое мнение напрямую в нашем 
-                <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener">Telegram-канале</a>.
-            </p>
-        </div>
-    </section>
 
     <footer class="main-footer">
         <div class="social-links">
