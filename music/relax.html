@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глубокий Релакс и Восстановление | Domus Architectus</title>
+    <meta name="description" content="Аудио-архив расслабляющих композиций для декомпрессии, медитации и восстановления ментальных ресурсов от Архитектора Антикризиса.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .main-header .logo a { color: #d4af37; text-decoration: none; }
+        .music-catalog { padding: 30px 5%; max-width: 800px; margin: 0 auto; }
+        
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #a6a6a6; text-decoration: none; margin-bottom: 25px; font-size: 0.9rem; transition: color 0.3s; }
+        .back-link:hover { color: #d4af37; }
+
+        .tg-notice {
+            background: #17212b;
+            border: 1px solid #2481cc;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .tg-notice i { color: #2481cc; font-size: 1.5rem; }
+        .tg-notice p { font-size: 0.95rem; color: #e2e8f0; line-height: 1.4; }
+
+        .playlist-container {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 8px;
+        }
+        .track-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid #1f1f1f;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .track-item:last-child { border-bottom: none; }
+        .track-item:hover { background: #1c242c; }
+        
+        .track-info { display: flex; align-items: center; gap: 15px; min-width: 0; }
+        .track-num { color: #555; font-size: 0.85rem; font-weight: 700; width: 25px; }
+        .track-name { color: #e2e8f0; font-size: 0.95rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .tg-listen-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #2481cc;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .track-item:hover .tg-listen-btn { color: #4ba3e3; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo"><a href="../index.html">Domus Architectus</a></div>
+        <nav class="main-nav">
+            <a href="../index.html">Главная</a>
+            <a href="../books/index.html">Книги</a>
+            <a href="index.html" class="active">Музыка</a>
+            <a href="../guestbook/index.html">Гостевая Книга</a>
+        </nav>
+    </header>
+
+    <main class="music-catalog">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Назад в Аудио-Архив</a>
+
+        <div class="tg-notice">
+            <i class="fa-solid fa-moon"></i>
+            <p><strong>Глубокий Релакс и Восстановление:</strong> Эмбиент-композиции, фоновые текстуры и звуковые сессии для снятия стресса, декомпрессии и качественного отдыха разума. Нажмите на любой трек для прослушивания.</p>
+        </div>
+
+        <div class="playlist-container" id="tgPlaylist"></div>
+    </main>
+
+    <footer class="main-footer">
+        <p class="copyright">&copy; 2026 Domus Architectus. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Полный массив данных для категории Релакс (72 трека)
+        const tracks = [
+            { name: "Relax 01", link: "https://t.me/AntiKrizis_Strateg/709" },
+            { name: "Relax 02", link: "https://t.me/AntiKrizis_Strateg/710" },
+            { name: "Relax 03", link: "https://t.me/AntiKrizis_Strateg/711" },
+            { name: "Relax 04", link: "https://t.me/AntiKrizis_Strateg/712" },
+            { name: "Relax 05", link: "https://t.me/AntiKrizis_Strateg/713" },
+            { name: "Relax 06", link: "https://t.me/AntiKrizis_Strateg/714" },
+            { name: "Relax 07", link: "https://t.me/AntiKrizis_Strateg/715" },
+            { name: "Relax 08", link: "https://t.me/AntiKrizis_Strateg/716" },
+            { name: "Relax 09", link: "https://t.me/AntiKrizis_Strateg/717" },
+            { name: "Relax 10", link: "https://t.me/AntiKrizis_Strateg/718" },
+            { name: "Relax 11", link: "https://t.me/AntiKrizis_Strateg/719" },
+            { name: "Relax 12", link: "https://t.me/AntiKrizis_Strateg/720" },
+            { name: "Relax 13", link: "https://t.me/AntiKrizis_Strateg/721" },
+            { name: "Relax 14", link: "https://t.me/AntiKrizis_Strateg/722" },
+            { name: "Relax 15", link: "https://t.me/AntiKrizis_Strateg/723" },
+            { name: "Relax 16", link: "https://t.me/AntiKrizis_Strateg/724" },
+            { name: "Relax 17", link: "https://t.me/AntiKrizis_Strateg/725" },
+            { name: "Relax 18", link: "https://t.me/AntiKrizis_Strateg/726" },
+            { name: "Relax 19", link: "https://t.me/AntiKrizis_Strateg/727" },
+            { name: "Relax 20", link: "https://t.me/AntiKrizis_Strateg/728" },
+            { name: "Relax 21", link: "https://t.me/AntiKrizis_Strateg/729" },
+            { name: "Relax 22", link: "https://t.me/AntiKrizis_Strateg/730" },
+            { name: "Relax 23", link: "https://t.me/AntiKrizis_Strateg/731" },
+            { name: "Relax 24", link: "https://t.me/AntiKrizis_Strateg/732" },
+            { name: "Relax 25", link: "https://t.me/AntiKrizis_Strateg/733" },
+            { name: "Relax 26", link: "https://t.me/AntiKrizis_Strateg/734" },
+            { name: "Relax 27", link: "https://t.me/AntiKrizis_Strateg/735" },
+            { name: "Relax 28", link: "https://t.me/AntiKrizis_Strateg/736" },
+            { name: "Relax 29", link: "https://t.me/AntiKrizis_Strateg/737" },
+            { name: "Relax 30", link: "https://t.me/AntiKrizis_Strateg/738" },
+            { name: "Relax 31", link: "https://t.me/AntiKrizis_Strateg/739" },
+            { name: "Relax 32", link: "https://t.me/AntiKrizis_Strateg/740" },
+            { name: "Relax 33", link: "https://t.me/AntiKrizis_Strateg/741" },
+            { name: "Relax 34", link: "https://t.me/AntiKrizis_Strateg/742" },
+            { name: "Relax 35", link: "https://t.me/AntiKrizis_Strateg/743" },
+            { name: "Relax 36", link: "https://t.me/AntiKrizis_Strateg/744" },
+            { name: "Relax 37", link: "https://t.me/AntiKrizis_Strateg/745" },
+            { name: "Relax 38", link: "https://t.me/AntiKrizis_Strateg/746" },
+            { name: "Relax 39", link: "https://t.me/AntiKrizis_Strateg/747" },
+            { name: "Relax 40", link: "https://t.me/AntiKrizis_Strateg/748" },
+            { name: "Relax 41", link: "https://t.me/AntiKrizis_Strateg/749" },
+            { name: "Relax 42", link: "https://t.me/AntiKrizis_Strateg/750" },
+            { name: "Relax 43", link: "https://t.me/AntiKrizis_Strateg/751" },
+            { name: "Relax 44", link: "https://t.me/AntiKrizis_Strateg/752" },
+            { name: "Relax 45", link: "https://t.me/AntiKrizis_Strateg/753" },
+            { name: "Relax 46", link: "https://t.me/AntiKrizis_Strateg/754" },
+            { name: "Relax 47", link: "https://t.me/AntiKrizis_Strateg/755" },
+            { name: "Relax 48", link: "https://t.me/AntiKrizis_Strateg/756" },
+            { name: "Relax 49", link: "https://t.me/AntiKrizis_Strateg/757" },
+            { name: "Relax 50", link: "https://t.me/AntiKrizis_Strateg/758" },
+            { name: "Relax 51", link: "https://t.me/AntiKrizis_Strateg/759" },
+            { name: "Relax 52", link: "https://t.me/AntiKrizis_Strateg/760" },
+            { name: "Relax 53", link: "https://t.me/AntiKrizis_Strateg/761" },
+            { name: "Relax 54", link: "https://t.me/AntiKrizis_Strateg/762" },
+            { name: "Relax 55", link: "https://t.me/AntiKrizis_Strateg/763" },
+            { name: "Relax 56", link: "https://t.me/AntiKrizis_Strateg/764" },
+            { name: "Relax 57", link: "https://t.me/AntiKrizis_Strateg/765" },
+            { name: "Relax 58", link: "https://t.me/AntiKrizis_Strateg/766" },
+            { name: "Relax 59", link: "https://t.me/AntiKrizis_Strateg/767" },
+            { name: "Relax 60", link: "https://t.me/AntiKrizis_Strateg/768" },
+            { name: "Relax 61", link: "https://t.me/AntiKrizis_Strateg/769" },
+            { name: "Relax 62", link: "https://t.me/AntiKrizis_Strateg/770" },
+            { name: "Relax 63", link: "https://t.me/AntiKrizis_Strateg/771" },
+            { name: "Relax 64", link: "https://t.me/AntiKrizis_Strateg/772" },
+            { name: "Relax 65", link: "https://t.me/AntiKrizis_Strateg/773" },
+            { name: "Relax 66", link: "https://t.me/AntiKrizis_Strateg/774" },
+            { name: "Relax 67", link: "https://t.me/AntiKrizis_Strateg/775" },
+            { name: "Relax 68", link: "https://t.me/AntiKrizis_Strateg/776" },
+            { name: "Relax 69", link: "https://t.me/AntiKrizis_Strateg/777" },
+            { name: "Relax 70", link: "https://t.me/AntiKrizis_Strateg/778" },
+            { name: "Relax 71", link: "https://t.me/AntiKrizis_Strateg/779" },
+            { name: "Relax 72", link: "https://t.me/AntiKrizis_Strateg/780" }
+        ];
+
+        // Функция динамической генерации интерфейса плейлиста
+        function renderPlaylist() {
+            const container = document.getElementById('tgPlaylist');
+            if (!container) return;
+
+            container.innerHTML = tracks.map((track, index) => {
+                const trackNumber = String(index + 1).padStart(2, '0');
+                return `
+                    <a href="${track.link}" target="_blank" class="track-item">
+                        <div class="track-info">
+                            <span class="track-num">${trackNumber}</span>
+                            <span class="track-name" title="${track.name}">${track.name}</span>
+                        </div>
+                        <span class="tg-listen-btn">
+                            Слушать <i class="fa-brands fa-telegram"></i>
+                        </span>
+                    </a>
+                `;
+            }).join('');
+        }
+
+        // Рендеринг после загрузки страницы
+        document.addEventListener('DOMContentLoaded', renderPlaylist);
+    </script>
+</body>
+</html>

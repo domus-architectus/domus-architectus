@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Женская Харизма и Магнетизм | Domus Architectus</title>
+    <meta name="description" content="Специализированные аудио-сессии и треки для раскрытия женской харизмы, внутренней уверенности и магнетизма от Архитектора Антикризиса.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .main-header .logo a { color: #d4af37; text-decoration: none; }
+        .music-catalog { padding: 30px 5%; max-width: 800px; margin: 0 auto; }
+        
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #a6a6a6; text-decoration: none; margin-bottom: 25px; font-size: 0.9rem; transition: color 0.3s; }
+        .back-link:hover { color: #d4af37; }
+
+        .tg-notice {
+            background: #22121d;
+            border: 1px solid #ff4d6d;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .tg-notice i { color: #ff4d6d; font-size: 1.5rem; }
+        .tg-notice p { font-size: 0.95rem; color: #e2e8f0; line-height: 1.4; }
+
+        .playlist-container {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 8px;
+        }
+        .track-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid #1f1f1f;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .track-item:last-child { border-bottom: none; }
+        .track-item:hover { background: #261621; }
+        
+        .track-info { display: flex; align-items: center; gap: 15px; min-width: 0; }
+        .track-num { color: #59314c; font-size: 0.85rem; font-weight: 700; width: 25px; }
+        .track-name { color: #e2e8f0; font-size: 0.95rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .tg-listen-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #ff4d6d;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .track-item:hover .tg-listen-btn { color: #ff758f; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo"><a href="../index.html">Domus Architectus</a></div>
+        <nav class="main-nav">
+            <a href="../index.html">Главная</a>
+            <a href="../books/index.html">Книги</a>
+            <a href="index.html" class="active">Музыка</a>
+            <a href="../guestbook/index.html">Гостевая Книга</a>
+        </nav>
+    </header>
+
+    <main class="music-catalog">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Назад в Аудио-Архив</a>
+
+        <div class="tg-notice">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <p><strong>Женская Харизма (Wt Серия):</strong> Целевое звуковое воздействие, направленное на раскрытие внутреннего магнетизма, уверенности, изящества и персональной силы. Нажмите на трек для перехода к прослушиванию.</p>
+        </div>
+
+        <div class="playlist-container" id="tgPlaylist"></div>
+    </main>
+
+    <footer class="main-footer">
+        <p class="copyright">&copy; 2026 Domus Architectus. Все права защищены.</p>
+    </footer>
+
+    <script>
+        const tracks = [
+            { name: "Женская Харизма 01", link: "https://t.me/AntiKrizis_Strateg/838" },
+            { name: "Женская Харизма 02", link: "https://t.me/AntiKrizis_Strateg/839" },
+            { name: "Женская Харизма 03", link: "https://t.me/AntiKrizis_Strateg/840" },
+            { name: "Женская Харизма 04", link: "https://t.me/AntiKrizis_Strateg/841" },
+            { name: "Женская Харизма 05", link: "https://t.me/AntiKrizis_Strateg/842" },
+            { name: "Женская Харизма 06", link: "https://t.me/AntiKrizis_Strateg/843" },
+            { name: "Женская Харизма 07", link: "https://t.me/AntiKrizis_Strateg/844" },
+            { name: "Женская Харизма 08", link: "https://t.me/AntiKrizis_Strateg/845" },
+            { name: "Женская Харизма 09", link: "https://t.me/AntiKrizis_Strateg/846" },
+            { name: "Женская Харизма 10", link: "https://t.me/AntiKrizis_Strateg/847" },
+            { name: "Женская Харизма 11", link: "https://t.me/AntiKrizis_Strateg/848" },
+            { name: "Женская Харизма 12", link: "https://t.me/AntiKrizis_Strateg/849" },
+            { name: "Женская Харизма 13", link: "https://t.me/AntiKrizis_Strateg/850" },
+            { name: "Женская Харизма 14", link: "https://t.me/AntiKrizis_Strateg/851" },
+            { name: "Женская Харизма 15", link: "https://t.me/AntiKrizis_Strateg/852" },
+            { name: "Женская Харизма 16", link: "https://t.me/AntiKrizis_Strateg/853" },
+            { name: "Женская Харизма 17", link: "https://t.me/AntiKrizis_Strateg/854" },
+            { name: "Женская Харизма 18", link: "https://t.me/AntiKrizis_Strateg/855" },
+            { name: "Женская Харизма 19", link: "https://t.me/AntiKrizis_Strateg/856" },
+            { name: "Женская Харизма 20", link: "https://t.me/AntiKrizis_Strateg/857" },
+            { name: "Женская Харизма 21", link: "https://t.me/AntiKrizis_Strateg/858" },
+            { name: "Женская Харизма 22", link: "https://t.me/AntiKrizis_Strateg/859" },
+            { name: "Женская Харизма 23", link: "https://t.me/AntiKrizis_Strateg/860" },
+            { name: "Женская Харизма 24", link: "https://t.me/AntiKrizis_Strateg/861" },
+            { name: "Женская Харизма 25", link: "https://t.me/AntiKrizis_Strateg/862" },
+            { name: "Женская Харизма 26", link: "https://t.me/AntiKrizis_Strateg/863" },
+            { name: "Женская Харизма 27", link: "https://t.me/AntiKrizis_Strateg/864" },
+            { name: "Женская Харизма 28", link: "https://t.me/AntiKrizis_Strateg/865" },
+            { name: "Женская Харизма 29", link: "https://t.me/AntiKrizis_Strateg/866" },
+            { name: "Женская Харизма 30", link: "https://t.me/AntiKrizis_Strateg/867" },
+            { name: "Женская Харизма 31", link: "https://t.me/AntiKrizis_Strateg/868" },
+            { name: "Женская Харизма 32", link: "https://t.me/AntiKrizis_Strateg/869" }
+        ];
+
+        const container = document.getElementById('tgPlaylist');
+        const fragment = document.createDocumentFragment();
+
+        tracks.forEach((track, index) => {
+            const item = document.createElement('a');
+            item.className = 'track-item';
+            item.href = track.link;
+            item.target = '_blank';
+            item.rel = 'noopener';
+            
+            item.innerHTML = `
+                <div class="track-info">
+                    <div class="track-num">${String(index + 1).padStart(2, '0')}</div>
+                    <div class="track-name">${track.name}</div>
+                </div>
+                <div class="tg-listen-btn">Слушать <i class="fa-solid fa-chevron-right"></i></div>
+            `;
+            fragment.appendChild(item);
+        });
+
+        container.appendChild(fragment);
+    </script>
+</body>
+</html>

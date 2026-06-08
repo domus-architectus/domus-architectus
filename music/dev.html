@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Саморазвитие и Энергия | Domus Architectus</title>
+    <meta name="description" content="Аудио-архив треков для саморазвития, прокачки харизмы и личной эффективности от Архитектора Антикризиса.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .main-header .logo a { color: #d4af37; text-decoration: none; }
+        .music-catalog { padding: 30px 5%; max-width: 800px; margin: 0 auto; }
+        
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #a6a6a6; text-decoration: none; margin-bottom: 25px; font-size: 0.9rem; transition: color 0.3s; }
+        .back-link:hover { color: #d4af37; }
+
+        .tg-notice {
+            background: #17212b;
+            border: 1px solid #2481cc;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .tg-notice i { color: #2481cc; font-size: 1.5rem; }
+        .tg-notice p { font-size: 0.95rem; color: #e2e8f0; line-height: 1.4; }
+
+        .playlist-container {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 8px;
+        }
+        .track-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid #1f1f1f;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .track-item:last-child { border-bottom: none; }
+        .track-item:hover { background: #1c242c; }
+        
+        .track-info { display: flex; align-items: center; gap: 15px; min-width: 0; }
+        .track-num { color: #555; font-size: 0.85rem; font-weight: 700; width: 25px; }
+        .track-name { color: #e2e8f0; font-size: 0.95rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .tg-listen-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #2481cc;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .track-item:hover .tg-listen-btn { color: #4ba3e3; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo"><a href="../index.html">Domus Architectus</a></div>
+        <nav class="main-nav">
+            <a href="../index.html">Главная</a>
+            <a href="../books/index.html">Книги</a>
+            <a href="index.html" class="active">Музыка</a>
+            <a href="../guestbook/index.html">Гостевая Книга</a>
+        </nav>
+    </header>
+
+    <main class="music-catalog">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Назад в Аудио-Архив</a>
+
+        <div class="tg-notice">
+            <i class="fa-brands fa-telegram"></i>
+            <p><strong>Саморазвитие и Тюнинг Разума:</strong> Мотивационные композиции, ментальные триггеры и ритмы для глубокой фокусировки. Нажмите на трек, чтобы запустить Telegram-плеер.</p>
+        </div>
+
+        <div class="playlist-container" id="tgPlaylist"></div>
+    </main>
+
+    <footer class="main-footer">
+        <p class="copyright">&copy; 2026 Domus Architectus. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Полный отсортированный массив данных для категории Саморазвитие
+        const tracks = [
+            { name: "Вспышка Возможностей (Uplifting Disco) 1", link: "https://t.me/AntiKrizis_Strateg/590" },
+            { name: "Вспышка Возможностей (Uplifting Disco) 2", link: "https://t.me/AntiKrizis_Strateg/591" },
+            { name: "Выход В Мир (Hard Bop & Realization) 1", link: "https://t.me/AntiKrizis_Strateg/592" },
+            { name: "Золотой Стандарт Успеха 1", link: "https://t.me/AntiKrizis_Strateg/593" },
+            { name: "Золотой Стандарт Успеха 2", link: "https://t.me/AntiKrizis_Strateg/594" },
+            { name: "Свет Твоей Харизмы (Italo Disco Style) 1", link: "https://t.me/AntiKrizis_Strateg/595" },
+            { name: "Свет Твоей Харизмы (Italo Disco Style) 2", link: "https://t.me/AntiKrizis_Strateg/596" },
+            { name: "Автономный Блюз 1", link: "https://t.me/AntiKrizis_Strateg/597" },
+            { name: "Автономный Блюз 2", link: "https://t.me/AntiKrizis_Strateg/598" },
+            { name: "Алгоритм Музы (Bossa Nova & Creative Flow) 2", link: "https://t.me/AntiKrizis_Strateg/599" },
+            { name: "Алгоритм Музы (Bossa Nova & Creative Flow) 1", link: "https://t.me/AntiKrizis_Strateg/600" },
+            { name: "Архитектор Связей (Smooth Soul-Jazz & Relationships) 1", link: "https://t.me/AntiKrizis_Strateg/601" },
+            { name: "Архитектор Связей (Smooth Soul-Jazz & Relationships) 2", link: "https://t.me/AntiKrizis_Strateg/602" },
+            { name: "Выход В Мир (Hard Bop & Realization) 2", link: "https://t.me/AntiKrizis_Strateg/603" },
+            { name: "Гравитация Личности (R&B Duet) 1", link: "https://t.me/AntiKrizis_Strateg/604" },
+            { name: "Гравитация Личности (R&B Duet) 2", link: "https://t.me/AntiKrizis_Strateg/605" },
+            { name: "Капуста Архитектора (Country Rock & Autonomy) 1", link: "https://t.me/AntiKrizis_Strateg/606" },
+            { name: "Капуста Архитектора (Country Rock & Autonomy) 2", link: "https://t.me/AntiKrizis_Strateg/607" },
+            { name: "Код Автономности (Outlaw Country) 1", link: "https://t.me/AntiKrizis_Strateg/608" },
+            { name: "Код Автономности (Outlaw Country) 2", link: "https://t.me/AntiKrizis_Strateg/609" },
+            { name: "Код Эволюции (Acid Jazz Mix) 1", link: "https://t.me/AntiKrizis_Strateg/610" },
+            { name: "Код Эволюции (Acid Jazz Mix) 2", link: "https://t.me/AntiKrizis_Strateg/611" },
+            { name: "Код Эволюции (Acid Jazz Mix) 3", link: "https://t.me/AntiKrizis_Strateg/612" },
+            { name: "Код Эволюции (Acid Jazz Mix) 4", link: "https://t.me/AntiKrizis_Strateg/613" },
+            { name: "Монолит Дисциплины (Swing & Hard Bop Focus)", link: "https://t.me/AntiKrizis_Strateg/614" },
+            { name: "Перекресток Смыслов 1", link: "https://t.me/AntiKrizis_Strateg/615" },
+            { name: "Перекресток Смыслов 2", link: "https://t.me/AntiKrizis_Strateg/616" },
+            { name: "Поручик Разум 1", link: "https://t.me/AntiKrizis_Strateg/617" },
+            { name: "Поручик Разум 2", link: "https://t.me/AntiKrizis_Strateg/618" },
+            { name: "Резонанс Здоровья (Jazz Ballad Vitality) 1", link: "https://t.me/AntiKrizis_Strateg/619" },
+            { name: "Резонанс Здоровья (Jazz Ballad Vitality) 2", link: "https://t.me/AntiKrizis_Strateg/620" },
+            { name: "Ритм Автономности (Jazz-Folk Independence) 1", link: "https://t.me/AntiKrizis_Strateg/621" },
+            { name: "Ритм Автономности (Jazz-Folk Independence) 2", link: "https://t.me/AntiKrizis_Strateg/622" },
+            { name: "Стальная Струна (Country Blues Control)", link: "https://t.me/AntiKrizis_Strateg/623" },
+            { name: "Фундамент Оптимизма 1", link: "https://t.me/AntiKrizis_Strateg/624" },
+            { name: "Фундамент Оптимизма 2", link: "https://t.me/AntiKrizis_Strateg/625" },
+            { name: "Центр Циклона (Dark Jazz Control) 1", link: "https://t.me/AntiKrizis_Strateg/626" },
+            { name: "Центр Циклона (Dark Jazz Control) 2", link: "https://t.me/AntiKrizis_Strateg/627" },
+            { name: "Чертежи Рассвета (Modern Country Style) 1", link: "https://t.me/AntiKrizis_Strateg/628" },
+            { name: "Чертежи Рассвета (Modern Country Style) 2", link: "https://t.me/AntiKrizis_Strateg/629" },
+            { name: "Ясность В Стиле Скат 1", link: "https://t.me/AntiKrizis_Strateg/630" },
+            { name: "Ясность В Стиле Скат 2", link: "https://t.me/AntiKrizis_Strateg/631" },
+            { name: "Архитектор Своего Завтра (Synth-Pop Style) 1", link: "https://t.me/AntiKrizis_Strateg/632" },
+            { name: "Архитектор Своего Завтра (Synth-Pop Style) 2", link: "https://t.me/AntiKrizis_Strateg/633" },
+            { name: "Благодарность 1", link: "https://t.me/AntiKrizis_Strateg/634" },
+            { name: "Благодарность 2", link: "https://t.me/AntiKrizis_Strateg/635" },
+            { name: "Блюз Победителя 1", link: "https://t.me/AntiKrizis_Strateg/636" },
+            { name: "Блюз Победителя 2", link: "https://t.me/AntiKrizis_Strateg/637" },
+            { name: "Блюз Силы", link: "https://t.me/AntiKrizis_Strateg/638" },
+            { name: "Гамбит", link: "https://t.me/AntiKrizis_Strateg/639" },
+            { name: "Гимн Архитектора 1", link: "https://t.me/AntiKrizis_Strateg/640" },
+            { name: "Гимн Архитектора 2", link: "https://t.me/AntiKrizis_Strateg/641" },
+            { name: "Гравитация Силы 1", link: "https://t.me/AntiKrizis_Strateg/642" },
+            { name: "Гравитация Силы 2", link: "https://t.me/AntiKrizis_Strateg/643" },
+            { name: "Гримуар Архитектора 1", link: "https://t.me/AntiKrizis_Strateg/644" },
+            { name: "Гримуар Архитектора 2", link: "https://t.me/AntiKrizis_Strateg/645" },
+            { name: "Драйв Без Границ", link: "https://t.me/AntiKrizis_Strateg/646" },
+            { name: "Железный Приоритет 1", link: "https://t.me/AntiKrizis_Strateg/647" },
+            { name: "Железный Приоритет 2", link: "https://t.me/AntiKrizis_Strateg/648" },
+            { name: "За Борт! 1", link: "https://t.me/AntiKrizis_Strateg/649" },
+            { name: "За Борт! 2", link: "https://t.me/AntiKrizis_Strateg/650" },
+            { name: "Интуиция Стратега 1", link: "https://t.me/AntiKrizis_Strateg/651" },
+            { name: "Интуиция Стратега 2", link: "https://t.me/AntiKrizis_Strateg/652" },
+            { name: "Интуиция", link: "https://t.me/AntiKrizis_Strateg/653" },
+            { name: "Камень И Сталь 1", link: "https://t.me/AntiKrizis_Strateg/654" },
+            { name: "Камень И Сталь 2", link: "https://t.me/AntiKrizis_Strateg/655" },
+            { name: "Кантри Успешного Человека 1", link: "https://t.me/AntiKrizis_Strateg/656" },
+            { name: "Кантри Успешного Человека 2", link: "https://t.me/AntiKrizis_Strateg/657" },
+            { name: "Код Власти 1", link: "https://t.me/AntiKrizis_Strateg/658" },
+            { name: "Код Власти 2", link: "https://t.me/AntiKrizis_Strateg/659" },
+            { name: "Код Мотивации 1", link: "https://t.me/AntiKrizis_Strateg/660" },
+            { name: "Код Мотивации 2", link: "https://t.me/AntiKrizis_Strateg/661" },
+            { name: "Код Переговоров 1", link: "https://t.me/AntiKrizis_Strateg/662" },
+            { name: "Код Переговоров 2", link: "https://t.me/AntiKrizis_Strateg/663" },
+            { name: "Код Радости 1", link: "https://t.me/AntiKrizis_Strateg/664" },
+            { name: "Код Радости 2", link: "https://t.me/AntiKrizis_Strateg/665" },
+            { name: "Крейсер Силы", link: "https://t.me/AntiKrizis_Strateg/666" },
+            { name: "Кровь Предков 1", link: "https://t.me/AntiKrizis_Strateg/667" },
+            { name: "Кровь Предков 2", link: "https://t.me/AntiKrizis_Strateg/668" },
+            { name: "Магнит Харизмы 1", link: "https://t.me/AntiKrizis_Strateg/669" },
+            { name: "Магнит Харизмы 2", link: "https://t.me/AntiKrizis_Strateg/670" },
+            { name: "Манифест Архитектора 1", link: "https://t.me/AntiKrizis_Strateg/671" },
+            { name: "Манифест Архитектора 2", link: "https://t.me/AntiKrizis_Strateg/672" },
+            { name: "Марафон Архитектора 1", link: "https://t.me/AntiKrizis_Strateg/673" },
+            { name: "Марафон Архитектора 2", link: "https://t.me/AntiKrizis_Strateg/674" },
+            { name: "Мотивация", link: "https://t.me/AntiKrizis_Strateg/675" },
+            { name: "Обаяние 1", link: "https://t.me/AntiKrizis_Strateg/676" },
+            { name: "Обаяние 2", link: "https://t.me/AntiKrizis_Strateg/677" },
+            { name: "Обаяние 3", link: "https://t.me/AntiKrizis_Strateg/678" },
+            { name: "Обаяние 4", link: "https://t.me/AntiKrizis_Strateg/679" },
+            { name: "Ось Бытия 1", link: "https://t.me/AntiKrizis_Strateg/680" },
+            { name: "Ось Бытия 2", link: "https://t.me/AntiKrizis_Strateg/681" },
+            { name: "Протокол Цели 1", link: "https://t.me/AntiKrizis_Strateg/682" },
+            { name: "Протокол Цели 2", link: "https://t.me/AntiKrizis_Strateg/683" },
+            { name: "Самооценка", link: "https://t.me/AntiKrizis_Strateg/684" },
+            { name: "Стальной Рост", link: "https://t.me/AntiKrizis_Strateg/685" },
+            { name: "Стальной Стержень 1", link: "https://t.me/AntiKrizis_Strateg/686" },
+            { name: "Стальной Стержень 2", link: "https://t.me/AntiKrizis_Strateg/687" },
+            { name: "Суп Архитектора 1", link: "https://t.me/AntiKrizis_Strateg/688" },
+            { name: "Суп Архитектора 2", link: "https://t.me/AntiKrizis_Strateg/689" },
+            { name: "Точка Опоры 1", link: "https://t.me/AntiKrizis_Strateg/690" },
+            { name: "Точка Опоры 2", link: "https://t.me/AntiKrizis_Strateg/691" },
+            { name: "Утро Архитектора 1", link: "https://t.me/AntiKrizis_Strateg/693" },
+            { name: "Утро Архитектора 2", link: "https://t.me/AntiKrizis_Strateg/692" },
+            { name: "Утро Кантри Архитектора 1", link: "https://t.me/AntiKrizis_Strateg/694" },
+            { name: "Утро Кантри Архитектора 2", link: "https://t.me/AntiKrizis_Strateg/695" },
+            { name: "Харизма 1", link: "https://t.me/AntiKrizis_Strateg/696" },
+            { name: "Харизма 2", link: "https://t.me/AntiKrizis_Strateg/697" },
+            { name: "Харизма Короля", link: "https://t.me/AntiKrizis_Strateg/698" },
+            { name: "Хозяин Перекрестка", link: "https://t.me/AntiKrizis_Strateg/699" },
+            { name: "Хозяин Своей Вселенной 1", link: "https://t.me/AntiKrizis_Strateg/700" },
+            { name: "Хозяин Своей Вселенной 2", link: "https://t.me/AntiKrizis_Strateg/701" },
+            { name: "Чертеж Судьбы 1", link: "https://t.me/AntiKrizis_Strateg/702" },
+            { name: "Чертеж Судьбы 2", link: "https://t.me/AntiKrizis_Strateg/703" },
+            { name: "Чистый Драйв", link: "https://t.me/AntiKrizis_Strateg/704" },
+            { name: "Энергия Рывка 1", link: "https://t.me/AntiKrizis_Strateg/705" },
+            { name: "Энергия Рывка 2", link: "https://t.me/AntiKrizis_Strateg/706" },
+            { name: "Я - Утёс", link: "https://t.me/AntiKrizis_Strateg/707" }
+        ];
+
+        // Функция для динамической генерации HTML-списка треков
+        function renderPlaylist() {
+            const container = document.getElementById('tgPlaylist');
+            if (!container) return;
+
+            container.innerHTML = tracks.map((track, index) => {
+                const trackNumber = String(index + 1).padStart(2, '0');
+                return `
+                    <a href="${track.link}" target="_blank" class="track-item">
+                        <div class="track-info">
+                            <span class="track-num">${trackNumber}</span>
+                            <span class="track-name" title="${track.name}">${track.name}</span>
+                        </div>
+                        <span class="tg-listen-btn">
+                            Слушать <i class="fa-brands fa-telegram"></i>
+                        </span>
+                    </a>
+                `;
+            }).join('');
+        }
+
+        // Запуск рендеринга после загрузки DOM
+        document.addEventListener('DOMContentLoaded', renderPlaylist);
+    </script>
+</body>
+</html>

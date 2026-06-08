@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Воспитательная Литература | Domus Architectus — Книги по воспитанию и НЛП</title>
+    <meta name="description" content="Каталог книг и практических руководств Архитектора Антикризиса по конструктивному воспитанию, самодисциплине подростков и применению техник НЛП в педагогике.">
+    <meta name="keywords" content="Архитектор Антикризис, книги по воспитанию, НЛП для родителей, кадетский корпус, самодисциплина подростка, Domus Architectus">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arhantic.netlify.app/books/education.html">
+    <meta property="og:title" content="Воспитательная Литература | Domus Architectus">
+    <meta property="og:description" content="Воспитательные методики, приемы саморегуляции и построение железной дисциплины на основе практической психологии.">
+    <meta property="og:image" content="https://arhantic.netlify.app/images/Gerb.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Воспитательная Литература | Domus Architectus">
+    <meta name="twitter:description" content="Практические системы воспитания без хаоса и суеты.">
+    <meta name="twitter:image" content="https://arhantic.netlify.app/images/Gerb.png">
+
+    <link rel="canonical" href="https://arhantic.netlify.app/books/education.html">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <style>
+        /* Локальные стили для каталога книг */
+        .main-header .logo a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+        .main-nav a.active {
+            color: #d4af37 !important;
+            pointer-events: none;
+        }
+        
+        /* Выравнивание секции каталога в общую архитектуру сайта */
+        .books-catalog {
+            padding: 20px 5% 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .book-item {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+        .book-item:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+        .book-cover-wrap {
+            width: 100%;
+            height: 280px;
+            background-color: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../images/Gerb.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 65%;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .book-item:hover .book-cover-wrap {
+            border-color: #d4af37; /* Изменено с красного на золотой для монолитности бренда */
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+        .book-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+            text-align: left;
+        }
+        .book-desc {
+            font-size: 0.95rem;
+            color: #a6a6a6;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .buy-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(180deg, #d4af37, #aa841b);
+            color: #000;
+            padding: 14px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            white-space: nowrap;
+        }
+        .buy-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        @media (max-width: 480px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+            .book-cover-wrap {
+                height: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo"><a href="../index.html">Domus Architectus</a></div>
+        <nav class="main-nav">
+            <a href="../index.html">Главная</a>
+            <a href="index.html" class="active">Книги</a>
+            <a href="../music/index.html">Музыка</a>
+            <a href="../guestbook/index.html">Гостевая Книга</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1 class="main-title">Воспитательная Секция</h1>
+            <p class="subtitle">Воспитательные методики и приемы на основе техник НЛП и практической психологии</p>
+        </section>
+
+        <section class="books-catalog">
+            <div class="books-grid">
+                
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Код самодисциплины: Эксперт строгой школы. Конструктивное воспитание</div>
+                        <p class="book-desc">Практическое руководство по наведению порядка в семье и прекращению затяжного кризиса в отношениях с подростком. Книга предлагает жесткий, но конструктивный алгоритм: от диагностики скрытых деструктивных сценариев и осознанной передачи власти над собственной жизнью самому ребенку до выстраивания нерушимых личных границ на основе адаптированных принципов армейского Устава. Это готовая тактическая система, которая убирает хаос, внедряет дисциплину и дает родителям четкие инструменты саморегуляции для сохранения ледяного спокойствия в любой ситуации.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/kod_samodiscipliny_ekspert_strogoi_shkoly_konstruktivnoe_vospitanie/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">НЛП для офицеров-воспитателей. Простые и эффективные техники</div>
+                        <p class="book-desc">Эта книга — Практическое руководство по применению Нейролингвистического Программирования (НЛП) в сложной и ответственной работе офицера-воспитателя. В эпоху, когда традиционные командно-административные методы перестают работать, автор предлагает современный инструментарий для формирования личности, мотивации и эффективной коммуникации. Вы узнаете, как перейти от муштры к мастерству, используя проверенные техники для работы со всем вашим окружением.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/nlp_dlya_oficerov-vospitatelei_prostye_i_effektivnye_tekhniki" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Level Up: Как понимать людей и управлять собой</div>
+                        <p class="book-desc">Эта книга — «чит-код» для твоей жизни. Здесь собраны техники НЛП (нейролингвистического программирования), адаптированные специально для подростков. Ты узнаешь, как настроить свой мозг на уверенность, научишься читать людей по их жестам и словам, и поймешь, как выходить победителем из конфликтов, сохраняя спокойствие.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/level_up_kak_ponimat_lyudei_i_upravlyat_soboi/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Кадетский корпус: искусство управления кадрами</div>
+                        <p class="book-desc">Эта книга — практическое руководство для руководителей суворовских училищ, кадетских корпусов и пансионов. Кадровый вопрос здесь стоит острее, чем в любом бизнесе, ведь речь идет о воспитании элиты. Как найти людей, которые смогут сочетать в себе твердость командира и чуткость родителя? Как отсеять тех, кто идет за властью над детьми, и привлечь тех, кто готов служить идее?</p>
+                    </div>
+                    <a href="https://ridero.ru/books/kadetskii_korpus_iskusstvo_upravleniya_kadrami" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Неуязвимый: «КАЗ» от травли</div>
+                        <p class="book-desc">Твой мир пытаются взломать. Кто-то решил, что может диктовать тебе, как себя чувствовать, во что верить и сколько ты стоишь. Но у них есть одна проблема: они не знают, с кем связались. Эта книга — не сборник жалоб и не психотерапевтическая беседа. Это инженерный план по созданию твоего личного комплекса активной защиты (КАЗ). Как архитектор своей судьбы, ты не будешь ждать, пока «само пройдет» или кто-то придет на помощь. Ты выстроишь систему безопасности изнутри.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/neuyazvimyi_kaz_ot_travli" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Кодекс среды: как стены казармы формируют характер</div>
+                        <p class="book-desc">Традиционно казарма воспринимается как место строгой необходимости: крыша над головой, койка, место для хранения формы. В этом утилитарном подходе кроется глубокая педагогическая проблема. Для суворовца, который проводит в стенах училища ключевые годы своего становления, казарма не может быть просто складом или ночлежкой. Если среда безлика, она воспитывает безразличие. Если она хаотична, она культивирует внутренний беспорядок. Если она лишена вдохновения, она гасит дух.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/kodeks_sredy_kak_steny_kazarmy_formiruyut_kharakter" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Безопасный мир Макара. Книга-тренажер по безопасности детей</div>
+                        <p class="book-desc">Мир вокруг нас полон красок, но не все они одинаково безопасны. Вместе с первоклассником Макаром ваш ребенок научится различать «цвета» жизненных ситуаций. Кто входит в наш «зеленый круг» доверия? Почему вежливый сосед — это «оранжевый уровень» внимания? И что делать, если ситуация внезапно стала «красной»?</p>
+                    </div>
+                    <a href="https://ridero.ru/books/bezopasnyi_mir_makara_kniga-trenazher_po_bezopasnosti_detei" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Ловушка вседозволенности: анатомия слабости</div>
+                        <p class="book-desc">В современном мире, одержимом идеей «счастливого детства без запретов», мы незаметно вырастили поколение людей с дефицитом воли и размытым внутренним стержнем. Эта книга — глубокое исследование попустительского стиля воспитания и его разрушительного влияния на человеческую судьбу. Почему отсутствие родительского контроля считывается подсознанием ребенка как безразличие? Как безграничное «можно» превращается в парализующую тревогу во взрослой жизни?</p>
+                    </div>
+                    <a href="https://ridero.ru/books/lovushka_vsedozvolennosti_anatomiya_slabosti/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Сломленный стержень: Иллюзия контроля</div>
+                        <p class="book-desc">Книга «Сломленный стержень: Иллюзия контроля» — это глубокое исследование того, как авторитарная модель воспитания, маскируясь под заботу о дисциплине и будущем ребенка, на самом деле закладывает фундамент для личностной катастрофы.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/slomlennyi_sterzhen_illyuziya_kontrolya" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Маленький творец. Архитектура осознанности</div>
+                        <p class="book-desc">Архитектор Антикризис переносит принципы личной автономии и внутренней силы в плоскость родительства. Автор предлагает родителям перестать быть контролёрами и стать наставниками, помогая ребёнку сформировать «внутренний стержень», который не сломают ни социальные штормы, ни чужие ожидания.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/malenkii_tvorec_arkhitektura_osoznannosti" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Код осознанного родителя: развод</div>
+                        <p class="book-desc">Когда привычный мир рушится, легко поддаться хаосу деструктивных эмоций, превращая поле боя в руины, под которыми могут оказаться самые беззащитные — ваши дети. Но что, если взглянуть на этот кризис глазами Архитектора?</p>
+                    </div>
+                    <a href="https://ridero.ru/books/kod_osoznannogo_roditelya_razvod" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Анти-прокрастинация: Как не «сломать» Вашего ребенка</div>
+                        <p class="book-desc">Современная школа часто учит одному — имитации деятельности. Как результат — хроническая усталость и лень. Пора делать перезагрузку. Используя психотехнологии НЛП и методы оздоровления духа, мы создадим условия, при которых обучение станет естественным процессом, а не пыткой. Это книга о том, как научить ребенка фокусироваться на главном, отсекать лишнее и всегда доводить начатое до конца. Жестко, эффективно, на результат.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/anti-prokrastinaciya_kak_ne_slomat_vashego_rebenka" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Точка опоры. Спецкурс для родителей</div>
+                        <p class="book-desc">Ваш ребенок вышел в «красную зону». Вчера он спрашивал, как собрать конструктор, а сегодня у него свидание, запертая комната и гормональный взрыв, который сносит все ваши прежние договоренности. Это не кризис — это проверка вашей боеготовности как родителя. Эта книга написана для тех, кто хочет остаться для своего ребенка авторитетом и наставником, а не надзирателем. Мы не учим «воспитывать» — мы учим строить фундамент, который не развалится под ударами первых отношений.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/tochka_opory_8" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Переход. Руководство для родителей подростков</div>
+                        <p class="book-desc">Твой ребенок превратился в незнакомца? Добро пожаловать на передовую. Переходный возраст — это не болезнь и не каприз. Это жесткий тест на прочность твоих опор и чистоту твоих помыслов. Когда в доме поселяются внутренний протест и юношеский максимализм, у родителя есть два пути: стать тираном, которого возненавидят, или превратиться в мудрого Наставника, за которым захочется идти в огонь и воду.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/perekhod_8" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="social-links">
+            <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener" title="Telegram"><i class="fa-brands fa-telegram" aria-hidden="true"></i><span class="sr-only">Telegram</span></a>
+            <a href="https://www.tiktok.com/@arhantic?_r=1&_t=ZS-96l8qDhI9QN" target="_blank" rel="noopener" title="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i><span class="sr-only">TikTok</span></a>
+            <a href="https://youtube.com/@arh_antic?si=CBnsNHq7vJiiyEB_" target="_blank" rel="noopener" title="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+            <a href="https://www.instagram.com/arh_antic?igsh=MTVidGl6MG83MXBxcg==" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+        </div>
+        <p class="copyright">&copy; 2026 Domus Architectus. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<div class="book-entry">
+    <h3>Название книги</h3>
+    <p>Текст аннотации, который объясняет суть.</p>
+    <a href="ССЫЛКА_НА_RIDERO" target="_blank" rel="noopener" class="read-link">Выбрать формат и купить (Ridero)</a>
+</div>

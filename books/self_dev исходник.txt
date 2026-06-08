@@ -1,0 +1,626 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Саморазвитие | Библиотека Domus Architectus</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Архитектурные стили навигации и сетки */
+        .main-header .logo a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+        .main-nav a.active {
+            color: #d4af37 !important;
+            pointer-events: none;
+        }
+        .books-catalog {
+            padding: 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        .book-item {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .book-item:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+        .book-cover-wrap {
+            width: 100%;
+            height: 280px;
+            background-color: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../images/Gerb.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .book-item:hover .book-cover-wrap {
+            border-color: #aa0000;
+            box-shadow: 0 0 15px rgba(170, 0, 0, 0.3);
+        }
+        .book-cover {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+        }
+        .book-title {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-top: 15px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        .book-desc {
+            font-size: 0.95rem;
+            color: #a6a6a6;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .buy-btn {
+            display: inline-block;
+            background: linear-gradient(180deg, #d4af37, #aa841b);
+            color: #000;
+            padding: 14px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .buy-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #262626, transparent);
+            margin: 60px 0;
+        }
+        .section-title {
+            font-size: 2rem;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: #a6a6a6;
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo"><a href="../index.html">Domus Architectus</a></div>
+        <nav class="main-nav">
+            <a href="../index.html">Главная</a>
+            <a href="index.html" class="active">Книги</a>
+            <a href="../music/index.html">Музыка</a>
+            <a href="../guestbook/index.html">Гостевая Книга</a>
+        </nav>
+    </header>
+
+    <main class="hero-section">
+        <h1 class="main-title">Саморазвитие</h1>
+        <p class="subtitle">Инструменты для перепрошивки мышления, сборки личной эффективности и работы с внутренним состоянием.</p>
+    </main>
+
+    <section class="books-catalog">
+        <div class="books-grid">
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Крест Архитектора: Конструктор Осознанности</div>
+                    <p class="book-desc">Практическое руководство по созданию жесткого каркаса личности и выходу на уровень тотального управления своей реальностью. Фундаментальная система сборки осознанности, которая не оставляет шансов кризисам и хаосу.</p>
+                </div>
+                <a href="https://ridero.ru/books/krest_arkhitektora_konstruktor_osoznannosti/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Архитектура состояния: Руководство по трансформации личности</div>
+                    <p class="book-desc">Практическое руководство по управлению внутренними ресурсами, настройке персональной «Вертикали» и ликвидации деструктивных программ. Инструкция по сборке идеального психоэмоционального состояния для решения задач любой сложности.</p>
+                </div>
+                <a href="https://ridero.ru/books/arkhitektura_sostoyaniya_rukovodstvo_po_transformacii_lichnosti/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Архитектура воли: Самодисциплина как высшая свобода</div>
+                    <p class="book-desc">Практическое руководство по выходу из матрицы лени и прокрастинации. Книга о том, как превратить железную дисциплину не в инструмент насилия над собой, а в главный фундамент для обретения истинной автономии и силы.</p>
+                </div>
+                <a href="https://ridero.ru/books/arkhitektura_voli_samodisciplina_kak_vysshaya_svoboda/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Архитектура экспансии: Эволюция без конца</div>
+                    <p class="book-desc">Манифест непрерывного личностного роста и преодоления ментальных границ. Руководство по планомерному расширению зоны своего влияния, выдавливанию хаоса и созданию собственной устойчивой экосистемы в любых условиях.</p>
+                </div>
+                <a href="https://ridero.ru/books/arkhitektura_ekspansii_evolyuciya_bez_konca/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Архитектура единства: Свои среди спящих</div>
+                    <p class="book-desc">Руководство по созданию устойчивых социальных связей, поиску «своих» людей и выстраиванию монолитной команды. Практические инструменты взаимодействия с окружением без потери личной автономии и Вертикали.</p>
+                </div>
+                <a href="https://ridero.ru/books/arkhitektura_edinstva_svoi_sredi_spyashikh/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Скуф-трансформер: Рабочие практики</div>
+                    <p class="book-desc">Бескомпромиссное прикладное руководство для тех, кто обнаружил себя в ментальном и физическом застое. Конкретные рабочие практики по выходу из анабиоза, утилизации лени и полной модернизации всех сфер жизни.</p>
+                </div>
+                <a href="https://ridero.ru/books/skuf-transformer_rabochie_praktiki/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Дрыщ-трансформер: От астеника к атлету-хищнику</div>
+                    <p class="book-desc">Бескомпромиссная инструкция по радикальной трансформации тела и духа для тех, кто устал от слабости. Практическая система тренировок, дисциплины и ментальной настройки, превращающая дефицит ресурсов в сокрушительную силу атлета.</p>
+                </div>
+                <a href="https://ridero.ru/books/drysh-transformer_ot_astenika_k_atletu-khishniku/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Ты — воланчик: План тотальной перезагрузки</div>
+                    <p class="book-desc">Жёсткий и отрезвляющий тактический план для тех, кто устал быть игрушкой в руках обстоятельств и чужих решений. Пошаговое руководство по выходу из роли пассивного объекта, тотальной перезагрузке векторов жизни и возвращению контроля над своей судьбой.</p>
+                </div>
+                <a href="https://ridero.ru/books/ty_volanchik_plan_totalnoi_perezagruzki/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Брак по расчету... счастья</div>
+                    <p class="book-desc">Практическое руководство по проектированию гармоничных, стабильных и осознанных отношений. Книга ломает деструктивные стереотипы о семейной жизни и предлагает четкую, работающую стратегию сборки семейного союза, основанную на взаимном уважении, общих целях и трезвом расчете благополучия.</p>
+                </div>
+                <a href="https://ridero.ru/books/brak_po_raschetu_schastya/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Жениться? Готов!</div>
+                    <p class="book-desc">Практический манифест и стратегический разбор для мужчин, стоящих на пороге создания семьи. Книга помогает трезво оценить свои ресурсы, убрать ментальные вирусы и страхи, выстроить четкие критерии готовности к союзу и перехватить управление семейной архитектурой в свои руки.</p>
+                </div>
+                <a href="https://ridero.ru/books/zhenitsya_gotov/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Перезагрузка отношений: Инструкция по ремонту брака</div>
+                    <p class="book-desc">Прикладное тактическое руководство для тех, чей семейный союз дал трещину или зашел в тупик. Без иллюзий и пустой романтики — только конкретные психологические инструменты и алгоритмы для ликвидации кризиса, перезапуска взаимного уважения и пересборки отношений на прочном, обновленном фундаменте.</p>
+                </div>
+                <a href="https://ridero.ru/books/perezagruzka_otnoshenii_instrukciya_po_remontu_braka/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Я могу! Круг силы. Быстрый старт к уверенности</div>
+                    <p class="book-desc">Экспресс-руководство по ликвидации внутренних сомнений, страхов и синдрома самозванца. Практическая система быстрой сборки психоэмоционального состояния, которая позволяет активировать скрытые ресурсы психики, вернуть тотальную уверенность в своих силах и начать действовать из позиции Силы.</p>
+                </div>
+                <a href="https://ridero.ru/books/ya_mogu_krug_sily_bystryi_start_k_uverennosti/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Мастер времени: Продуктивность для любого графика</div>
+                    <p class="book-desc">Прикладная система управления временем для тех, кто живет в условиях жесткого дефицита ресурсов и непредсказуемого расписания. Без теоретической «воды» — только конкретные тактические инструменты для ликвидации хронофагов, настройки фокуса и выстраивания высокой продуктивности без выгорания.</p>
+                </div>
+                <a href="https://ridero.ru/books/master_vremeni_produktivnost_dlya_lyubogo_grafika/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Старт в успех: Руководство по заработку и развитию для школьников</div>
+                    <p class="book-desc">Практическое руководство для подростков, готовых сделать первые осознанные шаги к финансовой грамотности и личной эффективности. Книга объясняет сложные механизмы заработка, тайм-менеджмента и саморазвития простым языком, помогая сформировать мышление успешного человека и начать созидать свое будущее уже сегодня.</p>
+                </div>
+                <a href="https://ridero.ru/books/start_v_uspekh_rukovodstvo_po_zarabotku_i_razvitiyu_dlya_shkolnikov/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Секретный язык взаимопонимания: От настройки к влиянию</div>
+                    <p class="book-desc">Практическое руководство по скрытой инженерии общения и выстраиванию глубокого раппорта. Книга раскрывает профессиональные техники калибровки собеседника, подстройки и экологичного ведения в коммуникации, позволяя понимать истинные мотивы людей и эффективно защищать свои ментальные границы.</p>
+                </div>
+                <a href="https://ridero.ru/books/sekretnyi_yazyk_vzaimoponimaniya_ot_nastroiki_k_vliyaniyu/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Мой дом — место силы</div>
+                    <p class="book-desc">Практическое руководство по созданию персонального пространства силы, защищенного от внешнего хаоса и стресса. Книга раскрывает алгоритмы очищения, структурирования и ментальной настройки домашней среды, превращая ее в надежный тыл и мощный источник восстановления для всей семьи.</p>
+                </div>
+                <a href="https://ridero.ru/books/moi_dom_mesto_sily/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Резонанс пика: Искусство управлять реальностью изнутри</div>
+                    <p class="book-desc">Глубокое практическое руководство по выходу на пиковые режимы личной эффективности через управление внутренним состоянием. Книга раскрывает механизмы ментального резонанса, помогая синхронизировать мышление с внешними возможностями и выстраивать собственную траекторию успеха вопреки любому давлению среды.</p>
+                </div>
+                <a href="https://ridero.ru/books/rezonans_pika_iskusstvo_upravlyat_realnostyu_iznutri/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Взломать код общения за 5 недель: Практический самоучитель</div>
+                    <p class="book-desc">Пятинедельный практический интенсив по радикальному повышению качества коммуникации. Пошаговое руководство с конкретными ежедневными упражнениями для преодоления внутренних барьеров, освоения техник активного слушания, калибровки собеседника и уверенного управления любыми диалогами.</p>
+                </div>
+                <a href="https://ridero.ru/books/vzlomat_kod_obsheniya_za_5_nedel_prakticheskii_samouchitel/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Эффект стали: Твои привычки — твоя броня</div>
+                    <p class="book-desc">Практическое руководство по инженерии полезных привычек и выстраиванию железной самодисциплины. Книга предлагает системный подход к перепрошивке ежедневных ритуалов, превращая их в монолитную внутреннюю броню, готовую выдержать любые кризисы и внешнее давление.</p>
+                </div>
+                <a href="https://ridero.ru/books/effekt_stali_tvoi_privychki_tvoya_bronya/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Включи свет: Как превратить выгорание в обновление</div>
+                    <p class="book-desc">Прикладное тактическое руководство по выходу из затяжного пике эмоционального и физического выгорания. Без пустых утешений — только жесткие и работающие алгоритмы ментального ремонта, восстановления энергообмена и превращения кризиса в фундамент для тотального обновления жизни.</p>
+                </div>
+                <a href="https://ridero.ru/books/vklyuchi_svet_kak_prevratit_vygoranie_v_obnovление/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Из тени в свет: Путь к внутренней свободе</div>
+                    <p class="book-desc">Практическое руководство по работе с внутренними барьерами, скрытыми страхами и теневыми аспектами личности. Книга предлагает системный подход к освобождению ментальной энергии, утилизации старых деструктивных программ и обретению подлинной психологической автономии.</p>
+                </div>
+                <a href="https://ridero.ru/books/iz_teni_v_svet_put_k_vnutrennei_svobode/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Приказ №1: Найти себя. Пособие по десантированию в гражданскую жизнь</div>
+                    <p class="book-desc">Бескомпромиссное тактическое руководство для тех, кто проходит через жесткую смену жизненных контекстов и social адаптацию. Книга предлагает четкий алгоритм ментальной перепрошивки, инвентаризации ресурсов и выстраивания новой персональной архитектуры на гражданском плацдарме.</p>
+                </div>
+                <a href="https://ridero.ru/books/prikaz_1_naiti_sebya_posobie_po_desantirovaniyu_v_grazhdanskuyu_zhizn/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Перезагрузка</div>
+                    <p class="book-desc">Базовое тактическое руководство по радикальной трансформации сознания и ликвидации деструктивных ментальных программ. Книга предлагает жесткий и эффективный алгоритм аудита собственных убеждений, удаления навязанных вирусов мышления и развертывания обновленной, стрессоустойчивой операционной системы личности.</p>
+                </div>
+                <a href="https://ridero.ru/books/pereproshivka_1/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Код казака: Манифест и практики современного воина</div>
+                    <p class="book-desc">Бескомпромиссный манифест и прикладное руководство, объединяющее дух и традиции предков с современными технологиями личной эффективности. Книга предлагает систему ментальной и физической закалки, выстраивания несгибаемого внутреннего стержня, дисциплины и готовности к любым вызовам судьбы.</p>
+                </div>
+                <a href="https://ridero.ru/books/kod_kazaka_manifest_i_praktiki_sovremennogo_voina/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Код удачи: Как программировать жизнь на успех</div>
+                    <p class="book-desc">Практическое руководство по взлому случайных обстоятельств и переводу «везения» на рельсы системного управления. Книга предлагает конкретные психотехнологии и алгоритмы настройки мышления, которые позволяют видеть скрытые возможности, программировать события под свои цели и выходить победителем из любых жизненных раскладов.</p>
+                </div>
+                <a href="https://ridero.ru/books/kod_udachi_kak_programmirovat_zhizn_na_uspekh" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Жить дальше: Искусство восстановления после потери</div>
+                    <p class="book-desc">Трезвое и глубокое практическое руководство по преодолению тяжелых жизненных утрат и кризисов. Книга не предлагает пустых утешений, а дает четкие психологические алгоритмы для стабилизации состояния, пересборки личных смыслов и постепенного возвращения к полноценной, осознанной жизни.</p>
+                </div>
+                <a href="https://ridero.ru/books/zhit_dalshe_iskusstvo_vosstanovleniya_posle_poteri" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Suverunitet: Как стать президентом собственной жизни</div>
+                    <p class="book-desc">Политический манифест личной независимости и жесткое руководство по деоккупации собственного сознания. Книга предлагает пошаговую стратегию выхода из-под чужого влияния, выстраивания нерушимых ментальных границ и перехвата абсолютной исполнительной власти над своей жизнью, ресурсами и будущим.</p>
+                </div>
+                <a href="https://ridero.ru/books/suverenitet_kak_stat_prezidentom_sobstvennoi_zhizni" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Взлетная полоса: Искусство осознанного старта</div>
+                    <p class="book-desc">Практическое руководство по стратегическому планированию и безопасному запуску масштабных изменений в жизни. Книга раскрывает алгоритмы создания надежной стартовой площадки, расчета рисков и концентрации внутренних ресурсов, необходимых для уверенного отрыва от прежней рутины и выхода на новую высоту.</p>
+                </div>
+                <a href="https://ridero.ru/books/vzletnaya_polosa_iskusstvo_osoznannogo_starta" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Абсолютная осознанность: Власть Творца над хаосом</div>
+                    <p class="book-desc">Фундаментальное руководство по переходу на высшие уровни личной эффективности и ментальной автономии. Книга раскрывает механизмы укрощения жизненного хаоса через развитие тотального контроля над вниманием, деконструкцию навязанных иллюзий и пробуждение скрытого созидательного потенциала личности.</p>
+                </div>
+                <a href="https://ridero.ru/books/absolyutnaya_osoznannost_vlast_tvorca_nad_khaosom" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Внутренний бомж и как его выселить</div>
+                    <p class="book-desc">Бескомпромиссный психологический аудит и жёсткое руководство по искоренению мышления дефицита. Книга безжалостно вскрывает механизмы ментального паразитизма, синдрома отложенной жизни и привычки к самоограничению, предлагая радикальный алгоритм зачистки сознания для перехода на уровень подлинного созидания.</p>
+                </div>
+                <a href="https://ridero.ru/books/vnutrennii_bomzh_i_kak_ego_vyselit" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Второе дыхание: Перезагрузка в 70 лет</div>
+                    <p class="book-desc">Практическое руководство по радикальной ментальной и физической перезагрузке в зрелом возрасте. Без пустых лозунгов — только системный подход к активации внутренних ресурсов, преодолению возрастных кризисов и выстраиванию новой, активной и наполненной смыслами архитектуры жизни вопреки любым шаблонам социума.</p>
+                </div>
+                <a href="https://ridero.ru/books/vtoroe_dykhanie_perezagruzka_v_70_let" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Теневой архитектор: Тьма на службе эволюции</div>
+                    <p class="book-desc">Глубокое практическое руководство по интеграции и укрощению скрытых ресурсов человеческой психики. Книга предлагает системный подход к работе с теневыми аспектами личности, обучая экологично извлекать колоссальную первозданную энергию из подавленных состояний и направлять ее на ускоренную эволюцию духа, характера и личной эффективности.</p>
+                </div>
+                <a href="https://ridero.ru/books/tenevoi_arkhitektor_tma_na_sluzhbe_evolyucii" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Эстрадный код: Психоакустика контроля</div>
+                    <p class="book-desc">Уникальное исследование и practical руководство на стыке звуковых технологий и инженерии сознания. Книга раскрывает механизмы влияния аудиоволн на психоэмоциональное состояние человека, принципы создания программирующих аудиотреков и методы защиты от деструктивного акустического воздействия.</p>
+                </div>
+                <a href="https://ridero.ru/books/estradnyi_kod_psikhoakustika_kontrolya" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Созидающая реальность: Как матери-одиночке стать хозяйкой своей судьбы</div>
+                    <p class="book-desc">Бескомпромиссное практическое руководство и ментальная опора для женщин, воспитывающих детей в одиночку. Книга предлагает чёткие психологические и тактические алгоритмы для преодоления социальных страхов, выхода из ресурсного кризиса, выстраивания железных личных границ и тотального перехвата контроля над своей судьбой.</p>
+                </div>
+                <a href="https://ridero.ru/books/sozidayushaya_realnost_kak_materi-odinochke_stat_khozyaikoi_svoei_sudby" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Архитектура свободы: Выход из любовных треугольников</div>
+                    <p class="book-desc">Практическое руководство по выходу из деструктивных зависимостей и запутанных сценариев в отношениях. Книга предлагает жесткий психологический разбор структуры «треугольников», алгоритмы восстановления суверенности и пошаговую стратегию для построения здоровых границ.</p>
+                </div>
+                <a href="https://ridero.ru/books/arkhitektura_svobody_vykhod_iz_lyubovnykh_treugolnikov" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Приметы — оружие подсознания: Инструкция по эксплуатации</div>
+                    <p class="book-desc">Практическое руководство по деконструкции суеверий и превращению их в эффективные ментальные триггеры. Книга объясняет механизмы работы подсознания со знаками и предлагает алгоритмы для самостоятельного программирования позитивных примет, помогающих удерживать фокус на целях и утилизировать внешнюю неопределенность.</p>
+                </div>
+                <a href="https://ridero.ru/books/primety_oruzhie_podsoznaniya_instrukciya_po_ekspluatacii" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Токсичный коллектив: Творчество в зоне поражения</div>
+                    <p class="book-desc">Практическое руководство по выживанию и защите личных результатов в условиях деструктивной рабочей среды. Книга предлагает чёткие алгоритмы психологической самообороны, калибровки скрытых манипуляций и выстраивания нерушимых границ, позволяющих сохранять фокус на созидании даже в эпицентре корпоративных войн.</p>
+                </div>
+                <a href="https://ridero.ru/books/toksichnyi_kollektiv_tvorchestvo_v_zone_porazheniya" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Код воина: Симфония духа</div>
+                    <p class="book-desc">Глубокое философско-практическое руководство на стыке ментальной закалки и внутренней гармонии. Книга раскрывает принципы настройки мышления на режим абсолютной готовности к вызовам, учит утилизировать хаос и выстраивать свою жизнь как единую, мощную и созидательную симфонию несгибаемого духа.</p>
+                </div>
+                <a href="https://ridero.ru/books/kod_voina_simfoniya_dukha" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Пинок Судьбы. Практическое руководство</div>
+                    <p class="book-desc">Бескомпромиссный инструмент для демонтажа внутренней слабости и ликвидации синдрома пассивного ожидания. Книга представляет собой жёсткий тактический протокол выживания и созидания для тех, кто оказался в «точке ноль». Это руководство исключает пустые надежды на «вдохновение», предлагая чёткие алгоритмы выхода из психологического пике и немедленного развёртывания личной силы.</p>
+                </div>
+                <a href="https://ridero.ru/books/pinok_sudby" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Код Мотивации. Топливо для Успеха</div>
+                    <p class="book-desc">Техническое руководство по перепрошивке сознания и запуску внутреннего ментального двигателя. Книга отсекает любые иллюзии о внешнем «вдохновении», предлагая рассматривать мотивацию как высокооктановое топливо, которое каждый обязан научиться синтезировать самостоятельно. Это практический код для тех, кто готов прекратить простой в точке А и перевести свой жизненный марш-бросок на режим максимальной автономности.</p>
+                </div>
+                <a href="https://ridero.ru/books/kod_motivacii" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Твой личный фронт. Практическое руководство по саморазвитию</div>
+                    <p class="book-desc">Боевой устав для управления собственной судьбой, рассматривающий окружающий мир как театр глобальных действий, а повседневную жизнь — как линию фронта. Книга предлагает жесткую и бескомпромиссную архитектуру новой реальности, где каждый день становится осознанным выбором между захватом территории у хаоса и лени или капитуляцией перед обстоятельствами.</p>
+                </div>
+                <a href="https://ridero.ru/books/tvoi_lichnyi_front" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Архитектура аскетики</div>
+                    <p class="book-desc">Жесткий манифест и практическое руководство для тех, кто отказывается быть пассивным потребителем в мире, ведущем непрерывную войну за человеческое внимание и энергию. Книга предлагает системные алгоритмы выхода из-под власти внешних алгоритмов, страхов и чужих мнений, открывая иной путь — путь осознанной суверенности и тотального контроля над своей жизнью.</p>
+                </div>
+                <a href="https://ridero.ru/books/arkhitektura_asketiki/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Анатомия мужского реактора. Как управлять сексуальной энергией</div>
+                    <p class="book-desc">Практическое руководство по антикризисному менеджменту личной силы и управлению внутренним ядерным топливом мужчины. Книга предлагает жесткие алгоритмы сублимации, обучая перекрывать краны суррогатных удовольствий, брать реактор под контроль железной дисциплины и направлять мощнейший потенциал на захват стратегических целей и созидание суверенного пространства.</p>
+                </div>
+                <a href="https://ridero.ru/books/anatomiya_muzhskogo_reaktora" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+            </div>
+
+        </div> 
+    </section>
+
+    <hr class="section-divider">
+    
+    <section class="books-catalog english-section">
+        <h2 class="section-title">International Editions</h2>
+        <p class="section-subtitle">Tactical manuals for mental autonomy, crisis management, and inner core integration — now available in English.</p>
+        
+        <div class="books-grid">
+            
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">The Resonance Code: Controlling Reality from Within</div>
+                    <p class="book-desc">A profound practical guide to accessing peak states of personal efficiency by mastering your internal conditioning. This manual breaks down the mechanics of mental resonance, helping you synchronize your mindset with outer opportunities and engineer a self-sustained trajectory of success against any environmental pressure.</p>
+                </div>
+                <a href="https://ridero.ru/books/the_resonance_code" target="_blank" rel="noopener" class="buy-btn">Read on Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">The Creator State: A Guide to Personal Transformation</div>
+                    <p class="book-desc">A no-nonsense practical handbook for mastering your internal resources, setting up your personal "Vertical," and neutralizing destructive mental conditioning. This manual provides direct instructions on engineering an ideal psycho-emotional state to tackle high-stakes challenges and dominate any crisis.</p>
+                </div>
+                <a href="https://ridero.ru/books/the_creator_state" target="_blank" rel="noopener" class="buy-btn">Read on Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">The Architecture of Will: Mastering Inner Discipline</div>
+                    <p class="book-desc">A tactical blueprint for unlocking and mobilizing your ultimate internal strength. This guide delivers precise methodology to crush mental resistance, forge an unyielding inner core, and deploy absolute discipline. Engineered for those ready to sustain high-performance output and execute objectives under extreme pressure.</p>
+                </div>
+                <a href="https://ridero.ru/books/the_architecture_of_will" target="_blank" rel="noopener" class="buy-btn">Read on Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Expansion Architecture: Evolution Without End</div>
+                    <p class="book-desc">A strategic manual for relentless personal growth and breaking through perceived limits. This book outlines the principles of scaling your inner power, conquering new psychological territories, and sustaining a state of endless evolution. Designed for those who refuse to stagnate and demand continuous expansion of their reality.</p>
+                </div>
+                <a href="https://ridero.ru/books/expansion_architecture_evolution_without_end" target="_blank" rel="noopener" class="buy-btn">Read on Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">Architecture of Unity: One of the Few Among the Many</div>
+                    <p class="book-desc">A powerful guide to forging unbreakable internal alignment and mental synthesis. This book provides the blueprints for overcoming psychological fragmentation, establishing absolute self-governance, and maintaining an unshakeable inner core while operating as an autonomous force among the masses.</p>
+                </div>
+                <a href="https://ridero.ru/books/architecture_of_unity_one_of_the_few_among_the_many" target="_blank" rel="noopener" class="buy-btn">Read on Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">The Habit Blueprint: Engineering a Bulletproof Routine</div>
+                    <p class="book-desc">A hard-hitting tactical guide to deconstructing self-limiting behaviors and hacking your daily actions. This manual provides the exact engineering tools to build high-performance automatic rituals, eliminate mental friction, and structure an unshakeable routine that guarantees execution under any conditions.</p>
+                </div>
+                <a href="https://ridero.ru/books/the_habit_blueprint_engineering_a_bulletproof_routine" target="_blank" rel="noopener" class="buy-btn">Read on Ridero</a>
+            </div>
+
+            <div class="book-item">
+                <div>
+                    <div class="book-cover-wrap"></div>
+                    <div class="book-title">The Monolith: Hidden Power 2.0</div>
+                    <p class="book-desc">A masterclass in psychological fortress-building and tapping into deep-seated mental reserves. This tactical blueprint delivers advanced methods for consolidating inner power, achieving complete emotional immunity, and operating as an unshakeable, self-contained force when the external environment falls into absolute chaos.</p>
+                </div>
+                <a href="https://ridero.ru/books/the_monolith_hidden_power_2_0" target="_blank" rel="noopener" class="buy-btn">Read on Ridero</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="social-links">
+            <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://www.tiktok.com/@arhantic?_r=1&_t=ZS-96l8qDhI9QN" target="_blank" rel="noopener" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://youtube.com/@arh_antic?si=CBnsNHq7vJiiyEB_" target="_blank" rel="noopener" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/arh_antic?igsh=MTVidGl6MG83MXBxcg==" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <p class="copyright">&copy; 2026 Domus Architectus. Все права защищены.</p>
+    </footer>
+  
+</body>
+</html>

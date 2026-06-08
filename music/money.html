@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финансовые Аффирмации | Domus Architectus</title>
+    <meta name="description" content="Аудио-сессии и аффирмации для перенастройки финансового мышления и ментальной фокусировки на достаток и автономность от Архитектора Антикризиса.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .main-header .logo a { color: #d4af37; text-decoration: none; }
+        .music-catalog { padding: 30px 5%; max-width: 800px; margin: 0 auto; }
+        
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #a6a6a6; text-decoration: none; margin-bottom: 25px; font-size: 0.9rem; transition: color 0.3s; }
+        .back-link:hover { color: #d4af37; }
+
+        .tg-notice {
+            background: #1c2017;
+            border: 1px solid #52b788;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .tg-notice i { color: #52b788; font-size: 1.5rem; }
+        .tg-notice p { font-size: 0.95rem; color: #e2e8f0; line-height: 1.4; }
+
+        .playlist-container {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 8px;
+        }
+        .track-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid #1f1f1f;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .track-item:last-child { border-bottom: none; }
+        .track-item:hover { background: #1b241c; }
+        
+        .track-info { display: flex; align-items: center; gap: 15px; min-width: 0; }
+        .track-num { color: #445240; font-size: 0.85rem; font-weight: 700; width: 25px; }
+        .track-name { color: #e2e8f0; font-size: 0.95rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .tg-listen-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #52b788;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .track-item:hover .tg-listen-btn { color: #74c69d; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo"><a href="../index.html">Domus Architectus</a></div>
+        <nav class="main-nav">
+            <a href="../index.html">Главная</a>
+            <a href="../books/index.html">Книги</a>
+            <a href="index.html" class="active">Музыка</a>
+            <a href="../guestbook/index.html">Гостевая Книга</a>
+        </nav>
+    </header>
+
+    <main class="music-catalog">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Назад в Аудио-Архив</a>
+
+        <div class="tg-notice">
+            <i class="fa-solid fa-coins"></i>
+            <p><strong>Финансовый Код (Money Affirmations):</strong> Специализированные звуковые сессии для проработки ментальных барьеров, расширения емкости мышления и настройки на ресурсы. Нажмите на трек для прослушивания.</p>
+        </div>
+
+        <div class="playlist-container" id="tgPlaylist"></div>
+    </main>
+
+    <footer class="main-footer">
+        <p class="copyright">&copy; 2026 Domus Architectus. Все права защищены.</p>
+    </footer>
+
+    <script>
+        const tracks = [
+            { name: "Money Affirmation 01", link: "https://t.me/AntiKrizis_Strateg/782" },
+            { name: "Money Affirmation 02", link: "https://t.me/AntiKrizis_Strateg/783" },
+            { name: "Money Affirmation 03", link: "https://t.me/AntiKrizis_Strateg/784" },
+            { name: "Money Affirmation 04", link: "https://t.me/AntiKrizis_Strateg/785" },
+            { name: "Money Affirmation 05", link: "https://t.me/AntiKrizis_Strateg/786" },
+            { name: "Money Affirmation 06", link: "https://t.me/AntiKrizis_Strateg/787" },
+            { name: "Money Affirmation 07", link: "https://t.me/AntiKrizis_Strateg/788" },
+            { name: "Money Affirmation 08", link: "https://t.me/AntiKrizis_Strateg/789" },
+            { name: "Money Affirmation 09", link: "https://t.me/AntiKrizis_Strateg/790" },
+            { name: "Money Affirmation 10", link: "https://t.me/AntiKrizis_Strateg/791" },
+            { name: "Money Affirmation 11", link: "https://t.me/AntiKrizis_Strateg/792" },
+            { name: "Money Affirmation 12", link: "https://t.me/AntiKrizis_Strateg/793" },
+            { name: "Money Affirmation 13", link: "https://t.me/AntiKrizis_Strateg/794" },
+            { name: "Money Affirmation 14", link: "https://t.me/AntiKrizis_Strateg/795" },
+            { name: "Money Affirmation 15", link: "https://t.me/AntiKrizis_Strateg/796" },
+            { name: "Money Affirmation 16", link: "https://t.me/AntiKrizis_Strateg/797" },
+            { name: "Money Affirmation 17", link: "https://t.me/AntiKrizis_Strateg/798" },
+            { name: "Money Affirmation 18", link: "https://t.me/AntiKrizis_Strateg/799" },
+            { name: "Money Affirmation 19", link: "https://t.me/AntiKrizis_Strateg/800" },
+            { name: "Money Affirmation 20", link: "https://t.me/AntiKrizis_Strateg/801" },
+            { name: "Money Affirmation 21", link: "https://t.me/AntiKrizis_Strateg/802" },
+            { name: "Money Affirmation 22", link: "https://t.me/AntiKrizis_Strateg/803" },
+            { name: "Money Affirmation 23", link: "https://t.me/AntiKrizis_Strateg/804" }
+        ];
+
+        const container = document.getElementById('tgPlaylist');
+        const fragment = document.createDocumentFragment();
+
+        tracks.forEach((track, index) => {
+            const item = document.createElement('a');
+            item.className = 'track-item';
+            item.href = track.link;
+            item.target = '_blank';
+            item.rel = 'noopener';
+            
+            item.innerHTML = `
+                <div class="track-info">
+                    <div class="track-num">${String(index + 1).padStart(2, '0')}</div>
+                    <div class="track-name">${track.name}</div>
+                </div>
+                <div class="tg-listen-btn">Слушать <i class="fa-solid fa-chevron-right"></i></div>
+            `;
+            fragment.appendChild(item);
+        });
+
+        container.appendChild(fragment);
+    </script>
+</body>
+</html>

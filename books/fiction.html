@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Художественная Литература | Domus Architectus — Книги Архитектора Антикризиса</title>
+    <meta name="description" content="Каталог художественных книг, фантастических романов и прикладных рассказов Архитектора Антикризиса. Смыслы, зашитые в сюжеты, и трансформация реальности через метафоры.">
+    <meta name="keywords" content="Архитектор Антикризис, художественная литература, Сын степей, Проекты Разлома, Конструктор Судьбы, Сердце утренней звезды, Domus Architectus">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arhantic.netlify.app/books/fiction.html">
+    <meta property="og:title" content="Художественная Литература | Domus Architectus">
+    <meta property="og:description" content="Смыслы, зашитые в сюжеты. Жесткая проза, фантастика и хроники автономности от Архитектора Антикризиса.">
+    <meta property="og:image" content="https://arhantic.netlify.app/images/Gerb.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Художественная Литература | Domus Architectus">
+    <meta name="twitter:description" content="Литературный полигон глубокой ментальной трансформации.">
+    <meta name="twitter:image" content="https://arhantic.netlify.app/images/Gerb.png">
+
+    <link rel="canonical" href="https://arhantic.netlify.app/books/fiction.html">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <style>
+        /* Локальные стили для каталога книг */
+        .main-header .logo a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+        .main-nav a.active {
+            color: #d4af37 !important;
+            pointer-events: none;
+        }
+        
+        /* Выравнивание секции каталога в общую архитектуру сайта */
+        .books-catalog {
+            padding: 20px 5% 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .book-item {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+        .book-item:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+        .book-cover-wrap {
+            width: 100%;
+            height: 280px;
+            background-color: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../images/Gerb.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 65%;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .book-item:hover .book-cover-wrap {
+            border-color: #d4af37; /* Исправлено с красного на фирменный золотой */
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+        .book-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+            text-align: left;
+        }
+        .book-desc {
+            font-size: 0.95rem;
+            color: #a6a6a6;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .buy-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(180deg, #d4af37, #aa841b);
+            color: #000;
+            padding: 14px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            white-space: nowrap;
+        }
+        .buy-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        @media (max-width: 480px) {
+            .books-catalog {
+                padding: 10px 4% 40px;
+            }
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .book-item {
+                padding: 20px;
+            }
+            .book-cover-wrap {
+                height: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo"><a href="../index.html">Domus Architectus</a></div>
+        <nav class="main-nav">
+            <a href="../index.html">Главная</a>
+            <a href="index.html" class="active">Книги</a>
+            <a href="../music/index.html">Музыка</a>
+            <a href="../guestbook/index.html">Гостевая Книга</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1 class="main-title">Художественная Секция</h1>
+            <p class="subtitle">Смыслы, зашитые в сюжеты. Трансформация реальности через метафоры и глубокие сценарии.</p>
+        </section>
+
+        <section class="books-catalog">
+            <div class="books-grid">
+                
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Маркетинг и метаболизм: 20 советов для жизни без диет</div>
+                        <p class="book-desc">Жесткий деструктивный разбор современных пищевых ловушек и систем скрытого манипулирования сознанием. Это руководство не про диеты, а про ментальную и физическую автономию. Уникальный синтез психологических техник и физиологических законов, позволяющий взломать навязанные шаблоны потребления, перепрошить автоматизмы и вернуть абсолютный контроль над собственным телом.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/marketing_i_metabolizm_20_sovetov_dlya_zhizni_bez_diet" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Путь к себе: Сборник практических рассказов</div>
+                        <p class="book-desc">Это не просто художественная проза, а замаскированный тактический инструмент трансформации. Каждый рассказ — это выверенная ментальная модель, содержащая в себе прикладные психотехнологии и механизмы перепрошивки восприятия. Проходя через сюжетные линии, читатель неизбежно сталкивается с собственными блоками, деконструирует иллюзии и активирует скрытые внутренние ресурсы для сборки личной Вертикали.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/put_k_sebe_sbornik_prakticheskikh_rasskazov" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Воля к жизни: Путь выживания</div>
+                        <p class="book-desc">Остросюжетное руководство по ментальной и физической выживаемости, упакованное в художественную форму. Герои книги оказываются на пределе человеческих возможностей, где стираются социальные маски и остается только чистая проверка на прочность. Сюжет транслирует жесткие алгоритмы автономности, методы преодоления паники, сборки внутреннего стержня и активации скрытых резервов психики в условиях тотального кризиса.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/volya_k_zhizni_put_vyzhivaniya" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Внутренний двигатель: 20 шагов к твёрдой самооценке</div>
+                        <p class="book-desc">Художественно-практическое руководство по демонтажу навязанных комплексов и сборке неуязвимой внутренней опоры. Через призму глубоких жизненных сценариев книга раскрывает 20 конкретных тактических шагов для перепрошивки восприятия себя. Полное уничтожение ментального шума, зависимости от чужих оценок и выстраивание железобетонной уверенности, которая станет твоим главным двигателем в любой кризисной ситуации.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/vnutrennii_dvigatel_20_shagov_k_tvyordoi_samoocenke" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Остановись, отдохни, живи: как оставить работу на работе</div>
+                        <p class="book-desc">Художественно-прикладной манифест против ментального рабства и выгорания в тисках современных систем. Книга предлагает жесткие и эффективные алгоритмы защиты личного пространства от профессионального поглощения. Это тактическое руководство по выстраиванию непробиваемых психологических границ, восстановлению внутреннего ресурса и возвращению контроля над собственной жизнью вне диктата внешних обязательств.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/ostanovis_otdokhni_zhivi_kak_ostavit_rabotu_na_rabote" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Спасательный круг для тех, кто проснулся в ж/</div>
+                        <p class="book-desc">Экстренное художественно-практическое руководство для тех, кто обнаружил себя в точке глубочайшего жизненного или ментального кризиса. Книга предлагает жесткий алгоритм трезвого аудита реальности, немедленного купирования паники и мобилизации остаточных ресурсов. Это тактическая инструкция по сборке аварийного плана действий, уничтожению иллюзий и силовому выходу из тупика, когда старый мир уже разрушен, а новый нужно строить с нуля в условиях дефицита времени.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/spasatelnyi_krug_dlya_tekh_kto_prosnulsya_v_zh/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Архитектура будущего. Прогноз 50</div>
+                        <p class="book-desc">Художественно-практическое руководство по стратегическому проектированию собственной реальности на годы вперед. Книга предлагает жесткий инструментарий для деконструкции навязанных извне сценариев и ликвидации ментальной слепоты. Это ментальный тренажер для тех, кто готов взять в руки маркер архитектора, просчитать геополитические и социальные тренды, выстроить личную Вертикаль и начать осознанно формировать фундамент своего будущего уже сегодня.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/arkhitektura_budushego_1" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Сердце утренней звезды</div>
+                        <p class="book-desc">2056 год. Земля превратилась в пороховой погреб. Традиционные государства рухнули, сменившись тремя враждующими блоками, каждый из которых держит палец на ядерной кнопке. Последний шанс на спасение — Венера, где среди кислотных облаков и чудовищного давления обнаружены залежи «Литий-Духа». Это не просто сверхпроводник, это память и энергия цивилизации Предтеч, способная дать абсолютную власть над реальностью.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/serdce_utrennei_zvezdy" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Резонанс Земли</div>
+                        <p class="book-desc">Когда Архитектор коснулся Сердца Утренней Звезды в недрах Венеры, он совершил квантовый скачок. Один импульс, рожденный в ядре другой планеты, мгновенно выжег глобальную сеть Земли. Искусственный Интеллект, планировавший ядерный апокалипсис, превратился в цифровой пепел. Миллионы «чипированных» граждан Альянса и Синдиката сошли с ума или погибли, когда их нейроинтерфейсы превратились в раскаленные иглы в мозгу.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/rezonans_zemli/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Сын степей</div>
+                        <p class="book-desc">Берлин, 1984 год. Мир замер в хрупком равновесии, пока в высоких кабинетах идет торговля судьбами целых народов. Казак-характерник, работающий в Штази, вскрывает заговор, который тянется из Бонна в самое сердце Москвы. Система выносит смертный приговор своему лучшему агенту. Но характерника нельзя уничтожить там, где он сам становится стихией. Архитектор начинает свою автономную игру. Его цель — не просто выжить, а выжечь гниль, используя древнюю выучку и холодную ярость профессионала.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/syn_stepei" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Son of the Steppes: The Bonn Conspiracy</div>
+                        <p class="book-desc">Berlin, 1984. As the Cold War reaches a boiling point, a Cossack martial arts master operating deep within the Stasi uncovers a lethal conspiracy stretching from Bonn straight to the heart of Moscow. Marked for elimination by his own handlers, he refuses to become a pawn. The Architect begins his own autonomous game. Using ancient combat heritage and cold, professional ruthlessness, his goal is no longer just to survive — but to burn the corruption to the ground.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/son_of_the_steppes_the_bonn_conspiracy" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Проекты Разлома. Хроники Архитектора</div>
+                        <p class="book-desc">Его называют Архитектором. Его магия — это чистый расчет, мастерство саморегуляции и властный голос, прошивающий сознание насквозь. Он странствует по землям Разлома, превращая панику в дисциплину, а толпу — в единый боевой механизм. Для него нет монстров, есть только ошибки в чертеже реальности. Нет зла, есть лишь нарушение структуры.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/proekty_razloma" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Хроники Архитектора-2</div>
+                        <p class="book-desc">Это литературный полигон, где готическая эстетика старых легенд встречается с жесткими техниками психологического спецназа. Каждая история здесь — это замаскированный сеанс глубокой трансформации. В центре событий — Архитектор, мастер структуры, который проходит через лабиринты подсознания. Он сталкивается с «хозяевами» заброшенных причалов, перерезает нити невидимых кукловодов и сбрасывает кафтаны чужих ожиданий. Это продолжение Проектов Разлома.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/khroniki_arkhitektora-2/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Записки Архитектора</div>
+                        <p class="book-desc">Это серия коротких историй о том, как обычные действия превращаются в невероятные результаты. Вы узнаете, почему дисциплина дает больше свободы, чем хаос, как один тихий голос может остановить бурю и где прячется настоящая сила, когда кажется, что всё вокруг рушится. Читая эти рассказы, вы начнете замечать, как реальность вокруг становится более четкой, а ваши цели — достижимыми. Эта книга — ключ. И только вам решать, какую дверь вы откроете сегодня.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/zapiski_arkhitektora/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+                <div class="book-item">
+                    <div>
+                        <div class="book-cover-wrap" aria-hidden="true"></div>
+                        <div class="book-title">Конструктор Судьбы. Уровень «Скуф»</div>
+                        <p class="book-desc">Что делать, если ты — обычный мужик с одышкой, а мир вокруг внезапно превратился в хардкорную RPG? Причем игра идет на твою жизнь, а сохраниться нельзя. Найденный на складе старый софт активировал внутри Сергея скрытые модули. Пришло время сменить «пивную броню» на экзоскелет воли. Игра началась.</p>
+                    </div>
+                    <a href="https://ridero.ru/books/konstruktor_sudby/" target="_blank" rel="noopener" class="buy-btn">Читать на Ridero</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="social-links">
+            <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener" title="Telegram"><i class="fa-brands fa-telegram" aria-hidden="true"></i><span class="sr-only">Telegram</span></a>
+            <a href="https://www.tiktok.com/@arhantic?_r=1&_t=ZS-96l8qDhI9QN" target="_blank" rel="noopener" title="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i><span class="sr-only">TikTok</span></a>
+            <a href="https://youtube.com/@arh_antic?si=CBnsNHq7vJiiyEB_" target="_blank" rel="noopener" title="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+            <a href="https://www.instagram.com/arh_antic?igsh=MTVidGl6MG83MXBxcg==" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+        </div>
+        <p class="copyright">&copy; 2026 Domus Architectus. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Саундтреки (OST) | Domus Architectus</title>
+    <meta name="description" content="Музыкальные марши, темы проектов и официальные саундтреки к книгам Архитектора Антикризиса.">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .main-header .logo a { color: #d4af37; text-decoration: none; }
+        .music-catalog { padding: 30px 5%; max-width: 800px; margin: 0 auto; }
+        
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #a6a6a6; text-decoration: none; margin-bottom: 25px; font-size: 0.9rem; transition: color 0.3s; }
+        .back-link:hover { color: #d4af37; }
+
+        .tg-notice {
+            background: #241f17;
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .tg-notice i { color: #d4af37; font-size: 1.5rem; }
+        .tg-notice p { font-size: 0.95rem; color: #e2e8f0; line-height: 1.4; }
+
+        .playlist-container {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 8px;
+        }
+        .track-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid #1f1f1f;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .track-item:last-child { border-bottom: none; }
+        .track-item:hover { background: #241f17; }
+        
+        .track-info { display: flex; align-items: center; gap: 15px; min-width: 0; }
+        .track-num { color: #d4af37; font-size: 0.85rem; font-weight: 700; width: 25px; }
+        .track-name { color: #e2e8f0; font-size: 0.95rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .tg-listen-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #d4af37;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .track-item:hover .tg-listen-btn { color: #f1c40f; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo"><a href="../index.html">Domus Architectus</a></div>
+        <nav class="main-nav">
+            <a href="../index.html">Главная</a>
+            <a href="../books/index.html">Книги</a>
+            <a href="index.html" class="active">Музыка</a>
+            <a href="../guestbook/index.html">Гостевая Книга</a>
+        </nav>
+    </header>
+
+    <main class="music-catalog">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Назад в Аудио-Архив</a>
+
+        <div class="tg-notice">
+            <i class="fa-solid fa-compact-disc"></i>
+            <p><strong>Официальные Саундтреки (OST):</strong> Музыкальные темы, гимны проектов и марши к литературным произведениям Архитектора Антикризиса. Кликните на трек для мгновенного перехода к прослушиванию.</p>
+        </div>
+
+        <div class="playlist-container" id="tgPlaylist"></div>
+    </main>
+
+    <footer class="main-footer">
+        <p class="copyright">&copy; 2026 Domus Architectus. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Полный массив данных (98 треков)
+        const tracks = [
+            { name: "Accumulator 1", link: "https://t.me/AntiKrizis_Strateg/871" },
+            { name: "Accumulator 2", link: "https://t.me/AntiKrizis_Strateg/872" },
+            { name: "Alkaline Reactor 1", link: "https://t.me/AntiKrizis_Strateg/873" },
+            { name: "Alkaline Reactor 2", link: "https://t.me/AntiKrizis_Strateg/874" },
+            { name: "Alpine Transit 1", link: "https://t.me/AntiKrizis_Strateg/875" },
+            { name: "Alpine Transit 2", link: "https://t.me/AntiKrizis_Strateg/876" },
+            { name: "Ascent Mode 1", link: "https://t.me/AntiKrizis_Strateg/877" },
+            { name: "Ascent Mode 2", link: "https://t.me/AntiKrizis_Strateg/878" },
+            { name: "Coffee on Jamaica 1", link: "https://t.me/AntiKrizis_Strateg/879" },
+            { name: "Coffee on Jamaica 2", link: "https://t.me/AntiKrizis_Strateg/880" },
+            { name: "Exit the jelly 1", link: "https://t.me/AntiKrizis_Strateg/881" },
+            { name: "Exit the jelly 2", link: "https://t.me/AntiKrizis_Strateg/882" },
+            { name: "Explosive Reactor 1", link: "https://t.me/AntiKrizis_Strateg/883" },
+            { name: "Explosive Reactor 2", link: "https://t.me/AntiKrizis_Strateg/884" },
+            { name: "Gravity Weight 1", link: "https://t.me/AntiKrizis_Strateg/885" },
+            { name: "Gravity Weight 2", link: "https://t.me/AntiKrizis_Strateg/886" },
+            { name: "Hardware Maintenance 1", link: "https://t.me/AntiKrizis_Strateg/887" },
+            { name: "Hardware Maintenance 2", link: "https://t.me/AntiKrizis_Strateg/888" },
+            { name: "Heart of the Morning Star 1", link: "https://t.me/AntiKrizis_Strateg/889" },
+            { name: "Heart of the Morning Star 2", link: "https://t.me/AntiKrizis_Strateg/890" },
+            { name: "Hunter's Logistics 1", link: "https://t.me/AntiKrizis_Strateg/891" },
+            { name: "Hunter's Logistics 2", link: "https://t.me/AntiKrizis_Strateg/892" },
+            { name: "Milanese Night 1", link: "https://t.me/AntiKrizis_Strateg/893" },
+            { name: "Milanese Night 2", link: "https://t.me/AntiKrizis_Strateg/894" },
+            { name: "Neapolitan Skies 1", link: "https://t.me/AntiKrizis_Strateg/895" },
+            { name: "Neapolitan Skies 2", link: "https://t.me/AntiKrizis_Strateg/896" },
+            { name: "Regeneration 1", link: "https://t.me/AntiKrizis_Strateg/897" },
+            { name: "Regeneration 2", link: "https://t.me/AntiKrizis_Strateg/898" },
+            { name: "Roman Escape 1", link: "https://t.me/AntiKrizis_Strateg/899" },
+            { name: "Roman Escape 2", link: "https://t.me/AntiKrizis_Strateg/900" },
+            { name: "Shadows of Bonn 1", link: "https://t.me/AntiKrizis_Strateg/902" },
+            { name: "Shadows of Bonn 2", link: "https://t.me/AntiKrizis_Strateg/901" },
+            { name: "Steel Mask 1", link: "https://t.me/AntiKrizis_Strateg/903" },
+            { name: "Steel Mask 2", link: "https://t.me/AntiKrizis_Strateg/904" },
+            { name: "The Architect's Code 1", link: "https://t.me/AntiKrizis_Strateg/905" },
+            { name: "The Architect's Code 2", link: "https://t.me/AntiKrizis_Strateg/906" },
+            { name: "The Architect's First Step 1", link: "https://t.me/AntiKrizis_Strateg/907" },
+            { name: "The Architect's First Step 2", link: "https://t.me/AntiKrizis_Strateg/908" },
+            { name: "The Architect's First Step 3", link: "https://t.me/AntiKrizis_Strateg/909" },
+            { name: "The Architect's First Step 4", link: "https://t.me/AntiKrizis_Strateg/910" },
+            { name: "The Architect's Ghost 1", link: "https://t.me/AntiKrizis_Strateg/911" },
+            { name: "The Architect's Ghost 2", link: "https://t.me/AntiKrizis_Strateg/912" },
+            { name: "The Berlin Knot 1", link: "https://t.me/AntiKrizis_Strateg/913" },
+            { name: "The Berlin Knot 2", link: "https://t.me/AntiKrizis_Strateg/914" },
+            { name: "The Blueprint 1", link: "https://t.me/AntiKrizis_Strateg/915" },
+            { name: "The Blueprint 2", link: "https://t.me/AntiKrizis_Strateg/916" },
+            { name: "The Fortress Economy", link: "https://t.me/AntiKrizis_Strateg/917" },
+            { name: "The Grotto and the Flame 1", link: "https://t.me/AntiKrizis_Strateg/918" },
+            { name: "The Grotto and the Flame 2", link: "https://t.me/AntiKrizis_Strateg/919" },
+            { name: "The Installation 1", link: "https://t.me/AntiKrizis_Strateg/920" },
+            { name: "The Installation 2", link: "https://t.me/AntiKrizis_Strateg/921" },
+            { name: "The Mindset Grid 1", link: "https://t.me/AntiKrizis_Strateg/922" },
+            { name: "The Mindset Grid 2", link: "https://t.me/AntiKrizis_Strateg/923" },
+            { name: "The Savoy Trap 1", link: "https://t.me/AntiKrizis_Strateg/924" },
+            { name: "The Savoy Trap 2", link: "https://t.me/AntiKrizis_Strateg/925" },
+            { name: "Victor's Last Breath 1", link: "https://t.me/AntiKrizis_Strateg/926" },
+            { name: "Victor's Last Breath 2", link: "https://t.me/AntiKrizis_Strateg/927" },
+            { name: "Архитектор Антикризис 1", link: "https://t.me/AntiKrizis_Strateg/928" },
+            { name: "Архитектор Антикризис 2", link: "https://t.me/AntiKrizis_Strateg/929" },
+            { name: "Брак по расчету счастья 1", link: "https://t.me/AntiKrizis_Strateg/930" },
+            { name: "Брак по расчету счастья 2", link: "https://t.me/AntiKrizis_Strateg/931" },
+            { name: "Внутренний двигатель 1", link: "https://t.me/AntiKrizis_Strateg/932" },
+            { name: "Внутренний двигатель 2", link: "https://t.me/AntiKrizis_Strateg/933" },
+            { name: "Дорога 1", link: "https://t.me/AntiKrizis_Strateg/934" },
+            { name: "Дорога 2", link: "https://t.me/AntiKrizis_Strateg/935" },
+            { name: "Жениться готов! 1", link: "https://t.me/AntiKrizis_Strateg/936" },
+            { name: "Жениться готов! 2", link: "https://t.me/AntiKrizis_Strateg/937" },
+            { name: "Код Казака", link: "https://t.me/AntiKrizis_Strateg/938" },
+            { name: "Маркетинг и Метаболизм 1", link: "https://t.me/AntiKrizis_Strateg/939" },
+            { name: "Маркетинг и Метаболизм 2", link: "https://t.me/AntiKrizis_Strateg/940" },
+            { name: "Мастер Времени 1", link: "https://t.me/AntiKrizis_Strateg/941" },
+            { name: "Мастер Времени 2", link: "https://t.me/AntiKrizis_Strateg/942" },
+            { name: "Мой дом - место силы 1", link: "https://t.me/AntiKrizis_Strateg/943" },
+            { name: "Мой дом - место силы 2", link: "https://t.me/AntiKrizis_Strateg/944" },
+            { name: "Остановись. Отдохни. Живи. 1", link: "https://t.me/AntiKrizis_Strateg/945" },
+            { name: "Остановись. Отдохни. Живи. 2", link: "https://t.me/AntiKrizis_Strateg/946" },
+            { name: "Пастырь-Архитектор 1", link: "https://t.me/AntiKrizis_Strateg/947" },
+            { name: "Пастырь-Архитектор 2", link: "https://t.me/AntiKrizis_Strateg/948" },
+            { name: "Перезагрузка Отношений 1", link: "https://t.me/AntiKrizis_Strateg/949" },
+            { name: "Перезагрузка Отношений 2", link: "https://t.me/AntiKrizis_Strateg/950" },
+            { name: "Пинок Судьбы 1", link: "https://t.me/AntiKrizis_Strateg/952" },
+            { name: "Пинок Судьбы 2", link: "https://t.me/AntiKrizis_Strateg/953" },
+            { name: "Путь к себе 1", link: "https://t.me/AntiKrizis_Strateg/954" },
+            { name: "Секретный язык взаимопонимания 1", link: "https://t.me/AntiKrizis_Strateg/955" },
+            { name: "Секретный язык взаимопонимания 2", link: "https://t.me/AntiKrizis_Strateg/956" },
+            { name: "Симфония Созидания 1", link: "https://t.me/AntiKrizis_Strateg/957" },
+            { name: "Симфония Созидания 2", link: "https://t.me/AntiKrizis_Strateg/958" },
+            { name: "Скуф-Трансформер 1", link: "https://t.me/AntiKrizis_Strateg/959" },
+            { name: "Скуф-Трансформер 2", link: "https://t.me/AntiKrizis_Strateg/960" },
+            { name: "Ты - Воланчик 1", link: "https://t.me/AntiKrizis_Strateg/961" },
+            { name: "Ты - Воланчик 2", link: "https://t.me/AntiKrizis_Strateg/962" },
+            { name: "Чертеж над Бездной 1", link: "https://t.me/AntiKrizis_Strateg/963" },
+            { name: "Чертеж над Бездной 2", link: "https://t.me/AntiKrizis_Strateg/964" },
+            { name: "Чертежи на Краю 1", link: "https://t.me/AntiKrizis_Strateg/965" },
+            { name: "Чертежи на Краю 2", link: "https://t.me/AntiKrizis_Strateg/966" },
+            { name: "Я могу! Круг Силы 1", link: "https://t.me/AntiKrizis_Strateg/967" },
+            { name: "Я могу! Круг Силы 2", link: "https://t.me/AntiKrizis_Strateg/968" }
+        ];
+
+        // Функция динамической сборки списка
+        function renderPlaylist() {
+            const container = document.getElementById('tgPlaylist');
+            if (!container) return;
+
+            container.innerHTML = tracks.map((track, index) => {
+                const trackNumber = String(index + 1).padStart(2, '0');
+                return `
+                    <a href="${track.link}" target="_blank" class="track-item" rel="noopener">
+                        <div class="track-info">
+                            <span class="track-num">${trackNumber}</span>
+                            <span class="track-name" title="${track.name}">${track.name}</span>
+                        </div>
+                        <span class="tg-listen-btn">
+                            Слушать <i class="fa-brands fa-telegram"></i>
+                        </span>
+                    </a>
+                `;
+            }).join('');
+        }
+
+        // Запуск после загрузки DOM
+        document.addEventListener('DOMContentLoaded', renderPlaylist);
+    </script>
+</body>
+</html>
