@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мерч Domus Architectus | Архитектор Антикризис — Официальный Магазин</title>
+    <link rel="stylesheet" href="../style.css"> <!-- Подключаем твои стили сайта -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+    
+    <style>
+        .merch-container { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .merch-title { text-align: center; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .merch-subtitle { text-align: center; color: #777; margin-bottom: 40px; font-style: italic; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { border: 1px solid #222; background: #0b0b0b; padding: 20px; border-radius: 4px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-img { width: 100%; height: auto; border-radius: 2px; margin-bottom: 15px; }
+        .product-name { font-size: 1.2rem; margin: 10px 0; font-weight: bold; color: #fff; }
+        .product-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+        .product-price { font-size: 1.4rem; font-weight: bold; color: #fff; }
+        .btn-buy { background: #fff; color: #000; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-buy:hover { background: #ccc; }
+        .loader-text { text-align: center; font-size: 1.5rem; color: #fff; padding: 50px; }
+    </style>
+</head>
+<body style="background: #000; color: #fff;"> <!-- Держим брутальный черный стиль -->
+
+    <header class="main-header">
+        <div class="logo">Domus Architectus</div>
+        <nav class="main-nav">
+            <a href="../books/index.html">Книги</a>
+            <a href="../music/index.html">Музыка</a>
+            <a href="index.html" class="active-merch-link">Мерч</a>
+            <a href="../guestbook/index.html">Гостевая Книга</a>
+        </nav>
+    </header>
+
+    <main class="merch-container">
+        <h1 class="merch-title">Официальный мерч</h1>
+        <p class="merch-subtitle">Стиль и геометрия духа «Архитектор Антикризис»</p>
+
+        <!-- Сюда скрипт загрузит товары -->
+        <div id="products-container" class="products-grid">
+            <div class="loader-text"><i class="fa-solid fa-spinner fa-spin"></i> Разворачиваю витрину...</div>
+        </div>
+    </main>
+
+    <script>
+        // Сюда вставляешь свой токен, который сгенерировал в Printify
+        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzN2Q0YmQzMDM1ZmUxMWU5YTgwM2FiN2VlYjNjY2M5NyIsImp0aSI6IjhiMTljNmNlZTI5NDcyYjVkN2Q2NDYwMDcwZmNiODI1ZTVhZWFmNGVkNzZkN2NjMmRmNmYyNTEyMmFmZTdkYmI0YThjOWYxMDE4OTNiNGQwIiwiaWF0IjoxNzgyNTEzNzY4LjkxOTM3LCJuYmYiOjE3ODI1MTM3NjguOTE5MzcyLCJleHAiOjE4MTQwNDk3NjguOTEzMjQ5LCJzdWIiOiIyNzcxODc5OCIsInNjb3BlcyI6WyJzaG9wcy5yZWFkIiwiY2F0YWxvZy5yZWFkIiwib3JkZXJzLnJlYWQiLCJwcm9kdWN0cy5yZWFkIiwid2ViaG9va3MucmVhZCIsInVwbG9hZHMucmVhZCIsInByaW50X3Byb3ZpZGVycy5yZWFkIiwidXNlci5pbmZvIl19.V9sg9GFAh74VGJoRMbIAuTh4KfL63C9M20ZXPd-IQix5cdBPQTV3Z19b5oddVLORwARMn05ImCywjOQWJFRynJP7Qifqr7yzPS_vYNJFdk1LIPIGnOE8eEO9p8M4vw7cvZ86wJzv6FwY4WE6L3QJoPeok_IHwFf-auTOP8OwJ-nTXYaOIeZcF3nevc-AbJwlWUxJhigAiQW0aX_bp-QsOkVIhaAVRxy0tWjLUwJISIMRsTKbzoYdHf5DDXr7ntT5j-iNk_c1nSz4URQkvbWZnEV79vc6UAkixLIMxvAQaEE72gdSCPN5O_YeXanQdZ96LuY37K6xPzi2AZHllO1rT5Y00aKTX-Vcg-pR33Ag1RaYP8GxM1mXx659PgtkaRRWCHR8YwrIQEzAoQaOK3C2ed9uTXQhoyQWqVJ0f9a6JO-t43-SJNoKieT6RDAD-V6E9m5beCr4EsqUCc232xzDTJJG-W4nlG3biokfLxV4AyTtXlbVaL5vJJqhjg8ONLhrDgFVPqBV_nR0_k2V6xIxJfSXCxNr7WKAjcS081bqndhKPZZi3BWGTdS7oCpouGHDao68RElnCeX_fJvzwu8tGPsBiBT9POqWpeDYNuB2bZGPZSfKqdyh4SNFabqkwTzO4OItJRkyHvN6EzEQBliYWzeFJANDkadqdTFAGFaztD4'; 
+
+        async function initShop() {
+            const container = document.getElementById('products-container');
+            try {
+                // Шаг 1. Автоматически узнаем ID твоего первого магазина
+                const shopRes = await fetch('https://api.printify.com/v1/shops.json', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const shops = await shopRes.json();
+                if (!shops.length) throw new Error('Магазины не найдены');
+                const shopId = shops[0].id;
+
+                // Шаг 2. Забираем товары этого магазина
+                const prodRes = await fetch(`https://api.printify.com/v1/shops/${shopId}/products.json`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const prodData = await prodRes.json();
+                
+                // Шаг 3. Очищаем лоадер и строим сетку товаров
+                container.innerHTML = '';
+                if (!prodData.data || prodData.data.length === 0) {
+                    container.innerHTML = '<div class="loader-text">Товары на подходе. Скоро запуск.</div>';
+                    return;
+                }
+
+                prodData.data.forEach(product => {
+                    const price = (product.variants[0]?.price / 100).toFixed(2);
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <img src="${product.images[0]?.src}" alt="${product.title}" class="product-img">
+                        <h3 class="product-name">${product.title}</h3>
+                        <div class="product-meta">
+                            <span class="product-price">$${price}</span>
+                            <button class="btn-buy">Заказать</button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = '<div class="loader-text" style="color: red;">Ошибка загрузки витрины. Проверь токен.</div>';
+            }
+        }
+
+        // Запуск при загрузке страницы
+        initShop();
+    </script>
+</body>
+</html>
