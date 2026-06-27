@@ -57,20 +57,25 @@
                     container.innerHTML = '<div class="loader-text">Товары на подходе. Скоро запуск.</div>';
                     return;
                 }
-
                 prodData.data.forEach(product => {
-                    const price = (product.variants[0]?.price / 100).toFixed(2);
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = `
-                        <img src="${product.images[0]?.src}" alt="${product.title}" class="product-img">
-                        <h3 class="product-name">${product.title}</h3>
-                        <div class="product-meta">
-                            <span class="product-price">$${price}</span>
-                            <button class="btn-buy">Заказать</button>
-                        </div>
-                    `;
-                    container.appendChild(card);
+    const price = (product.variants[0]?.price / 100).toFixed(2);
+    // Берем прямую ссылку на товар в системе Printify
+    const productUrl = product.external?.url || '#'; 
+    
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+        <img src="${product.images[0]?.src}" alt="${product.title}" class="product-img">
+        <h3 class="product-name">${product.title}</h3>
+        <div class="product-meta">
+            <span class="product-price">$${price}</span>
+            <a href="${productUrl}" target="_blank" rel="noopener" style="text-decoration: none;">
+                <button class="btn-buy">Заказать</button>
+            </a>
+        </div>
+    `;
+    container.appendChild(card);
+});
                 });
 
             } catch (error) {
