@@ -45,46 +45,53 @@
         </div>
     </main>
     <script>
-      async function initShop() {
+        async function initShop() {
             const container = document.getElementById('products-container');
             try {
-                // Стучимся к нашему собственному мини-серверу на Vercel
                 const response = await fetch('/api/get-merch');
                 const prodData = await response.json();
                 
                 container.innerHTML = '';
-                if (!prodData.data || prodData.data.length === 0) {
-                    container.innerHTML = '<div class="loader-text">Товары на подходе. Скоро запуск.</div>';
+
+                // Если сервер прислал ошибку, выводим её
+                if (prodData.error) {
+                    container.innerHTML = `<div class="loader-text" style="color: #ff4444;">${prodData.error}</div>`;
                     return;
                 }
+                
+                // Если товаров нет
+                if (!prodData.data || prodData.data.length === 0) {
+                    container.innerHTML = '<div class="loader-text">Витрина подключена успешно, но товаров пока нет. Создай и опубликуй первый макет в Printify!</div>';
+                    return;
+                }
+
+                // Рендерим товары
                 prodData.data.forEach(product => {
-    const price = (product.variants[0]?.price / 100).toFixed(2);
-    // Берем прямую ссылку на товар в системе Printify
-    const productUrl = product.external?.url || '#'; 
-    
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-        <img src="${product.images[0]?.src}" alt="${product.title}" class="product-img">
-        <h3 class="product-name">${product.title}</h3>
-        <div class="product-meta">
-            <span class="product-price">$${price}</span>
-            <a href="${productUrl}" target="_blank" rel="noopener" style="text-decoration: none;">
-                <button class="btn-buy">Заказать</button>
-            </a>
-        </div>
-    `;
-    container.appendChild(card);
-});
+                    const price = (product.variants[0]?.price / 100).toFixed(2);
+                    // Безопасный перегруз: если ссылки нет, отправляем в твой ТГ-канал или оставляем заглушку
+                    const productUrl = product.external?.url || 'https://t.me/AntiKrizis_Strateg'; 
+                    
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <img src="${product.images[0]?.src}" alt="${product.title}" class="product-img">
+                        <h3 class="product-name">${product.title}</h3>
+                        <div class="product-meta">
+                            <span class="product-price">$${price}</span>
+                            <a href="${productUrl}" target="_blank" rel="noopener" style="text-decoration: none;">
+                                <button class="btn-buy">Заказать</button>
+                            </a>
+                        </div>
+                    `;
+                    container.appendChild(card);
                 });
 
             } catch (error) {
                 console.error(error);
-                container.innerHTML = '<div class="loader-text" style="color: #ff4444;">Ошибка загрузки витрины. Проверь логи сервера.</div>';
+                container.innerHTML = '<div class="loader-text" style="color: #ff4444;">Критическая ошибка сети. Перезагрузи страницу.</div>';
             }
         }
 
-        // Запуск витрины
         initShop();
     </script>
 </body>
