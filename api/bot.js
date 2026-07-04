@@ -2,8 +2,8 @@ const { Octokit } = require("@octokit/rest");
 const fetch = require("node-fetch");
 
 // Конфигурация GitHub (замени на свои данные)
-const GH_OWNER = "domus-architectus"; // Например: "arhantic"
-const GH_REPO = "domus-architectus";  // Например: "domus-hub"
+const GH_OWNER = "domus-architectus"; 
+const GH_REPO = "domus-architectus";  
 const GH_PATH = "data.json";
 
 // Инициализация клиента GitHub
@@ -15,7 +15,7 @@ async function parseRidero(url) {
     if (!res.ok) throw new Error("Не удалось загрузить страницу Ridero");
     const html = await res.text();
 
-    // Быстрый поиск мета-тегов через регулярные выражения (работает без тяжелых библиотек парсинга)
+    // Быстрый поиск мета-тегов через регулярные выражения
     const titleMatch = html.match(/<meta property="og:title" content="([^"]+)"/);
     const descMatch = html.match(/<meta property="og:description" content="([^"]+)"/);
     const imageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
@@ -26,7 +26,7 @@ async function parseRidero(url) {
 
     if (cover && cover.startsWith("//")) cover = "https:" + cover;
 
-    // Декодирование HTML-сущностей, если они есть
+    // Декодирование HTML-сущностей
     title = title.replace(/&quot;/g, '"').replace(/&amp;/g, '&');
     description = description.replace(/&quot;/g, '"').replace(/&amp;/g, '&');
 
@@ -46,8 +46,7 @@ async function sendTelegram(chatId, text, replyMarkup = null) {
     });
 }
 
-// Хранилище сессий в памяти (для Serverless это временное решение, но для шага "ссылка -> категория" работает отлично)
-// Если бот «забудет» ссылку из-за перезапуска инстанса Vercel, он просто попросит прислать её заново.
+// Хранилище сессий в памяти
 let tempSessions = {};
 
 module.exports = async (req, res) => {
@@ -60,10 +59,10 @@ module.exports = async (req, res) => {
         
         // 1. Обработка текстовых сообщений (прием ссылки)
         if (update.message && update.message.text) {
-            const chatId = update.message.chat_id || update.message.chat.id;
+            const chatId = update.message.chat.id; // Жесткая и надежная привязка к ID чата
             const text = update.message.text.trim();
 
-            // Гибкая проверка: реагирует на любую ссылку, содержащую ridero.ru
+            // Реагирует на любую ссылку, содержащую ridero.ru
             if (text.includes("ridero.ru")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
                 tempSessions[chatId] = { url: cleanUrl };
