@@ -18,7 +18,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://domusarchitectus.vercel.app/">
     <meta property="og:title" content="Domus Architectus | Архитектор Антикризис">
-    <meta property="og:description" content="Кодекс Архитектора: система саморегуляции, преодоления кризисов и железной дисциплины. Книги и проекты автора.">
+    <meta property="og:description" content="Кодекс Архитектора: systemа саморегуляции, преодоления кризисов и железной дисциплины. Книги и проекты автора.">
     <meta property="og:image" content="https://domusarchitectus.vercel.app/images/Gerb.png"> 
     <meta property="og:site_name" content="Domus Architectus">
     <meta name="twitter:card" content="summary_large_image">
@@ -199,9 +199,11 @@
     <script>
         let globalProducts = [];
 
+        // Загрузка готовой базы данных из data.json
         async function loadHubData() {
             try {
-                const response = await fetch('data.json');
+                // Метка ?v= принудительно обходит кеш браузера
+                const response = await fetch('data.json?v=' + new Date().getTime());
                 if (!response.ok) {
                     throw new Error(`Ошибка загрузки: ${response.status}`);
                 }
@@ -219,6 +221,7 @@
             }
         }
 
+        // Отрисовка карточек проектов на витрине
         function renderCatalog(products) {
             const catalog = document.getElementById('catalog');
             if (!catalog) return;
@@ -230,9 +233,57 @@
             }
 
             products.forEach(p => {
-                let buttonsHTML = '';
+                const rideroUrl = p.links && p.links.ridero ? p.links.ridero : '#';
                 
-                if (p.links && p.links.ridero) {
-                    buttonsHTML += `<a href="${p.links.ridero}" target="_blank" rel="noopener" class="block text-center bg-stone-900 hover:bg-stone-800 text-stone-300 text-xs uppercase tracking-wider font-bold py-2.5 border border-stone-800 rounded transition cursor-pointer">Читать на Ridero</a>`;
+                let buttonsHTML = `<a href="${rideroUrl}" target="_blank" rel="noopener" class="block text-center bg-stone-900 hover:bg-stone-800 text-stone-300 text-xs uppercase tracking-wider font-bold py-2.5 border border-stone-800 rounded transition cursor-pointer">Читать на Ridero</a>`;
+                
+                if (p.tg_link) {
+                    buttonsHTML += `<a href="${p.tg_link}" target="_blank" rel="noopener" class="block text-center bg-stone-900 hover:bg-stone-800 text-amber-500 text-xs uppercase tracking-wider font-bold py-2.5 border border-stone-800 rounded transition cursor-pointer">Скачать в TG</a>`;
                 }
-                if (p.links
+
+                const title = p.title || "Проект в экосистеме";
+                const description = p.description || "Описание доступно на платформе публикации.";
+                const cover = p.cover || "images/books/default-cover.jpg";
+
+                const card = document.createElement('div');
+                card.className = "bg-stone-900/20 border border-stone-900 rounded-xl overflow-hidden flex flex-col justify-between hover:border-stone-800/60 transition p-4";
+                card.innerHTML = `
+                    <div>
+                        <div class="w-full h-64 overflow-hidden rounded-lg mb-4 bg-stone-950 flex items-center justify-center">
+                            <img src="${cover}" alt="${title}" class="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition duration-300">
+                        </div>
+                        <h3 class="text-base font-bold text-stone-200 tracking-wide mb-2">${title}</h3>
+                        <p class="text-[11px] text-stone-400 leading-relaxed mb-6 line-clamp-4">${description}</p>
+                    </div>
+                    <div class="space-y-2 mt-auto">
+                        ${buttonsHTML}
+                    </div>
+                `;
+                catalog.appendChild(card);
+            });
+        }
+
+        // Логика переключения вкладок/категорий
+        function filterCategory(cat) {
+            const buttons = document.querySelectorAll('[id^="btn-"]');
+            buttons.forEach(b => {
+                b.className = "px-4 py-2 text-xs uppercase tracking-wider bg-stone-900 hover:bg-stone-800 text-stone-300 rounded transition cursor-pointer";
+            });
+            
+            const activeBtn = document.getElementById(`btn-${cat}`);
+            if (activeBtn) {
+                activeBtn.className = "px-4 py-2 text-xs uppercase tracking-wider bg-amber-600 text-stone-950 font-bold rounded transition cursor-pointer";
+            }
+
+            if (cat === 'all') {
+                renderCatalog(globalProducts);
+            } else {
+                const filtered = globalProducts.filter(p => p.category === cat);
+                renderCatalog(filtered);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadHubData);
+    </script>
+</body>
+</html>
