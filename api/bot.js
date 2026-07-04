@@ -1,21 +1,19 @@
 const { Octokit } = require("@octokit/rest");
 const fetch = require("node-fetch");
 
-// Конфигурация GitHub (замени на свои данные)
+// Конфигурация GitHub
 const GH_OWNER = "domus-architectus"; 
 const GH_REPO = "domus-architectus";  
 const GH_PATH = "data.json";
 
-// Инициализация клиента GitHub
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
-// Простой серверный парсер Ridero
+// Парсер Ridero
 async function parseRidero(url) {
     const res = await fetch(url);
     if (!res.ok) throw new Error("Не удалось загрузить страницу Ridero");
     const html = await res.text();
 
-    // Быстрый поиск мета-тегов через регулярные выражения
     const titleMatch = html.match(/<meta property="og:title" content="([^"]+)"/);
     const descMatch = html.match(/<meta property="og:description" content="([^"]+)"/);
     const imageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
@@ -26,23 +24,17 @@ async function parseRidero(url) {
 
     if (cover && cover.startsWith("//")) cover = "https:" + cover;
 
-    // Декодирование HTML-сущностей
     title = title.replace(/&quot;/g, '"').replace(/&amp;/g, '&');
     description = description.replace(/&quot;/g, '"').replace(/&amp;/g, '&');
 
     return { title, description, cover };
 }
 
-// Отправка сообщений в Telegram с правильным форматированием кнопок
+// Отправка сообщений в Telegram
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
+    const body = { chat_id: chatId, text: text };
     
-    const body = { 
-        chat_id: chatId, 
-        text: text 
-    };
-    
-    // КРИТИЧЕСКИЙ СДВИГ: Telegram принимает reply_markup ТОЛЬКО как JSON-строку
     if (replyMarkup) {
         body.reply_markup = JSON.stringify(replyMarkup);
     }
@@ -54,9 +46,6 @@ async function sendTelegram(chatId, text, replyMarkup = null) {
     });
 }
 
-// Хранилище сессий в памяти
-let tempSessions = {};
-
 module.exports = async (req, res) => {
     if (req.method !== "POST") {
         return res.status(200).send("ОК. Только POST запросы.");
@@ -65,26 +54,28 @@ module.exports = async (req, res) => {
     try {
         const update = req.body;
         
-        // 1. Обработка текстовых сообщений (прием ссылки)
+        // 1. Приём ссылки
         if (update.message && update.message.text) {
-            const chatId = update.message.chat.id; // Жесткая и надежная привязка к ID чата
+            const chatId = update.message.chat.id;
             const text = update.message.text.trim();
 
-            // Реагирует на любую ссылку, содержащую ridero.ru
             if (text.includes("ridero.ru")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
-                tempSessions[chatId] = { url: cleanUrl };
                 
-                // Выводим инлайн-кнопки выбора категории
+                // Выделяем название книги из ссылки (например, "drevnyaya_sila_blagodarnosti")
+                const urlParts = cleanUrl.replace(/\/$/, "").split("/");
+                const bookSlug = urlParts[urlParts.length - 1];
+
+                // Зашиваем слаг книги прямо в callback_data кнопок через разделитель "|"
                 const keyboard = {
                     inline_keyboard: [
                         [
-                            { text: "📘 Прикладное руководство", callback_data: "cat_applied" },
-                            { text: "📕 Художественная", callback_data: "cat_fiction" }
+                            { text: "📘 Прикладное руководство", callback_data: `cat_applied|${bookSlug}` },
+                            { text: "📕 Художественная", callback_data: `cat_fiction|${bookSlug}` }
                         ],
                         [
-                            { text: "🎵 Музыка / Аудио", callback_data: "cat_music" },
-                            { text: "🎨 Мерч / Арт", callback_data: "cat_merch" }
+                            { text: "🎵 Музыка / Аудио", callback_data: `cat_music|${bookSlug}` },
+                            { text: "🎨 Мерч / Арт", callback_data: `cat_merch|${bookSlug}` }
                         ]
                     ]
                 };
@@ -95,22 +86,22 @@ module.exports = async (req, res) => {
             }
         }
 
-        // 2. Обработка нажатий на инлайн-кнопки
+        // 2. Обработка нажатий инлайн-кнопок
         if (update.callback_query) {
             const callbackQuery = update.callback_query;
             const chatId = callbackQuery.message.chat.id;
             const data = callbackQuery.data;
 
-            if (data.startsWith("cat_") && tempSessions[chatId]) {
-                const category = data.replace("cat_", "");
-                const bookUrl = tempSessions[chatId].url;
+            if (data.startsWith("cat_")) {
+                // Разбираем категорию и слаг книги из нажатой кнопки
+                const [catData, bookSlug] = data.split("|");
+                const category = catData.replace("cat_", "");
+                const bookUrl = `https://ridero.ru/books/${bookSlug}/`;
                 
                 await sendTelegram(chatId, "🔄 Запускаю штурм Ridero, извлекаю метаданные...");
 
-                // Парсим книгу
                 const bookData = await parseRidero(bookUrl);
                 
-                // Формируем новый объект карточки
                 const newProduct = {
                     category: category,
                     title: bookData.title,
@@ -123,7 +114,6 @@ module.exports = async (req, res) => {
 
                 await sendTelegram(chatId, `Парсинг завершен: "${bookData.title}". Обновляю базу данных на GitHub...`);
 
-                // Скачиваем текущий data.json из GitHub
                 let currentContent = { products: [] };
                 let sha = null;
 
@@ -135,18 +125,15 @@ module.exports = async (req, res) => {
                     });
                     
                     sha = ghRes.data.sha;
-                    const base64Content = ghRes.data.content;
-                    const stringContent = Buffer.from(base64Content, 'base64').toString('utf-8');
+                    const stringContent = Buffer.from(ghRes.data.content, 'base64').toString('utf-8');
                     currentContent = JSON.parse(stringContent);
                 } catch (e) {
-                    console.log("data.json не найден или пуст, создаю новый.");
+                    console.log("Файл data.json не найден, создаём структуру с нуля.");
                 }
 
-                // Добавляем новую карточку на самый верх списка
                 if (!currentContent.products) currentContent.products = [];
                 currentContent.products.unshift(newProduct);
 
-                // Превращаем обратно в строку и коммитим в GitHub
                 const updatedString = JSON.stringify(currentContent, null, 2);
                 const updatedBase64 = Buffer.from(updatedString).toString('base64');
 
@@ -154,17 +141,12 @@ module.exports = async (req, res) => {
                     owner: GH_OWNER,
                     repo: GH_REPO,
                     path: GH_PATH,
-                    message: `Автоматическое добавление книги: ${bookData.title}`,
+                    message: `Автокоммит: добавлена книга "${bookData.title}"`,
                     content: updatedBase64,
                     sha: sha
                 });
 
                 await sendTelegram(chatId, `✅ Успех! Карточка "${bookData.title}" добавлена на сайт в категорию [${category}]. Vercel пересобирает витрину.`);
-                
-                // Очищаем сессию
-                delete tempSessions[chatId];
-            } else if (!tempSessions[chatId]) {
-                await sendTelegram(chatId, "❌ Ошибка сессии. Пожалуйста, отправьте ссылку на книгу заново.");
             }
         }
 
