@@ -63,8 +63,10 @@ module.exports = async (req, res) => {
             const chatId = update.message.chat_id || update.message.chat.id;
             const text = update.message.text.trim();
 
-            if (text.startsWith("https://ridero.ru/")) {
-                tempSessions[chatId] = { url: text };
+            // Гибкая проверка: реагирует на любую ссылку, содержащую ridero.ru
+            if (text.includes("ridero.ru")) {
+                const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
+                tempSessions[chatId] = { url: cleanUrl };
                 
                 // Выводим инлайн-кнопки выбора категории
                 const keyboard = {
