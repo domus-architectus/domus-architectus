@@ -1,0 +1,49 @@
+{
+  "socials": {
+    "vc": "https://vc.ru/u/id5659756",
+    "zen": "https://dzen.ru/arhantic",
+    "medium": "https://medium.com/@ResilienceArchitect",
+    "vk": "https://vk.com/arhantic",
+    "ok": "https://ok.ru/s.kapitalchuk",
+    "facebook": "https://facebook.com/61591496733728",
+    "instagram": "https://instagram.com/arh_antic",
+    "threads": "https://threads.net/@arh_antic",
+    "tiktok": "https://tiktok.com/@arhantic",
+    "youtube": "https://youtube.com/c/@arh_antic",
+    "telegram": "https://t.me/AntiKrizis_Strateg"
+  },
+  "products": [
+    {
+      "id": "book-1",
+      "title": "Древняя сила Благодарности",
+      "category": "applied",
+      "description": "Глубокое практическое руководство, исследующее исторические корни и системные психологические механизмы признательности. Пошаговые техники перестройки внутреннего состояния и личной эффективности.",
+      "cover": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=400",
+      "links": {
+        "ridero": "https://ridero.ru/",
+        "gumroad": "https://gumroad.com/"
+      }
+    },
+    {
+      "id": "track-1",
+      "title": "Антикризисный Настрой (HQ Audio)",
+      "category": "music",
+      "description": "Атмосферный трек для глубокой концентрации, работы в условиях жесткого дедлайна и ментальной перезагрузки. Доступен бесплатно в нашем Telegram-канале или в высоком качестве на международной платформе.",
+      "cover": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=400",
+      "links": {
+        "telegram": "https://t.me/AntiKrizis_Strateg",
+        "gumroad": "https://gumroad.com/"
+      }
+    },
+    {
+      "id": "merch-1",
+      "title": "Фирменный Арт-Принт 'Сила Благодарности'",
+      "category": "merch",
+      "description": "Эксклюбий цифровой арт-принт высокого разрешения из коллекции Anna Princess Architect. Доступен для заказа по всему миру.",
+      "cover": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=400",
+      "links": {
+        "gumroad": "https://gumroad.com/"
+      }
+    }
+  ]
+}
