@@ -1,13 +1,3 @@
 {
-  "products": [
-    {
-      "category": "applied",
-      "title": "Резонанс Богини",
-      "description": "Система саморегуляции и раскрытия внутреннего потенциала. Практическое руководство по управлению внутренним состоянием и выстраиванию личной вертикали.",
-      "cover": "images/books/default-cover.jpg",
-      "links": {
-        "ridero": "https://ridero.ru/books/rezonans_bogini/"
-      }
-    }
-  ]
+  "products": []
 }
