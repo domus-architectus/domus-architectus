@@ -33,11 +33,19 @@ async function parseRidero(url) {
     return { title, description, cover };
 }
 
-// Отправка сообщений в Telegram
+// Отправка сообщений в Telegram с правильным форматированием кнопок
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
-    const body = { chat_id: chatId, text: text };
-    if (replyMarkup) body.reply_markup = replyMarkup;
+    
+    const body = { 
+        chat_id: chatId, 
+        text: text 
+    };
+    
+    // КРИТИЧЕСКИЙ СДВИГ: Telegram принимает reply_markup ТОЛЬКО как JSON-строку
+    if (replyMarkup) {
+        body.reply_markup = JSON.stringify(replyMarkup);
+    }
 
     await fetch(url, {
         method: "POST",
