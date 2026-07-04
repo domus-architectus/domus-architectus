@@ -1,3 +1,13 @@
 {
-  "products": []
+  "products": [
+    {
+      "category": "fiction",
+      "title": "Резонанс богини",
+      "description": "Книга \"Резонанс богини\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Еще вчера Анна считала свою жизнь идеальной: уютная квартира, любимые дети, муж, с которым прожито десять лет. Но один клик в мобильном банке уничтожи - 978-5-0070-5693-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a3e72172aa615d701c95028/rev.2026-06-26T12:35:45.440Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/rezonans_bogini/"
+      }
+    }
+  ]
 }
