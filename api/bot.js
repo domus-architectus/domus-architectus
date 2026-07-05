@@ -9,8 +9,9 @@ const GH_PATH = "data.json";
 
 // Инициализация API
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-// Тактическая правка: синхронизировали имя переменной с панелью Vercel
-const ai = new GoogleGenAI({ apiKey: process.env.Gemini_API_Key }); 
+// Подстраховка: считываем ключ независимо от регистра в панели Vercel
+const apiKey = process.env.Gemini_API_Key || process.env.GEMINI_API_KEY;
+const ai = new GoogleGenAI({ apiKey: apiKey }); 
 
 // ПАРСЕР RIDERO
 async function parseRidero(url) {
@@ -57,20 +58,25 @@ async function parseGumroad(url) {
     return { title, description, cover };
 }
 
-// Отправка сообщений в Telegram (универсальная)
+// Отправка сообщений в Telegram (Перешли на HTML для железобетонной стабильности)
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
-    const body = { chat_id: chatId, text: text, parse_mode: "Markdown" }; 
+    const body = { chat_id: chatId, text: text, parse_mode: "HTML" }; 
     
     if (replyMarkup) {
         body.reply_markup = JSON.stringify(replyMarkup);
     }
 
-    await fetch(url, {
+    const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
     });
+
+    if (!response.ok) {
+        const errText = await response.text();
+        throw new Error(`Telegram API Error: ${errText}`);
+    }
 }
 
 // Временное хранилище сессий
@@ -97,7 +103,7 @@ module.exports = async (req, res) => {
                 }
 
                 await sendTelegram(chatId, "🔄 Запускаю штурм Ridero и сборку карточки книги...");
-                await finalizeProductCreation(chatId, { type: 'ridero', slug: session.bookSlug, category: session.category, extraGumroad: null });
+                await finalizeProductCreation(chatId, { type: 'ridero', slug: session.bookSlug, category: session.category, extraGumroad: gumroadUrl });
                 
                 delete gumroadSessions[chatId];
                 return res.status(200).send("ОК");
@@ -179,7 +185,9 @@ module.exports = async (req, res) => {
         console.error("Ошибка в работе бота:", error);
         if (req.body && (req.body.message || req.body.callback_query)) {
             const chatId = req.body.message ? req.body.message.chat.id : req.body.callback_query.message.chat.id;
-            await sendTelegram(chatId, `🚨 Произошел сбой: ${error.message}`);
+            // Безопасное экранирование для HTML режима при выводе ошибок
+            const safeError = error.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            await sendTelegram(chatId, `🚨 Произошел сбой: ${safeError}`);
         }
     }
 
@@ -261,7 +269,8 @@ async function finalizeProductCreation(chatId, config) {
             "Ты — опытный специалист по НЛП и антикризисному управлению. Твой стиль речи — уверенный, четкий, тактический, мотивирующий, без «воды» и пустых обещаний. " +
             "Твоя задача — написать мощный, интригующий и продающий промо-пост для Telegram-канала о выходе нового проекта. " +
             "Пиши емко. Используй структуру: сильный хук (зацепка), суть пользы проекта, тактический призыв к действию. " +
-            "В конце поста обязательно гармонично встрой предоставленную ссылку. Не используй таблицы, фамилии авторов и термин 'octave'.";
+            "В конце поста обязательно гармонично встрой предоставленную ссылку. Не используй таблицы, фамилии авторов и термин 'octave'. " +
+            "НЕ используй Markdown-разметку (звездочки, нижние подчеркивания, решетки), пиши обычным чистым текстом.";
 
         const prompt = `Напиши промо-пост для проекта.\nНазвание: ${newProduct.title}\nОписание/Аннотация: ${newProduct.description}\nКатегория: ${newProduct.category}\nСсылка для покупки: ${targetLinkForPromo}`;
 
@@ -286,6 +295,7 @@ async function finalizeProductCreation(chatId, config) {
 
     } catch (aiError) {
         console.error("Ошибка ИИ или отправки в канал:", aiError);
-        await sendTelegram(chatId, `⚠️ Продукт на сайте, но произошел сбой ИИ-модуля при публикации в канал: ${aiError.message}`);
+        const safeAiError = aiError.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        await sendTelegram(chatId, `⚠️ Продукт на сайте, но произошел сбой ИИ-модуля при публикации в канал: ${safeAiError}`);
     }
 }
