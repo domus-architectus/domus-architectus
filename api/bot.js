@@ -48,7 +48,7 @@ async function parseGumroad(url) {
     const descMatch = html.match(/<meta property="og:description" content="([^"]+)"/) || html.match(/<meta name="description" content="([^"]+)"/);
     const imageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
 
-    let title = titleMatch ? titleMatch[1] : "Новый медиа-проект";
+    let title = titleMatch ? titleMatch[1] : "Новый media-проект";
     let description = descMatch ? descMatch[1] : "";
     let cover = imageMatch ? imageMatch[1] : "";
 
@@ -95,7 +95,6 @@ module.exports = async (req, res) => {
 
             // Если сессия ожидает ссылку Gumroad для Ridero (Шаг 2)
             if (gumroadSessions[chatId] && gumroadSessions[chatId].bookSlug && gumroadSessions[chatId].category && !gumroadSessions[chatId].awaitingGumroad) {
-                // Этот блок сработает, если юзер ввел ссылку вручную вместо нажатия кнопки пропуска
                 const session = gumroadSessions[chatId];
                 let gumroadUrl = null;
 
@@ -113,7 +112,6 @@ module.exports = async (req, res) => {
             // Прямая ссылка на Gumroad
             if (text.includes("gumroad.com")) {
                 const cleanUrl = (text.match(/(https?:\/\/[^\s]+)/)?.[0] || text).split("?")[0].trim();
-                
                 gumroadSessions[chatId] = { gumroadUrl: cleanUrl };
 
                 const keyboard = {
@@ -135,7 +133,6 @@ module.exports = async (req, res) => {
                 const urlParts = cleanUrl.split("?")[0].replace(/\/$/, "").split("/");
                 const bookSlug = urlParts[urlParts.length - 1];
 
-                // Сразу сохраняем slug в сессию, чтобы не пихать его в инлайн-кнопки
                 gumroadSessions[chatId] = { bookSlug: bookSlug };
 
                 const keyboard = {
@@ -159,7 +156,6 @@ module.exports = async (req, res) => {
             const chatId = callbackQuery.message.chat.id;
             const data = callbackQuery.data;
 
-            // Обработка выбора категории для Ridero (callback_data теперь фиксированные и короткие)
             if (data === "rid_applied" || data === "rid_fiction") {
                 if (!gumroadSessions[chatId] || !gumroadSessions[chatId].bookSlug) {
                     throw new Error("Сессия Ridero не найдена. Отправьте ссылку заново.");
@@ -167,8 +163,6 @@ module.exports = async (req, res) => {
 
                 const category = data.replace("rid_", "");
                 gumroadSessions[chatId].category = category;
-                
-                // Флаг, что мы перешли в режим ожидания Gumroad ссылки
                 gumroadSessions[chatId].awaitingGumroad = true; 
 
                 const keyboard = {
@@ -181,21 +175,19 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
             
-            // Пропуск Gumroad для Ridero
             if (data === "skip_gumroad") {
                 if (!gumroadSessions[chatId] || !gumroadSessions[chatId].bookSlug || !gumroadSessions[chatId].category) {
                     throw new Error("Недостаточно данных в сессии для сборки.");
                 }
 
                 const { bookSlug, category } = gumroadSessions[chatId];
-                delete gumroadSessions[chatId]; // Чистим кэш перед долгой операцией
+                delete gumroadSessions[chatId]; 
 
                 await sendTelegram(chatId, "🔄 Пропускаем Gumroad. Запускаю сборку книги...");
                 await finalizeProductCreation(chatId, { type: 'ridero', slug: bookSlug, category: category, extraGumroad: null });
                 return res.status(200).send("ОК");
             }
 
-            // Обработка прямого парсинга Gumroad
             if (data.startsWith("gmr_")) {
                 const category = data.replace("gmr_", ""); 
                 
@@ -293,28 +285,29 @@ async function finalizeProductCreation(chatId, config) {
 
     await sendTelegram(chatId, `✅ Успех! Проект "${newProduct.title}" на витрине сайта.\n\n🔄 Перехожу к фазе ИИ: генерация промо-поста для канала...`);
 
-    // 2. БЛОК ИИ: ГЕНЕРАЦИЯ ПОСТА ДЛЯ ТГ-КАНАЛА
+    // 2. БЛОК ИИ: ОЧИСТКА АННОТАЦИИ И ИНФОРМИРОВАНИЕ
     try {
         const systemInstruction = 
-            "Ты — Архитектор Реальности, опытный стратег и специалист по антикризисному управлению. Твой стиль — спартанский, плотный, жесткий, тактический. Пиши от первого лица. " +
-            "Твоя задача — написать мощный, вдохновляющий ИНФОРМАЦИОННЫЙ новостной анонс (пост) для Telegram-канала о том, что вышла твоя новая книга. Текст должен быть авторским, а не сухой аннотацией. " +
-            "КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО использовать: " +
-            "1. Символы звездочек '**', списки, дефисы в начале строк, двоеточия для перечислений. " +
-            "2. Любые эмодзи, капслок и восклицательные знаки. Стилистика должна быть монолитным текстом. " +
-            "3. Слова-шаблоны: 'Название проекта', 'Описание', 'Форматы', 'ISBN', 'Категория'. Интегрируй эти данные в живую речь. " +
-            "4. Юридически опасные термины (фамилии авторов, термин 'octave') и коммерческие призывы ('купи', 'успей'). " +
-            "СТРУКТУРА: " +
-            "Вводный жесткий хук об эволюции и системах. Затем плавное объявление о выходе новой книги с перечислением ее сути (модулей) обычными предложениями внутри абзаца. " +
-            "В самом конце отдельной строкой: 'Ознакомиться с материалом, аннотацией и деталями проекта можно на официальной странице: [ссылка]'.";
+            "Ты — информационный ассистент. Твоя единственная задача — выдать строгое новостное сообщение о выходе новой книги. " +
+            "Стиль — сухой, деловой, спартанский, без воды, без рекламы, без маркетинговых призывов. " +
+            "СТРУКТУРА СООБЩЕНИЯ: " +
+            "Строка 1: Сообщить о публикации новой книги, указав её название. " +
+            "Строка 2: Написать фразу 'Суть проекта и аннотация материала:' и далее разместить текст предоставленной аннотации. " +
+            "Строка 3: Ссылка на проект. " +
+            "КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО: " +
+            "1. Использовать любые эмодзи, капслок, звездочки разметки '**', списки, дефисы. Текст должен идти сплошными абзацами. " +
+            "2. Использовать юридически опасные термины (фамилии авторов, термин 'octave'). " +
+            "3. Задавать вопросы читателю ('Устали от...', 'Хотите узнать...'). " +
+            "4. Писать рекламные призывы ('успей купить', 'заказывайте прямо сейчас').";
 
         const cleanDesc = newProduct.description.replace(/\*/g, "").replace(/[\-\•]\s+/g, "").replace(/\n+/g, " ").trim();
-        const prompt = `Напиши пост. Книга называется ${newProduct.title}. Суть проекта: ${cleanDesc}. Категория: ${newProduct.category}. Ссылка: ${targetLinkForPromo}`;
+        const prompt = `Сформируй информационный пост. Книга: "${newProduct.title}". Аннотация: ${cleanDesc}. Ссылка: ${targetLinkForPromo}`;
 
         const aiResponse = await ai.models.generateContent({
             model: "gemini-2.5-flash",
             contents: prompt,
             systemInstruction: systemInstruction,
-            temperature: 0.3 
+            temperature: 0.1 // Минимальная температура для исключения отсебятины
         });
 
         let generatedPost = aiResponse.text
@@ -322,19 +315,20 @@ async function finalizeProductCreation(chatId, config) {
             .replace(/\*/g, "")
             .replace(/#/g, "")
             .replace(/`/g, "")
+            .replace(/[🚀💡📖✨📚👉📢⚠️🚨✅]/g, "") // Вырезаем эмодзи на корню
             .trim();
 
-        // ТОТАЛЬНАЯ ЗАЧИСТКА РЕКЛАМНОГО МУСОРА НА УРОВНЕ КОДА
-        // Если ИИ попытается протащить старый шаблон, мы его режем вручную:
-        generatedPost = generatedPost.replace(/🚀|💡|📖|✨|📚|👉/g, ""); // Вырезаем эмодзи, если пролезли
-        generatedPost = generatedPost.split(/\n/)[0].includes("Устали от") ? generatedPost.replace(/.*?\. /, "") : generatedPost;
+        // Дополнительная строка со ссылкой, если модель забыла вставить
+        if (!generatedPost.includes(targetLinkForPromo)) {
+            generatedPost += `\n\nОфициальная страница проекта: ${targetLinkForPromo}`;
+        }
 
         // 3. ЗАЛП В ТГ-КАНАЛ
         if (process.env.TELEGRAM_CHANNEL_ID) {
             await sendTelegram(process.env.TELEGRAM_CHANNEL_ID, generatedPost);
-            await sendTelegram(chatId, `📢 Системное уведомление: Информационный пост сгенерирован ИИ и опубликован в канал ${process.env.TELEGRAM_CHANNEL_ID}`);
+            await sendTelegram(chatId, `📢 Системное уведомление: Информационный пост отправлен в канал ${process.env.TELEGRAM_CHANNEL_ID}`);
         } else {
-            await sendTelegram(chatId, `💡 Канал не настроен (нет TELEGRAM_CHANNEL_ID), вот сгенерированный ИИ пост для ручной публикации:\n\n${generatedPost}`);
+            await sendTelegram(chatId, `💡 Канал не настроен, вот пост для ручного размещения:\n\n${generatedPost}`);
         }
 
     } catch (aiError) {
