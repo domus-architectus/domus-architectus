@@ -1,6 +1,6 @@
 const { Octokit } = require("@octokit/rest");
 const fetch = require("node-fetch");
-const { GoogleGenAI } = require("@google/genai"); // Подключаем актуальный SDK Gemini
+const { GoogleGenAI } = require("@google/genai"); 
 
 // Конфигурация GitHub
 const GH_OWNER = "domus-architectus"; 
@@ -9,7 +9,6 @@ const GH_PATH = "data.json";
 
 // Инициализация API
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-// Подстраховка: считываем ключ независимо от регистра в панели Vercel
 const apiKey = process.env.Gemini_API_Key || process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey: apiKey }); 
 
@@ -58,13 +57,13 @@ async function parseGumroad(url) {
     return { title, description, cover };
 }
 
-// Отправка сообщений в Telegram (Перешли на HTML для железобетонной стабильности)
+// Отправка сообщений в Telegram с жесткой проверкой разметки
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
     const body = { chat_id: chatId, text: text, parse_mode: "HTML" }; 
     
     if (replyMarkup) {
-        body.reply_markup = JSON.stringify(replyMarkup);
+        body.reply_markup = typeof replyMarkup === "string" ? replyMarkup : JSON.stringify(replyMarkup);
     }
 
     const response = await fetch(url, {
@@ -79,7 +78,7 @@ async function sendTelegram(chatId, text, replyMarkup = null) {
     }
 }
 
-// Временное хранилище сессий (Теперь хранит и Gumroad ссылки во избежание BUTTON_DATA_INVALID)
+// Временное хранилище сессий
 let gumroadSessions = {};
 
 module.exports = async (req, res) => {
@@ -94,13 +93,15 @@ module.exports = async (req, res) => {
             const chatId = update.message.chat.id;
             const text = update.message.text.trim();
 
-            // Если это второй шаг для Ridero (ожидание ссылки Gumroad)
+            // Шаг 2 для Ridero (ожидание ссылки Gumroad)
             if (gumroadSessions[chatId] && gumroadSessions[chatId].bookSlug) {
                 const session = gumroadSessions[chatId];
                 let gumroadUrl = null;
 
                 if (text.includes("gumroad.com")) {
-                    gumroadUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
+                    const matchedUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
+                    // Отсекаем UTM и параметры запроса для стабильности
+                    gumroadUrl = matchedUrl.split("?")[0];
                 }
 
                 await sendTelegram(chatId, "🔄 Запускаю штурм Ridero и сборку карточки книги...");
@@ -110,18 +111,20 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // Если прилетела прямая ссылка на Gumroad
+            // Прямая ссылка на Gumroad
             if (text.includes("gumroad.com")) {
-                const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
+                const matchedUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
+                // Тактическая очистка ссылки от хвостов и UTM-меток
+                const cleanUrl = matchedUrl.split("?")[0].trim();
                 
-                // Фиксация в сессию, чтобы не пихать длинный URL в callback_data (макс 64 байта)
+                // Принудительно сбрасываем старую сессию для этого чата во избежание конфликтов данных
                 gumroadSessions[chatId] = { gumroadUrl: cleanUrl };
 
                 const keyboard = {
                     inline_keyboard: [
                         [
-                            { text: "🎵 Музыка / Аудио", callback_data: `gmr_music` },
-                            { text: "🎨 Мерч / Арт", callback_data: `gmr_merch` }
+                            { text: "🎵 Музыка / Аудио", callback_data: "gmr_music" },
+                            { text: "🎨 Мерч / Арт", callback_data: "gmr_merch" }
                         ]
                     ]
                 };
@@ -130,11 +133,13 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // Если прилетела ссылка на Ridero
+            // Ссылка на Ridero
             if (text.includes("ridero.ru")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
-                const urlParts = cleanUrl.replace(/\/$/, "").split("/");
+                const urlParts = cleanUrl.split("?")[0].replace(/\/$/, "").split("/");
                 const bookSlug = urlParts[urlParts.length - 1];
+
+                gumroadSessions[chatId] = {}; // Очистка кэша перед записью
 
                 const keyboard = {
                     inline_keyboard: [
@@ -181,16 +186,16 @@ module.exports = async (req, res) => {
                 delete gumroadSessions[chatId];
             }
 
-            // Обработка прямого парсинга Gumroad (Защищено от BUTTON_DATA_INVALID)
+            // Обработка прямого парсинга Gumroad
             if (data.startsWith("gmr_")) {
-                const category = data.replace("gmr_", ""); // Получаем 'music' или 'merch'
+                const category = data.replace("gmr_", ""); 
                 
                 if (!gumroadSessions[chatId] || !gumroadSessions[chatId].gumroadUrl) {
                     throw new Error("Сессия Gumroad не найдена. Отправьте ссылку заново.");
                 }
 
                 const fullUrl = gumroadSessions[chatId].gumroadUrl;
-                delete gumroadSessions[chatId]; // Очищаем сессию
+                delete gumroadSessions[chatId]; 
 
                 await sendTelegram(chatId, "🔄 Запускаю прямой тактический парсинг Gumroad и сборку карточки...");
                 await finalizeProductCreation(chatId, { type: 'gumroad', url: fullUrl, category: category });
@@ -292,7 +297,6 @@ async function finalizeProductCreation(chatId, config) {
             "Вводный жесткий хук об эволюции и системах. Затем плавное объявление о выходе новой книги с перечислением ее сути (модулей) обычными предложениями внутри абзаца. " +
             "В самом конце отдельной строкой: 'Ознакомиться с материалом, аннотацией и деталями проекта можно на официальной странице: [ссылка]'.";
 
-        // Тактическая очистка входного описания от списков, звездочек и переносов строк
         const cleanDesc = newProduct.description.replace(/\*/g, "").replace(/[\-\•]\s+/g, "").replace(/\n+/g, " ").trim();
         const prompt = `Напиши пост. Книга называется ${newProduct.title}. Суть проекта: ${cleanDesc}. Категория: ${newProduct.category}. Ссылка: ${targetLinkForPromo}`;
 
@@ -300,10 +304,9 @@ async function finalizeProductCreation(chatId, config) {
             model: "gemini-2.5-flash",
             contents: prompt,
             systemInstruction: systemInstruction,
-            temperature: 0.3 // Низкая температура для максимального контроля над форматом
+            temperature: 0.3 
         });
 
-        // Железобетонная очистка на уровне Node.js от любых проскочивших спецсимволов Markdown
         let generatedPost = aiResponse.text
             .replace(/\*\*/g, "")
             .replace(/\*/g, "")
