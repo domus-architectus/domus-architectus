@@ -8,7 +8,7 @@ const GH_PATH = "data.json";
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
-// Парсер Ridero
+// ПАРСЕР RIDERO
 async function parseRidero(url) {
     const res = await fetch(url);
     if (!res.ok) throw new Error("Не удалось загрузить страницу Ridero");
@@ -30,6 +30,30 @@ async function parseRidero(url) {
     return { title, description, cover };
 }
 
+// НОВЫЙ ПАРСЕР GUMROAD (работает на регулярках, без внешних библиотек)
+async function parseGumroad(url) {
+    const res = await fetch(url, {
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        }
+    });
+    if (!res.ok) throw new Error("Не удалось загрузить страницу Gumroad");
+    const html = await res.text();
+
+    const titleMatch = html.match(/<meta property="og:title" content="([^"]+)"/) || html.match(/<title>([^<]+)<\/title>/);
+    const descMatch = html.match(/<meta property="og:description" content="([^"]+)"/) || html.match(/<meta name="description" content="([^"]+)"/);
+    const imageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
+
+    let title = titleMatch ? titleMatch[1] : "Новый медиа-проект";
+    let description = descMatch ? descMatch[1] : "";
+    let cover = imageMatch ? imageMatch[1] : "";
+
+    // Чистим мусор в тайтле, если прилетел хвост от площадки
+    title = title.replace(" | Gumroad", "").trim();
+
+    return { title, description, cover };
+}
+
 // Отправка сообщений в Telegram
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
@@ -46,7 +70,7 @@ async function sendTelegram(chatId, text, replyMarkup = null) {
     });
 }
 
-// Временное хранилище для шага Gumroad (только для текстового ожидания)
+// Временное хранилище сессий для связки Ridero + Gumroad
 let gumroadSessions = {};
 
 module.exports = async (req, res) => {
@@ -57,12 +81,12 @@ module.exports = async (req, res) => {
     try {
         const update = req.body;
         
-        // ШАГ 1: Прием ссылки на Ridero
+        // ОБРАБОТКА ССЫЛОК И ТЕКСТА
         if (update.message && update.message.text) {
             const chatId = update.message.chat.id;
             const text = update.message.text.trim();
 
-            // Проверяем, не ждем ли мы сейчас ссылку на Gumroad от этого пользователя
+            // Проверка: Ждем ли мы ссылку на Gumroad как доп. шаг для книги Ridero?
             if (gumroadSessions[chatId]) {
                 const session = gumroadSessions[chatId];
                 let gumroadUrl = null;
@@ -71,16 +95,32 @@ module.exports = async (req, res) => {
                     gumroadUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
                 }
 
-                await sendTelegram(chatId, "🔄 Запускаю штурм Ridero и сборку карточки...");
-                
-                // Вызываем финальную сборку публикации
-                await finalizeProductCreation(chatId, session.bookSlug, session.category, gumroadUrl);
+                await sendTelegram(chatId, "🔄 Запускаю штурм Ridero и сборку карточки книги...");
+                await finalizeProductCreation(chatId, { type: 'ridero', slug: session.bookSlug, category: session.category, extraGumroad: gumroadUrl });
                 
                 delete gumroadSessions[chatId];
                 return res.status(200).send("ОК");
             }
 
-            // Стандартный перехват ссылки Ridero
+            // ПЕРЕХВАТ ПРЯМОЙ ССЫЛКИ GUMROAD (Музыка или Мерч напрямую)
+            if (text.includes("gumroad.com")) {
+                const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
+                
+                // Передаем слаг/ссылку через callback_data (ограничение TG — 64 символа, поэтому кодируем платформу)
+                const keyboard = {
+                    inline_keyboard: [
+                        [
+                            { text: "🎵 Музыка / Аудио", callback_data: `gmr_music|${cleanUrl}` },
+                            { text: "🎨 Мерч / Арт", callback_data: `gmr_merch|${cleanUrl}` }
+                        ]
+                    ]
+                };
+                
+                await sendTelegram(chatId, "Прямая ссылка Gumroad принята. Выберите категорию для размещения:", keyboard);
+                return res.status(200).send("ОК");
+            }
+
+            // ПЕРЕХВАТ ССЫЛКИ RIDERO
             if (text.includes("ridero.ru")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
                 const urlParts = cleanUrl.replace(/\/$/, "").split("/");
@@ -89,33 +129,31 @@ module.exports = async (req, res) => {
                 const keyboard = {
                     inline_keyboard: [
                         [
-                            { text: "📘 Прикладное руководство", callback_data: `cat_applied|${bookSlug}` },
-                            { text: "📕 Художественная", callback_data: `cat_fiction|${bookSlug}` }
-                        ],
-                        [
-                            { text: "🎵 Музыка / Аудио", callback_data: `cat_music|${bookSlug}` },
-                            { text: "🎨 Мерч / Арт", callback_data: `cat_merch|${bookSlug}` }
+                            { text: "📘 Прикладное руководство", callback_data: `rid_applied|${bookSlug}` },
+                            { text: "📕 Художественная", callback_data: `rid_fiction|${bookSlug}` }
                         ]
                     ]
                 };
                 
-                await sendTelegram(chatId, "Ссылка принята. Выберите категорию для размещения на сайте:", keyboard);
-            } else {
-                await sendTelegram(chatId, "Приветствую, Архитектор. Чтобы добавить проект на сайт, отправьте прямую ссылку на книгу Ridero.");
+                await sendTelegram(chatId, "Ссылка Ridero принята. Выберите категорию:", keyboard);
+                return res.status(200).send("ОК");
             }
+
+            // Стандартный ответ
+            await sendTelegram(chatId, "Приветствую, Архитектор. Чтобы добавить проект на сайт, отправьте прямую ссылку на книгу Ridero или товар Gumroad (для музыки/мерча).");
         }
 
-        // ШАГ 2: Обработка выбора категории и запрос ссылки на Gumroad
+        // ОБРАБОТКА НАЖАТИЙ КНОПОК (ИНЛАЙН)
         if (update.callback_query) {
             const callbackQuery = update.callback_query;
             const chatId = callbackQuery.message.chat.id;
             const data = callbackQuery.data;
 
-            if (data.startsWith("cat_")) {
+            // Логика кнопки Ridero (Запрашиваем Gumroad вторым шагом)
+            if (data.startsWith("rid_")) {
                 const [catData, bookSlug] = data.split("|");
-                const category = catData.replace("cat_", "");
+                const category = catData.replace("rid_", "");
 
-                // Переводим пользователя в режим ожидания ссылки Gumroad
                 gumroadSessions[chatId] = { bookSlug, category };
 
                 const keyboard = {
@@ -124,17 +162,24 @@ module.exports = async (req, res) => {
                     ]
                 };
 
-                await sendTelegram(chatId, "Категория выбрана. Теперь отправьте ссылку на этот товар в Gumroad.\n\nЕсли международная продажа не планируется, нажмите кнопку ниже:", keyboard);
+                await sendTelegram(chatId, "Категория выбрана. Теперь отправьте ссылку на этот товар в Gumroad (или нажмите Пропустить):", keyboard);
             }
             
-            // ШАГ 3: Если пользователь решил пропустить Gumroad
+            // Логика кнопки Ridero: Пропуск Gumroad
             if (data.startsWith("skip_gum|")) {
                 const [, category, bookSlug] = data.split("|");
-                
-                await sendTelegram(chatId, "🔄 Понял. Пропускаем Gumroad. Запускаю сборку карточки...");
-                await finalizeProductCreation(chatId, bookSlug, category, null);
-                
+                await sendTelegram(chatId, "🔄 Пропускаем Gumroad. Запускаю сборку книги...");
+                await finalizeProductCreation(chatId, { type: 'ridero', slug: bookSlug, category: category, extraGumroad: null });
                 delete gumroadSessions[chatId];
+            }
+
+            // Логика прямой кнопки Gumroad (Сразу публикация музыки или мерча)
+            if (data.startsWith("gmr_")) {
+                const [catData, fullUrl] = data.split("|");
+                const category = catData.replace("gmr_", "");
+
+                await sendTelegram(chatId, "🔄 Запускаю прямой тактический парсинг Gumroad и сборку карточки...");
+                await finalizeProductCreation(chatId, { type: 'gumroad', url: fullUrl, category: category });
             }
         }
 
@@ -149,24 +194,36 @@ module.exports = async (req, res) => {
     res.status(200).send("ОК");
 };
 
-// Функция фиксации данных и отправки коммита в GitHub
-async function finalizeProductCreation(chatId, bookSlug, category, gumroadUrl) {
-    const bookUrl = `https://ridero.ru/books/${bookSlug}/`;
-    const bookData = await parseRidero(bookUrl);
-    
-    const newProduct = {
-        category: category,
-        title: bookData.title,
-        description: bookData.description,
-        cover: bookData.cover,
-        links: {
-            ridero: bookUrl
-        }
-    };
+// ЕДИНАЯ ФУНКЦИЯ ЗАПИСИ ДАННЫХ В GITHUB
+async function finalizeProductCreation(chatId, config) {
+    let newProduct = {};
 
-    // Если ссылка на Gumroad передана — добавляем её в структуру данных
-    if (gumroadUrl) {
-        newProduct.links.gumroad = gumroadUrl;
+    if (config.type === 'ridero') {
+        const bookUrl = `https://ridero.ru/books/${config.slug}/`;
+        const data = await parseRidero(bookUrl);
+        newProduct = {
+            category: config.category,
+            title: data.title,
+            description: data.description,
+            cover: data.cover,
+            links: { ridero: bookUrl }
+        };
+        if (config.extraGumroad) {
+            newProduct.links.gumroad = config.extraGumroad;
+        }
+    } 
+    else if (config.type === 'gumroad') {
+        const data = await parseGumroad(config.url);
+        newProduct = {
+            category: config.category,
+            title: data.title,
+            description: data.description,
+            cover: data.cover,
+            links: { 
+                ridero: "", // Пусто, чтобы фронтенд скрыл кнопку Ridero
+                gumroad: config.url 
+            }
+        };
     }
 
     let currentContent = { products: [] };
@@ -178,12 +235,11 @@ async function finalizeProductCreation(chatId, bookSlug, category, gumroadUrl) {
             repo: GH_REPO,
             path: GH_PATH
         });
-        
         sha = ghRes.data.sha;
         const stringContent = Buffer.from(ghRes.data.content, 'base64').toString('utf-8');
         currentContent = JSON.parse(stringContent);
     } catch (e) {
-        console.log("Файл data.json не найден, создаём структуру с нуля.");
+        console.log("data.json не найден, создаем структуру с нуля.");
     }
 
     if (!currentContent.products) currentContent.products = [];
@@ -196,15 +252,10 @@ async function finalizeProductCreation(chatId, bookSlug, category, gumroadUrl) {
         owner: GH_OWNER,
         repo: GH_REPO,
         path: GH_PATH,
-        message: `Автокоммит: добавлен проект "${bookData.title}"`,
+        message: `Автокоммит: добавлен проект через бота "${newProduct.title}"`,
         content: updatedBase64,
         sha: sha
     });
 
-    let successMessage = `✅ Успех! Карточка "${bookData.title}" добавлена на сайт в категорию [${category}].`;
-    if (gumroadUrl) {
-        successMessage += `\n🔗 Интеграция с Gumroad активна.`;
-    }
-    
-    await sendTelegram(chatId, successMessage);
+    await sendTelegram(chatId, `✅ Успех! Проект "${newProduct.title}" успешно выведен на витрину сайта в категорию [${config.category}].`);
 }
