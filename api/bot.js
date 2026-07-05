@@ -324,6 +324,11 @@ async function finalizeProductCreation(chatId, config) {
             .replace(/`/g, "")
             .trim();
 
+        // ТОТАЛЬНАЯ ЗАЧИСТКА РЕКЛАМНОГО МУСОРА НА УРОВНЕ КОДА
+        // Если ИИ попытается протащить старый шаблон, мы его режем вручную:
+        generatedPost = generatedPost.replace(/🚀|💡|📖|✨|📚|👉/g, ""); // Вырезаем эмодзи, если пролезли
+        generatedPost = generatedPost.split(/\n/)[0].includes("Устали от") ? generatedPost.replace(/.*?\. /, "") : generatedPost;
+
         // 3. ЗАЛП В ТГ-КАНАЛ
         if (process.env.TELEGRAM_CHANNEL_ID) {
             await sendTelegram(process.env.TELEGRAM_CHANNEL_ID, generatedPost);
