@@ -2,6 +2,16 @@
   "products": [
     {
       "category": "applied",
+      "title": "The Creator State",
+      "description": "Книга \"The Creator State\". \"A Manual for Personal Architecture\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Most people spend their lives in a state of high-functioning sleep. They believe they are making choices and managing their destinies. But look closer - 978-5-0069-4473-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69a6eaf3e4a06499d1849f1d/rev.2026-03-03T14:06:51.918Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/the_creator_state/",
+        "gumroad": "https://archantic.gumroad.com/l/iibtxz?_gl=1*nzt3rd*_ga*ODYxNzkzMjgxLjE3ODI2ODE2NjY.*_ga_6LJN6D94N6*czE3ODMyODgxMTIkbzE1JGcwJHQxNzgzMjg4MTEyJGo2MCRsMCRoMA.."
+      }
+    },
+    {
+      "category": "applied",
       "title": "The resonance code",
       "description": "Книга \"The resonance code\". \"21 Days to Peak State and Architectural Sovereignty\" - The Resilience Architect - печатная, электронная: epub, fb2, pdfRead, mobi - Your success is not a result of your actions. It is a result of your biological frequency. Most people try to change their lives by shifting external  - 978-5-0069-4044-4",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/69a010276cb62e304451c70b/rev.2026-02-26T09:19:44.288Z/cover-front.png&amp;format=original",
