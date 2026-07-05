@@ -4,45 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Domus Architectus | Архитектор Антикризис — Официальный Сайт. Книги, Психология, Самодисциплина</title>
+    <title id="site-title">Domus Architectus | Архитектор Антикризис — Официальный Сайт</title>
     <link rel="icon" type="image/png" href="favicon.png">
     
     <meta name="zen-verification" content="ym138voJ2iIhMkBpmWZRpX4cMNyZGvt3eVbLI5ngtyXb1Knm0QH0ntxg24raAjcZ" />
     <meta name="zen-verification" content="JaGZqWiTlc0NBUZZnpHH5gEK3N84lzAAsLyYmFxIbP64w8NkFbtOIHMhuvQjaH6A" />
     <meta name="google-site-verification=KEvLUMbX57amQ87Kltk0AAOewy3s0gADeu0E2sKyc7Q" content="..." /> 
     <meta name="yandex-verification" content="b3446f6c6f836da3" />
-    <meta name="description" content="Официальный сайт проекта Domus Architectus и автора под псевдонимом Архитектор Антикризис. Кодекс Архитектора, книги по саморегуляции, преодолению кризисов и развитию жесткой дисциплины.">
-    <meta name="keywords" content="Архитектор Антикризис, Domus Architectus, Кодекс Архитектора, книги по психологии, саморегуляция, жесткая дисциплина, преодоление кризиса, развитие харизмы">
+    <meta name="description" content="Официальный сайт проекта Domus Architectus. Кодекс Архитектора, книги по саморегуляции, преодолению кризисов и развитию жесткой дисциплины.">
     <meta name="robots" content="index, follow">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://domusarchitectus.vercel.app/">
-    <meta property="og:title" content="Domus Architectus | Архитектор Антикризис">
-    <meta property="og:description" content="Кодекс Архитектора: systemа саморегуляции, преодоления кризисов и железной дисциплины. Книги и проекты автора.">
+    <meta property="og:title" content="Domus Architectus">
     <meta property="og:image" content="https://domusarchitectus.vercel.app/images/Gerb.png"> 
-    <meta property="og:site_name" content="Domus Architectus">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://domusarchitectus.vercel.app">
-    <meta name="twitter:title" content="Domus Architectus | Архитектор Антикризис">
-    <meta name="twitter:description" content="Система саморегуляции, книги и методики преодоления кризисных ситуаций.">
-    <meta name="twitter:image" content="https://domusarchitectus.vercel.app/images/Gerb.png">
-
-    <link rel="canonical" href="https://domusarchitectus.vercel.app/">
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <script src="https://gumroad.com/js/embed.js"></script>
 </head>
 <body class="bg-stone-950 text-stone-100 font-sans antialiased selection:bg-amber-500 selection:text-stone-950">
 
     <header class="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center border-b border-stone-900 gap-4">
         <div class="logo text-2xl font-bold tracking-widest text-stone-100">DOMUS ARCHITECTUS</div>
         <nav class="flex items-center gap-6 text-sm font-medium">
-            <a href="#code-section" class="text-stone-400 hover:text-amber-500 transition">Кодекс</a>
-            <a href="#showcase-section" class="text-stone-400 hover:text-amber-500 transition">Витрина Проектов</a>
-            <a href="https://vc.ru/u/id5659756" target="_blank" rel="noopener" class="text-stone-400 hover:text-amber-500 transition hidden sm:inline">VC.ru</a>
-            <a href="https://dzen.ru/arhantic" target="_blank" rel="noopener" class="text-stone-400 hover:text-amber-500 transition hidden sm:inline">Дзен</a>
-            <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener" class="text-amber-500 hover:underline transition"><i class="fa-brands fa-telegram mr-1"></i>Канал</a>
+            <a href="#code-section" id="nav-code" class="text-stone-400 hover:text-amber-500 transition">Кодекс</a>
+            <a href="#showcase-section" id="nav-showcase" class="text-stone-400 hover:text-amber-500 transition">Витрина</a>
+            <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener" class="text-amber-500 hover:underline transition"><i class="fa-brands fa-telegram mr-1"></i><span id="nav-channel">Канал</span></a>
+            
+            <div class="flex items-center border border-stone-800 rounded overflow-hidden text-xs bg-stone-900/40">
+                <button onclick="setLanguage('ru')" id="lang-ru" class="px-2.5 py-1 font-bold transition cursor-pointer bg-amber-600 text-stone-950">RU</button>
+                <button onclick="setLanguage('en')" id="lang-en" class="px-2.5 py-1 font-bold transition cursor-pointer text-stone-400 hover:text-stone-200">EN</button>
+            </div>
         </nav>
     </header>
 
@@ -52,74 +44,26 @@
         </div>
         
         <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
-            <span class="block text-xs uppercase tracking-[0.2em] text-stone-500 font-semibold mb-2">Проект Архитектора Антикризиса</span>
-            Кодекс Архитектора
+            <span id="hero-sub" class="block text-xs uppercase tracking-[0.2em] text-stone-500 font-semibold mb-2">Проект Архитектора Антикризиса</span>
+            <span id="hero-title">Кодекс Архитектора</span>
         </h1>
         
-        <p class="text-stone-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+        <p id="hero-desc" class="text-stone-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light">
             Этот список должен быть прошит в подсознании. Если ты сомневаешься — читай Кодекс. Если ты проиграл ситуацию — ищи, какой пункт ты нарушил.
         </p>
     </main>
 
-    <section class="max-w-2xl mx-auto px-6 py-6 border-l-2 border-amber-600/30 bg-stone-900/20 my-4 rounded-r text-center sm:text-left text-stone-300 italic text-sm sm:text-base leading-relaxed">
+    <section id="intro-text" class="max-w-2xl mx-auto px-6 py-6 border-l-2 border-amber-600/30 bg-stone-900/20 my-4 rounded-r text-center sm:text-left text-stone-300 italic text-sm sm:text-base leading-relaxed">
         Добро пожаловать на официальный сайт проекта <strong>Domus Architectus</strong>. Я — <strong>Архитектор Антикризис</strong>, профессиональный психолог и автор систем саморегуляции. Здесь сконцентрированы мои книги, методики и инструменты для преодоления кризисов и выстраивания жесткой дисциплины.
     </section>
 
     <section id="code-section" class="max-w-6xl mx-auto px-4 py-12 border-t border-stone-900">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">1. Состояние первичнее действия</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Никогда не начинай движение, если ты не в «Вертикали». Сначала Резонанс — потом шаг. Сначала Сила — потом слово. Пустое действие рождает хаос.</p>
+        <div id="code-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">2. Внешнее — это эхо внутреннего</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Если вокруг тебя бардак, агрессия или нытье — это значит, твоя внутренняя настройка сбита. Не вини зеркало, исправь проектор.</p>
-            </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">3. Лаконичность — признак мастерства</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Лишнее слово — это шум. Лишний жест — это слабость. Лишняя мысль — это вирус. Отсекай всё, что не работает на твой чертеж.</p>
-            </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">4. Пауза — твое личное пространство</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Кто боится тишины, тот ведомый. Кто владеет паузой, тот владеет ситуацией. Тишина — это момент, когда ты перехватываешь управление.</p>
-            </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">5. Сопротивление есть ресурс</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Не ищи легких путей. Радуйся давлению — это твой бесплатный фитнес для харизмы. Без нагрузки металл остается сырым.</p>
-            </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">6. Смерть суеты</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Суета — это уродство. Архитектор всегда действует вовремя. Если ты спешишь — ты опоздал внутри себя. Замедлись, чтобы стать быстрее всех.</p>
-            </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">7. Принцип Невидимых Швов</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Твоя подготовка, твои тренировки и твои сомнения остаются за кадром. Мир видит только безупречный результат и твое ледяное спокойствие.</p>
-            </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">8. Экспансия как долг</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Если ты не приносишь свой Порядок, ты поглощаешься чужим Хаосом. Третьего пути нет. Транслируй свой Резонанс везде, где находишься.</p>
-            </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">9. Взгляд сквозь поверхность</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Не смотри на то, что тебе показывают. Смотри на структуру, на мотивы, на суть. Смотри на архитектуру ситуации, а не её декорации.</p>
-            </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">10. Автономия источника</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Твоя радость, твоя уверенность и твоя сила не должны зависеть от похвалы или критики окружающих. Ты сам себе Абсолют и сам себе Судья.</p>
-            </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">11. Эстетика функционала</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Красиво только то, что работает на 100%. Красота без функции — это ложь. Харизма без результата — это дешевый спецэффект.</p>
-            </div>
-            <div class="p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition">
-                <h3 class="font-bold text-amber-500 text-base mb-2">12. Верность Вертикали</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">Связь с высшим смыслом незыблема. Ты — инструмент в руках Абсолюта. Пока ты верен своей миссии, ты неуязвим.</p>
-            </div>
-        </div>
     </section>
 
     <section id="showcase-section" class="max-w-6xl mx-auto px-4 py-16 border-t border-stone-900">
-        <h2 class="text-2xl font-bold tracking-widest text-center uppercase mb-8 text-stone-200">Витрина Экосистемы</h2>
+        <h2 id="showcase-title" class="text-2xl font-bold tracking-widest text-center uppercase mb-8 text-stone-200">Витрина Экосистемы</h2>
         
         <div class="flex flex-wrap justify-center gap-2 mb-10 pb-4 border-b border-stone-900">
             <button onclick="filterCategory('all')" id="btn-all" class="px-4 py-2 text-xs uppercase tracking-wider bg-amber-600 text-stone-950 font-bold rounded transition cursor-pointer">Все проекты</button>
@@ -132,117 +76,231 @@
         <div id="catalog" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </section>
 
-    <section class="max-w-4xl mx-auto px-4 py-12 border-t border-stone-900">
-        <h2 class="text-xl font-bold tracking-widest text-center uppercase mb-6 text-stone-300">Новости Проекта</h2>
+    <section id="news-section" class="max-w-4xl mx-auto px-4 py-12 border-t border-stone-900">
+        <h2 id="news-title" class="text-xl font-bold tracking-widest text-center uppercase mb-6 text-stone-300">Новости Проекта</h2>
         <div class="bg-stone-900/20 p-4 rounded-xl border border-stone-900">
             <div class="flex justify-center">
                 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-channel="AntiKrizis_Strateg" data-width="100%" data-dark="1" data-userpic="false" data-limit="3"></script>
             </div>
             <div class="mt-6 text-center">
                 <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 hover:bg-stone-800 text-stone-100 text-sm font-bold border border-stone-800 rounded transition">
-                    <i class="fa-solid fa-comments text-amber-500"></i> Присоединиться к обсуждению в ТГ
+                    <i class="fa-solid fa-comments text-amber-500"></i> <span id="news-btn-text">Присоединиться к обсуждению в ТГ</span>
                 </a>
             </div>
-            <p class="text-center text-xs text-stone-500 mt-4">Свежие аналитические материалы транслируются напрямую в нашем Telegram-канале.</p>
         </div>
     </section>
 
     <section class="max-w-4xl mx-auto px-4 py-12 border-t border-stone-900 text-center">
-        <h2 class="text-xl font-bold tracking-widest uppercase mb-4 text-stone-300">Поддержать Проект</h2>
-        <p class="text-xs text-stone-400 max-w-xl mx-auto mb-6 leading-relaxed">
-            Если материалы проекта Domus Architectus помогают тебе держать «Вертикаль» и наводить порядок в жизни, ты можете поддержать автора и вложиться в развитие экосистемы.
+        <h2 id="support-title" class="text-xl font-bold tracking-widest uppercase mb-4 text-stone-300">Поддержать Проект</h2>
+        <p id="support-desc" class="text-xs text-stone-400 max-w-xl mx-auto mb-6 leading-relaxed">
+            Если материалы проекта помогают тебе держать «Вертикаль» и наводить порядок в жизни, ты можете поддержать автора.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
             <a href="https://yoomoney.ru/to/4100119449152116" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 bg-stone-900 hover:bg-stone-800 text-stone-200 text-xs uppercase tracking-wider font-bold border border-stone-800 rounded transition">
-                <i class="fa-solid fa-credit-card text-amber-500"></i> Поддержать картой
-            </a>
-            <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 bg-stone-900 hover:bg-stone-800 text-stone-200 text-xs uppercase tracking-wider font-bold border border-stone-800 rounded transition">
-                <i class="fa-brands fa-telegram text-amber-500"></i> Через Telegram
+                <i class="fa-solid fa-credit-card text-amber-500"></i> <span id="support-card">Поддержать картой</span>
             </a>
         </div>
     </section>
 
     <footer class="bg-stone-900/30 border-t border-stone-900 py-12 text-center text-xs text-stone-500 mt-auto">
         <div class="max-w-4xl mx-auto px-4">
-            <p class="mb-6 font-bold uppercase tracking-widest text-stone-400 text-[10px]">Связанные боевые каналы и соцсети:</p>
-            
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl mx-auto mb-8 text-left text-xs sm:text-sm">
-                <div class="space-y-2">
-                    <p class="text-stone-600 font-bold uppercase text-[9px] tracking-wider">База текстов</p>
-                    <a href="https://vc.ru/u/id5659756" id="foot-vc" target="_blank" rel="noopener" class="block hover:text-amber-500 transition">⚡ VC.ru</a>
-                    <a href="https://dzen.ru/arhantic" id="foot-zen" target="_blank" rel="noopener" class="block hover:text-amber-500 transition">⚡ Яндекс Дзен</a>
-                    <a href="https://medium.com/@ResilienceArchitect" id="foot-medium" target="_blank" rel="noopener" class="block hover:text-amber-500 transition">⚡ Medium</a>
-                </div>
-                <div class="space-y-2">
-                    <p class="text-stone-600 font-bold uppercase text-[9px] tracking-wider">Сообщества</p>
-                    <a href="https://vk.com/arhantic" id="foot-vk" target="_blank" rel="noopener" class="block hover:text-amber-500 transition">👥 ВКонтакте</a>
-                    <a href="https://ok.ru/s.kapitalchuk" id="foot-ok" target="_blank" rel="noopener" class="block hover:text-amber-500 transition">👥 Одноклассники</a>
-                    <a href="https://facebook.com/61591496733728" id="foot-fb" target="_blank" rel="noopener" class="block hover:text-amber-500 transition">👥 Facebook</a>
-                </div>
-                <div class="space-y-2">
-                    <p class="text-stone-600 font-bold uppercase text-[9px] tracking-wider">Медиаформаты</p>
-                    <a href="https://youtube.com/c/@arh_antic" id="foot-yt" target="_blank" rel="noopener" class="block hover:text-amber-500 transition">📺 YouTube</a>
-                    <a href="https://tiktok.com/@arhantic" id="foot-tt" target="_blank" rel="noopener" class="block hover:text-amber-500 transition">📺 TikTok</a>
-                    <a href="https://instagram.com/arh_antic" id="foot-inst" target="_blank" rel="noopener" class="block hover:text-amber-500 transition">📺 Instagram</a>
-                </div>
-                <div class="space-y-2">
-                    <p class="text-stone-600 font-bold uppercase text-[9px] tracking-wider">Оперативно</p>
-                    <a href="https://t.me/AntiKrizis_Strateg" id="foot-tg" target="_blank" rel="noopener" class="block text-amber-500 font-bold hover:underline transition">💬 Telegram Канал</a>
-                    <a href="https://threads.net/@arh_antic" id="foot-threads" target="_blank" rel="noopener" class="block hover:text-amber-500 transition">💬 Threads</a>
-                </div>
-            </div>
-            
-            <p class="border-t border-stone-900 pt-6">&copy; 2026 Domus Architectus. Архитектор Антикризис. Все права защищены. Контент адаптирован.</p>
+            <p id="footer-copy">&copy; 2026 Domus Architectus. Все права защищены.</p>
         </div>
     </footer>
 
     <script>
         let globalProducts = [];
+        let currentLang = 'ru';
+        let currentCategory = 'all';
 
-        // Загрузка готовой базы данных из data.json
+        // Переводы интерфейса
+        const translations = {
+            ru: {
+                title: "Domus Architectus | Архитектор Антикризис — Официальный Сайт",
+                navCode: "Кодекс",
+                navShowcase: "Витрина Проектов",
+                navChannel: "Канал",
+                heroSub: "Проект Архитектора Антикризиса",
+                heroTitle: "Кодекс Архитектора",
+                heroDesc: "Этот список должен быть прошит в подсознании. Если ты сомневаешься — читай Кодекс. Если ты проиграл ситуацию — ищи, какой пункт ты нарушил.",
+                intro: "Добро пожаловать на официальный сайт проекта <strong>Domus Architectus</strong>. Я — <strong>Архитектор Антикризис</strong>, профессиональный психолог и автор систем саморегуляции. Здесь сконцентрированы мои книги, методики и инструменты для преодоления кризисов и выстраивания жесткой дисциплины.",
+                showcaseTitle: "Витрина Экосистемы",
+                btnAll: "Все проекты",
+                btnApplied: "Прикладные руководства",
+                btnFiction: "Художественные книги",
+                btnMusic: "Музыка и Аудио",
+                btnMerch: "Мерч и Арт",
+                newsTitle: "Новости Проекта",
+                newsBtn: "Присоединиться к обсуждению в ТГ",
+                supportTitle: "Поддержать Проект",
+                supportDesc: "Если материалы проекта помогают тебе держать «Вертикаль» и наводить порядок в жизни, ты можете поддержать автора.",
+                supportCard: "Поддержать картой",
+                footer: "© 2026 Domus Architectus. Архитектор Антикризис / The Resilience Architect. Все права защищены.",
+                readRidero: "Читать на Ridero",
+                buyGumroad: "Купить на Gumroad",
+                downloadTg: "Скачать в TG",
+                emptyCat: "В данной категории пока нет активных проектов.",
+                code: [
+                    { t: "1. Состояние первичнее действия", d: "Никогда не начинай движение, если ты не в «Вертикали». Сначала Резонанс — потом шаг. Сначала Сила — потом слово." },
+                    { t: "2. Внешнее — это эхо внутреннего", d: "Если вокруг тебя бардак, агрессия или нытье — это значит, твоя внутренняя настройка сбита. Не вини зеркало, исправь проектор." },
+                    { t: "3. Лаконичность — признак мастерства", d: "Лишнее слово — это шум. Лишний жест — это слабость. Лишняя мысль — это вирус. Отсекай всё, что не работает на твой чертеж." },
+                    { t: "4. Пауза — твое личное пространство", d: "Кто боится тишины, тот ведомый. Кто владеет паузой, тот владеет ситуацией. Тишина — это момент перехвата управления." },
+                    { t: "5. Сопротивление есть ресурс", d: "Не ищи легких путей. Радуйся давлению — это твой бесплатный фитнес для харизмы. Без нагрузки металл остается сырым." },
+                    { t: "6. Смерть суеты", d: "Суета — это уродство. Архитектор всегда действует вовремя. Если ты спешишь — ты опоздал внутри себя." },
+                    { t: "7. Принцип Невидимых Швов", d: "Твоя подготовка, тренировки и сомнения остаются за кадром. Мир видит только безупречный результат и ледяное спокойствие." },
+                    { t: "8. Экспансия как долг", d: "Если ты не приносишь свой Порядок, ты поглощаешься чужим Хаосом. Транслируй свой Резонанс везде, где находишься." },
+                    { t: "9. Взгляд сквозь поверхность", d: "Не смотри на то, что тебе показывают. Смотри на структуру, на мотивы, на суть. Смотри на архитектуру ситуации." },
+                    { t: "10. Автономия источника", d: "Твоя радость, уверенность и сила не должны зависеть от окружения. Ты сам себе Абсолют и сам себе Судья." },
+                    { t: "11. Эстетика функционала", d: "Красиво только то, что работает на 100%. Красота без функции — это ложь. Харизма без результата — это спецэффект." },
+                    { t: "12. Верность Вертикали", d: "Связь с высшим смыслом незыблема. Ты — инструмент в руках Абсолюта. Пока ты верен своей миссии, ты неуязвим." }
+                ]
+            },
+            en: {
+                title: "Domus Architectus | The Resilience Architect — Official Website",
+                navCode: "The Code",
+                navShowcase: "Project Showcase",
+                navChannel: "Channel",
+                heroSub: "A Project by The Resilience Architect",
+                heroTitle: "The Architect's Code",
+                heroDesc: "This list must be hardwired into your subconscious. If you hesitate, read the Code. If you fail a situation, find which point you violated.",
+                intro: "Welcome to the official website of the <strong>Domus Architectus</strong> project. I am <strong>The Resilience Architect</strong>, a professional psychologist and author of self-regulation systems. Here are concentrated my books, methodologies, and tools for overcoming crises and building iron discipline.",
+                showcaseTitle: "Ecosystem Showcase",
+                btnAll: "All Projects",
+                btnApplied: "Applied Guides",
+                btnFiction: "Fiction Books",
+                btnMusic: "Music & Audio",
+                btnMerch: "Merch & Art",
+                newsTitle: "Project News",
+                newsBtn: "Join discussion in TG",
+                supportTitle: "Support the Project",
+                supportDesc: "If the materials of the project help you maintain your Vertical and bring order to your life, you can support the author.",
+                supportCard: "Support with Card",
+                footer: "© 2026 Domus Architectus. The Resilience Architect / Архитектор Антикризис. All rights reserved.",
+                readRidero: "Read on Ridero",
+                buyGumroad: "Buy on Gumroad",
+                downloadTg: "Download in TG",
+                emptyCat: "There are no active projects in this category yet.",
+                code: [
+                    { t: "1. State Precedes Action", d: "Never start moving unless you are in the 'Vertical'. First Resonance, then the step. First Power, then the word." },
+                    { t: "2. The External is an Echo of the Internal", d: "If there is chaos, aggression, or whining around you, your internal tuning is broken. Don't blame the mirror, fix the projector." },
+                    { t: "3. Conciseness is a Mark of Mastery", d: "An extra word is noise. An extra gesture is weakness. An extra thought is a virus. Cut off everything that doesn't serve the blueprint." },
+                    { t: "4. The Pause is Your Personal Space", d: "He who fears silence is a follower. He who masters the pause masters the situation. Silence is the moment you seize control." },
+                    { t: "5. Resistance is a Resource", d: "Do not look for easy paths. Rejoice in pressure — it is your free fitness for charisma. Without load, metal remains raw." },
+                    { t: "6. The Death of Vanity", d: "Fussing is an deformity. The Architect always acts on time. If you hurry, you are already late inside yourself." },
+                    { t: "7. The Principle of Invisible Seams", d: "Your preparation, training, and doubts remain backstage. The world sees only the flawless result and your icy calm." },
+                    { t: "8. Expansion as a Duty", d: "If you do not bring your Order, you are consumed by someone else's Chaos. Broadcast your Resonance wherever you are." },
+                    { t: "9. Looking Through the Surface", d: "Do not look at what you are shown. Look at the structure, the motives, the essence. Look at the architecture of the situation." },
+                    { t: "10. Autonomy of the Source", d: "Your joy, confidence, and strength must not depend on external praise or criticism. You are your own Absolute and Judge." },
+                    { t: "11. Aesthetics of Functionalism", d: "Beautiful is only what works 100%. Beauty without function is a lie. Charisma without results is a cheap special effect." },
+                    { t: "12. Loyalty to the Vertical", d: "The connection to the higher meaning is unshakable. You are an instrument of the Absolute. As long as you are faithful, you are invulnerable." }
+                ]
+            }
+        };
+
+        // Смена языка
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Кнопки переключения
+            document.getElementById('lang-ru').className = `px-2.5 py-1 font-bold transition cursor-pointer ${lang === 'ru' ? 'bg-amber-600 text-stone-950' : 'text-stone-400 hover:text-stone-200'}`;
+            document.getElementById('lang-en').className = `px-2.5 py-1 font-bold transition cursor-pointer ${lang === 'en' ? 'bg-amber-600 text-stone-950' : 'text-stone-400 hover:text-stone-200'}`;
+
+            // Перевод текстов интерфейса
+            document.getElementById('site-title').innerText = translations[lang].title;
+            document.getElementById('nav-code').innerText = translations[lang].navCode;
+            document.getElementById('nav-showcase').innerText = translations[lang].navShowcase;
+            document.getElementById('nav-channel').innerText = translations[lang].navChannel;
+            document.getElementById('hero-sub').innerText = translations[lang].heroSub;
+            document.getElementById('hero-title').innerText = translations[lang].heroTitle;
+            document.getElementById('hero-desc').innerText = translations[lang].heroDesc;
+            document.getElementById('intro-text').innerHTML = translations[lang].intro;
+            document.getElementById('showcase-title').innerText = translations[lang].showcaseTitle;
+            
+            document.getElementById('btn-all').innerText = translations[lang].btnAll;
+            document.getElementById('btn-applied').innerText = translations[lang].btnApplied;
+            document.getElementById('btn-fiction').innerText = translations[lang].btnFiction;
+            document.getElementById('btn-music').innerText = translations[lang].btnMusic;
+            document.getElementById('btn-merch').innerText = translations[lang].btnMerch;
+            
+            document.getElementById('news-title').innerText = translations[lang].newsTitle;
+            document.getElementById('news-btn-text').innerText = translations[lang].newsBtn;
+            document.getElementById('support-title').innerText = translations[lang].supportTitle;
+            document.getElementById('support-desc').innerText = translations[lang].supportDesc;
+            document.getElementById('support-card').innerText = translations[lang].supportCard;
+            document.getElementById('footer-copy').innerText = translations[lang].footer;
+
+            // Перерисовываем Кодекс и Витрину под новый язык
+            renderCode();
+            renderCatalog(globalProducts);
+        }
+
+        // Отрисовка пунктов Кодекса
+        function renderCode() {
+            const grid = document.getElementById('code-grid');
+            grid.innerHTML = '';
+            translations[currentLang].code.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "p-6 bg-stone-900/30 border border-stone-900 rounded-lg hover:border-stone-800/80 transition";
+                div.innerHTML = `<h3 class="font-bold text-amber-500 text-base mb-2">${item.t}</h3><p class="text-xs text-stone-400 leading-relaxed">${item.d}</p>`;
+                grid.appendChild(div);
+            });
+        }
+
+        // Загрузка данных из JSON
         async function loadHubData() {
             try {
-                // Метка ?v= принудительно обходит кеш браузера
                 const response = await fetch('data.json?v=' + new Date().getTime());
-                if (!response.ok) {
-                    throw new Error(`Ошибка загрузки: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
                 const data = await response.json();
                 if (data && data.products) {
                     globalProducts = data.products;
                 }
-                renderCatalog(globalProducts);
+                setLanguage('ru'); // По умолчанию стартуем с русского интерфейса
             } catch (error) {
-                console.error("Ошибка инициализации витрины продуктов:", error);
+                console.error("Ошибка инициализации:", error);
                 const catalog = document.getElementById('catalog');
                 if (catalog) {
-                    catalog.innerHTML = `<p class="text-center text-amber-600 text-xs col-span-full py-8">Ошибка конфигурации сети. Проверьте валидность файла data.json.</p>`;
+                    catalog.innerHTML = `<p class="text-center text-amber-600 text-xs col-span-full py-8">Ошибка конфигурации сети.</p>`;
                 }
             }
         }
 
-        // Отрисовка карточек проектов на витрине
+        // Отрисовка каталога (карточки показываются ВСЕ независимо от выбранного языка)
         function renderCatalog(products) {
             const catalog = document.getElementById('catalog');
             if (!catalog) return;
             catalog.innerHTML = '';
 
-            if (!products || products.length === 0) {
-                catalog.innerHTML = '<p class="text-center text-stone-600 text-xs col-span-full py-8">В данной категории пока нет активных проектов.</p>';
+            // Фильтрация по категориям
+            const filtered = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
+
+            if (!filtered || filtered.length === 0) {
+                catalog.innerHTML = `<p class="text-center text-stone-600 text-xs col-span-full py-8">${translations[currentLang].emptyCat}</p>`;
                 return;
             }
 
-            products.forEach(p => {
-                const rideroUrl = p.links && p.links.ridero ? p.links.ridero : '#';
+            filtered.forEach(p => {
+                let buttonsHTML = '';
                 
-                let buttonsHTML = `<a href="${rideroUrl}" target="_blank" rel="noopener" class="block text-center bg-stone-900 hover:bg-stone-800 text-stone-300 text-xs uppercase tracking-wider font-bold py-2.5 border border-stone-800 rounded transition cursor-pointer">Читать на Ridero</a>`;
+                // 1. Ridero
+                const rideroUrl = p.links && p.links.ridero ? p.links.ridero : null;
+                if (rideroUrl) {
+                    buttonsHTML += `<a href="${rideroUrl}" target="_blank" rel="noopener" class="block text-center bg-stone-900 hover:bg-stone-800 text-stone-300 text-xs uppercase tracking-wider font-bold py-2.5 border border-stone-800 rounded transition cursor-pointer">${translations[currentLang].readRidero}</a>`;
+                }
                 
+                // 2. Gumroad (Мерч, Арт или Английские книги)
+                const gumroadUrl = (p.links && p.links.gumroad) ? p.links.gumroad : (p.gumroad ? p.gumroad : null);
+                if (gumroadUrl) {
+                    buttonsHTML += `<a href="${gumroadUrl}" target="_blank" rel="noopener" class="block text-center bg-amber-600 hover:bg-amber-700 text-stone-950 text-xs uppercase tracking-wider font-bold py-2.5 rounded transition cursor-pointer">${translations[currentLang].buyGumroad}</a>`;
+                }
+                
+                // 3. Telegram
                 if (p.tg_link) {
-                    buttonsHTML += `<a href="${p.tg_link}" target="_blank" rel="noopener" class="block text-center bg-stone-900 hover:bg-stone-800 text-amber-500 text-xs uppercase tracking-wider font-bold py-2.5 border border-stone-800 rounded transition cursor-pointer">Скачать в TG</a>`;
+                    buttonsHTML += `<a href="${p.tg_link}" target="_blank" rel="noopener" class="block text-center bg-stone-900 hover:bg-stone-800 text-amber-500 text-xs uppercase tracking-wider font-bold py-2.5 border border-stone-800 rounded transition cursor-pointer">${translations[currentLang].downloadTg}</a>`;
                 }
 
-                const title = p.title || "Проект в экосистеме";
-                const description = p.description || "Описание доступно на платформе публикации.";
+                const title = p.title || "Project";
+                const description = p.description || "...";
                 const cover = p.cover || "images/books/default-cover.jpg";
 
                 const card = document.createElement('div');
@@ -263,8 +321,9 @@
             });
         }
 
-        // Логика переключения вкладок/категорий
+        // Фильтрация категорий (табы)
         function filterCategory(cat) {
+            currentCategory = cat;
             const buttons = document.querySelectorAll('[id^="btn-"]');
             buttons.forEach(b => {
                 b.className = "px-4 py-2 text-xs uppercase tracking-wider bg-stone-900 hover:bg-stone-800 text-stone-300 rounded transition cursor-pointer";
@@ -275,12 +334,7 @@
                 activeBtn.className = "px-4 py-2 text-xs uppercase tracking-wider bg-amber-600 text-stone-950 font-bold rounded transition cursor-pointer";
             }
 
-            if (cat === 'all') {
-                renderCatalog(globalProducts);
-            } else {
-                const filtered = globalProducts.filter(p => p.category === cat);
-                renderCatalog(filtered);
-            }
+            renderCatalog(globalProducts);
         }
 
         window.addEventListener('DOMContentLoaded', loadHubData);
