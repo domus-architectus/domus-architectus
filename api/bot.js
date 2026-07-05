@@ -9,7 +9,8 @@ const GH_PATH = "data.json";
 
 // Инициализация API
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }); // Требуется переменная GEMINI_API_KEY
+// Тактическая правка: синхронизировали имя переменной с панелью Vercel
+const ai = new GoogleGenAI({ apiKey: process.env.Gemini_API_Key }); 
 
 // ПАРСЕР RIDERO
 async function parseRidero(url) {
@@ -59,7 +60,7 @@ async function parseGumroad(url) {
 // Отправка сообщений в Telegram (универсальная)
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
-    const body = { chat_id: chatId, text: text, parse_mode: "Markdown" }; // Добавили Markdown для красивых постов
+    const body = { chat_id: chatId, text: text, parse_mode: "Markdown" }; 
     
     if (replyMarkup) {
         body.reply_markup = JSON.stringify(replyMarkup);
@@ -96,7 +97,7 @@ module.exports = async (req, res) => {
                 }
 
                 await sendTelegram(chatId, "🔄 Запускаю штурм Ridero и сборку карточки книги...");
-                await finalizeProductCreation(chatId, { type: 'ridero', slug: session.bookSlug, category: session.category, extraGumroad: gumroadUrl });
+                await finalizeProductCreation(chatId, { type: 'ridero', slug: session.bookSlug, category: session.category, extraGumroad: null });
                 
                 delete gumroadSessions[chatId];
                 return res.status(200).send("ОК");
@@ -188,7 +189,7 @@ module.exports = async (req, res) => {
 // ЕДИНАЯ ФУНКЦИЯ ЗАПИСИ ДАННЫХ В GITHUB И АНОНСА ЧЕРЕЗ ИИ
 async function finalizeProductCreation(chatId, config) {
     let newProduct = {};
-    let targetLinkForPromo = ""; // Ссылка, которую ИИ вставит в пост
+    let targetLinkForPromo = ""; 
 
     if (config.type === 'ridero') {
         const bookUrl = `https://ridero.ru/books/${config.slug}/`;
@@ -220,7 +221,7 @@ async function finalizeProductCreation(chatId, config) {
         targetLinkForPromo = config.url;
     }
 
-    // 1. Пушим изменения на GitHub (Сайт обновляется без изменений в аннотации)
+    // 1. Пушим изменения на GitHub
     let currentContent = { products: [] };
     let sha = null;
 
@@ -252,7 +253,6 @@ async function finalizeProductCreation(chatId, config) {
         sha: sha
     });
 
-    // Сайт обновлен, шлем рапорт в чат управления
     await sendTelegram(chatId, `✅ Успех! Проект "${newProduct.title}" на витрине сайта.\n\n🔄 Перехожу к фазе ИИ: генерация промо-поста для канала...`);
 
     // 2. БЛОК ИИ: ГЕНЕРАЦИЯ ПОСТА ДЛЯ ТГ-КАНАЛА
@@ -277,12 +277,10 @@ async function finalizeProductCreation(chatId, config) {
         const generatedPost = aiResponse.text;
 
         // 3. ЗАЛП В ТГ-КАНАЛ
-        // ВНИМАНИЕ: В переменные окружения Vercel нужно добавить TELEGRAM_CHANNEL_ID (например, @my_channel_username или ID через дефис)
         if (process.env.TELEGRAM_CHANNEL_ID) {
             await sendTelegram(process.env.TELEGRAM_CHANNEL_ID, generatedPost);
             await sendTelegram(chatId, `📢 Системное уведомление: Промо-пост успешно сгенерирован ИИ и опубликован в канал ${process.env.TELEGRAM_CHANNEL_ID}`);
         } else {
-            // Если канал не настроен, просто выплевываем сгенерированный текст в чат админа, чтобы скопировать вручную
             await sendTelegram(chatId, `💡 Канал не настроен (нет TELEGRAM_CHANNEL_ID), вот сгенерированный ИИ пост для ручной публикации:\n\n${generatedPost}`);
         }
 
