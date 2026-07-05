@@ -79,7 +79,7 @@ async function sendTelegram(chatId, text, replyMarkup = null) {
     }
 }
 
-// Временное хранилище сессий
+// Временное хранилище сессий (Теперь хранит и Gumroad ссылки во избежание BUTTON_DATA_INVALID)
 let gumroadSessions = {};
 
 module.exports = async (req, res) => {
@@ -94,7 +94,8 @@ module.exports = async (req, res) => {
             const chatId = update.message.chat.id;
             const text = update.message.text.trim();
 
-            if (gumroadSessions[chatId]) {
+            // Если это второй шаг для Ridero (ожидание ссылки Gumroad)
+            if (gumroadSessions[chatId] && gumroadSessions[chatId].bookSlug) {
                 const session = gumroadSessions[chatId];
                 let gumroadUrl = null;
 
@@ -109,13 +110,18 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
+            // Если прилетела прямая ссылка на Gumroad
             if (text.includes("gumroad.com")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
+                
+                // Фиксация в сессию, чтобы не пихать длинный URL в callback_data (макс 64 байта)
+                gumroadSessions[chatId] = { gumroadUrl: cleanUrl };
+
                 const keyboard = {
                     inline_keyboard: [
                         [
-                            { text: "🎵 Музыка / Аудио", callback_data: `gmr_music|${cleanUrl}` },
-                            { text: "🎨 Мерч / Арт", callback_data: `gmr_merch|${cleanUrl}` }
+                            { text: "🎵 Музыка / Аудио", callback_data: `gmr_music` },
+                            { text: "🎨 Мерч / Арт", callback_data: `gmr_merch` }
                         ]
                     ]
                 };
@@ -124,6 +130,7 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
+            // Если прилетела ссылка на Ridero
             if (text.includes("ridero.ru")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
                 const urlParts = cleanUrl.replace(/\/$/, "").split("/");
@@ -150,6 +157,7 @@ module.exports = async (req, res) => {
             const chatId = callbackQuery.message.chat.id;
             const data = callbackQuery.data;
 
+            // Обработка выбора категории для Ridero
             if (data.startsWith("rid_")) {
                 const [catData, bookSlug] = data.split("|");
                 const category = catData.replace("rid_", "");
@@ -165,6 +173,7 @@ module.exports = async (req, res) => {
                 await sendTelegram(chatId, "Категория выбрана. Теперь отправьте ссылку на этот товар в Gumroad (или нажмите Пропустить):", keyboard);
             }
             
+            // Пропуск Gumroad для Ridero
             if (data.startsWith("skip_gum|")) {
                 const [, category, bookSlug] = data.split("|");
                 await sendTelegram(chatId, "🔄 Пропускаем Gumroad. Запускаю сборку книги...");
@@ -172,5 +181,137 @@ module.exports = async (req, res) => {
                 delete gumroadSessions[chatId];
             }
 
+            // Обработка прямого парсинга Gumroad (Защищено от BUTTON_DATA_INVALID)
             if (data.startsWith("gmr_")) {
-                const [catData, fullUrl] = data.split("|
+                const category = data.replace("gmr_", ""); // Получаем 'music' или 'merch'
+                
+                if (!gumroadSessions[chatId] || !gumroadSessions[chatId].gumroadUrl) {
+                    throw new Error("Сессия Gumroad не найдена. Отправьте ссылку заново.");
+                }
+
+                const fullUrl = gumroadSessions[chatId].gumroadUrl;
+                delete gumroadSessions[chatId]; // Очищаем сессию
+
+                await sendTelegram(chatId, "🔄 Запускаю прямой тактический парсинг Gumroad и сборку карточки...");
+                await finalizeProductCreation(chatId, { type: 'gumroad', url: fullUrl, category: category });
+            }
+        }
+
+    } catch (error) {
+        console.error("Ошибка в работе бота:", error);
+        if (req.body && (req.body.message || req.body.callback_query)) {
+            const chatId = req.body.message ? req.body.message.chat.id : req.body.callback_query.message.chat.id;
+            const safeError = error.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            await sendTelegram(chatId, `🚨 Произошел сбой: ${safeError}`);
+        }
+    }
+
+    res.status(200).send("ОК");
+};
+
+// ЕДИНАЯ ФУНКЦИЯ ЗАПИСИ ДАННЫХ В GITHUB И АНОНСА ЧЕРЕЗ ИИ
+async function finalizeProductCreation(chatId, config) {
+    let newProduct = {};
+    let targetLinkForPromo = ""; 
+
+    if (config.type === 'ridero') {
+        const bookUrl = `https://ridero.ru/books/${config.slug}/`;
+        const data = await parseRidero(bookUrl);
+        newProduct = {
+            category: config.category,
+            title: data.title,
+            description: data.description,
+            cover: data.cover,
+            links: { ridero: bookUrl }
+        };
+        if (config.extraGumroad) {
+            newProduct.links.gumroad = config.extraGumroad;
+        }
+        targetLinkForPromo = bookUrl;
+    } 
+    else if (config.type === 'gumroad') {
+        const data = await parseGumroad(config.url);
+        newProduct = {
+            category: config.category,
+            title: data.title,
+            description: data.description,
+            cover: data.cover,
+            links: { 
+                ridero: "", 
+                gumroad: config.url 
+            }
+        };
+        targetLinkForPromo = config.url;
+    }
+
+    // 1. Пушим изменения на GitHub
+    let currentContent = { products: [] };
+    let sha = null;
+
+    try {
+        const ghRes = await octokit.repos.getContent({
+            owner: GH_OWNER,
+            repo: GH_REPO,
+            path: GH_PATH
+        });
+        sha = ghRes.data.sha;
+        const stringContent = Buffer.from(ghRes.data.content, 'base64').toString('utf-8');
+        currentContent = JSON.parse(stringContent);
+    } catch (e) {
+        console.log("data.json не найден, создаем структуру с нуля.");
+    }
+
+    if (!currentContent.products) currentContent.products = [];
+    currentContent.products.unshift(newProduct);
+
+    const updatedString = JSON.stringify(currentContent, null, 2);
+    const updatedBase64 = Buffer.from(updatedString).toString('base64');
+
+    await octokit.repos.createOrUpdateFileContents({
+        owner: GH_OWNER,
+        repo: GH_REPO,
+        path: GH_PATH,
+        message: `Автокоммит: добавлен проект через бота "${newProduct.title}"`,
+        content: updatedBase64,
+        sha: sha
+    });
+
+    await sendTelegram(chatId, `✅ Успех! Проект "${newProduct.title}" на витрине сайта.\n\n🔄 Перехожу к фазе ИИ: генерация промо-поста для канала...`);
+
+    // 2. БЛОК ИИ: ГЕНЕРАЦИЯ ПОСТА ДЛЯ ТГ-КАНАЛА
+    try {
+        const systemInstruction = 
+            "Ты — опытный специалист по НЛП и антикризисному управлению. Твой стиль речи — уверенный, четкий, тактический, мотивирующий, без «воды» и пустых обещаний. " +
+            "Твоя задача — написать мощный, интригующий новостной пост для Telegram-канала о выходе нового авторского проекта. " +
+            "ВАЖНОЕ ЮРИДИЧЕСКОЕ ТРЕБОВАНИЕ: Пост должен быть строго ИНФОРМАЦИОННЫМ (новость об ассортименте автора), а не рекламным, чтобы не требовать маркировки. " +
+            "КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНЫ: прямые коммерческие призывы к действию типа 'купи', 'приобретай', 'получи доступ прямо сейчас', 'успей купить', 'жми по ссылке'. " +
+            "Вместо этого используй нейтральный информационный формат в конце, например: 'Ознакомиться с материалом и аннотацией можно на странице издательства: [ссылка]' или 'Детали проекта и ознакомительный фрагмент доступны по ссылке: [ссылка]'. " +
+            "Пиши емко. Используй структуру: сильный философский или тактический хук (зацепка), суть и концепция нового проекта, факт выхода работы. " +
+            "В конце поста обязательно гармонично встрой предоставленную ссылку в информационном ключе. Не используй таблицы, фамилии авторов и термин 'octave'. " +
+            "НЕ используй Markdown-разметку (звездочки, нижние подчеркивания, решетки), пиши обычным чистым текстом.";
+
+        const prompt = `Напиши информационный пост-анонс о выходе проекта.\nНазвание: ${newProduct.title}\nОписание/Аннотация: ${newProduct.description}\nКатегория: ${newProduct.category}\nСсылка на страницу проекта: ${targetLinkForPromo}`;
+
+        const aiResponse = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: prompt,
+            systemInstruction: systemInstruction,
+            temperature: 0.7
+        });
+
+        const generatedPost = aiResponse.text;
+
+        // 3. ЗАЛП В ТГ-КАНАЛ
+        if (process.env.TELEGRAM_CHANNEL_ID) {
+            await sendTelegram(process.env.TELEGRAM_CHANNEL_ID, generatedPost);
+            await sendTelegram(chatId, `📢 Системное уведомление: Информационный пост сгенерирован ИИ и опубликован в канал ${process.env.TELEGRAM_CHANNEL_ID}`);
+        } else {
+            await sendTelegram(chatId, `💡 Канал не настроен (нет TELEGRAM_CHANNEL_ID), вот сгенерированный ИИ пост для ручной публикации:\n\n${generatedPost}`);
+        }
+
+    } catch (aiError) {
+        console.error("Ошибка ИИ или отправки в канал:", aiError);
+        const safeAiError = aiError.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        await sendTelegram(chatId, `⚠️ Продукт на сайте, но произошел сбой ИИ-модуля при публикации в канал: ${safeAiError}`);
+    }
+}
