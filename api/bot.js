@@ -57,7 +57,7 @@ async function parseGumroad(url) {
     return { title, description, cover };
 }
 
-// Отправка сообщений в Telegram с жесткой проверкой разметки
+// Отправка сообщений в Telegram
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
     const body = { chat_id: chatId, text: text, parse_mode: "HTML" }; 
@@ -93,15 +93,14 @@ module.exports = async (req, res) => {
             const chatId = update.message.chat.id;
             const text = update.message.text.trim();
 
-            // Шаг 2 для Ridero (ожидание ссылки Gumroad)
-            if (gumroadSessions[chatId] && gumroadSessions[chatId].bookSlug) {
+            // Если сессия ожидает ссылку Gumroad для Ridero (Шаг 2)
+            if (gumroadSessions[chatId] && gumroadSessions[chatId].bookSlug && gumroadSessions[chatId].category && !gumroadSessions[chatId].awaitingGumroad) {
+                // Этот блок сработает, если юзер ввел ссылку вручную вместо нажатия кнопки пропуска
                 const session = gumroadSessions[chatId];
                 let gumroadUrl = null;
 
                 if (text.includes("gumroad.com")) {
-                    const matchedUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
-                    // Отсекаем UTM и параметры запроса для стабильности
-                    gumroadUrl = matchedUrl.split("?")[0];
+                    gumroadUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0]?.split("?")[0] || text;
                 }
 
                 await sendTelegram(chatId, "🔄 Запускаю штурм Ridero и сборку карточки книги...");
@@ -113,11 +112,8 @@ module.exports = async (req, res) => {
 
             // Прямая ссылка на Gumroad
             if (text.includes("gumroad.com")) {
-                const matchedUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
-                // Тактическая очистка ссылки от хвостов и UTM-меток
-                const cleanUrl = matchedUrl.split("?")[0].trim();
+                const cleanUrl = (text.match(/(https?:\/\/[^\s]+)/)?.[0] || text).split("?")[0].trim();
                 
-                // Принудительно сбрасываем старую сессию для этого чата во избежание конфликтов данных
                 gumroadSessions[chatId] = { gumroadUrl: cleanUrl };
 
                 const keyboard = {
@@ -139,13 +135,14 @@ module.exports = async (req, res) => {
                 const urlParts = cleanUrl.split("?")[0].replace(/\/$/, "").split("/");
                 const bookSlug = urlParts[urlParts.length - 1];
 
-                gumroadSessions[chatId] = {}; // Очистка кэша перед записью
+                // Сразу сохраняем slug в сессию, чтобы не пихать его в инлайн-кнопки
+                gumroadSessions[chatId] = { bookSlug: bookSlug };
 
                 const keyboard = {
                     inline_keyboard: [
                         [
-                            { text: "📘 Прикладное руководство", callback_data: `rid_applied|${bookSlug}` },
-                            { text: "📕 Художественная", callback_data: `rid_fiction|${bookSlug}` }
+                            { text: "📘 Прикладное руководство", callback_data: "rid_applied" },
+                            { text: "📕 Художественная", callback_data: "rid_fiction" }
                         ]
                     ]
                 };
@@ -162,28 +159,40 @@ module.exports = async (req, res) => {
             const chatId = callbackQuery.message.chat.id;
             const data = callbackQuery.data;
 
-            // Обработка выбора категории для Ridero
-            if (data.startsWith("rid_")) {
-                const [catData, bookSlug] = data.split("|");
-                const category = catData.replace("rid_", "");
+            // Обработка выбора категории для Ridero (callback_data теперь фиксированные и короткие)
+            if (data === "rid_applied" || data === "rid_fiction") {
+                if (!gumroadSessions[chatId] || !gumroadSessions[chatId].bookSlug) {
+                    throw new Error("Сессия Ridero не найдена. Отправьте ссылку заново.");
+                }
 
-                gumroadSessions[chatId] = { bookSlug, category };
+                const category = data.replace("rid_", "");
+                gumroadSessions[chatId].category = category;
+                
+                // Флаг, что мы перешли в режим ожидания Gumroad ссылки
+                gumroadSessions[chatId].awaitingGumroad = true; 
 
                 const keyboard = {
                     inline_keyboard: [
-                        [{ text: "⏩ Пропустить Gumroad", callback_data: `skip_gum|${category}|${bookSlug}` }]
+                        [{ text: "⏩ Пропустить Gumroad", callback_data: "skip_gumroad" }]
                     ]
                 };
 
                 await sendTelegram(chatId, "Категория выбрана. Теперь отправьте ссылку на этот товар в Gumroad (или нажмите Пропустить):", keyboard);
+                return res.status(200).send("ОК");
             }
             
             // Пропуск Gumroad для Ridero
-            if (data.startsWith("skip_gum|")) {
-                const [, category, bookSlug] = data.split("|");
+            if (data === "skip_gumroad") {
+                if (!gumroadSessions[chatId] || !gumroadSessions[chatId].bookSlug || !gumroadSessions[chatId].category) {
+                    throw new Error("Недостаточно данных в сессии для сборки.");
+                }
+
+                const { bookSlug, category } = gumroadSessions[chatId];
+                delete gumroadSessions[chatId]; // Чистим кэш перед долгой операцией
+
                 await sendTelegram(chatId, "🔄 Пропускаем Gumroad. Запускаю сборку книги...");
                 await finalizeProductCreation(chatId, { type: 'ridero', slug: bookSlug, category: category, extraGumroad: null });
-                delete gumroadSessions[chatId];
+                return res.status(200).send("ОК");
             }
 
             // Обработка прямого парсинга Gumroad
@@ -199,6 +208,7 @@ module.exports = async (req, res) => {
 
                 await sendTelegram(chatId, "🔄 Запускаю прямой тактический парсинг Gumroad и сборку карточки...");
                 await finalizeProductCreation(chatId, { type: 'gumroad', url: fullUrl, category: category });
+                return res.status(200).send("ОК");
             }
         }
 
