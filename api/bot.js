@@ -1,12 +1,15 @@
 const { Octokit } = require("@octokit/rest");
 const fetch = require("node-fetch");
+const { GoogleGenAI } = require("@google/genai"); // Подключаем актуальный SDK Gemini
 
 // Конфигурация GitHub
 const GH_OWNER = "domus-architectus"; 
 const GH_REPO = "domus-architectus";  
 const GH_PATH = "data.json";
 
+// Инициализация API
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }); // Требуется переменная GEMINI_API_KEY
 
 // ПАРСЕР RIDERO
 async function parseRidero(url) {
@@ -30,7 +33,7 @@ async function parseRidero(url) {
     return { title, description, cover };
 }
 
-// НОВЫЙ ПАРСЕР GUMROAD (работает на регулярках, без внешних библиотек)
+// НОВЫЙ ПАРСЕР GUMROAD
 async function parseGumroad(url) {
     const res = await fetch(url, {
         headers: {
@@ -48,16 +51,15 @@ async function parseGumroad(url) {
     let description = descMatch ? descMatch[1] : "";
     let cover = imageMatch ? imageMatch[1] : "";
 
-    // Чистим мусор в тайтле, если прилетел хвост от площадки
     title = title.replace(" | Gumroad", "").trim();
 
     return { title, description, cover };
 }
 
-// Отправка сообщений в Telegram
+// Отправка сообщений в Telegram (универсальная)
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
-    const body = { chat_id: chatId, text: text };
+    const body = { chat_id: chatId, text: text, parse_mode: "Markdown" }; // Добавили Markdown для красивых постов
     
     if (replyMarkup) {
         body.reply_markup = JSON.stringify(replyMarkup);
@@ -70,7 +72,7 @@ async function sendTelegram(chatId, text, replyMarkup = null) {
     });
 }
 
-// Временное хранилище сессий для связки Ridero + Gumroad
+// Временное хранилище сессий
 let gumroadSessions = {};
 
 module.exports = async (req, res) => {
@@ -81,12 +83,10 @@ module.exports = async (req, res) => {
     try {
         const update = req.body;
         
-        // ОБРАБОТКА ССЫЛОК И ТЕКСТА
         if (update.message && update.message.text) {
             const chatId = update.message.chat.id;
             const text = update.message.text.trim();
 
-            // Проверка: Ждем ли мы ссылку на Gumroad как доп. шаг для книги Ridero?
             if (gumroadSessions[chatId]) {
                 const session = gumroadSessions[chatId];
                 let gumroadUrl = null;
@@ -102,11 +102,8 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // ПЕРЕХВАТ ПРЯМОЙ ССЫЛКИ GUMROAD (Музыка или Мерч напрямую)
             if (text.includes("gumroad.com")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
-                
-                // Передаем слаг/ссылку через callback_data (ограничение TG — 64 символа, поэтому кодируем платформу)
                 const keyboard = {
                     inline_keyboard: [
                         [
@@ -120,7 +117,6 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // ПЕРЕХВАТ ССЫЛКИ RIDERO
             if (text.includes("ridero.ru")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
                 const urlParts = cleanUrl.replace(/\/$/, "").split("/");
@@ -139,17 +135,14 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // Стандартный ответ
-            await sendTelegram(chatId, "Приветствую, Архитектор. Чтобы добавить проект на сайт, отправьте прямую ссылку на книгу Ridero или товар Gumroad (для музыки/мерча).");
+            await sendTelegram(chatId, "Приветствую, Архитектор. Чтобы добавить проект на сайт, отправьте прямую ссылку на книгу Ridero или товар Gumroad.");
         }
 
-        // ОБРАБОТКА НАЖАТИЙ КНОПОК (ИНЛАЙН)
         if (update.callback_query) {
             const callbackQuery = update.callback_query;
             const chatId = callbackQuery.message.chat.id;
             const data = callbackQuery.data;
 
-            // Логика кнопки Ridero (Запрашиваем Gumroad вторым шагом)
             if (data.startsWith("rid_")) {
                 const [catData, bookSlug] = data.split("|");
                 const category = catData.replace("rid_", "");
@@ -165,7 +158,6 @@ module.exports = async (req, res) => {
                 await sendTelegram(chatId, "Категория выбрана. Теперь отправьте ссылку на этот товар в Gumroad (или нажмите Пропустить):", keyboard);
             }
             
-            // Логика кнопки Ridero: Пропуск Gumroad
             if (data.startsWith("skip_gum|")) {
                 const [, category, bookSlug] = data.split("|");
                 await sendTelegram(chatId, "🔄 Пропускаем Gumroad. Запускаю сборку книги...");
@@ -173,7 +165,6 @@ module.exports = async (req, res) => {
                 delete gumroadSessions[chatId];
             }
 
-            // Логика прямой кнопки Gumroad (Сразу публикация музыки или мерча)
             if (data.startsWith("gmr_")) {
                 const [catData, fullUrl] = data.split("|");
                 const category = catData.replace("gmr_", "");
@@ -194,9 +185,10 @@ module.exports = async (req, res) => {
     res.status(200).send("ОК");
 };
 
-// ЕДИНАЯ ФУНКЦИЯ ЗАПИСИ ДАННЫХ В GITHUB
+// ЕДИНАЯ ФУНКЦИЯ ЗАПИСИ ДАННЫХ В GITHUB И АНОНСА ЧЕРЕЗ ИИ
 async function finalizeProductCreation(chatId, config) {
     let newProduct = {};
+    let targetLinkForPromo = ""; // Ссылка, которую ИИ вставит в пост
 
     if (config.type === 'ridero') {
         const bookUrl = `https://ridero.ru/books/${config.slug}/`;
@@ -211,6 +203,7 @@ async function finalizeProductCreation(chatId, config) {
         if (config.extraGumroad) {
             newProduct.links.gumroad = config.extraGumroad;
         }
+        targetLinkForPromo = bookUrl;
     } 
     else if (config.type === 'gumroad') {
         const data = await parseGumroad(config.url);
@@ -220,12 +213,14 @@ async function finalizeProductCreation(chatId, config) {
             description: data.description,
             cover: data.cover,
             links: { 
-                ridero: "", // Пусто, чтобы фронтенд скрыл кнопку Ridero
+                ridero: "", 
                 gumroad: config.url 
             }
         };
+        targetLinkForPromo = config.url;
     }
 
+    // 1. Пушим изменения на GitHub (Сайт обновляется без изменений в аннотации)
     let currentContent = { products: [] };
     let sha = null;
 
@@ -257,5 +252,42 @@ async function finalizeProductCreation(chatId, config) {
         sha: sha
     });
 
-    await sendTelegram(chatId, `✅ Успех! Проект "${newProduct.title}" успешно выведен на витрину сайта в категорию [${config.category}].`);
+    // Сайт обновлен, шлем рапорт в чат управления
+    await sendTelegram(chatId, `✅ Успех! Проект "${newProduct.title}" на витрине сайта.\n\n🔄 Перехожу к фазе ИИ: генерация промо-поста для канала...`);
+
+    // 2. БЛОК ИИ: ГЕНЕРАЦИЯ ПОСТА ДЛЯ ТГ-КАНАЛА
+    try {
+        const systemInstruction = 
+            "Ты — опытный специалист по НЛП и антикризисному управлению. Твой стиль речи — уверенный, четкий, тактический, мотивирующий, без «воды» и пустых обещаний. " +
+            "Твоя задача — написать мощный, интригующий и продающий промо-пост для Telegram-канала о выходе нового проекта. " +
+            "Пиши емко. Используй структуру: сильный хук (зацепка), суть пользы проекта, тактический призыв к действию. " +
+            "В конце поста обязательно гармонично встрой предоставленную ссылку. Не используй таблицы, фамилии авторов и термин 'octave'.";
+
+        const prompt = `Напиши промо-пост для проекта.\nНазвание: ${newProduct.title}\nОписание/Аннотация: ${newProduct.description}\nКатегория: ${newProduct.category}\nСсылка для покупки: ${targetLinkForPromo}`;
+
+        const aiResponse = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: prompt,
+            config: {
+                systemInstruction: systemInstruction,
+                temperature: 0.7
+            }
+        });
+
+        const generatedPost = aiResponse.text;
+
+        // 3. ЗАЛП В ТГ-КАНАЛ
+        // ВНИМАНИЕ: В переменные окружения Vercel нужно добавить TELEGRAM_CHANNEL_ID (например, @my_channel_username или ID через дефис)
+        if (process.env.TELEGRAM_CHANNEL_ID) {
+            await sendTelegram(process.env.TELEGRAM_CHANNEL_ID, generatedPost);
+            await sendTelegram(chatId, `📢 Системное уведомление: Промо-пост успешно сгенерирован ИИ и опубликован в канал ${process.env.TELEGRAM_CHANNEL_ID}`);
+        } else {
+            // Если канал не настроен, просто выплевываем сгенерированный текст в чат админа, чтобы скопировать вручную
+            await sendTelegram(chatId, `💡 Канал не настроен (нет TELEGRAM_CHANNEL_ID), вот сгенерированный ИИ пост для ручной публикации:\n\n${generatedPost}`);
+        }
+
+    } catch (aiError) {
+        console.error("Ошибка ИИ или отправки в канал:", aiError);
+        await sendTelegram(chatId, `⚠️ Продукт на сайте, но произошел сбой ИИ-модуля при публикации в канал: ${aiError.message}`);
+    }
 }
