@@ -278,7 +278,7 @@ async function finalizeProductCreation(chatId, config) {
 
     await sendTelegram(chatId, `✅ Успех! Проект "${newProduct.title}" на витрине сайта.\n\n🔄 Перехожу к фазе ИИ: генерация промо-поста для канала...`);
 
-   // 2. БЛОК ИИ: ГЕНЕРАЦИЯ ПОСТА ДЛЯ ТГ-КАНАЛА
+    // 2. БЛОК ИИ: ГЕНЕРАЦИЯ ПОСТА ДЛЯ ТГ-КАНАЛА
     try {
         const systemInstruction = 
             "Ты — Архитектор Реальности, опытный стратег и специалист по антикризисному управлению. Твой стиль — спартанский, плотный, жесткий, тактический. Пиши от первого лица. " +
@@ -292,19 +292,24 @@ async function finalizeProductCreation(chatId, config) {
             "Вводный жесткий хук об эволюции и системах. Затем плавное объявление о выходе новой книги с перечислением ее сути (модулей) обычными предложениями внутри абзаца. " +
             "В самом конце отдельной строкой: 'Ознакомиться с материалом, аннотацией и деталями проекта можно на официальной странице: [ссылка]'.";
 
-        // Очищаем входные данные от триггеров форматирования
-        const cleanDesc = newProduct.description.replace(/\*/g, "").replace(/\n/g, " ");
+        // Тактическая очистка входного описания от списков, звездочек и переносов строк
+        const cleanDesc = newProduct.description.replace(/\*/g, "").replace(/[\-\•]\s+/g, "").replace(/\n+/g, " ").trim();
         const prompt = `Напиши пост. Книга называется ${newProduct.title}. Суть проекта: ${cleanDesc}. Категория: ${newProduct.category}. Ссылка: ${targetLinkForPromo}`;
 
         const aiResponse = await ai.models.generateContent({
             model: "gemini-2.5-flash",
             contents: prompt,
             systemInstruction: systemInstruction,
-            temperature: 0.3 // Еще сильнее прижимаем к инструкциям
+            temperature: 0.3 // Низкая температура для максимального контроля над форматом
         });
 
-        // Жесткая очистка остаточных звездочек кодом, если ИИ все-таки промазал
-        let generatedPost = aiResponse.text.replace(/\*/g, "").replace(/#/g, "").trim();
+        // Железобетонная очистка на уровне Node.js от любых проскочивших спецсимволов Markdown
+        let generatedPost = aiResponse.text
+            .replace(/\*\*/g, "")
+            .replace(/\*/g, "")
+            .replace(/#/g, "")
+            .replace(/`/g, "")
+            .trim();
 
         // 3. ЗАЛП В ТГ-КАНАЛ
         if (process.env.TELEGRAM_CHANNEL_ID) {
@@ -319,5 +324,4 @@ async function finalizeProductCreation(chatId, config) {
         const safeAiError = aiError.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         await sendTelegram(chatId, `⚠️ Продукт на сайте, но произошел сбой ИИ-модуля при публикации в канал: ${safeAiError}`);
     }
-        
 }
