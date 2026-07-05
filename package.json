@@ -2,7 +2,7 @@
   "name": "domus-architectus-bot",
   "version": "1.0.0",
   "dependencies": {
-    "@google/genai": "^0.1.2",
+    "@google/genai": "latest",
     "@octokit/rest": "^20.1.0",
     "node-fetch": "^2.7.0"
   }
