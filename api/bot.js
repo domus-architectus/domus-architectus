@@ -12,11 +12,14 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 const apiKey = process.env.Gemini_API_Key || process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey: apiKey }); 
 
-// ПАРСЕР RIDERO
+// ПАРСЕР RIDERO с жестким декодированием буфера
 async function parseRidero(url) {
     const res = await fetch(url);
     if (!res.ok) throw new Error("Не удалось загрузить страницу Ridero");
-    const html = await res.text();
+    
+    // Получаем буфер и принудительно переводим в чистый utf-8 string
+    const buffer = await res.buffer();
+    const html = buffer.toString('utf-8');
 
     const titleMatch = html.match(/<meta property="og:title" content="([^"]+)"/);
     const descMatch = html.match(/<meta property="og:description" content="([^"]+)"/);
@@ -34,7 +37,7 @@ async function parseRidero(url) {
     return { title, description, cover };
 }
 
-// НОВЫЙ ПАРСЕР GUMROAD
+// ПАРСЕР GUMROAD с жестким декодированием буфера
 async function parseGumroad(url) {
     const res = await fetch(url, {
         headers: {
@@ -42,7 +45,9 @@ async function parseGumroad(url) {
         }
     });
     if (!res.ok) throw new Error("Не удалось загрузить страницу Gumroad");
-    const html = await res.text();
+    
+    const buffer = await res.buffer();
+    const html = buffer.toString('utf-8');
 
     const titleMatch = html.match(/<meta property="og:title" content="([^"]+)"/) || html.match(/<title>([^<]+)<\/title>/);
     const descMatch = html.match(/<meta property="og:description" content="([^"]+)"/) || html.match(/<meta name="description" content="([^"]+)"/);
@@ -57,10 +62,24 @@ async function parseGumroad(url) {
     return { title, description, cover };
 }
 
-// Отправка сообщений в Telegram
+// Отправка сообщений в Telegram с жесткой нормализацией UTF-8
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
-    const body = { chat_id: chatId, text: text, parse_mode: "HTML" }; 
+    
+    // Шаг 1: Принудительно чистим строку от скрытых спецсимволов и нормализуем UTF-8
+    let cleanText = String(text)
+        .normalize('NFC')
+        .replace(/\u00A0/g, ' ') // Заменяем неразрывные пробелы на обычные
+        .replace(/[\uFFFD\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, ''); // Удаляем битые символы кодировки
+
+    // Шаг 2: Пересобираем строку через Buffer, гарантируя чистый UTF-8 без утечек байт
+    cleanText = Buffer.from(cleanText, 'utf-8').toString('utf-8');
+
+    const body = { 
+        chat_id: chatId, 
+        text: cleanText, 
+        parse_mode: "HTML" 
+    }; 
     
     if (replyMarkup) {
         body.reply_markup = typeof replyMarkup === "string" ? replyMarkup : JSON.stringify(replyMarkup);
@@ -68,7 +87,7 @@ async function sendTelegram(chatId, text, replyMarkup = null) {
 
     const response = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json; charset=utf-8" }, // Явно указываем кодировку для API
         body: JSON.stringify(body)
     });
 
@@ -93,7 +112,6 @@ module.exports = async (req, res) => {
             const chatId = update.message.chat.id;
             const text = update.message.text.trim();
 
-            // Если сессия ожидает ссылку Gumroad для Ridero (Шаг 2)
             if (gumroadSessions[chatId] && gumroadSessions[chatId].bookSlug && gumroadSessions[chatId].category && !gumroadSessions[chatId].awaitingGumroad) {
                 const session = gumroadSessions[chatId];
                 let gumroadUrl = null;
@@ -109,7 +127,6 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // Прямая ссылка на Gumroad
             if (text.includes("gumroad.com")) {
                 const cleanUrl = (text.match(/(https?:\/\/[^\s]+)/)?.[0] || text).split("?")[0].trim();
                 gumroadSessions[chatId] = { gumroadUrl: cleanUrl };
@@ -127,7 +144,6 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // Ссылка на Ridero
             if (text.includes("ridero.ru")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
                 const urlParts = cleanUrl.split("?")[0].replace(/\/$/, "").split("/");
@@ -307,7 +323,7 @@ async function finalizeProductCreation(chatId, config) {
             model: "gemini-2.5-flash",
             contents: prompt,
             systemInstruction: systemInstruction,
-            temperature: 0.1 // Минимальная температура для исключения отсебятины
+            temperature: 0.1 
         });
 
         let generatedPost = aiResponse.text
@@ -315,15 +331,14 @@ async function finalizeProductCreation(chatId, config) {
             .replace(/\*/g, "")
             .replace(/#/g, "")
             .replace(/`/g, "")
-            .replace(/[🚀💡📖✨📚👉📢⚠️🚨✅]/g, "") // Вырезаем эмодзи на корню
+            .replace(/[🚀💡📖✨📚👉📢⚠️🚨✅]/g, "") 
             .trim();
 
-        // Дополнительная строка со ссылкой, если модель забыла вставить
         if (!generatedPost.includes(targetLinkForPromo)) {
             generatedPost += `\n\nОфициальная страница проекта: ${targetLinkForPromo}`;
         }
 
-        // 3. ЗАЛП В ТГ-КАНАЛ
+        // 3. ЗАЛП В ТГ-КАНАЛ (теперь с жестким UTF-8 внутри sendTelegram)
         if (process.env.TELEGRAM_CHANNEL_ID) {
             await sendTelegram(process.env.TELEGRAM_CHANNEL_ID, generatedPost);
             await sendTelegram(chatId, `📢 Системное уведомление: Информационный пост отправлен в канал ${process.env.TELEGRAM_CHANNEL_ID}`);
