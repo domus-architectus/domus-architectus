@@ -1,6 +1,15 @@
 {
   "products": [
     {
+      "category": "applied",
+      "title": "Перезагрузка отношений",
+      "description": "Книга \"Перезагрузка отношений\". \"Инструкция по ремонту брака\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы чувствуете, что отношения зашли в тупик? Словно механизм вашего брака сломался: нет искры, общение сведено к минимуму, а вместо поддержки вы ощущае - 978-5-0068-7002-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/6931665ba1d5a6201f9f3c86/rev.2026-04-13T15:42:14.659Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/perezagruzka_otnoshenii_instrukciya_po_remontu_braka/"
+      }
+    },
+    {
       "category": "fiction",
       "title": "Радужная радость",
       "description": "Книга \"Радужная радость\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - В удивительном Кукольном Городе, где все дома построены из разноцветных кубиков конструктора, живут необычные двойняшки — Софи и Дима. Они делят свой  - 978-5-0070-4427-1",
