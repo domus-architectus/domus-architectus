@@ -1,6 +1,15 @@
 {
   "products": [
     {
+      "category": "applied",
+      "title": "Код самодисциплины",
+      "description": "Книга \"Код самодисциплины\". \"Эксперт строгой школы\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — готовая пошаговая система по внедрению ответственности и дисциплины в жизнь вашего подростка, проверенная в самых строгих условиях.\nБольше - 978-5-0068-6303-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-11/692827b03e728e5d2a549ad1/rev.2026-04-13T15:42:03.855Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kod_samodiscipliny_ekspert_strogoi_shkoly_konstruktivnoe_vospitanie/"
+      }
+    },
+    {
       "category": "fiction",
       "title": "Воля к жизни. Путь выживания",
       "description": "Книга \"Воля к жизни. Путь выживания\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Художественные рассказы с практическими советами по выживанию. В книге рассматриваются различные опасные ситуации и возможные пути спасения. - 978-5-0068-6309-5",
