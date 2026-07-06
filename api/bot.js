@@ -12,12 +12,20 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 const apiKey = process.env.Gemini_API_Key || process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey: apiKey }); 
 
+// Хелпер для безопасного экранирования HTML-символов под требования Telegram
+function escapeHTML(str) {
+    if (!str) return "";
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
 // ПАРСЕР RIDERO с жестким декодированием буфера
 async function parseRidero(url) {
     const res = await fetch(url);
     if (!res.ok) throw new Error("Не удалось загрузить страницу Ridero");
     
-    // Получаем буфер и принудительно переводим в чистый utf-8 string
     const buffer = await res.buffer();
     const html = buffer.toString('utf-8');
 
@@ -66,13 +74,12 @@ async function parseGumroad(url) {
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
     
-    // Шаг 1: Принудительно чистим строку от скрытых спецсимволов и нормализуем UTF-8
+    // Очистка от скрытых спецсимволов
     let cleanText = String(text)
         .normalize('NFC')
-        .replace(/\u00A0/g, ' ') // Заменяем неразрывные пробелы на обычные
-        .replace(/[\uFFFD\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, ''); // Удаляем битые символы кодировки
+        .replace(/\u00A0/g, ' ') 
+        .replace(/[\uFFFD\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '');
 
-    // Шаг 2: Пересобираем строку через Buffer, гарантируя чистый UTF-8 без утечек байт
     cleanText = Buffer.from(cleanText, 'utf-8').toString('utf-8');
 
     const body = { 
@@ -87,7 +94,7 @@ async function sendTelegram(chatId, text, replyMarkup = null) {
 
     const response = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json; charset=utf-8" }, // Явно указываем кодировку для API
+        headers: { "Content-Type": "application/json; charset=utf-8" },
         body: JSON.stringify(body)
     });
 
@@ -224,7 +231,7 @@ module.exports = async (req, res) => {
         console.error("Ошибка в работе бота:", error);
         if (req.body && (req.body.message || req.body.callback_query)) {
             const chatId = req.body.message ? req.body.message.chat.id : req.body.callback_query.message.chat.id;
-            const safeError = error.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            const safeError = escapeHTML(error.message);
             await sendTelegram(chatId, `🚨 Произошел сбой: ${safeError}`);
         }
     }
@@ -299,9 +306,9 @@ async function finalizeProductCreation(chatId, config) {
         sha: sha
     });
 
-    await sendTelegram(chatId, `✅ Успех! Проект "${newProduct.title}" на витрине сайта.\n\n🔄 Перехожу к фазе ИИ: генерация промо-поста для канала...`);
+    await sendTelegram(chatId, `✅ Успех! Проект "${escapeHTML(newProduct.title)}" на витрине сайта.\n\n🔄 Перехожу к фазе ИИ: генерация промо-поста для канала...`);
 
-   // 2. БЛОК ИИ: ОЧИСТКА АННОТАЦИИ И ИНФОРМИРОВАНИЕ (ИСПРАВЛЕННЫЙ СИНТАКСИС SDK)
+    // 2. БЛОК ИИ: ОЧИСТКА АННОТАЦИИ И ИНФОРМИРОВАНИЕ
     try {
         const systemInstruction = 
             "Ты — строгий информационный робот-автомат. Твоя единственная задача — переписать аннотацию книги в виде сухого новостного сообщения.\n" +
@@ -320,25 +327,22 @@ async function finalizeProductCreation(chatId, config) {
 
         const prompt = `Сформируй сухой информационный текст. Книга: "${newProduct.title}". Аннотация: ${cleanDesc}. Ссылка: ${targetLinkForPromo}`;
 
-        // Исправленный вызов для @google/genai SDK: все настройки внутри объекта config
         const aiResponse = await ai.models.generateContent({
             model: "gemini-2.5-flash",
             contents: prompt,
             config: {
                 systemInstruction: systemInstruction,
-                temperature: 0.0 // Полная стабильность, ноль творчества
+                temperature: 0.0 
             }
         });
 
-        let generatedPost = aiResponse.text.trim();
+        let generatedPost = aiResponse.text ? aiResponse.text.trim() : "";
 
-        // ЖЕСТКИЙ АНТИКРИЗИСНЫЙ ФИЛЬТР (если ИИ проигнорировал инструкции)
-        // Если робот выдал вводный мусор, мы его отсекаем
-        if (generatedPost.includes("Отличный выбор") || generatedPost.includes("вариант информационного поста")) {
-            // В случае сбоя берем управление в свои руки: собираем пост по чистому шаблону
+        // ЖЕСТКИЙ РЕЗЕРВНЫЙ ФИЛЬТР
+        if (!generatedPost || generatedPost.includes("Отличный выбор") || generatedPost.includes("вариант информационного поста")) {
+            // Если ИИ выдал мусор, собираем строго по ТТХ вручную
             generatedPost = `Вышла новая книга: "${newProduct.title}"\n\nСуть проекта и аннотация материала: ${cleanDesc}\n\nОфициальная страница проекта: ${targetLinkForPromo}`;
         } else {
-            // Если ИИ выдал текст, но оставил мусорную разметку — сбриваем её под ноль
             generatedPost = generatedPost
                 .replace(/[*#`—\-]/g, "")
                 .replace(/[🚀💡📖✨📚👉📢⚠️🚨✅]/g, "")
@@ -350,17 +354,22 @@ async function finalizeProductCreation(chatId, config) {
             generatedPost += `\n\nОфициальная страница проекта: ${targetLinkForPromo}`;
         }
 
+        // ТОТАЛЬНОЕ ЭКРАНИРОВАНИЕ ВСЕГО ТЕКСТА ПОД HTML ТЕЛЕГРАМА
+        // Это предотвратит падение из-за неразрешенных символов < > &
+        const finalHtmlPost = escapeHTML(generatedPost)
+            .replace(/&lt;a href=\"(.*?)\"&gt;(.*?)&lt;\/a&gt;/g, '<a href="$1">$2</a>'); // Сохраняем ссылки рабочими, если они есть
+
         // 3. ЗАЛП В ТГ-КАНАЛ
         if (process.env.TELEGRAM_CHANNEL_ID) {
-            await sendTelegram(process.env.TELEGRAM_CHANNEL_ID, generatedPost);
+            await sendTelegram(process.env.TELEGRAM_CHANNEL_ID, finalHtmlPost);
             await sendTelegram(chatId, `📢 Системное уведомление: Информационный пост отправлен в канал ${process.env.TELEGRAM_CHANNEL_ID}`);
         } else {
-            await sendTelegram(chatId, `💡 Канал не настроен, вот пост для ручного размещения:\n\n${generatedPost}`);
+            await sendTelegram(chatId, `💡 Канал не настроен, вот пост для ручного размещения:\n\n${finalHtmlPost}`);
         }
 
     } catch (aiError) {
         console.error("Ошибка ИИ или отправки в канал:", aiError);
-        const safeAiError = aiError.message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        const safeAiError = escapeHTML(aiError.message);
         await sendTelegram(chatId, `⚠️ Продукт на сайте, но произошел сбой ИИ-модуля при публикации в канал: ${safeAiError}`);
     }
 }
