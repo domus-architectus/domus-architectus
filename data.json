@@ -2,6 +2,15 @@
   "products": [
     {
       "category": "fiction",
+      "title": "Остановись. Отдохни. Живи!",
+      "description": "Книга \"Остановись. Отдохни. Живи!\". \"Как оставить работу на работе\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Ваша ценность не определяется вашей продуктивностью. Вы имеете право на отдых, спокойствие и полноценную личную жизнь. Управление стрессом — это не сл - 978-5-0068-7090-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/693287d0a1d5a67d6d9f757a/rev.2026-04-13T15:46:15.367Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/ostanovis_otdokhni_zhivi_kak_ostavit_rabotu_na_rabote/"
+      }
+    },
+    {
+      "category": "fiction",
       "title": "Внутренний двигатель",
       "description": "Книга \"Внутренний двигатель\". \"20 шагов к твёрдой самооценке\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы умеете быть добрым другом, но почему-то не умеете быть добрым к себе?\nВы регулярно добиваетесь успеха, но внутренний голос моментально обесценивает - 978-5-0068-7010-9",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/69316dbfa1d5a671b39f3d18/rev.2026-04-13T15:48:25.764Z/cover-front.png&amp;format=original",
