@@ -2,6 +2,15 @@
   "products": [
     {
       "category": "applied",
+      "title": "Безопасный мир Макара",
+      "description": "Книга \"Безопасный мир Макара\". \"Книга-тренажер по безопасности детей\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Мир вокруг нас полон красок, но не все они одинаково безопасны. Вместе с первоклассником Макаром ваш ребенок научится различать «цвета» жизненных ситу - 978-5-0069-1661-6",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b6b0cb1e852e995be49f5/rev.2026-05-08T11:59:55.765Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/bezopasnyi_mir_makara_kniga-trenazher_po_bezopasnosti_detei/"
+      }
+    },
+    {
+      "category": "applied",
       "title": "Взлетная полоса: Искусство осознанного старта",
       "description": "Книга \"Взлетная полоса: Искусство осознанного старта\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — пошаговое руководство по предполетной подготовке вашей жизни. Вы научитесь использовать магию малых циклов: от первых 60 минут вашего утра - 978-5-0069-1657-9",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b6804b1e852e995be4504/rev.2026-01-29T14:00:44.933Z/cover-front.jpg&amp;format=original",
