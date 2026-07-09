@@ -2,6 +2,15 @@
   "products": [
     {
       "category": "applied",
+      "title": "Интерфейс силы",
+      "description": "Книга \"Интерфейс силы\". \"Как управлять реальностью на автопилоте\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы когда-нибудь задумывались, какая сила заставляет ваше сердце биться, клетки — обновляться, а интуицию — находить выход там, где логика заходит в ту - 978-5-0069-6631-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69c61f604dfeb5a1e240847e/rev.2026-03-27T06:10:47.187Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/interfeis_sily/"
+      }
+    },
+    {
+      "category": "applied",
       "title": "Зеркало души: энергия взгляда",
       "description": "Книга \"Зеркало души: энергия взгляда\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Твой взгляд — это не просто способ получения информации. Это твоё главное невербальное оружие, твой инструмент влияния и твой детектор правды. Большин - 978-5-0069-6413-6",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69c3a8b24dfeb5a1e2fbfed6/rev.2026-03-25T09:19:53.982Z/cover-front.png&amp;format=original",
