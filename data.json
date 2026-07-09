@@ -2,6 +2,15 @@
   "products": [
     {
       "category": "applied",
+      "title": "Пинок Судьбы",
+      "description": "Книга \"Пинок Судьбы\". \"Практическое руководство\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — инструмент для демонтажа твоей слабости. Ты оказался в «точке ноль». Твои руки опущены, твои планы превратились в пыль, а внутри — только  - 978-5-0069-9862-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69f886fb19bdfe6600a1c2cf/rev.2026-05-04T11:46:11.566Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/pinok_sudby/"
+      }
+    },
+    {
+      "category": "applied",
       "title": "Пастырь-Архитектор",
       "description": "Книга \"Пастырь-Архитектор\". \"Практическое руководство\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — жесткое тактическое руководство по трансформации сознания священника на основе системы «Крест Архитектора». Здесь нет места сантиментам. Т - 978-5-0069-9855-1",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69f8821a19bdfe6600a189ec/rev.2026-05-04T11:25:22.211Z/cover-front.png&amp;format=original",
