@@ -2,6 +2,15 @@
   "products": [
     {
       "category": "fiction",
+      "title": "Резонанс Земли",
+      "description": "Книга \"Резонанс Земли\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Когда Виктор, Архитектор, коснулся Сердца Утренней Звезды в недрах Венеры, он совершил квантовый скачок. Один импульс, рожденный в ядре другой планеты - 978-5-0069-8027-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69dd0edbf26910eab013411c/rev.2026-04-13T15:42:26.866Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/rezonans_zemli/"
+      }
+    },
+    {
+      "category": "fiction",
       "title": "Сердце утренней звезды",
       "description": "Книга \"Сердце утренней звезды\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - 2056 год. Земля превратилась в пороховой погреб. Традиционные государства рухнули, сменившись тремя враждующими блоками, каждый из которых держит пале - 978-5-0069-7486-9",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69d50f61f26910eab02c38ac/rev.2026-04-07T14:06:33.644Z/cover-front.png&amp;format=original",
