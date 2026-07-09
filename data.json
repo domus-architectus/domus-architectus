@@ -2,6 +2,15 @@
   "products": [
     {
       "category": "fiction",
+      "title": "Конструктор Судьбы",
+      "description": "Книга \"Конструктор Судьбы\". \"Уровень «Скуф»\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Что делать, если ты — обычный мужик с одышкой, а мир вокруг внезапно превратился в хардкорную RPG? Причем игра идет на твою жизнь, а сохраниться нельз - 978-5-0070-0432-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69fdcebd19bdfe66002c514e/rev.2026-05-08T11:53:42.766Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/konstruktor_sudby/"
+      }
+    },
+    {
+      "category": "fiction",
       "title": "Son of the Steppes: The Bonn Conspiracy",
       "description": "Книга \"Son of the Steppes: The Bonn Conspiracy\" - Architect The Resilience - печатная, электронная: epub, fb2, pdfRead, mobi - Berlin, 1984. The world is frozen in a fragile balance while the fates of entire nations are traded in high-ranking offices. A Cossack kharakternik (w - 978-5-0070-0423-7",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69fdcb4619bdfe66002c4421/rev.2026-05-08T11:38:55.951Z/cover-front.png&amp;format=original",
