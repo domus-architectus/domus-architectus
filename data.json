@@ -2,6 +2,15 @@
   "products": [
     {
       "category": "fiction",
+      "title": "Проекты Разлома",
+      "description": "Книга \"Проекты Разлома\". \"Хроники Архитектора\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Его называют Архитектором. Его магия — это чистый расчет, мастерство саморегуляции и властный голос, прошивающий сознание насквозь. Он странствует по  - 978-5-0070-0348-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69fd858519bdfe660025032a/rev.2026-05-08T06:41:17.875Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/proekty_razloma/"
+      }
+    },
+    {
+      "category": "fiction",
       "title": "Сын степей",
       "description": "Книга \"Сын степей\". \"Заговор в Бонне\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Берлин, 1984 год. Мир замер в хрупком равновесии, пока в высоких кабинетах идет торговля судьбами целых народов. Казак-характерник, работающий в Штази - 978-5-0069-8632-9",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69e6245ef26910eab0c70577/rev.2026-04-20T13:04:39.916Z/cover-front.png&amp;format=original",
