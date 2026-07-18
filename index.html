@@ -22,9 +22,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
-<body class="bg-stone-950 text-stone-100 font-sans antialiased selection:bg-amber-500 selection:text-stone-950">
+<body class="bg-stone-950 text-stone-100 font-sans antialiased selection:bg-amber-500 selection:text-stone-950 min-h-screen flex flex-col relative">
 
-    <header class="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center border-b border-stone-900 gap-4">
+    <header class="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center border-b border-stone-900 gap-4 w-full">
         <div class="logo text-2xl font-bold tracking-widest text-stone-100">DOMUS ARCHITECTUS</div>
         <nav class="flex items-center gap-6 text-sm font-medium">
             <a href="#code-section" id="nav-code" class="text-stone-400 hover:text-amber-500 transition">Кодекс</a>
@@ -38,7 +38,7 @@
         </nav>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-16 text-center">
+    <main class="max-w-4xl mx-auto px-4 py-16 text-center flex-1 w-full">
         <div class="flex justify-center mb-8">
             <img src="images/Gerb.png" alt="Герб Domus Architectus" class="h-40 w-auto object-contain filter drop-shadow-[0_0_15px_rgba(245,158,11,0.2)]" fetchpriority="high">
         </div>
@@ -57,12 +57,11 @@
         Добро пожаловать на официальный сайт проекта <strong>Domus Architectus</strong>. Я — <strong>Архитектор Антикризис</strong>, профессиональный психолог и автор систем саморегуляции. Здесь сконцентрированы мои книги, методики и инструменты для преодоления кризисов и выстраивания жесткой дисциплины.
     </section>
 
-    <section id="code-section" class="max-w-6xl mx-auto px-4 py-12 border-t border-stone-900">
-        <div id="code-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            </div>
+    <section id="code-section" class="max-w-6xl mx-auto px-4 py-12 border-t border-stone-900 w-full">
+        <div id="code-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
-    <section id="showcase-section" class="max-w-6xl mx-auto px-4 py-16 border-t border-stone-900">
+    <section id="showcase-section" class="max-w-6xl mx-auto px-4 py-16 border-t border-stone-900 w-full">
         <h2 id="showcase-title" class="text-2xl font-bold tracking-widest text-center uppercase mb-8 text-stone-200">Витрина Экосистемы</h2>
         
         <div class="flex flex-wrap justify-center gap-2 mb-10 pb-4 border-b border-stone-900">
@@ -76,7 +75,7 @@
         <div id="catalog" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </section>
 
-    <section id="news-section" class="max-w-4xl mx-auto px-4 py-12 border-t border-stone-900">
+    <section id="news-section" class="max-w-4xl mx-auto px-4 py-12 border-t border-stone-900 w-full">
         <h2 id="news-title" class="text-xl font-bold tracking-widest text-center uppercase mb-6 text-stone-300">Новости Проекта</h2>
         <div class="bg-stone-900/20 p-4 rounded-xl border border-stone-900">
             <div class="flex justify-center">
@@ -90,7 +89,7 @@
         </div>
     </section>
 
-    <section class="max-w-4xl mx-auto px-4 py-12 border-t border-stone-900 text-center">
+    <section class="max-w-4xl mx-auto px-4 py-12 border-t border-stone-900 text-center w-full">
         <h2 id="support-title" class="text-xl font-bold tracking-widest uppercase mb-4 text-stone-300">Поддержать Проект</h2>
         <p id="support-desc" class="text-xs text-stone-400 max-w-xl mx-auto mb-6 leading-relaxed">
             Если материалы проекта помогают тебе держать «Вертикаль» и наводить порядок в жизни, ты можешь поддержать автора.
@@ -102,18 +101,50 @@
         </div>
     </section>
 
-    <footer class="bg-stone-900/30 border-t border-stone-900 py-12 text-center text-xs text-stone-500 mt-auto">
+    <footer class="bg-stone-900/30 border-t border-stone-900 py-12 text-center text-xs text-stone-500 mt-auto w-full">
         <div class="max-w-4xl mx-auto px-4">
             <p id="footer-copy">&copy; 2026 Domus Architectus. Все права защищены.</p>
         </div>
     </footer>
+
+    <!-- ================= ИИ АССИСТЕНТ ВИДЖЕТ ================= -->
+    <div id="ai-widget-container" class="fixed bottom-6 right-6 z-50 font-sans selection:bg-stone-100 selection:text-stone-900">
+        <!-- Кнопка триггера -->
+        <button id="ai-chat-trigger" class="w-14 h-14 bg-stone-900 border border-stone-800 rounded-full flex items-center justify-center cursor-pointer shadow-2xl hover:border-amber-500/50 transition-all duration-300 group">
+            <i class="fa-solid fa-robot text-xl text-stone-400 group-hover:text-amber-500 transition-colors"></i>
+        </button>
+
+        <!-- Окно чата -->
+        <div id="ai-chat-window" class="hidden absolute bottom-18 right-0 w-80 sm:w-96 h-[480px] bg-stone-950 border border-stone-900 rounded-xl shadow-2xl flex-col overflow-hidden animate-fade-in">
+            <!-- Шапка -->
+            <div class="bg-stone-900/50 px-4 py-3 border-b border-stone-900 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+                    <span id="ai-chat-header" class="text-xs uppercase tracking-wider font-bold text-stone-300">ИИ-Навигатор</span>
+                </div>
+                <button id="ai-chat-close" class="text-stone-500 hover:text-stone-300 cursor-pointer text-lg">&times;</button>
+            </div>
+            
+            <!-- Сообщения -->
+            <div id="ai-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-stone-950/40 text-xs text-stone-300 scrollbar-thin scrollbar-thumb-stone-800">
+                <div class="bg-stone-900/40 border border-stone-900/60 p-3 rounded-lg max-w-[85%] text-left leading-relaxed">
+                    Приветствую. Я — тактический ИИ-ассистент Архитектора. Помогу найти нужную книгу, аудиоматериал или мерч. Что вы ищете?
+                </div>
+            </div>
+            
+            <!-- Инпут ввода -->
+            <div class="p-3 border-t border-stone-900 bg-stone-900/20 flex gap-2">
+                <input type="text" id="ai-chat-input" placeholder="Какую книгу вы ищете?" class="flex-1 bg-stone-950 border border-stone-900 rounded px-3 py-2 text-xs text-stone-200 outline-none focus:border-stone-800 transition">
+                <button id="ai-chat-send" class="bg-stone-900 hover:bg-stone-800 text-amber-500 px-3 py-2 text-xs font-bold border border-stone-800 rounded cursor-pointer transition">Найти</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         let globalProducts = [];
         let currentLang = 'ru';
         let currentCategory = 'all';
 
-        // Переводы интерфейса
         const translations = {
             ru: {
                 title: "Domus Architectus | Архитектор Антикризис — Официальный Сайт",
@@ -140,6 +171,12 @@
                 buyGumroad: "Купить на Gumroad",
                 downloadTg: "Скачать в TG",
                 emptyCat: "В данной категории пока нет активных проектов.",
+                aiWelcome: "Приветствую. Я — тактический ИИ-ассистент Архитектора. Помогу найти нужную книгу, аудиоматериал или мерч. Что вы ищете?",
+                aiPlaceholder: "Какую книгу вы ищете?",
+                aiBtn: "Найти",
+                aiHeader: "ИИ-Навигатор",
+                aiLoading: "Сверяюсь с чертежами базы данных...",
+                aiError: "Ошибка связи с сервером ИИ.",
                 code: [
                     { t: "1. Состояние первичнее действия", d: "Никогда не начинай движение, если ты не в «Вертикали». Сначала Резонанс — потом шаг. Сначала Сила — потом слово." },
                     { t: "2. Внешнее — это эхо внутреннего", d: "Если вокруг тебя бардак, агрессия или нытье — это значит, твоя внутренняя настройка сбита. Не вини зеркало, исправь проектор." },
@@ -180,6 +217,12 @@
                 buyGumroad: "Buy on Gumroad",
                 downloadTg: "Download in TG",
                 emptyCat: "There are no active projects in this category yet.",
+                aiWelcome: "Greetings. I am the Architect's tactical AI navigator. I will help you find a specific book, audio project, or merchandise. What are you looking for?",
+                aiPlaceholder: "What book are you looking for?",
+                aiBtn: "Find",
+                aiHeader: "AI Navigator",
+                aiLoading: "Checking the database blueprints...",
+                aiError: "Failed to connect to the AI engine.",
                 code: [
                     { t: "1. State Precedes Action", d: "Never start moving unless you are in the 'Vertical'. First Resonance, then the step. First Power, then the word." },
                     { t: "2. The External is an Echo of the Internal", d: "If there is chaos, aggression, or whining around you, your internal tuning is broken. Don't blame the mirror, fix the projector." },
@@ -197,15 +240,12 @@
             }
         };
 
-        // Смена языка
         function setLanguage(lang) {
             currentLang = lang;
             
-            // Кнопки переключения
             document.getElementById('lang-ru').className = `px-2.5 py-1 font-bold transition cursor-pointer ${lang === 'ru' ? 'bg-amber-600 text-stone-950' : 'text-stone-400 hover:text-stone-200'}`;
             document.getElementById('lang-en').className = `px-2.5 py-1 font-bold transition cursor-pointer ${lang === 'en' ? 'bg-amber-600 text-stone-950' : 'text-stone-400 hover:text-stone-200'}`;
 
-            // Перевод текстов интерфейса
             document.getElementById('site-title').innerText = translations[lang].title;
             document.getElementById('nav-code').innerText = translations[lang].navCode;
             document.getElementById('nav-showcase').innerText = translations[lang].navShowcase;
@@ -229,12 +269,15 @@
             document.getElementById('support-card').innerText = translations[lang].supportCard;
             document.getElementById('footer-copy').innerText = translations[lang].footer;
 
-            // Перерисовываем Кодекс и Витрину под новый язык
+            // Локализация ИИ виджета
+            document.getElementById('ai-chat-header').innerText = translations[lang].aiHeader;
+            document.getElementById('ai-chat-input').placeholder = translations[lang].aiPlaceholder;
+            document.getElementById('ai-chat-send').innerText = translations[lang].aiBtn;
+
             renderCode();
             renderCatalog(globalProducts);
         }
 
-        // Отрисовка пунктов Кодекса
         function renderCode() {
             const grid = document.getElementById('code-grid');
             grid.innerHTML = '';
@@ -246,7 +289,6 @@
             });
         }
 
-        // Загрузка данных из JSON
         async function loadHubData() {
             try {
                 const response = await fetch('data.json?v=' + new Date().getTime());
@@ -255,7 +297,7 @@
                 if (data && data.products) {
                     globalProducts = data.products;
                 }
-                setLanguage('ru'); // По умолчанию стартуем с русского интерфейса
+                setLanguage('ru');
             } catch (error) {
                 console.error("Ошибка инициализации:", error);
                 const catalog = document.getElementById('catalog');
@@ -265,13 +307,11 @@
             }
         }
 
-        // Отрисовка каталога (карточки показываются ВСЕ независимо от выбранного языка)
         function renderCatalog(products) {
             const catalog = document.getElementById('catalog');
             if (!catalog) return;
             catalog.innerHTML = '';
 
-            // Фильтрация по категориям
             const filtered = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
 
             if (!filtered || filtered.length === 0) {
@@ -282,19 +322,16 @@
             filtered.forEach(p => {
                 let buttonsHTML = '';
                 
-                // 1. Ridero
                 const rideroUrl = p.links && p.links.ridero ? p.links.ridero : null;
                 if (rideroUrl) {
                     buttonsHTML += `<a href="${rideroUrl}" target="_blank" rel="noopener" class="block text-center bg-stone-900 hover:bg-stone-800 text-stone-300 text-xs uppercase tracking-wider font-bold py-2.5 border border-stone-800 rounded transition cursor-pointer">${translations[currentLang].readRidero}</a>`;
                 }
                 
-                // 2. Gumroad (Мерч, Арт или Английские книги)
                 const gumroadUrl = (p.links && p.links.gumroad) ? p.links.gumroad : (p.gumroad ? p.gumroad : null);
                 if (gumroadUrl) {
                     buttonsHTML += `<a href="${gumroadUrl}" target="_blank" rel="noopener" class="block text-center bg-amber-600 hover:bg-amber-700 text-stone-950 text-xs uppercase tracking-wider font-bold py-2.5 rounded transition cursor-pointer">${translations[currentLang].buyGumroad}</a>`;
                 }
                 
-                // 3. Telegram
                 if (p.tg_link) {
                     buttonsHTML += `<a href="${p.tg_link}" target="_blank" rel="noopener" class="block text-center bg-stone-900 hover:bg-stone-800 text-amber-500 text-xs uppercase tracking-wider font-bold py-2.5 border border-stone-800 rounded transition cursor-pointer">${translations[currentLang].downloadTg}</a>`;
                 }
@@ -321,7 +358,6 @@
             });
         }
 
-        // Фильтрация категорий (табы)
         function filterCategory(cat) {
             currentCategory = cat;
             const buttons = document.querySelectorAll('[id^="btn-"]');
@@ -337,7 +373,82 @@
             renderCatalog(globalProducts);
         }
 
-        window.addEventListener('DOMContentLoaded', loadHubData);
+        // ================= ЛОГИКА ИИ АССИСТЕНТА =================
+        window.addEventListener('DOMContentLoaded', () => {
+            loadHubData();
+
+            const trigger = document.getElementById("ai-chat-trigger");
+            const windowChat = document.getElementById("ai-chat-window");
+            const closeBtn = document.getElementById("ai-chat-close");
+            const inputEl = document.getElementById("ai-chat-input");
+            const sendBtn = document.getElementById("ai-chat-send");
+            const messagesContainer = document.getElementById("ai-chat-messages");
+
+            trigger.addEventListener("click", () => {
+                windowChat.classList.toggle("hidden");
+                windowChat.classList.toggle("flex");
+                inputEl.focus();
+            });
+
+            closeBtn.addEventListener("click", () => {
+                windowChat.classList.add("hidden");
+                windowChat.classList.remove("flex");
+            });
+
+            function addMessage(text, isUser = false) {
+                const msg = document.createElement("div");
+                msg.className = isUser 
+                    ? "bg-stone-900 border border-stone-800/80 p-3 rounded-lg max-w-[85%] ml-auto text-right text-stone-200 leading-relaxed" 
+                    : "bg-stone-900/40 border border-stone-900/60 p-3 rounded-lg max-w-[85%] text-left leading-relaxed";
+                
+                msg.innerHTML = text;
+                messagesContainer.appendChild(msg);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            async function handleSend() {
+                const query = inputEl.value.trim();
+                if (!query) return;
+
+                addMessage(query, true);
+                inputEl.value = "";
+
+                const loadingId = document.createElement("div");
+                loadingId.className = "text-[10px] text-stone-600 italic animate-pulse text-left";
+                loadingId.innerText = translations[currentLang].aiLoading;
+                messagesContainer.appendChild(loadingId);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                try {
+                    // Передаем весь контекст продуктов на Vercel Serverless эндпоинт
+                    const apiResponse = await fetch("/api/chat", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            query: query,
+                            lang: currentLang,
+                            context: globalProducts
+                        })
+                    });
+
+                    loadingId.remove();
+
+                    if (!apiResponse.ok) throw new Error();
+
+                    const resultData = await apiResponse.json();
+                    addMessage(resultData.text, false);
+
+                } catch (err) {
+                    loadingId.remove();
+                    addMessage(`❌ ${translations[currentLang].aiError}`, false);
+                }
+            }
+
+            sendBtn.addEventListener("click", handleSend);
+            inputEl.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") handleSend();
+            });
+        });
     </script>
 </body>
 </html>
