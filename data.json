@@ -1,6 +1,16 @@
 {
   "products": [
     {
+      "category": "book",
+      "title": "The Architecture of Will: Self-Discipline as Radical Freedom",
+      "description": "Most people view «discipline» as a cage. They see early mornings, strict diets, and structured schedules as a form of self-punishment. But look at their lives: are they truly free? They are slaves to their fluctuating glucose levels, dopamine loops, and the expectations of others. This is the ultimate form of modern serfdom — being a servant to your own internal chaos.",
+      "cover": "https://public-files.gumroad.com/mhqd5r7fl4m46yvanjxkz3nkfim4",
+      "links": {
+        "ridero": "",
+        "gumroad": "https://archantic.gumroad.com/l/ybwszh"
+      }
+    },
+    {
       "category": "applied",
       "title": "Пастырь-архитектор",
       "description": "Книга \"Пастырь-архитектор\". \"НЛП для священников\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Каждый день священник оказывается на передовой человеческих трагедий, духовных кризисов и ментального хаоса. К нему приходят, когда привычные опоры ра - 978-5-0070-7685-2",
