@@ -79,7 +79,7 @@ async function parseGumroad(url) {
     return { title, description, cover };
 }
 
-// Отправка сообщений в Telegram с жесткой нормализацией UTF-8
+// Отправка сообщений в Telegram с жесткой нормализации UTF-8
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
     
@@ -142,23 +142,7 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // Сценарий 1: Пользователь прислал Gumroad-ссылку в ответ на запрос к книге Ridero
-            if (gumroadSessions[chatId] && gumroadSessions[chatId].bookSlug && gumroadSessions[chatId].category && gumroadSessions[chatId].awaitingGumroad) {
-                const session = gumroadSessions[chatId];
-                let gumroadUrl = null;
-
-                if (text.includes("gumroad.com")) {
-                    gumroadUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0]?.split("?")[0] || text;
-                }
-
-                await sendTelegram(chatId, "🔄 Запускаю штурм Ridero и сборку карточки книги...");
-                await finalizeProductCreation(chatId, { type: 'ridero', slug: session.bookSlug, category: session.category, extraGumroad: gumroadUrl });
-                
-                delete gumroadSessions[chatId];
-                return res.status(200).send("ОК");
-            }
-
-            // Сценарий 1.5: Дозаливка (связывание) Gumroad-ссылки с конкретной Ridero книгой
+            // Сценарий 1: Дозаливка (связывание) Gumroad-ссылки с конкретной Ridero книгой
             if (gumroadSessions[chatId] && gumroadSessions[chatId].gumroadUrl && gumroadSessions[chatId].awaitingRideroBinding) {
                 if (text.includes("ridero.ru")) {
                     const cleanRideroUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0]?.split("?")[0] || text;
@@ -224,7 +208,7 @@ module.exports = async (req, res) => {
                     ]
                 };
                 
-                await sendTelegram(chatId, "Ссылка Ridero принята. Выберите категорию:", keyboard);
+                await sendTelegram(chatId, "Ссылка Ridero принята. Выберите категорию для публикации на сайте:", keyboard);
                 return res.status(200).send("ОК");
             }
 
@@ -236,34 +220,17 @@ module.exports = async (req, res) => {
             const chatId = callbackQuery.message.chat.id;
             const data = callbackQuery.data;
 
+            // Обработка выбора категории для Ridero (сразу отправляем на сборку без лишних вопросов)
             if (data === "rid_applied" || data === "rid_fiction") {
                 if (!gumroadSessions[chatId] || !gumroadSessions[chatId].bookSlug) {
                     throw new Error("Сессия Ridero не найдена. Отправьте ссылку заново.");
                 }
 
                 const category = data.replace("rid_", "");
-                gumroadSessions[chatId].category = category;
-                gumroadSessions[chatId].awaitingGumroad = true; 
-
-                const keyboard = {
-                    inline_keyboard: [
-                        [{ text: "⏩ Пропустить Gumroad", callback_data: "skip_gumroad" }]
-                    ]
-                };
-
-                await sendTelegram(chatId, "Категория выбрана. Теперь отправьте ссылку на этот товар в Gumroad (или нажмите Пропустить):", keyboard);
-                return res.status(200).send("ОК");
-            }
-            
-            if (data === "skip_gumroad") {
-                if (!gumroadSessions[chatId] || !gumroadSessions[chatId].bookSlug || !gumroadSessions[chatId].category) {
-                    throw new Error("Недостаточно данных в сессии для сборки.");
-                }
-
-                const { bookSlug, category } = gumroadSessions[chatId];
+                const bookSlug = gumroadSessions[chatId].bookSlug;
                 delete gumroadSessions[chatId]; 
 
-                await sendTelegram(chatId, "🔄 Пропускаем Gumroad. Запускаю сборку книги...");
+                await sendTelegram(chatId, "🔄 Категория определена. Запускаю сборку и публикацию книги на витрине...");
                 await finalizeProductCreation(chatId, { type: 'ridero', slug: bookSlug, category: category, extraGumroad: null });
                 return res.status(200).send("ОК");
             }
@@ -373,7 +340,7 @@ async function finalizeProductCreation(chatId, config) {
             p.links && p.links.ridero && p.links.ridero.toLowerCase().includes(targetRideroSegment)
         );
     } else {
-        // Стандартный поиск дубликата по нормализованному названию (для Ridero, Музыки и Мерча)
+        // Стандартный поиск дубликата по нормализованному названию
         const targetNormTitle = normalizeTitle(incomingProduct.title);
         existingProductIndex = currentContent.products.findIndex(p => normalizeTitle(p.title) === targetNormTitle);
     }
@@ -389,12 +356,11 @@ async function finalizeProductCreation(chatId, config) {
             existingProduct.links.gumroad = incomingProduct.links.gumroad;
         }
         
-        // Если привязывали из режима дозаливки, сохраняем исходную категорию книги
         incomingProduct = existingProduct; 
         currentContent.products[existingProductIndex] = existingProduct;
         isUpdated = true;
     } else {
-        // Если карточки нет в базе (и это не был режим принудительной связки) — добавляем
+        // Если карточки нет в базе и это был режим принудительной связки — выдаем ошибку
         if (config.type === 'gumroad_bind') {
             throw new Error(`Книга со слагом "${bindingRideroSlug}" не найдена в базе сайта. Сначала добавьте её через ссылку Ridero.`);
         }
@@ -511,7 +477,6 @@ async function finalizeProductDeletion(chatId, targetUrl) {
 
     const normalizedTargetUrl = targetUrl.toLowerCase().replace(/\/$/, "");
 
-    // Поиск по любому совпадению в ссылках
     const targetIndex = currentContent.products.findIndex(p => {
         const rideroLink = p.links && p.links.ridero ? p.links.ridero.toLowerCase().replace(/\/$/, "") : "";
         const gumroadLink = p.links && p.links.gumroad ? p.links.gumroad.toLowerCase().replace(/\/$/, "") : "";
@@ -525,8 +490,6 @@ async function finalizeProductDeletion(chatId, targetUrl) {
     }
 
     const deletedProductTitle = currentContent.products[targetIndex].title;
-
-    // Вырезаем элемент
     currentContent.products.splice(targetIndex, 1);
 
     const updatedString = JSON.stringify(currentContent, null, 2);
