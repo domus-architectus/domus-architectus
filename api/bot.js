@@ -127,6 +127,20 @@ module.exports = async (req, res) => {
             const chatId = update.message.chat.id;
             const text = update.message.text.trim();
 
+            // ХЕНДЛЕР УДАЛЕНИЯ КАРТОЧКИ ПО ССЫЛКЕ
+            if (text.startsWith('/delete') || text.toLowerCase().startsWith('удалить')) {
+                const urlMatch = text.match(/(https?:\/\/[^\s]+)/);
+                if (!urlMatch) {
+                    await sendTelegram(chatId, "🚨 Ошибка: Не обнаружена ссылка для удаления. Укажите команду и ссылку через пробел. Пример:\n`/delete https://ridero.ru/...` или `удалить https://gumroad.com/...`");
+                    return res.status(200).send("ОК");
+                }
+                
+                const cleanUrl = urlMatch[0].split("?")[0].trim();
+                await sendTelegram(chatId, `⏳ Запускаю процедуру ликвидации карточки по ссылке:\n${cleanUrl}...`);
+                await finalizeProductDeletion(chatId, cleanUrl);
+                return res.status(200).send("ОК");
+            }
+
             // Сценарий 1: Пользователь прислал Gumroad-ссылку в ответ на запрос к книге Ridero
             if (gumroadSessions[chatId] && gumroadSessions[chatId].bookSlug && gumroadSessions[chatId].category && gumroadSessions[chatId].awaitingGumroad) {
                 const session = gumroadSessions[chatId];
@@ -183,7 +197,7 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            await sendTelegram(chatId, "Приветствую, Архитектор. Чтобы добавить проект на сайт или привязать ссылки, отправьте прямую ссылку на книгу Ridero или товар Gumroad.");
+            await sendTelegram(chatId, "Приветствую, Архитектор. Чтобы добавить проект на сайт или привязать ссылки, отправьте прямую ссылку на книгу Ridero или товар Gumroad. Для удаления карточки введите: `удалить [ссылка]`.");
         }
 
         if (update.callback_query) {
@@ -275,7 +289,7 @@ async function finalizeProductCreation(chatId, config) {
     else if (config.type === 'gumroad') {
         const data = await parseGumroad(config.url);
         incomingProduct = {
-            category: config.category, // может быть 'music', 'merch' или 'book'
+            category: config.category, 
             title: data.title,
             description: data.description,
             cover: data.cover,
@@ -328,7 +342,7 @@ async function finalizeProductCreation(chatId, config) {
         
         // Обновляем объект в базе
         currentContent.products[existingProductIndex] = existingProduct;
-        incomingProduct = existingProduct; // Используем обновленный объект для генерации анонса
+        incomingProduct = existingProduct; 
         isUpdated = true;
     } else {
         // Карточки нет — пушим на витрину как новый объект
@@ -418,4 +432,62 @@ async function finalizeProductCreation(chatId, config) {
         const safeAiError = escapeHTML(aiError.message);
         await sendTelegram(chatId, `⚠️ Продукт обработан, но произошел сбой ИИ-модуля при публикации: ${safeAiError}`);
     }
+}
+
+// ФУНКЦИЯ УДАЛЕНИЯ КАРТОЧКИ ИЗ БАЗЫ НА GITHUB
+async function finalizeProductDeletion(chatId, targetUrl) {
+    let currentContent = { products: [] };
+    let sha = null;
+
+    try {
+        const ghRes = await octokit.repos.getContent({
+            owner: GH_OWNER,
+            repo: GH_REPO,
+            path: GH_PATH
+        });
+        sha = ghRes.data.sha;
+        const stringContent = Buffer.from(ghRes.data.content, 'base64').toString('utf-8');
+        currentContent = JSON.parse(stringContent);
+    } catch (e) {
+        throw new Error("Не удалось загрузить базу данных data.json с GitHub для удаления.");
+    }
+
+    if (!currentContent.products || currentContent.products.length === 0) {
+        await sendTelegram(chatId, "⚠️ База данных пуста. Удалять нечего.");
+        return;
+    }
+
+    const normalizedTargetUrl = targetUrl.toLowerCase().replace(/\/$/, "");
+
+    // Поиск по любому совпадению в ссылках
+    const targetIndex = currentContent.products.findIndex(p => {
+        const rideroLink = p.links && p.links.ridero ? p.links.ridero.toLowerCase().replace(/\/$/, "") : "";
+        const gumroadLink = p.links && p.links.gumroad ? p.links.gumroad.toLowerCase().replace(/\/$/, "") : "";
+        
+        return rideroLink === normalizedTargetUrl || gumroadLink === normalizedTargetUrl;
+    });
+
+    if (targetIndex === -1) {
+        await sendTelegram(chatId, `❌ Карточка с такой ссылкой не найдена на витрине сайта. Проверьте корректность URL.`);
+        return;
+    }
+
+    const deletedProductTitle = currentContent.products[targetIndex].title;
+
+    // Вырезаем элемент
+    currentContent.products.splice(targetIndex, 1);
+
+    const updatedString = JSON.stringify(currentContent, null, 2);
+    const updatedBase64 = Buffer.from(updatedString).toString('base64');
+
+    await octokit.repos.createOrUpdateFileContents({
+        owner: GH_OWNER,
+        repo: GH_REPO,
+        path: GH_PATH,
+        message: `Автокоммит: удален проект через бота "${deletedProductTitle}"`,
+        content: updatedBase64,
+        sha: sha
+    });
+
+    await sendTelegram(chatId, `🗑️ Операция завершена. Карточка проекта "${escapeHTML(deletedProductTitle)}" полностью удалена с витрины сайта.`);
 }
