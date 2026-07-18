@@ -21,6 +21,15 @@ function escapeHTML(str) {
         .replace(/>/g, "&gt;");
 }
 
+// Нормализация названий для точного сравнения без учета регистра и спецсимволов
+function normalizeTitle(title) {
+    if (!title) return "";
+    return title.toLowerCase()
+        .replace(/[^a-zа-яё0-9]/g, "")
+        .replace(/ё/g, "е")
+        .trim();
+}
+
 // ПАРСЕР RIDERO с жестким декодированием буфера
 async function parseRidero(url) {
     const res = await fetch(url);
@@ -74,7 +83,6 @@ async function parseGumroad(url) {
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
     
-    // Очистка от скрытых спецсимволов
     let cleanText = String(text)
         .normalize('NFC')
         .replace(/\u00A0/g, ' ') 
@@ -119,7 +127,8 @@ module.exports = async (req, res) => {
             const chatId = update.message.chat.id;
             const text = update.message.text.trim();
 
-            if (gumroadSessions[chatId] && gumroadSessions[chatId].bookSlug && gumroadSessions[chatId].category && !gumroadSessions[chatId].awaitingGumroad) {
+            // Сценарий 1: Пользователь прислал Gumroad-ссылку в ответ на запрос к книге Ridero
+            if (gumroadSessions[chatId] && gumroadSessions[chatId].bookSlug && gumroadSessions[chatId].category && gumroadSessions[chatId].awaitingGumroad) {
                 const session = gumroadSessions[chatId];
                 let gumroadUrl = null;
 
@@ -134,6 +143,7 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
+            // Сценарий 2: Первичная прямая ссылка Gumroad (Мерч или Музыка, или дозаливка книги)
             if (text.includes("gumroad.com")) {
                 const cleanUrl = (text.match(/(https?:\/\/[^\s]+)/)?.[0] || text).split("?")[0].trim();
                 gumroadSessions[chatId] = { gumroadUrl: cleanUrl };
@@ -142,15 +152,17 @@ module.exports = async (req, res) => {
                     inline_keyboard: [
                         [
                             { text: "🎵 Музыка / Аудио", callback_data: "gmr_music" },
-                            { text: "🎨 Мерч / Арт", callback_data: "gmr_merch" }
+                            { text: "🎨 Мерч / Арт", callback_data: "gmr_merch" },
+                            { text: "📘 Обновить книгу", callback_data: "gmr_book" }
                         ]
                     ]
                 };
                 
-                await sendTelegram(chatId, "Прямая ссылка Gumroad принята. Выберите категорию для размещения:", keyboard);
+                await sendTelegram(chatId, "Прямая ссылка Gumroad принята. Выберите тип контента для размещения или обновления:", keyboard);
                 return res.status(200).send("ОК");
             }
 
+            // Сценарий 3: Ссылка Ridero (всегда книга)
             if (text.includes("ridero.ru")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
                 const urlParts = cleanUrl.split("?")[0].replace(/\/$/, "").split("/");
@@ -171,7 +183,7 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            await sendTelegram(chatId, "Приветствую, Архитектор. Чтобы добавить проект на сайт, отправьте прямую ссылку на книгу Ridero или товар Gumroad.");
+            await sendTelegram(chatId, "Приветствую, Архитектор. Чтобы добавить проект на сайт или привязать ссылки, отправьте прямую ссылку на книгу Ridero или товар Gumroad.");
         }
 
         if (update.callback_query) {
@@ -221,7 +233,7 @@ module.exports = async (req, res) => {
                 const fullUrl = gumroadSessions[chatId].gumroadUrl;
                 delete gumroadSessions[chatId]; 
 
-                await sendTelegram(chatId, "🔄 Запускаю прямой тактический парсинг Gumroad и сборку карточки...");
+                await sendTelegram(chatId, `🔄 Запускаю тактический парсинг Gumroad для категории: ${category}...`);
                 await finalizeProductCreation(chatId, { type: 'gumroad', url: fullUrl, category: category });
                 return res.status(200).send("ОК");
             }
@@ -239,30 +251,31 @@ module.exports = async (req, res) => {
     res.status(200).send("ОК");
 };
 
-// ЕДИНАЯ ФУНКЦИЯ ЗАПИСИ ДАННЫХ В GITHUB И АНОНСА ЧЕРЕЗ ИИ
+// ЕДИНАЯ ФУНКЦИЯ ЗАПИСИ И НАСТРОЙКИ UPSERT-ЛОГИКИ
 async function finalizeProductCreation(chatId, config) {
-    let newProduct = {};
+    let incomingProduct = {};
     let targetLinkForPromo = ""; 
 
+    // Парсим входящие данные в зависимости от источника
     if (config.type === 'ridero') {
         const bookUrl = `https://ridero.ru/books/${config.slug}/`;
         const data = await parseRidero(bookUrl);
-        newProduct = {
+        incomingProduct = {
             category: config.category,
             title: data.title,
             description: data.description,
             cover: data.cover,
-            links: { ridero: bookUrl }
+            links: { 
+                ridero: bookUrl,
+                gumroad: config.extraGumroad || ""
+            }
         };
-        if (config.extraGumroad) {
-            newProduct.links.gumroad = config.extraGumroad;
-        }
         targetLinkForPromo = bookUrl;
     } 
     else if (config.type === 'gumroad') {
         const data = await parseGumroad(config.url);
-        newProduct = {
-            category: config.category,
+        incomingProduct = {
+            category: config.category, // может быть 'music', 'merch' или 'book'
             title: data.title,
             description: data.description,
             cover: data.cover,
@@ -274,7 +287,7 @@ async function finalizeProductCreation(chatId, config) {
         targetLinkForPromo = config.url;
     }
 
-    // 1. Пушим изменения на GitHub
+    // 1. Выгрузка текущей базы данных с GitHub
     let currentContent = { products: [] };
     let sha = null;
 
@@ -292,40 +305,77 @@ async function finalizeProductCreation(chatId, config) {
     }
 
     if (!currentContent.products) currentContent.products = [];
-    currentContent.products.unshift(newProduct);
 
+    // Жесткий поиск дубликата по нормализованному названию
+    const targetNormTitle = normalizeTitle(incomingProduct.title);
+    const existingProductIndex = currentContent.products.findIndex(p => normalizeTitle(p.title) === targetNormTitle);
+
+    let isUpdated = false;
+
+    if (existingProductIndex !== -1) {
+        // Карточка найдена! Выполняем точечный PATCH ссылки
+        let existingProduct = currentContent.products[existingProductIndex];
+        
+        if (!existingProduct.links) existingProduct.links = { ridero: "", gumroad: "" };
+        
+        // Заполняем только пустые или новые ссылки, не затирая остальное
+        if (incomingProduct.links.gumroad) {
+            existingProduct.links.gumroad = incomingProduct.links.gumroad;
+        }
+        if (incomingProduct.links.ridero && !existingProduct.links.ridero) {
+            existingProduct.links.ridero = incomingProduct.links.ridero;
+        }
+        
+        // Обновляем объект в базе
+        currentContent.products[existingProductIndex] = existingProduct;
+        incomingProduct = existingProduct; // Используем обновленный объект для генерации анонса
+        isUpdated = true;
+    } else {
+        // Карточки нет — пушим на витрину как новый объект
+        currentContent.products.unshift(incomingProduct);
+    }
+
+    // Сохранение обновленной базы на GitHub
     const updatedString = JSON.stringify(currentContent, null, 2);
     const updatedBase64 = Buffer.from(updatedString).toString('base64');
+
+    const commitMessage = isUpdated 
+        ? `Автокоммит: обновлены ссылки для "${incomingProduct.title}"`
+        : `Автокоммит: добавлен проект "${incomingProduct.title}"`;
 
     await octokit.repos.createOrUpdateFileContents({
         owner: GH_OWNER,
         repo: GH_REPO,
         path: GH_PATH,
-        message: `Автокоммит: добавлен проект через бота "${newProduct.title}"`,
+        message: commitMessage,
         content: updatedBase64,
         sha: sha
     });
 
-    await sendTelegram(chatId, `✅ Успех! Проект "${escapeHTML(newProduct.title)}" на витрине сайта.\n\n🔄 Перехожу к фазе ИИ: генерация промо-поста для канала...`);
+    const statusMessage = isUpdated
+        ? `✅ Успешно обновлено! Ссылка привязана к существующей карточке проекта "${escapeHTML(incomingProduct.title)}".`
+        : `✅ Успех! Новый проект "${escapeHTML(incomingProduct.title)}" добавлен на витрину сайта.`;
 
-    // 2. БЛОК ИИ: ОЧИСТКА АННОТАЦИИ И ИНФОРМИРОВАНИЕ
+    await sendTelegram(chatId, `${statusMessage}\n\n🔄 Перехожу к фазе ИИ: генерация промо-поста...`);
+
+    // 2. БЛОК ИИ: ГЕНЕРАЦИЯ ИНФОРМАЦИОННОГО ПОСТА
     try {
         const systemInstruction = 
-            "Ты — строгий информационный робот-автомат. Твоя единственная задача — переписать аннотацию книги в виде сухого новостного сообщения.\n" +
-            "Категорически запрещено: общаться с пользователем, писать вводные фразы вроде 'Вот ваш пост', использовать списки, дефисы, любые эмодзи, капслок, восклицательные знаки и вопросы ('Устали от...', 'Хотите узнать...').\n" +
+            "Ты — строгий информационный робот-автомат. Твоя единственная задача — переписать аннотацию в виде сухого новостного сообщения.\n" +
+            "Категорически запрещено: общаться с пользователем, писать вводные фразы вроде 'Вот ваш пост', использовать списки, дефисы, любые эмодзи, капслок, восклицательные знаки и вопросы.\n" +
             "Запрещено использовать призывы к покупке.\n" +
             "СТРУКТУРА ВЫХОДА:\n" +
-            "Вышла новая книга НАЗВАНИЕ.\n" +
+            "Вышел новый проект НАЗВАНИЕ.\n" +
             "Суть проекта и аннотация материала: ТЕКСТ АННОТАЦИИ ОДНИМ СПЛОШНЫМ АБЗАЦЕМ БЕЗ ЗНАЧКОВ.\n" +
             "Ссылка на проект: ССЫЛКА.";
 
-        const cleanDesc = newProduct.description
+        const cleanDesc = (incomingProduct.description || "")
             .replace(/[*#`]/g, "")
             .replace(/[\-\•]\s+/g, "")
             .replace(/\n+/g, " ")
             .trim();
 
-        const prompt = `Сформируй сухой информационный текст. Книга: "${newProduct.title}". Аннотация: ${cleanDesc}. Ссылка: ${targetLinkForPromo}`;
+        const prompt = `Сформируй сухой информационный текст. Проект: "${incomingProduct.title}". Аннотация: ${cleanDesc}. Ссылка: ${targetLinkForPromo}`;
 
         const aiResponse = await ai.models.generateContent({
             model: "gemini-2.5-flash",
@@ -338,10 +388,8 @@ async function finalizeProductCreation(chatId, config) {
 
         let generatedPost = aiResponse.text ? aiResponse.text.trim() : "";
 
-        // ЖЕСТКИЙ РЕЗЕРВНЫЙ ФИЛЬТР
         if (!generatedPost || generatedPost.includes("Отличный выбор") || generatedPost.includes("вариант информационного поста")) {
-            // Если ИИ выдал мусор, собираем строго по ТТХ вручную
-            generatedPost = `Вышла новая книга: "${newProduct.title}"\n\nСуть проекта и аннотация материала: ${cleanDesc}\n\nОфициальная страница проекта: ${targetLinkForPromo}`;
+            generatedPost = `Вышел новый проект: "${incomingProduct.title}"\n\nСуть проекта и аннотация материала: ${cleanDesc}\n\nОфициальная страница проекта: ${targetLinkForPromo}`;
         } else {
             generatedPost = generatedPost
                 .replace(/[*#`—\-]/g, "")
@@ -354,10 +402,8 @@ async function finalizeProductCreation(chatId, config) {
             generatedPost += `\n\nОфициальная страница проекта: ${targetLinkForPromo}`;
         }
 
-        // ТОТАЛЬНОЕ ЭКРАНИРОВАНИЕ ВСЕГО ТЕКСТА ПОД HTML ТЕЛЕГРАМА
-        // Это предотвратит падение из-за неразрешенных символов < > &
         const finalHtmlPost = escapeHTML(generatedPost)
-            .replace(/&lt;a href=\"(.*?)\"&gt;(.*?)&lt;\/a&gt;/g, '<a href="$1">$2</a>'); // Сохраняем ссылки рабочими, если они есть
+            .replace(/&lt;a href=\"(.*?)\"&gt;(.*?)&lt;\/a&gt;/g, '<a href="$1">$2</a>'); 
 
         // 3. ЗАЛП В ТГ-КАНАЛ
         if (process.env.TELEGRAM_CHANNEL_ID) {
@@ -370,6 +416,6 @@ async function finalizeProductCreation(chatId, config) {
     } catch (aiError) {
         console.error("Ошибка ИИ или отправки в канал:", aiError);
         const safeAiError = escapeHTML(aiError.message);
-        await sendTelegram(chatId, `⚠️ Продукт на сайте, но произошел сбой ИИ-модуля при публикации в канал: ${safeAiError}`);
+        await sendTelegram(chatId, `⚠️ Продукт обработан, но произошел сбой ИИ-модуля при публикации: ${safeAiError}`);
     }
 }
