@@ -126,12 +126,13 @@ module.exports = async (req, res) => {
         if (update.message && update.message.text) {
             const chatId = update.message.chat.id;
             const text = update.message.text.trim();
+            const lowerText = text.toLowerCase();
 
             // ХЕНДЛЕР УДАЛЕНИЯ КАРТОЧКИ ПО ССЫЛКЕ
-            if (text.startsWith('/delete') || text.toLowerCase().startsWith('удалить')) {
+            if (text.startsWith('/delete') || lowerText.startsWith('удалить')) {
                 const urlMatch = text.match(/(https?:\/\/[^\s]+)/);
                 if (!urlMatch) {
-                    await sendTelegram(chatId, "🚨 Ошибка: Не обнаружена ссылка для удаления. Укажите команду и ссылку через пробел. Пример:\n`/delete https://ridero.ru/...` или `удалить https://gumroad.com/...`");
+                    await sendTelegram(chatId, "🚨 Ошибка: Не обнаружена ссылка для удаления. Укажите команду и ссылку через пробел.");
                     return res.status(200).send("ОК");
                 }
                 
@@ -157,7 +158,37 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // Сценарий 2: Первичная прямая ссылка Gumroad (Мерч или Музыка, или дозаливка книги)
+            // Сценарий 1.5: Дозаливка (связывание) Gumroad-ссылки с конкретной Ridero книгой
+            if (gumroadSessions[chatId] && gumroadSessions[chatId].gumroadUrl && gumroadSessions[chatId].awaitingRideroBinding) {
+                if (text.includes("ridero.ru")) {
+                    const cleanRideroUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0]?.split("?")[0] || text;
+                    const urlParts = cleanRideroUrl.replace(/\/$/, "").split("/");
+                    const bookSlug = urlParts[urlParts.length - 1];
+                    const fullUrl = gumroadSessions[chatId].gumroadUrl;
+
+                    await sendTelegram(chatId, "🔄 Найдена связующая ссылка Ridero. Начинаю процедуру интеграции в существующую карточку...");
+                    await finalizeProductCreation(chatId, { type: 'gumroad_bind', url: fullUrl, rideroSlug: bookSlug });
+                    
+                    delete gumroadSessions[chatId];
+                    return res.status(200).send("ОК");
+                } else {
+                    await sendTelegram(chatId, "⚠️ Отправьте корректную ссылку на Ridero для связывания, либо отправьте Gumroad заново для выбора другой категории.");
+                    return res.status(200).send("ОК");
+                }
+            }
+
+            // УМНЫЙ ТЕКСТОВЫЙ ПЕРЕХВАТЧИК (Для обхода кнопок при вводе вроде: "музыка [ссылка]")
+            if (text.includes("gumroad.com") && (lowerText.includes("музыка") || lowerText.includes("аудио") || lowerText.includes("мерч") || lowerText.includes("арт"))) {
+                const cleanUrl = (text.match(/(https?:\/\/[^\s]+)/)?.[0] || text).split("?")[0].trim();
+                const targetCategory = (lowerText.includes("музыка") || lowerText.includes("аудио")) ? "music" : "merch";
+
+                await sendTelegram(chatId, `⚡ Обнаружен текстовый маркер. Запускаю парсинг Gumroad для категории: ${targetCategory}...`);
+                await finalizeProductCreation(chatId, { type: 'gumroad', url: cleanUrl, category: targetCategory });
+                if (gumroadSessions[chatId]) delete gumroadSessions[chatId];
+                return res.status(200).send("ОК");
+            }
+
+            // Сценарий 2: Первичная прямая ссылка Gumroad (Мерч, Музыка или Дозаливка книги)
             if (text.includes("gumroad.com")) {
                 const cleanUrl = (text.match(/(https?:\/\/[^\s]+)/)?.[0] || text).split("?")[0].trim();
                 gumroadSessions[chatId] = { gumroadUrl: cleanUrl };
@@ -167,12 +198,12 @@ module.exports = async (req, res) => {
                         [
                             { text: "🎵 Музыка / Аудио", callback_data: "gmr_music" },
                             { text: "🎨 Мерч / Арт", callback_data: "gmr_merch" },
-                            { text: "📘 Обновить книгу", callback_data: "gmr_book" }
+                            { text: "📘 Вписать в книгу Ridero", callback_data: "gmr_book" }
                         ]
                     ]
                 };
                 
-                await sendTelegram(chatId, "Прямая ссылка Gumroad принята. Выберите тип контента для размещения или обновления:", keyboard);
+                await sendTelegram(chatId, "Прямая ссылка Gumroad принята. Выберите тип контента или привязку к книге:", keyboard);
                 return res.status(200).send("ОК");
             }
 
@@ -237,6 +268,17 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
+            // Нажата кнопка привязать к книге Ridero
+            if (data === "gmr_book") {
+                if (!gumroadSessions[chatId] || !gumroadSessions[chatId].gumroadUrl) {
+                    throw new Error("Сессия Gumroad не найдена.");
+                }
+                gumroadSessions[chatId].awaitingRideroBinding = true;
+                await sendTelegram(chatId, "🔗 Отлично. Теперь отправьте боту ссылку Ridero на книгу, в которую нужно вписать эту ссылку Gumroad:");
+                return res.status(200).send("ОК");
+            }
+
+            // Обработка музыки и мерча
             if (data.startsWith("gmr_")) {
                 const category = data.replace("gmr_", ""); 
                 
@@ -269,6 +311,7 @@ module.exports = async (req, res) => {
 async function finalizeProductCreation(chatId, config) {
     let incomingProduct = {};
     let targetLinkForPromo = ""; 
+    let bindingRideroSlug = config.rideroSlug || null;
 
     // Парсим входящие данные в зависимости от источника
     if (config.type === 'ridero') {
@@ -286,10 +329,10 @@ async function finalizeProductCreation(chatId, config) {
         };
         targetLinkForPromo = bookUrl;
     } 
-    else if (config.type === 'gumroad') {
+    else if (config.type === 'gumroad' || config.type === 'gumroad_bind') {
         const data = await parseGumroad(config.url);
         incomingProduct = {
-            category: config.category, 
+            category: config.category || "applied", 
             title: data.title,
             description: data.description,
             cover: data.cover,
@@ -320,11 +363,20 @@ async function finalizeProductCreation(chatId, config) {
 
     if (!currentContent.products) currentContent.products = [];
 
-    // Жесткий поиск дубликата по нормализованному названию
-    const targetNormTitle = normalizeTitle(incomingProduct.title);
-    const existingProductIndex = currentContent.products.findIndex(p => normalizeTitle(p.title) === targetNormTitle);
-
+    let existingProductIndex = -1;
     let isUpdated = false;
+
+    // ТОЧНАЯ СШИВКА С КНИГОЙ (По прямому указанию слаге Ridero)
+    if (config.type === 'gumroad_bind' && bindingRideroSlug) {
+        const targetRideroSegment = `/books/${bindingRideroSlug}`.toLowerCase();
+        existingProductIndex = currentContent.products.findIndex(p => 
+            p.links && p.links.ridero && p.links.ridero.toLowerCase().includes(targetRideroSegment)
+        );
+    } else {
+        // Стандартный поиск дубликата по нормализованному названию (для Ridero, Музыки и Мерча)
+        const targetNormTitle = normalizeTitle(incomingProduct.title);
+        existingProductIndex = currentContent.products.findIndex(p => normalizeTitle(p.title) === targetNormTitle);
+    }
 
     if (existingProductIndex !== -1) {
         // Карточка найдена! Выполняем точечный PATCH ссылки
@@ -332,20 +384,20 @@ async function finalizeProductCreation(chatId, config) {
         
         if (!existingProduct.links) existingProduct.links = { ridero: "", gumroad: "" };
         
-        // Заполняем только пустые или новые ссылки, не затирая остальное
+        // Вшиваем ссылку Gumroad, ничего лишнего не затирая
         if (incomingProduct.links.gumroad) {
             existingProduct.links.gumroad = incomingProduct.links.gumroad;
         }
-        if (incomingProduct.links.ridero && !existingProduct.links.ridero) {
-            existingProduct.links.ridero = incomingProduct.links.ridero;
-        }
         
-        // Обновляем объект в базе
-        currentContent.products[existingProductIndex] = existingProduct;
+        // Если привязывали из режима дозаливки, сохраняем исходную категорию книги
         incomingProduct = existingProduct; 
+        currentContent.products[existingProductIndex] = existingProduct;
         isUpdated = true;
     } else {
-        // Карточки нет — пушим на витрину как новый объект
+        // Если карточки нет в базе (и это не был режим принудительной связки) — добавляем
+        if (config.type === 'gumroad_bind') {
+            throw new Error(`Книга со слагом "${bindingRideroSlug}" не найдена в базе сайта. Сначала добавьте её через ссылку Ridero.`);
+        }
         currentContent.products.unshift(incomingProduct);
     }
 
@@ -367,7 +419,7 @@ async function finalizeProductCreation(chatId, config) {
     });
 
     const statusMessage = isUpdated
-        ? `✅ Успешно обновлено! Ссылка привязана к существующей карточке проекта "${escapeHTML(incomingProduct.title)}".`
+        ? `✅ Успешно вписано! Ссылка Gumroad привязана внутрь карточки книги "${escapeHTML(incomingProduct.title)}".`
         : `✅ Успех! Новый проект "${escapeHTML(incomingProduct.title)}" добавлен на витрину сайта.`;
 
     await sendTelegram(chatId, `${statusMessage}\n\n🔄 Перехожу к фазе ИИ: генерация промо-поста...`);
