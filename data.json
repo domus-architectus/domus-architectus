@@ -1,17 +1,1075 @@
 {
   "products": [
     {
-      "format": "fiction",
-      "level": "STATE",
+      "category": "applied",
+      "title": "The 12-Week Inner Control Protocol",
+      "description": "Книга \"The 12-Week Inner Control Protocol\" - The Resilience Architect - печатная, электронная: epub, fb2, pdfRead, mobi - Inner Control System combines posture, breathing, focused attention, mental imagery, kinesthetic anchoring, scenario rehearsal, and strategic goal-set - 978-5-0071-1722-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-09/6a9ab259912fb6bf8c61b89b/rev.2026-09-04T11:58:27.310Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/the_12-week_inner_control_protocol/",
+        "gumroad": ""
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Самооценка. Фундамент Небоскреба Успеха",
+      "description": "Книга \"Самооценка. Фундамент Небоскреба Успеха\". \"7 недель практики\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Курс разделен на два направления: «Армированный фундамент» (Женский курс) — пошаговый протокол демонтажа чужих сценариев, синдрома «хорошей девочки» и - 978-5-0071-1598-8",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-09/6a995f07912fb6bf8c3a1630/rev.2026-09-03T11:50:39.765Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/samoocenka_fundament_neboskreba_uspekha/",
+        "gumroad": ""
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Финансовый периметр",
+      "description": "Книга \"Финансовый периметр\". \"Как вырваться из кабалы «от зарплаты до зарплаты»\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Большинство людей живут в состоянии непрерывного финансового стресса не потому, что мало зарабатывают, а из-за отсутствия базовой системы безопасности - 978-5-0071-0648-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-08/6a8d8bc7dce5b2b3e8c9c693/rev.2026-08-25T12:34:23.751Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/finansovyi_perimetr/",
+        "gumroad": ""
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Инженерия личной силы",
+      "description": "Книга \"Инженерия личной силы\". \"90 дней до абсолютного контроля реальности\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — 12-недельный практический протокол, объединивший классическую ментальную дисциплину, психофизическую систему ресурсного подъема, точность  - 978-5-0071-0345-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-08/6a882124dce5b2b3e83963b8/rev.2026-08-21T09:58:04.193Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/inzheneriya_lichnoi_sily/",
+        "gumroad": "https://archantic.gumroad.com/l/catpvv"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Вектор Света",
+      "description": "Книга \"Вектор Света\". \"От потребителя к созидателю\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Большинство людей всю жизнь проводят в режиме «Чёрной дыры» — в постоянной попытке вырвать у мира признание, комфорт, деньги и чужую энергию. Они живу - 978-5-0070-9380-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-08/6a7c5d76dce5b2b3e836c77d/rev.2026-08-12T11:48:16.496Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/vektor_sveta/",
+        "gumroad": "https://archantic.gumroad.com/l/equrr"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Дисциплина речи",
+      "description": "Книга \"Дисциплина речи\". \"Как не сжечь свой ресурс\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Слово — это оружие. Но понимаешь ли ты, куда стреляешь? Сквернословие и брань сегодня превратились в бытовый шум. Мы привыкли закрывать матом бессилие - 978-5-0070-9088-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-08/6a75d323dce5b2b3e8979544/rev.2026-08-07T12:44:27.106Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/disciplina_rechi/",
+        "gumroad": ""
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Хроники Архитектора — 4",
+      "description": "Книга \"Хроники Архитектора — 4\". \"Проклятие древней руды\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Однажды на пути чужой алчности и заговоров встает Архитектор. В игре, где предательство режет глубже свинца, а древняя магия камня не прощает ошибок,  - 978-5-0071-0048-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-08/6a858909dce5b2b3e8f3eba2/rev.2026-08-19T10:44:33.270Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/khroniki_arkhitektora_4/",
+        "gumroad": "https://archantic.gumroad.com/l/rxfhap"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Skuf-transformer. Рабочие практики",
+      "description": "Книга \"Skuf-transformer. Рабочие практики\" - Victor Star - печатная, электронная: epub, fb2, pdfRead, mobi - Вы устали от режима «Энергосбережение», который ваша жизнь установила по умолчанию? Вы чувствуете, что рутина, лень и апатия украли ваши амбиции, а ко - 978-5-0068-6643-0",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/692e83a23e728e6b5155b6cc/rev.2026-01-29T13:37:34.996Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/skuf-transformer_rabochie_praktiki/",
+        "gumroad": "https://archantic.gumroad.com/l/nxwnpe"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Код самодисциплины",
+      "description": "Книга \"Код самодисциплины\". \"Эксперт строгой школы\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — готовая пошаговая система по внедрению ответственности и дисциплины в жизнь вашего подростка, проверенная в самых строгих условиях.\nБольше - 978-5-0068-6303-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-11/692827b03e728e5d2a549ad1/rev.2026-04-13T15:42:03.855Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kod_samodiscipliny_ekspert_strogoi_shkoly_konstruktivnoe_vospitanie/",
+        "gumroad": "https://archantic.gumroad.com/l/laclfl"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "The habit blueprint: Engineering a bulletproof routine",
+      "description": "Книга \"The habit blueprint: Engineering a bulletproof routine\" - The Resilience Architect - печатная, электронная: epub, fb2, pdfRead, mobi - The Resilience Architect presents a different approach. This is not another book about “self-help.” It is an engineering manual for the human psyche.  - 978-5-0069-7099-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69cd3b0e054f37ebcf53660b/rev.2026-04-01T15:34:45.641Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/the_habit_blueprint_engineering_a_bulletproof_routine/",
+        "gumroad": "https://archantic.gumroad.com/l/uqxnuk"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "The Architecture of Will",
+      "description": "Книга \"The Architecture of Will\". \"Self-Discipline as Radical Freedom\" - Architect The Resilience - печатная, электронная: epub, fb2, pdfRead, mobi - Most people view «discipline» as a cage. They see early mornings, strict diets, and structured schedules as a form of self-punishment. But look at the - 978-5-0069-4472-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69a6e935e4a06499d1848e5e/rev.2026-03-03T13:59:24.869Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/the_architecture_of_will/",
+        "gumroad": "https://archantic.gumroad.com/l/ybwszh"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Пастырь-архитектор",
+      "description": "Книга \"Пастырь-архитектор\". \"НЛП для священников\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Каждый день священник оказывается на передовой человеческих трагедий, духовных кризисов и ментального хаоса. К нему приходят, когда привычные опоры ра - 978-5-0070-7685-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-07/6a58d4af5ad665e52181ef99/rev.2026-07-16T12:55:18.962Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/pastyr-arkhitektor_1/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Лежачий камень",
+      "description": "Книга \"Лежачий камень\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Хлесткий манифест для тех, кто перепутал деградацию с отдыхом. Эта книга — жесткий аудит твоих ресурсов и пощечина ложному комфорту. Автор, используя  - 978-5-0070-7581-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-07/6a57a9ad5ad665e5215e4c45/rev.2026-07-15T15:39:33.275Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/lezhachii_kamen/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Энергетика Жизни",
+      "description": "Книга \"Энергетика Жизни\". \"Практическое руководство по управлению внутренними ресурсами\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Твой внутренний реактор работает на полную мощность — или ты просто имитируешь жизнь, сжигая остатки ресурса на борьбу с собственным саботажем? Больши - 978-5-0070-6421-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-07/6a47ca9ccf721c2af98f27e3/rev.2026-07-03T14:43:48.669Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/energetika_zhizni/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Древняя сила Благодарности",
+      "description": "Книга \"Древняя сила Благодарности\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Хватит скулить. Пора включать Код Предков. Если вы думаете, что благодарность — это розовые сопли, эзотерические медитации или элемент вежливого этике - 978-5-0070-5737-0",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a420da3cf721c2af9f25a11/rev.2026-06-29T06:16:11.301Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/drevnyaya_sila_blagodarnosti/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Кухня Архитектора",
+      "description": "Книга \"Кухня Архитектора\". \"Тактические рецепты\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Боец, если твоё топливо забито химией, сахаром и суррогатами — вся твоя физическая форма, выносливость и ясность ума поплывут при первом же серьезном  - 978-5-0070-5340-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a3a88c92aa615d7015f80d5/rev.2026-06-23T13:23:32.159Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kukhnya_arkhitektora/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Код призывника",
+      "description": "Книга \"Код призывника\". \"Тактика, психология, выживание\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Ты получил повестку. Впереди — год в закрытой системе, где прежние правила гражданской жизни больше не работают. Страх неизвестности, жесткая дисципли - 978-5-0070-5316-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a3a77762aa615d7015e17c0/rev.2026-06-23T12:10:09.563Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kod_prizyvnika/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Пастырь-Архитектор: протокол безопасности",
+      "description": "Книга \"Пастырь-Архитектор: протокол безопасности\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Священнослужитель в современном мире — это боец духовного спецназа, постоянно находящийся на передовой. Каждый день, открывая двери храма, выходя на и - 978-5-0070-4799-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a33f11442b51112c98a2d06/rev.2026-06-18T13:22:36.916Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/pastyr-arkhitektor_protokol_bezopasnosti/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Ученик 80-го уровня",
+      "description": "Книга \"Ученик 80-го уровня\". \"Посох Архитектора\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Обычный восьмиклассник Макс Козлов по прозвищу Архимед всегда считал, что в XXI веке выживают исключительно за счет интеллекта. Но когда за углом гаст - 978-5-0070-4428-8",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a2ff79c42b51112c922e681/rev.2026-06-15T13:01:25.563Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/uchenik_80-go_urovnya/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Психологический периметр: Конструктивное взаимодействие с деструктивными коллегами",
+      "description": "Книга \"Психологический периметр: Конструктивное взаимодействие с деструктивными коллегами\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Любой трудовой коллектив или закрытая структура — это динамическая система, эффективность которой напрямую зависит от стабильности ее элементов. Появл - 978-5-0070-4410-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a2fe9f142b51112c921714b/rev.2026-06-15T12:03:09.513Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/psikhologicheskii_perimetr_konstruktivnoe_vzaimodeistvie_s_destruktivnymi_kollegami/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Хроники Архитектора — 3",
+      "description": "Книга \"Хроники Архитектора — 3\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Чужой мир. Надвигающаяся ледяная зима и раса безжалостных гроллов, стирающая человеческие заставы одну за другой. У тебя нет армии, магии и союзников. - 978-5-0070-3501-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a22c02642b51112c9e464a3/rev.2026-06-05T12:25:18.949Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/khroniki_arkhitektora_3/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Пробуждение",
+      "description": "Книга \"Пробуждение\". \"В глубинах цифрового океана\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эпоха тотальной глобализации и абсолютного триумфа ИИ наступила незаметно. Мир стал безопасным, сытым и… мёртвым. Великая Сеть просчитывает каждый шаг - 978-5-0070-3488-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a22ba0742b51112c9e3c430/rev.2026-06-05T11:59:12.163Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/probuzhdenie_38/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Анатомия мужского реактора",
+      "description": "Книга \"Анатомия мужского реактора\". \"Как управлять сексуальной энергией\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Сексуальная энергия мужчины — это ядерное топливо колоссальной мощности, способное либо возвести тебя на вершину успеха, либо выжечь твою жизнь дотла. - 978-5-0070-2491-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/6a17da7142b51112c9043e52/rev.2026-05-28T06:02:32.550Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/anatomiya_muzhskogo_reaktora/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Архитектура Аскетики",
+      "description": "Книга \"Архитектура Аскетики\". \"Как перестать быть овощем\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Мир вокруг нас — это не просто набор декораций, это поле битвы за ваше внимание, энергию и, в конечном счете, за вашу жизнь. Большинство людей доброво - 978-5-0070-2481-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/6a191ed742b51112c924cc98/rev.2026-05-29T05:06:39.846Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/arkhitektura_asketiki/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Записки архитектора",
+      "description": "Книга \"Записки архитектора\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Это серия коротких историй о том, как обычные действия превращаются в невероятные результаты. Вы узнаете, почему дисциплина дает больше свободы, чем х - 978-5-0070-1435-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/6a0c1fe819bdfe660063c972/rev.2026-05-19T08:31:46.276Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/zapiski_arkhitektora/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Твой личный фронт",
+      "description": "Книга \"Твой личный фронт\". \"Практическое руководство по саморазвитию\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Мир является театром боевых действий. Главная битва разворачивается внутри тебя. Каждый день ты занимаешься либо захватом территории у хаоса и лени, л - 978-5-0070-1434-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/6a0c1fbd19bdfe660063c3f8/rev.2026-05-19T08:31:03.225Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/tvoi_lichnyi_front/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Код Мотивации",
+      "description": "Книга \"Код Мотивации\". \"Топливо для Успеха\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Твоя жизнь — это затяжной марш-бросок, но твой бак пуст. Ты можешь бесконечно изучать карты, покупать снаряжение и слушать советы «бывалых», но если д - 978-5-0070-1445-8",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/6a0c254119bdfe660063f738/rev.2026-05-19T08:54:34.563Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kod_motivacii/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Хроники Архитектора-2",
+      "description": "Книга \"Хроники Архитектора-2\". \"НЛП-сказки с разборами\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Это литературный полигон, где готическая эстетика старых легенд встречается с жесткими техниками психологического спецназа. Каждая история здесь — это - 978-5-0070-0430-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69fdcee119bdfe66002c534d/rev.2026-05-08T11:56:09.359Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/khroniki_arkhitektora-2/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Пинок Судьбы",
+      "description": "Книга \"Пинок Судьбы\". \"Практическое руководство\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — инструмент для демонтажа твоей слабости. Ты оказался в «точке ноль». Твои руки опущены, твои планы превратились в пыль, а внутри — только  - 978-5-0069-9862-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69f886fb19bdfe6600a1c2cf/rev.2026-05-04T11:46:11.566Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/pinok_sudby/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Пастырь-Архитектор",
+      "description": "Книга \"Пастырь-Архитектор\". \"Практическое руководство\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — жесткое тактическое руководство по трансформации сознания священника на основе системы «Крест Архитектора». Здесь нет места сантиментам. Т - 978-5-0069-9855-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69f8821a19bdfe6600a189ec/rev.2026-05-04T11:25:22.211Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/pastyr-arkhitektor/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Конструктор Судьбы",
+      "description": "Книга \"Конструктор Судьбы\". \"Уровень «Скуф»\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Что делать, если ты — обычный мужик с одышкой, а мир вокруг внезапно превратился в хардкорную RPG? Причем игра идет на твою жизнь, а сохраниться нельз - 978-5-0070-0432-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69fdcebd19bdfe66002c514e/rev.2026-05-08T11:53:42.766Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/konstruktor_sudby/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Son of the Steppes: The Bonn Conspiracy",
+      "description": "Книга \"Son of the Steppes: The Bonn Conspiracy\" - Architect The Resilience - печатная, электронная: epub, fb2, pdfRead, mobi - Berlin, 1984. The world is frozen in a fragile balance while the fates of entire nations are traded in high-ranking offices. A Cossack kharakternik (w - 978-5-0070-0423-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69fdcb4619bdfe66002c4421/rev.2026-05-08T11:38:55.951Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/son_of_the_steppes_the_bonn_conspiracy/",
+        "gumroad": "https://archantic.gumroad.com/l/hzwbdq"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Проекты Разлома",
+      "description": "Книга \"Проекты Разлома\". \"Хроники Архитектора\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Его называют Архитектором. Его магия — это чистый расчет, мастерство саморегуляции и властный голос, прошивающий сознание насквозь. Он странствует по  - 978-5-0070-0348-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-05/69fd858519bdfe660025032a/rev.2026-05-08T06:41:17.875Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/proekty_razloma/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Сын степей",
+      "description": "Книга \"Сын степей\". \"Заговор в Бонне\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Берлин, 1984 год. Мир замер в хрупком равновесии, пока в высоких кабинетах идет торговля судьбами целых народов. Казак-характерник, работающий в Штази - 978-5-0069-8632-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69e6245ef26910eab0c70577/rev.2026-04-20T13:04:39.916Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/syn_stepei/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Резонанс Земли",
+      "description": "Книга \"Резонанс Земли\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Когда Виктор, Архитектор, коснулся Сердца Утренней Звезды в недрах Венеры, он совершил квантовый скачок. Один импульс, рожденный в ядре другой планеты - 978-5-0069-8027-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69dd0edbf26910eab013411c/rev.2026-04-13T15:42:26.866Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/rezonans_zemli/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Сердце утренней звезды",
+      "description": "Книга \"Сердце утренней звезды\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - 2056 год. Земля превратилась в пороховой погреб. Традиционные государства рухнули, сменившись тремя враждующими блоками, каждый из которых держит пале - 978-5-0069-7486-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69d50f61f26910eab02c38ac/rev.2026-04-07T14:06:33.644Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/serdce_utrennei_zvezdy/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Резонанс влияния",
+      "description": "Книга \"Резонанс влияния\". \"Геометрия харизмы и эстетика силы\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Забудьте сказки о «внутреннем мире» и «скромном обаянии». В жесткой реальности выживает и доминирует только тот, кто умеет транслировать состояние сил - 978-5-0069-7474-6",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69d4e1852dc3dc1bbaed8c22/rev.2026-04-07T10:50:53.187Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/rezonans_vliyaniya/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "The Monolith: Hidden Power 2.0",
+      "description": "Книга \"The Monolith: Hidden Power 2.0\" - The Resilience Architect - печатная, электронная: epub, fb2, pdfRead, mobi - Stop being the «jelly.» Your body is your only asset in the survival zone.\nThe world wants you soft, predictable, and manageable. Modern life has turn - 978-5-0069-7457-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69d4d4f552e9a3d5fa4b53d7/rev.2026-04-07T09:57:17.213Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/the_monolith_hidden_power_2_0/",
+        "gumroad": "https://archantic.gumroad.com/l/hgbzvu"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Скрытая Мощь 2.0",
+      "description": "Книга \"Скрытая Мощь 2.0\". \"Антикризисный монолит\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Хватит быть «киселем». Твоё тело — это твой единственный актив в зоне выживания.\nМир хочет, чтобы ты был мягким, рыхлым и управляемым. Фитнес-индустри - 978-5-0069-7165-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69ce66f0054f37ebcf7578f5/rev.2026-04-02T12:54:16.950Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/skrytaya_mosh_2_0/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Скрытая Мощь",
+      "description": "Книга \"Скрытая Мощь\". \"Стальные мышцы без спортзала\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - В этой книге я даю теорию «Скрытой Мощи». Как превратить поездку в метро, стояние в очереди или службу в храме в тренировку элитного уровня. Как постр - 978-5-0069-7100-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69cd3b8b054f37ebcf5367bf/rev.2026-04-01T15:36:51.888Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/skrytaya_mosh/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Интерфейс силы",
+      "description": "Книга \"Интерфейс силы\". \"Как управлять реальностью на автопилоте\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы когда-нибудь задумывались, какая сила заставляет ваше сердце биться, клетки — обновляться, а интуицию — находить выход там, где логика заходит в ту - 978-5-0069-6631-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69c61f604dfeb5a1e240847e/rev.2026-03-27T06:10:47.187Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/interfeis_sily/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Зеркало души: энергия взгляда",
+      "description": "Книга \"Зеркало души: энергия взгляда\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Твой взгляд — это не просто способ получения информации. Это твоё главное невербальное оружие, твой инструмент влияния и твой детектор правды. Большин - 978-5-0069-6413-6",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69c3a8b24dfeb5a1e2fbfed6/rev.2026-03-25T09:19:53.982Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/zerkalo_dushi_energiya_vzglyada/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Точка Ноль. В помощь тем, кто всё потерял",
+      "description": "Книга \"Точка Ноль. В помощь тем, кто всё потерял\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Твой мир сгорел. Добро пожаловать в реальность.\nТы остался один на один с чужим городом, пустыми карманами и грузом ответственности за близких. Старые - 978-5-0069-6368-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69c38a9c4dfeb5a1e2f90574/rev.2026-03-25T07:11:32.001Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/tochka_nol_v_pomosh_tem_kto_vsyo_poteryal/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Монолит личности",
+      "description": "Книга \"Монолит личности\". \"Практическое руководство\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы — это то, что вы построили. Или то, что позволило себя разрушить.\nВ мире нарастающего хаоса выживают не «гибкие», а структурированные. Те, чей внут - 978-5-0069-5562-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69b83eb6ee356c7f222bb158/rev.2026-03-16T17:32:46.134Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/monolit_lichnosti/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Молитвослов Архитектора Реальности",
+      "description": "Книга \"Молитвослов Архитектора Реальности\". \"Код подсознания\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Мир вокруг стал слишком быстрым и агрессивным. Обычные советы по саморазвитию больше не работают — они лишь «косметический ремонт» в горящем здании. Т - 978-5-0069-5424-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69b3ff37ee356c7f22be9716/rev.2026-03-13T12:12:48.719Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/molitvoslov_arkhitektora_realnosti/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Переход",
+      "description": "Книга \"Переход\". \"Руководство для родителей подростков\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Твой ребенок превратился в незнакомца? Добро пожаловать на передовую.\nПереходный возраст — это не болезнь и не каприз. Это жесткий тест на прочность т - 978-5-0069-4677-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69a96416e4a06499d1aafa91/rev.2026-03-05T11:08:14.553Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/perekhod_8/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Точка опоры",
+      "description": "Книга \"Точка опоры\". \"Спецкурс для родителей\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Ваш ребенок вышел в «красную зону». Вчера он спрашивал, как собрать конструктор, а сегодня у него свидание, запертая комната и гормональный взрыв, кот - 978-5-0069-4483-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69a70b52e4a06499d1884482/rev.2026-03-03T16:24:58.620Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/tochka_opory_8/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Архитектура Будущего",
+      "description": "Книга \"Архитектура Будущего\". \"Прогноз 50\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Это жесткий системный прогноз на ближайшие 50 лет, основанный на анализе климатических циклов, векторов развития ИИ и геополитических сдвигов. Пока од - 978-5-0069-4470-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69a6e8b2e4a06499d18487ea/rev.2026-03-03T13:57:14.149Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/arkhitektura_budushego_1/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Великий Пост: Челлендж Древних Христиан",
+      "description": "Книга \"Великий Пост: Челлендж Древних Христиан\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — для тех, кто не ищет утешения или оправдания своим слабостям. Это жесткий протокол для тех, кто готов выйти из режима «выживания» и перейт - 978-5-0069-3775-8",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/699d47ad05248cbcf03817e0/rev.2026-02-24T06:39:49.375Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/velikii_post_chellendzh_drevnikh_khristian/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Код мужчины: автономия и власть",
+      "description": "Книга \"Код мужчины: автономия и власть\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Мир переполнен «удобными» мужчинами и скрытыми тиранами. И те, и другие — слабы. Первые становятся «шкурой убитого медведя», об которую вытирают ноги. - 978-5-0069-3557-0",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/69974beef4df8b7ad2010266/rev.2026-02-19T17:44:23.355Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kod_muzhchiny_avtonomiya_i_vlast/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Анти-прокрастинация: Как не «сломать» Вашего ребенка",
+      "description": "Книга \"Анти-прокрастинация: Как не «сломать» Вашего ребенка\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Современная школа часто учит одному — имитации деятельности. Как результат — хроническая усталость и лень. Пора делать перезагрузку. Используя психоте - 978-5-0069-3196-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/69942e23f4df8b7ad2bd632a/rev.2026-02-17T09:00:28.251Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/anti-prokrastinaciya_kak_ne_slomat_vashego_rebenka/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Динамическое Равновесие: Дружба М+Ж?",
+      "description": "Книга \"Динамическое Равновесие: Дружба М+Ж?\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Это книга для тех, кто привык контролировать свою жизнь и не готов тратить время на иллюзии. Если ты хочешь понимать, во что ты играешь — в коалицию,  - 978-5-0069-3179-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/6994142ef4df8b7ad2bbf429/rev.2026-02-17T07:09:41.920Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/dinamicheskoe_ravnovesie_druzhba_m_zh/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Нейро-архитектор: Инженерный код успеха",
+      "description": "Книга \"Нейро-архитектор: Инженерный код успеха\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Это книга для тех, кто готов перестать быть «жильцом» в обстоятельствах и хочет стать Главным Архитектором своей реальности. Никакой воды. Только стал - 978-5-0069-2915-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/698defdb8025f92537d3a8da/rev.2026-02-12T15:21:08.788Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/neiro-arkhitektor_inzhenernyi_kod_uspekha/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Код осознанного родителя: развод",
+      "description": "Книга \"Код осознанного родителя: развод\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Когда привычный мир рушится, легко поддаться хаосу деструктивных эмоций, превращая поле боя в руины, под которыми могут оказаться самые беззащитные —  - 978-5-0069-2728-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/698c600b8025f92537b21832/rev.2026-02-11T10:55:14.964Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kod_osoznannogo_roditelya_razvod/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Завтрамэн: Ликвидация",
+      "description": "Книга \"Завтрамэн: Ликвидация\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Ты находишься в зоне боевых действий, где враг — это ты сам.\nЕго зовут Завтрамэн. Он приходит с мягким диваном, бесконечной лентой новостей и успокаив - 978-5-0069-2730-8",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/698c63398025f92537b24b26/rev.2026-02-11T11:08:49.412Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/zavtramen_likvidaciya/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Как поднять уровень энергии без БАДов и стимуляторов?",
+      "description": "Книга \"Как поднять уровень энергии без БАДов и стимуляторов?\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Здесь нет места БАДам, сомнительной химии и временным «костылям» в виде энергетиков. Книга дает технологию автономности. Вы узнаете, как за 5 минут из - 978-5-0069-2560-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/698ad2dd8025f925378e2416/rev.2026-02-10T06:40:38.992Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kak_podnyat_uroven_energii_bez_badov_i_stimulyatorov/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Код доступа: Архитектор. Перехват управления в условиях тотального обвала",
+      "description": "Книга \"Код доступа: Архитектор. Перехват управления в условиях тотального обвала\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Мир не сошел с ума — он просто проходит плановую деконструкцию. Но почему ты оказался под завалами? Архитектор Антикризис представляет жесткую и эффек - 978-5-0069-2452-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/6989c2418025f925377af19d/rev.2026-02-09T11:17:32.182Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kod_dostupa_arkhitektor_perekhvat_upravleniya_v_usloviyakh_totalnogo_obvala/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Код воина: симфония духа",
+      "description": "Книга \"Код воина: симфония духа\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - В основе книги лежит уникальный сплав трех дисциплин: акустический резонанс: древние вокальные техники и северное горловое гудение как инструмент прям - 978-5-0069-3571-6",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/6997f93ff4df8b7ad212191f/rev.2026-02-20T06:03:51.301Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kod_voina_simfoniya_dukha/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Токсичный коллектив: Творчество в зоне поражения",
+      "description": "Книга \"Токсичный коллектив: Творчество в зоне поражения\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга для тех, кто устал быть жертвой обстоятельств и готов стать Хозяином своей реальности. Творчество — это твой главный актив. Пришло время защ - 978-5-0069-2375-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/69860ae28025f925372a1cda/rev.2026-02-06T15:38:18.076Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/toksichnyi_kollektiv_tvorchestvo_v_zone_porazheniya/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Приметы: оружие подсознания. Инструкция по эксплуатации",
+      "description": "Книга \"Приметы: оружие подсознания. Инструкция по эксплуатации\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Из этой книги ты узнаешь:\n— механику взлома — как приметы работают на уровне нейрофизиологии и почему они сбываются, даже если ты в них «не веришь»;\n— - 978-5-0069-2376-8",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/69860ad18025f925372a1c4f/rev.2026-02-06T15:38:03.790Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/primety_oruzhie_podsoznaniya_instrukciya_po_ekspluatacii/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Архитектура Свободы: Выход из «любовных треугольников»",
+      "description": "Книга \"Архитектура Свободы: Выход из «любовных треугольников»\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - В этом руководстве нет места жалости и оправданиям. Здесь есть хирургическая точность и ясность разума. Автор рассматривает треугольник как систему, в - 978-5-0069-2209-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/69845b8fc915ea6018b070a1/rev.2026-02-05T08:57:59.690Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/arkhitektura_svobody_vykhod_iz_lyubovnykh_treugolnikov/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Созидающая реальность: Как матери-одиночке стать хозяйкой своей судьбы",
+      "description": "Книга \"Созидающая реальность: Как матери-одиночке стать хозяйкой своей судьбы\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга для тех, кто готов перестать «справляться» и хочет начать править. Вы узнаете, как засыпать и просыпаться в состоянии созидателя, где каждая - 978-5-0069-2869-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/698dcd898025f92537d10c18/rev.2026-02-12T12:54:42.176Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/sozidayushaya_realnost_kak_materi-odinochke_stat_khozyaikoi_svoei_sudby/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Эстрадный код: психоакустика контроля",
+      "description": "Книга \"Эстрадный код: психоакустика контроля\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Ваше сознание — это операционная система. Музыка — это её софт.\nКаждый день миллиарды людей добровольно загружают в свое подсознание терабайты «эстрад - 978-5-0069-2139-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/698342fac915ea601898f1c1/rev.2026-02-04T13:00:50.843Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/estradnyi_kod_psikhoakustika_kontrolya/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Маленький творец. Архитектура осознанности",
+      "description": "Книга \"Маленький творец. Архитектура осознанности\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Архитектор Антикризис переносит принципы личной автономии и внутренней силы в плоскость родительства. Автор предлагает родителям перестать быть контро - 978-5-0069-2030-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/6981e8c3c915ea601876211c/rev.2026-02-03T12:23:49.776Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/malenkii_tvorec_arkhitektura_osoznannosti/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Теневой Архитектор: Тьма на службе эволюции",
+      "description": "Книга \"Теневой Архитектор: Тьма на службе эволюции\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - В мире, который требует от нас быть «удобными», «правильными» и «позитивными», мы теряем колоссальный объем энергии, скрытый в подвалах нашей психики. - 978-5-0069-1990-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/6981b497c915ea6018708b19/rev.2026-02-03T08:41:06.982Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/tenevoi_arkhitektor_tma_na_sluzhbe_evolyucii/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Автономность: Залог безопасности",
+      "description": "Книга \"Автономность: Залог безопасности\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Мир вокруг нас стремительно меняется, становясь всё более хрупким. Привычные системы контроля, финансовые институты и социальные гарантии превращаются - 978-5-0069-1894-8",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/698083f7c915ea601851fa7d/rev.2026-02-02T11:01:19.280Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/avtonomnost_zalog_bezopasnosti/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Сломленный стержень: Иллюзия контроля",
+      "description": "Книга \"Сломленный стержень: Иллюзия контроля\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Книга «Сломленный стержень: Иллюзия контроля» — это глубокое исследование того, как авторитарная модель воспитания, маскируясь под заботу о дисциплине - 978-5-0069-1900-6",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/69808bc7c915ea601852a087/rev.2026-02-02T11:34:39.356Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/slomlennyi_sterzhen_illyuziya_kontrolya/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Ловушка вседозволенности: анатомия слабости",
+      "description": "Книга \"Ловушка вседозволенности: анатомия слабости\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - В современном мире, одержимом идеей «счастливого детства без запретов», мы незаметно вырастили поколение людей с дефицитом воли и размытым внутренним  - 978-5-0069-1666-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b6e32b1e852e995bee85d/rev.2026-01-29T14:27:07.178Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/lovushka_vsedozvolennosti_anatomiya_slabosti/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Второе дыхание: Перезагрузка в 70 лет",
+      "description": "Книга \"Второе дыхание: Перезагрузка в 70 лет\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - В 70 лет мир часто пытается списать нас в архив, предлагая лишь роли «помощников при внуках» или «тихих наблюдателей». Но что, если этот возраст — не  - 978-5-0069-1665-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b6db9b1e852e995bee70e/rev.2026-01-29T14:25:06.528Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/vtoroe_dykhanie_perezagruzka_v_70_let/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "«Внутренний Бомж» и как его выселить",
+      "description": "Книга \"«Внутренний Бомж» и как его выселить\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Внутри каждого из нас живет «хранитель дефицита» — субличность, которая боится перемен, экономит на спичках и шепчет: «не для тебя это росло». Эта кни - 978-5-0069-1664-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b6daab1e852e995bee64c/rev.2026-01-29T14:24:50.553Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/vnutrennii_bomzh_i_kak_ego_vyselit/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Безопасный мир Макара",
+      "description": "Книга \"Безопасный мир Макара\". \"Книга-тренажер по безопасности детей\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Мир вокруг нас полон красок, но не все они одинаково безопасны. Вместе с первоклассником Макаром ваш ребенок научится различать «цвета» жизненных ситу - 978-5-0069-1661-6",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b6b0cb1e852e995be49f5/rev.2026-05-08T11:59:55.765Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/bezopasnyi_mir_makara_kniga-trenazher_po_bezopasnosti_detei/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Взлетная полоса: Искусство осознанного старта",
+      "description": "Книга \"Взлетная полоса: Искусство осознанного старта\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — пошаговое руководство по предполетной подготовке вашей жизни. Вы научитесь использовать магию малых циклов: от первых 60 минут вашего утра - 978-5-0069-1657-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b6804b1e852e995be4504/rev.2026-01-29T14:00:44.933Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/vzletnaya_polosa_iskusstvo_osoznannogo_starta/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Кодекс среды: как стены казармы формируют характер",
+      "description": "Книга \"Кодекс среды: как стены казармы формируют характер\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Традиционно казарма воспринимается как место строгой необходимости: крыша над головой, койка, место для хранения формы. В этом утилитарном подходе кро - 978-5-0069-1655-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b66feb1e852e995be40e3/rev.2026-01-29T13:56:22.334Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kodeks_sredy_kak_steny_kazarmy_formiruyut_kharakter/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Суверенитет: Как стать Президентом собственной жизни",
+      "description": "Книга \"Суверенитет: Как стать Президентом собственной жизни\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Большинство людей живут в режиме «временного правительства»: они лишь реагируют на кризисы, латают дыры в бюджете (здоровье и финансах) и подчиняются  - 978-5-0069-1653-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b665cb1e852e995be3810/rev.2026-01-29T13:53:41.045Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/suverenitet_kak_stat_prezidentom_sobstvennoi_zhizni/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Жить дальше: Искусство восстановления после потери",
+      "description": "Книга \"Жить дальше: Искусство восстановления после потери\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Бывают события, которые меняют нас навсегда. Смерть близкого, внезапная потеря или тяжелая травма проводят черту, разделяя жизнь на «до» и «после». В  - 978-5-0069-1652-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b668db1e852e995be38eb/rev.2026-01-29T13:54:31.153Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/zhit_dalshe_iskusstvo_vosstanovleniya_posle_poteri/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Код удачи: Как программировать жизнь на успех",
+      "description": "Книга \"Код удачи: Как программировать жизнь на успех\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Большинство людей живут в состоянии «Жертвы обстоятельств», ожидая, что мир изменится сам собой. Мы предлагаем другой путь — переход в состояние «твор - 978-5-0069-1654-8",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b66b2b1e852e995be3fbd/rev.2026-01-29T13:55:06.160Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kod_udachi_kak_programmirovat_zhizn_na_uspekh/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Код казака: манифест и практики современного воина",
+      "description": "Книга \"Код казака: манифест и практики современного воина\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — операционная система для тех, кто по праву крови или зову сердца причисляет себя к казачеству в XXI веке. Быть казаком сегодня — значит бы - 978-5-0069-1656-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b678cb1e852e995be43b0/rev.2026-01-29T13:58:44.118Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kod_kazaka_manifest_i_praktiki_sovremennogo_voina/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Неуязвимый: «КАЗ» от травли",
+      "description": "Книга \"Неуязвимый: «КАЗ» от травли\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Твой мир пытаются взломать. Кто-то решил, что может диктовать тебе, как себя чувствовать, во что верить и сколько ты стоишь. Но у них есть одна пробле - 978-5-0069-1658-6",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b68e3b1e852e995be4696/rev.2026-01-29T14:04:28.588Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/neuyazvimyi_kaz_ot_travli/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Перепрошивка",
+      "description": "Книга \"Перепрошивка\". \"Из «грязи» в «князи»\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Книга построена как 12-недельный курс боевой подготовки. Здесь нет воды — только «встряска», «алгоритм» и «установка». Вы пройдете путь от признания с - 978-5-0069-0893-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/6972586a4724b3e9f7eda2bc/rev.2026-01-29T13:51:16.220Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/pereproshivka_1/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Кадетский корпус: искусство управления кадрами",
+      "description": "Книга \"Кадетский корпус: искусство управления кадрами\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — практическое руководство для руководителей суворовских училищ, кадетских корпусов и пансионов. Кадровый вопрос здесь стоит острее, чем в л - 978-5-0069-0884-0",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697233234724b3e9f7eab78e/rev.2026-01-29T13:49:40.415Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/kadetskii_korpus_iskusstvo_upravleniya_kadrami/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Приказ №1: Найти себя. Пособие по десантированию в гражданскую жизнь",
+      "description": "Книга \"Приказ №1: Найти себя. Пособие по десантированию в гражданскую жизнь\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - До твоего «дембеля» (окончания контракта) осталось 12 месяцев. С этого момента ты — разведчик в тылу врага. Твой враг — лень, страх неизвестности и от - 978-5-0069-1675-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697c46fab1e852e995d52605/rev.2026-01-30T05:52:02.978Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/prikaz_1_naiti_sebya_posobie_po_desantirovaniyu_v_grazhdanskuyu_zhizn/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Из тени в свет: Путь к внутренней свободе",
+      "description": "Книга \"Из тени в свет: Путь к внутренней свободе\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Это пошаговое руководство по «репатриации» собственной личности. Если вы чувствуете себя зажатым, боитесь лишний раз привлечь внимание или ощущаете, ч - 978-5-0069-0737-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/6970c7894724b3e9f7ccd13b/rev.2026-01-29T13:24:49.819Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/iz_teni_v_svet_put_k_vnutrennei_svobode/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Включи свет: Как превратить выгорание в обновление",
+      "description": "Книга \"Включи свет: Как превратить выгорание в обновление\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - В мире, который требует от нас быть «быстрее, выше, сильнее», легко потерять связь с самым главным человеком в жизни — самим собой. Эта книга, написан - 978-5-0069-0623-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/696f8a6c04224e0ff11bbbfc/rev.2026-01-29T13:50:52.375Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/vklyuchi_svet_kak_prevratit_vygoranie_v_obnovlenie/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Эффект стали. Твои привычки — твоя броня",
+      "description": "Книга \"Эффект стали. Твои привычки — твоя броня\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Мир — это агрессивная среда. Ежедневно он проверяет тебя на прочность: стрессами, ленью, информационным шумом и соблазнами «легкой жизни». Большинство - 978-5-0069-0611-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/696f7d9e04224e0ff11b4daf/rev.2026-01-29T13:51:04.650Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/effekt_stali_tvoi_privychki_tvoya_bronya/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Взломать код общения за 5 недель. Практический самоучитель",
+      "description": "Книга \"Взломать код общения за 5 недель. Практический самоучитель\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — интенсивный тренинг-лагерь. За 35 дней вы пройдете путь от базового наблюдения за реакциями собеседника до техник изменения собственных ог - 978-5-0069-0603-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/696f7a2804224e0ff11b3c6d/rev.2026-01-29T13:50:04.656Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/vzlomat_kod_obsheniya_za_5_nedel_prakticheskii_samouchitel/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Level Up: Как понимать людей и управлять собой",
+      "description": "Книга \"Level Up: Как понимать людей и управлять собой\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — «чит-код» для твоей жизни. Здесь собраны техники НЛП (нейролингвистического программирования), адаптированные специально для подростков. Т - 978-5-0069-0609-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/696f7c0204224e0ff11b4404/rev.2026-01-29T13:50:19.855Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/level_up_kak_ponimat_lyudei_i_upravlyat_soboi/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "НЛП для офицеров-воспитателей. Простые и эффективные техники",
+      "description": "Книга \"НЛП для офицеров-воспитателей. Простые и эффективные техники\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Эта книга — практическое руководство по применению Нейролингвистического Программирования (НЛП) в сложной и ответственной работе офицера-воспитателя.  - 978-5-0069-0599-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/696f742804224e0ff11b3124/rev.2026-01-29T13:37:47.064Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/nlp_dlya_oficerov-vospitatelei_prostye_i_effektivnye_tekhniki/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Спасательный круг: для тех, кто проснулся в ж…",
+      "description": "Книга \"Спасательный круг: для тех, кто проснулся в ж…\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - «Спасательный круг» это жесткое руководство по тактическому выживанию в условиях личной катастрофы. Здесь нет абстрактной психологии. Только сухие алг - 978-5-0069-0447-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/696e2d3304224e0ff1140219/rev.2026-01-29T13:49:51.483Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/spasatelnyi_krug_dlya_tekh_kto_prosnulsya_v_zh/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Резонанс Пика — искусство управлять реальностью изнутри",
+      "description": "Книга \"Резонанс Пика — искусство управлять реальностью изнутри\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы когда-нибудь задумывались, почему одни люди словно «взламывают» реальность, получая желаемое без видимых усилий, а другие годами буксуют на месте,  - 978-5-0069-0364-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/696dcb1804224e0ff10f2ae6/rev.2026-06-11T10:59:10.432Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/rezonans_pika_iskusstvo_upravlyat_realnostyu_iznutri/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Дрыщ-трансформер: От астеника к атлету-хищнику",
+      "description": "Книга \"Дрыщ-трансформер: От астеника к атлету-хищнику\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - «Дрыщ-трансформер» — это руководство по жесткой ментальной и физической перепрошивке для астеников, которые привыкли рассуждать, а не действовать. Эта - 978-5-0069-0422-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/696e1b6804224e0ff113d238/rev.2026-01-29T13:51:44.559Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/drysh-transformer_ot_astenika_k_atletu-khishniku/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Мой дом — Место Силы",
+      "description": "Книга \"Мой дом — Место Силы\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Ваш дом должен быть не просто складом вещей, а надежным убежищем, где вы восстанавливаете силы, вдохновляетесь и чувствуете себя защищенным. Но вместо - 978-5-0068-9177-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/6953c0377ffdfb4575615edf/rev.2026-06-11T11:33:51.842Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/moi_dom_mesto_sily/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Секретный язык взаимопонимания: От настройки к влиянию",
+      "description": "Книга \"Секретный язык взаимопонимания: От настройки к влиянию\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вам когда-нибудь казалось, что вы говорите с собеседником на разных языках, даже если используете одни и те же слова?\nЭта книга — ключ к пониманию бес - 978-5-0068-9175-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/6953bf437ffdfb4575615c11/rev.2026-06-11T11:30:00.318Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/sekretnyi_yazyk_vzaimoponimaniya_ot_nastroiki_k_vliyaniyu/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Старт в успех: Руководство по заработку и развитию для школьников",
+      "description": "Книга \"Старт в успех: Руководство по заработку и развитию для школьников\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Хочешь выделиться из толпы сверстников? Мечтаешь о финансовой независимости и уверенности в завтрашнем дне?\nЭта книга — твой личный навигатор в мире в - 978-5-0068-8925-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/694e59c0b69ff8835790af4f/rev.2026-06-11T10:16:12.811Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/start_v_uspekh_rukovodstvo_po_zarabotku_i_razvitiyu_dlya_shkolnikov/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Ты — «воланчик»?",
+      "description": "Книга \"Ты — «воланчик»?\". \"Пошаговый план тотальной перезагрузки\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вам надоело быть запасным игроком? На вас ездят коллеги, вами манипулирует жена, а в зале вы выглядите как извиняющийся подросток?\nМы пройдем путь от  - 978-5-0068-9169-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/6953bc277ffdfb4575613c53/rev.2026-05-19T08:46:17.249Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/ty_volanchik_plan_totalnoi_perezagruzki/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Мастер времени",
+      "description": "Книга \"Мастер времени\". \"Продуктивность для любого графика\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы чувствуете, что время постоянно утекает сквозь пальцы? Устали от бесконечной гонки, независимо от того, работаете ли вы 5/2, в сменном графике или  - 978-5-0068-8901-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/694e46deb69ff883578f6513/rev.2026-05-19T08:46:36.949Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/master_vremeni_produktivnost_dlya_lyubogo_grafika/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Я Могу! Круг силы",
+      "description": "Книга \"Я Могу! Круг силы\". \"Быстрый старт к уверенности\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы когда-нибудь мечтали о кнопке, которая мгновенно включает уверенность, спокойствие или неиссякаемую энергию?\nМетодика НЛП «Круг силы» — это не мета - 978-5-0068-7256-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/693837c72f40548517d0fb47/rev.2026-05-19T08:34:22.846Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/ya_mogu_krug_sily_bystryi_start_k_uverennosti/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Остановись. Отдохни. Живи!",
+      "description": "Книга \"Остановись. Отдохни. Живи!\". \"Как оставить работу на работе\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Ваша ценность не определяется вашей продуктивностью. Вы имеете право на отдых, спокойствие и полноценную личную жизнь. Управление стрессом — это не сл - 978-5-0068-7090-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/693287d0a1d5a67d6d9f757a/rev.2026-04-13T15:46:15.367Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/ostanovis_otdokhni_zhivi_kak_ostavit_rabotu_na_rabote/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Внутренний двигатель",
+      "description": "Книга \"Внутренний двигатель\". \"20 шагов к твёрдой самооценке\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы умеете быть добрым другом, но почему-то не умеете быть добрым к себе?\nВы регулярно добиваетесь успеха, но внутренний голос моментально обесценивает - 978-5-0068-7010-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/69316dbfa1d5a671b39f3d18/rev.2026-04-13T15:48:25.764Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/vnutrennii_dvigatel_20_shagov_k_tvyordoi_samoocenke/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Жениться готов!",
+      "description": "Книга \"Жениться готов!\". \"Практическое руководство по созданию крепкой семьи\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Брак — это не лотерея, а результат осознанной стратегии. Эта книга — практическое руководство для мужчин, которые устали от случайных связей и готовы  - 978-5-0068-7245-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/69383a082f40548517d10669/rev.2026-05-20T05:23:32.159Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/zhenitsya_gotov/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Перезагрузка отношений",
+      "description": "Книга \"Перезагрузка отношений\". \"Инструкция по ремонту брака\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы чувствуете, что отношения зашли в тупик? Словно механизм вашего брака сломался: нет искры, общение сведено к минимуму, а вместо поддержки вы ощущае - 978-5-0068-7002-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/6931665ba1d5a6201f9f3c86/rev.2026-04-13T15:42:14.659Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/perezagruzka_otnoshenii_instrukciya_po_remontu_braka/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Радужная радость",
+      "description": "Книга \"Радужная радость\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - В удивительном Кукольном Городе, где все дома построены из разноцветных кубиков конструктора, живут необычные двойняшки — Софи и Дима. Они делят свой  - 978-5-0070-4427-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a2ff63d42b51112c9225229/rev.2026-06-15T12:55:34.350Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/raduzhnaya_radost/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Брак по расчету Счастья",
+      "description": "Книга \"Брак по расчету Счастья\". \"Практическое Руководство\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Вы устали от токсичных отношений, пустых знакомств и советов, которые не работают?\nЭта книга — практический гид по созданию себя как наивысшей ценност - 978-5-0068-7004-8",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/693167eba1d5a6c5519f3c90/rev.2026-04-13T15:48:14.981Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/brak_po_raschetu_schastya/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Путь к себе",
+      "description": "Книга \"Путь к себе\". \"Сборник практических рассказов\" - Антикризис Архитектор - печатная, электронная: epub, fb2, pdfRead, mobi - Вы когда-нибудь чувствовали себя человеком, неспособным сказать «нет» или застрявшим в бесконечном сравнении с другими?\nУникальность этого сборника в  - 978-5-0068-6310-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-11/69282d873e728edaf7549c6d/rev.2026-04-13T15:48:40.121Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/put_k_sebe_sbornik_prakticheskikh_rasskazov/"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Воля к жизни. Путь выживания",
+      "description": "Книга \"Воля к жизни. Путь выживания\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Художественные рассказы с практическими советами по выживанию. В книге рассматриваются различные опасные ситуации и возможные пути спасения. - 978-5-0068-6309-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-11/69282b4d3e728e8a2e549aea/rev.2026-06-11T10:14:01.046Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/volya_k_zhizni_put_vyzhivaniya/",
+        "gumroad": "https://archantic.gumroad.com/l/lbnuxr"
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Батат — чудо природы",
+      "description": "Книга \"Батат — чудо природы\" - Victor Star - печатная, электронная: epub, fb2, pdfRead, mobi - «Батат — чудо природы» — это увлекательный научно-популярный гид по самому недооцененному корнеплоду. Вы узнаете, почему этот тропический гость из сем - 978-5-0068-5498-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-11/691c68a8674afb132477b634/rev.2025-11-24T12:23:41.042Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/batat_chudo_prirody/"
+      }
+    },
+    {
       "category": "fiction",
       "title": "Маркетинг и метаболизм: 20 советов для жизни без диет",
-      "titleRu": "Маркетинг и метаболизм: 20 советов для жизни без диет",
-      "description": "Книга \"Маркетинг и метаболизм: 20 советов для жизни без диет\" Архитектор Антикризис печатная, электронная: epub, fb2, pdfRead, mobi Это не просто художественный роман о похудении. Это честная история о том, как Алиса применила свои аналитические способности к собственному питанию и 978 5 0068 9179 1",
-      "descRu": "Книга \"Маркетинг и метаболизм: 20 советов для жизни без диет\" Архитектор Антикризис печатная, электронная: epub, fb2, pdfRead, mobi Это не просто художественный роман о похудении. Это честная история о том, как Алиса применила свои аналитические способности к собственному питанию и 978 5 0068 9179 1",
+      "description": "Книга \"Маркетинг и метаболизм: 20 советов для жизни без диет\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Это не просто художественный роман о похудении. Это честная история о том, как Алиса применила свои аналитические способности к собственному питанию и - 978-5-0068-9179-1",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-12/6953c1967ffdfb4575616111/rev.2026-01-29T13:36:36.418Z/cover-front.png&amp;format=original",
       "links": {
         "ridero": "https://ridero.ru/books/marketing_i_metabolizm_20_sovetov_dlya_zhizni_bez_diet/",
-        "gumroad": ""
+        "gumroad": "https://archantic.gumroad.com/l/cnflue"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Абсолютная осознанность: власть творца над хаосом",
+      "description": "Книга \"Абсолютная осознанность: власть творца над хаосом\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - В мире, который борется за ваше внимание, эмоции и ресурсы, единственный способ сохранить себя — это переход в состояние Абсолютной Осознанности. Авто - 978-5-0069-1662-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697b6bf9b1e852e995be4c58/rev.2026-01-29T14:17:38.448Z/cover-front.jpg&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/absolyutnaya_osoznannost_vlast_tvorca_nad_khaosom/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Архитектура единства: Свои среди спящих",
+      "description": "Книга \"Архитектура единства: Свои среди спящих\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Это манифест создания новой элиты — людей, выбравших осознанность вместо сна. Вы узнаете, как превратить семью в несокрушимый тыл, как находить соратн - 978-5-0069-1778-1",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697c9e37b1e852e995dde696/rev.2026-01-30T12:04:15.390Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/arkhitektura_edinstva_svoi_sredi_spyashikh/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Архитектура экспансии: эволюция без конца",
+      "description": "Книга \"Архитектура экспансии: эволюция без конца\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Это руководство по созданию вашей «Суперсилы» — того уникального качества, которое делает вас незаменимым в любой системе. Вы научитесь не просто прио - 978-5-0069-1777-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697c9d24b1e852e995dde159/rev.2026-01-30T11:59:39.856Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/arkhitektura_ekspansii_evolyuciya_bez_konca/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Архитектура воли: Самодисциплина как высшая свобода",
+      "description": "Книга \"Архитектура воли: Самодисциплина как высшая свобода\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Многие боятся слова «дисциплина», видя в нем ограничения. Автор доказывает обратное: дисциплина — это единственный путь к истинной автономии. Это спос - 978-5-0069-1750-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697c8d22b1e852e995dc77de/rev.2026-01-30T10:51:23.107Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/arkhitektura_voli_samodisciplina_kak_vysshaya_svoboda/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Архитектура состояния: Руководство по трансформации личности",
+      "description": "Книга \"Архитектура состояния: Руководство по трансформации личности\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Архитектор Антикризис представляет систему трансформации личности, основанную на управлении внутренним состоянием. Автор утверждает: пока Вы не научит - 978-5-0069-2256-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/69858134c915ea6018cdb8d9/rev.2026-02-06T05:50:52.388Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/arkhitektura_sostoyaniya_rukovodstvo_po_transformacii_lichnosti/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Крест Архитектора: Конструктор осознанности",
+      "description": "Книга \"Крест Архитектора: Конструктор осознанности\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - «Крест Архитектора» — пять фундаментальных модулей трансформации:\n«Архитектура Состояния: Настройка внутреннего источника энергии».\n«Архитектура Воли: - 978-5-0069-1789-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697ca5ebb1e852e995de9246/rev.2026-01-30T12:37:08.035Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/krest_arkhitektora_konstruktor_osoznannosti/"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Architecture of Unity: One of the Few Among the Many",
+      "description": "Книга \"Architecture of Unity: One of the Few Among the Many\" - The Resilience The Resilience Architect - печатная, электронная: epub, fb2, pdfRead, mobi - In the first three stages of your transformation, you built an internal citadel: you forged your spirit, mastered your body, and launched a self-susta - 978-5-0069-4482-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69a6f4d8e4a06499d18576b8/rev.2026-03-03T14:49:03.965Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/architecture_of_unity_one_of_the_few_among_the_many/",
+        "gumroad": "https://archantic.gumroad.com/l/wbhwac"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "Expansion Architecture: Evolution Without End",
+      "description": "Книга \"Expansion Architecture: Evolution Without End\" - The Resilience Architect - печатная, электронная: epub, fb2, pdfRead, mobi - The world doesn’t need more “experts” — it needs Architects of Reality. In a 2026 landscape defined by volatility, the old dream of reaching a “platea - 978-5-0069-4479-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69a6f136e4a06499d1856969/rev.2026-03-03T14:33:34.439Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/expansion_architecture_evolution_without_end/",
+        "gumroad": "https://archantic.gumroad.com/l/hjxgr"
+      }
+    },
+    {
+      "category": "applied",
+      "title": "The Creator State",
+      "description": "Книга \"The Creator State\". \"A Manual for Personal Architecture\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Most people spend their lives in a state of high-functioning sleep. They believe they are making choices and managing their destinies. But look closer - 978-5-0069-4473-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-03/69a6eaf3e4a06499d1849f1d/rev.2026-03-03T14:06:51.918Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/the_creator_state/",
+        "gumroad": "https://archantic.gumroad.com/l/iibtxz?_gl=1*nzt3rd*_ga*ODYxNzkzMjgxLjE3ODI2ODE2NjY.*_ga_6LJN6D94N6*czE3ODMyODgxMTIkbzE1JGcwJHQxNzgzMjg4MTEyJGo2MCRsMCRoMA.."
+      }
+    },
+    {
+      "category": "applied",
+      "title": "The resonance code",
+      "description": "Книга \"The resonance code\". \"21 Days to Peak State and Architectural Sovereignty\" - The Resilience Architect - печатная, электронная: epub, fb2, pdfRead, mobi - Your success is not a result of your actions. It is a result of your biological frequency. Most people try to change their lives by shifting external  - 978-5-0069-4044-4",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-02/69a010276cb62e304451c70b/rev.2026-02-26T09:19:44.288Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/the_resonance_code/",
+        "gumroad": "https://archantic.gumroad.com/l/tzraa?_gl=1*1e3ft6d*_ga*ODYxNzkzMjgxLjE3ODI2ODE2NjY.*_ga_6LJN6D94N6*czE3ODMyMDg1NTIkbzEzJGcwJHQxNzgzMjA4NTUyJGo2MCRsMCRoMA.."
+      }
+    },
+    {
+      "category": "fiction",
+      "title": "Резонанс богини",
+      "description": "Книга \"Резонанс богини\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Еще вчера Анна считала свою жизнь идеальной: уютная квартира, любимые дети, муж, с которым прожито десять лет. Но один клик в мобильном банке уничтожи - 978-5-0070-5693-9",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-06/6a3e72172aa615d701c95028/rev.2026-06-26T12:35:45.440Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/rezonans_bogini/"
       }
     }
   ]
