@@ -1,5 +1,5 @@
 {
-  "name": "@archantic_bot",
+  "name": "domus-architectus-bot",
   "version": "1.0.0",
   "dependencies": {
     "@google/genai": "latest",
