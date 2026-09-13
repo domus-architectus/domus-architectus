@@ -1,41 +1,48 @@
-const { GoogleGenAI } = require("@google/genai");
-const { Octokit } = require("@octokit/rest");
+const fetch = require("node-fetch");
 
 module.exports = async (req, res) => {
-    // 1. Проверка метода запроса
+    // 1. Выводим входящие данные в логи Vercel для диагностики
+    console.log("INCOMING UPDATE:", JSON.stringify(req.body));
+
     if (req.method !== 'POST') {
-        return res.status(200).json({ status: "DOMUS ARCHITECTUS BOT API OPERATIONAL" });
+        return res.status(200).json({ status: "DOMUS ARCHITECTUS BOT OPERATIONAL" });
     }
 
     try {
-        // 2. Безопасное чтение ключей из окружения
-        const tgToken = process.env.TELEGRAM_TOKEN;
-        const ghToken = process.env.GITHUB_TOKEN;
-        const geminiKey = process.env.Gemini_API_Key || process.env.GEMINI_API_KEY;
+        const update = req.body;
+        const token = process.env.TELEGRAM_TOKEN;
 
-        if (!tgToken) {
-            console.error("CRITICAL: TELEGRAM_TOKEN отсутствует в Environment Variables");
+        if (!token) {
+            console.error("ОШИБКА: TELEGRAM_TOKEN отсутствует в Environment Variables");
             return res.status(200).json({ error: "Missing TELEGRAM_TOKEN" });
         }
 
-        // 3. Инициализация клиентов внутри запроса (изоляция ошибок)
-        const ai = geminiKey ? new GoogleGenAI({ apiKey: geminiKey }) : null;
-        const octokit = ghToken ? new Octokit({ auth: ghToken }) : null;
+        // Извлекаем ID чата и текст сообщения
+        const chatId = update?.message?.chat?.id || update?.callback_query?.message?.chat?.id;
+        const incomingText = update?.message?.text || update?.callback_query?.data;
 
-        const update = req.body;
-        if (!update || (!update.message && !update.callback_query)) {
-            return res.status(200).json({ status: "No update message" });
+        if (chatId) {
+            // КРИТИЧЕСКИ ВАЖНО: await перед fetch!
+            // Без await Vercel завершит процесс за 6ms и не отправит запрос в Telegram
+            const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: `// DOMUS ARCHITECTUS SYSTEM RESPONSE\n\nПринят запрос: "${incomingText || 'Действие'}"\nСистема функционирует штатно.`
+                })
+            });
+
+            const resData = await response.json();
+            console.log("TELEGRAM API RESPONSE:", JSON.stringify(resData));
+        } else {
+            console.log("chatId не найден в объекте update");
         }
 
-        // --- ЛОГИКА ОБРАБОТКИ КОМАНД И СООБЩЕНИЙ ---
-        // (Ваш основной код обработки update.message / update.callback_query)
-
-        // Всегда возвращаем 200 OK для Telegram
         return res.status(200).json({ status: "ok" });
 
     } catch (error) {
-        // Перехватываем ошибки исполнения, чтобы Telegram не зацикливал отправку
-        console.error("RUNTIME ERROR IN BOT HANDLER:", error.stack || error);
+        console.error("RUNTIME ERROR:", error.stack || error);
         return res.status(200).json({ error: error.message });
     }
 };
