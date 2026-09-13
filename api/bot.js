@@ -2,10 +2,8 @@ const fetch = require("node-fetch");
 const { GoogleGenAI } = require("@google/genai");
 const { Octokit } = require("@octokit/rest");
 
-// Хранилище сессий (работает в рамках активных инстансов)
 const userSessions = {};
 
-// Очистка описаний Ridero от служебного мусора
 function cleanRideroDescription(text) {
     if (!text) return "";
     return text
@@ -16,7 +14,6 @@ function cleanRideroDescription(text) {
         .trim();
 }
 
-// Отправка сообщений в Telegram с обязательным await
 async function sendMessage(token, chatId, text, replyMarkup = null) {
     const payload = {
         chat_id: chatId,
@@ -26,21 +23,28 @@ async function sendMessage(token, chatId, text, replyMarkup = null) {
     if (replyMarkup) payload.reply_markup = replyMarkup;
 
     try {
-        const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
-        return await res.json();
     } catch (e) {
         console.error("Ошибка sendMessage:", e);
     }
 }
 
-// Извлечение Open Graph метатегов
+// Извлечение OG-тегов с жестким таймаутом в 4 секунды
 async function fetchOgData(url) {
     try {
-        const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 4000);
+
+        const res = await fetch(url, { 
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
+            signal: controller.signal
+        });
+        clearTimeout(timeout);
+
         const html = await res.text();
 
         const getTag = (prop) => {
@@ -55,22 +59,19 @@ async function fetchOgData(url) {
             image: getTag('og:image') || ''
         };
     } catch (e) {
-        console.error("Ошибка парсинга OG-тегов:", e);
+        console.error("Таймаут или ошибка парсинга OG-тегов:", e.message);
         return { title: '', description: '', image: '' };
     }
 }
 
-// Обработка текста через Gemini API
+// Быстрая генерация анонса Gemini
 async function generatePostWithGemini(geminiKey, title, description, link) {
     if (!geminiKey) return `*${title}*\n\n${description}\n\n[Ссылка на материал](${link})`;
 
     try {
         const ai = new GoogleGenAI({ apiKey: geminiKey });
-        const prompt = `Ты — Редактор экосистемы DOMUS ARCHITECTUS. 
-Напиши краткий, структурированный анонс для Telegram-канала на основе данных книги/материала.
-Стиль: сухой, точный, практичный, архитектурная логика, без воды и мотивационной патетики.
-
-Данные:
+        const prompt = `Ты — Редактор DOMUS ARCHITECTUS. Напиши краткий анонс для Telegram-канала на основе данных.
+Стиль: сухой, точный, архитектурный.
 Название: ${title}
 Описание: ${description}
 Ссылка: ${link}
@@ -88,18 +89,18 @@ async function generatePostWithGemini(geminiKey, title, description, link) {
 
         return response.text;
     } catch (e) {
-        console.error("Ошибка Gemini API:", e);
+        console.error("Ошибка Gemini API:", e.message);
         return `*${title}*\n\n${description}\n\n[Изучить материал](${link})`;
     }
 }
 
-// Обновление data.json в GitHub
+// Безопасное обновление GitHub data.json
 async function updateGithubData(ghToken, newProduct) {
-    if (!ghToken) throw new Error("GITHUB_TOKEN не задан");
+    if (!ghToken) return;
 
     const octokit = new Octokit({ auth: ghToken });
-    const owner = "STARIN87"; // Имя владельца репозитория
-    const repo = "arhantic";   // Название репозитория
+    const owner = "STARIN87";
+    const repo = "arhantic";
     const path = "data.json";
 
     let sha = null;
@@ -111,12 +112,12 @@ async function updateGithubData(ghToken, newProduct) {
         const decoded = Buffer.from(data.content, 'base64').toString('utf-8');
         currentContent = JSON.parse(decoded);
     } catch (e) {
-        console.log("data.json не найден или пуст, создаётся новая база.");
+        console.log("Создаем новый data.json");
     }
 
     if (!currentContent.products) currentContent.products = [];
 
-    // Привязка ссылки Gumroad к существующей карточке Ridero
+    // Привязка Gumroad к существующему карточке Ridero
     if (newProduct.links?.gumroad) {
         const slug = newProduct.links.gumroad.split('/').pop().split('?')[0];
         const existing = currentContent.products.find(p => 
@@ -141,16 +142,15 @@ async function updateGithubData(ghToken, newProduct) {
         owner,
         repo,
         path,
-        message: `bot: авто-обновление каталога (${newProduct.titleRu || newProduct.title})`,
+        message: `bot: обновление каталога (${newProduct.titleRu || newProduct.title})`,
         content: updatedBase64,
         sha
     });
 }
 
-// Основной Serverless Handler Vercel
 module.exports = async (req, res) => {
     if (req.method !== 'POST') {
-        return res.status(200).json({ status: "DOMUS ARCHITECTUS BOT RUNNING" });
+        return res.status(200).json({ status: "DOMUS ARCHITECTUS BOT OPERATIONAL" });
     }
 
     try {
@@ -162,7 +162,7 @@ module.exports = async (req, res) => {
         const update = req.body;
         if (!update) return res.status(200).json({ status: "Empty body" });
 
-        // Обработка Callback Query (Нажатия на кнопки)
+        // Обработка кнопок
         if (update.callback_query) {
             const cb = update.callback_query;
             const chatId = cb.message.chat.id;
@@ -172,7 +172,6 @@ module.exports = async (req, res) => {
 
             if (data.startsWith('lvl_')) {
                 userSessions[chatId].level = data.replace('lvl_', '');
-                
                 const formatKeyboard = {
                     inline_keyboard: [
                         [{ text: "📘 Прикладная система", callback_data: "fmt_applied" }],
@@ -185,15 +184,13 @@ module.exports = async (req, res) => {
             } 
             else if (data.startsWith('fmt_')) {
                 userSessions[chatId].format = data.replace('fmt_', '');
-                userSessions[chatId].awaitingUrl = true;
-                
-                await sendMessage(tgToken, chatId, "Контур системы настроен. Отправьте ссылку на материал (Ridero / Gumroad):");
+                await sendMessage(tgToken, chatId, "Контур системы настроен. Отправьте ссылку на материал:");
             }
 
             return res.status(200).json({ status: "ok" });
         }
 
-        // Обработка текстовых сообщений
+        // Обработка текстовых сообщений и ссылок
         if (update.message && update.message.text) {
             const msg = update.message;
             const chatId = msg.chat.id;
@@ -217,49 +214,50 @@ module.exports = async (req, res) => {
                 return res.status(200).json({ status: "ok" });
             }
 
-            // Обработка входящей ссылки
             if (text.startsWith('http://') || text.startsWith('https://')) {
                 const session = userSessions[chatId] || { level: "STATE", format: "applied" };
-                
-                await sendMessage(tgToken, chatId, "⏳ Извлечение метаданных и генерация анонса...");
 
+                // Извлечение метаданных
                 const ogData = await fetchOgData(text);
                 const cleanedDesc = cleanRideroDescription(ogData.description);
-                
-                const isRidero = text.includes('ridero.ru');
-                const isGumroad = text.includes('gumroad.com');
+                const fallbackTitle = text.split('/').pop().replace(/-/g, ' ') || "Материал системы";
 
                 const product = {
                     format: session.format || "applied",
                     level: session.level || "STATE",
                     category: session.format || "applied",
-                    title: ogData.title || "Без названия",
-                    titleRu: ogData.title || "Без названия",
+                    title: ogData.title || fallbackTitle,
+                    titleRu: ogData.title || fallbackTitle,
                     description: cleanedDesc,
                     descRu: cleanedDesc,
                     cover: ogData.image || "",
                     links: {
-                        ridero: isRidero ? text : "",
-                        gumroad: isGumroad ? text : ""
+                        ridero: text.includes('ridero.ru') ? text : "",
+                        gumroad: text.includes('gumroad.com') ? text : ""
                     }
                 };
 
-                // 1. Обновляем GitHub data.json
-                await updateGithubData(ghToken, product);
+                // Запись в GitHub
+                try {
+                    await updateGithubData(ghToken, product);
+                } catch (e) {
+                    console.error("Ошибка записи в GitHub:", e.message);
+                }
 
-                // 2. Генерируем анонс через Gemini
+                // Генерация поста
                 const postContent = await generatePostWithGemini(geminiKey, product.title, product.description, text);
 
-                // 3. Отправляем анонс в Telegram-канал (если задан)
+                // Постинг в канал
                 if (channelId) {
                     await sendMessage(tgToken, channelId, postContent);
                 }
 
-                await sendMessage(tgToken, chatId, `✅ Материал успешно добавлен в базу и опубликован!\n\n*Заголовок:* ${product.title}\n*Уровень:* ${product.level}\n*Формат:* ${product.format}`);
+                // Ответ пользователю
+                await sendMessage(tgToken, chatId, `✅ *Материал успешно обработан!*\n\n*Заголовок:* ${product.title}\n*Уровень:* ${product.level}\n*Формат:* ${product.format}`);
                 
                 userSessions[chatId] = {};
             } else {
-                await sendMessage(tgToken, chatId, "Отправьте корректную URL-ссылку или нажмите /start для сброса.");
+                await sendMessage(tgToken, chatId, "Отправьте URL-ссылку или нажмите /start для сброса.");
             }
         }
 
