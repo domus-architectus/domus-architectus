@@ -20,12 +20,41 @@ function escapeHTML(str) {
         .replace(/>/g, "&gt;");
 }
 
-// Нормализация названий
+// Нормализация названий для предотвращения дублей
 function normalizeTitle(title) {
     if (!title) return "";
     return title.toLowerCase()
         .replace(/[^a-zа-яё0-9]/g, "")
         .replace(/ё/g, "е")
+        .trim();
+}
+
+// Универсальная очистка описания от технической и издательской информации
+function cleanDescription(text) {
+    if (!text) return "";
+    return String(text)
+        // 1. Декодирование HTML-сущностей и сброс тегов
+        .replace(/&quot;/g, '"')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/<[^>]*>/g, '')
+
+        // 2. Удаление технического и издательского мусора Ridero / системных плашек
+        .replace(/Издательские решения.*$/gmi, '')
+        .replace(/Создано в интеллектуальной издательской системе Ridero\b\.?/gi, '')
+        .replace(/Возрастное ограничение:\s*\d+\+?/gi, '')
+        .replace(/\b(0|6|12|16|18)\+/g, '')
+        .replace(/ISBN\s*[\d\-]+/gi, '')
+        .replace(/Содержит нецензурную брань\.?/gi, '')
+        .replace(/Все права защищены\.?/gi, '')
+        .replace(/Правообладатель:.*$/gmi, '')
+
+        // 3. Очистка спецсимволов и нормализация пробелов
+        .replace(/[*#`_\-•]/g, ' ')
+        .replace(/[^\S\r\n]+/g, ' ')
+        .replace(/\n\s*\n+/g, '\n\n')
         .trim();
 }
 
@@ -46,13 +75,13 @@ async function parseRidero(url) {
         const imageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
 
         let title = titleMatch ? titleMatch[1] : "Новая книга";
-        let description = descMatch ? descMatch[1] : "";
+        let rawDescription = descMatch ? descMatch[1] : "";
         let cover = imageMatch ? imageMatch[1] : "";
 
         if (cover && cover.startsWith("//")) cover = "https:" + cover;
 
-        title = title.replace(/&quot;/g, '"').replace(/&amp;/g, '&');
-        description = description.replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+        title = title.replace(/&quot;/g, '"').replace(/&amp;/g, '&').trim();
+        const description = cleanDescription(rawDescription);
 
         return { title, description, cover };
     } finally {
@@ -82,10 +111,11 @@ async function parseGumroad(url) {
         const imageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
 
         let title = titleMatch ? titleMatch[1] : "Новый media-проект";
-        let description = descMatch ? descMatch[1] : "";
+        let rawDescription = descMatch ? descMatch[1] : "";
         let cover = imageMatch ? imageMatch[1] : "";
 
-        title = title.replace(" | Gumroad", "").trim();
+        title = title.replace(" | Gumroad", "").replace(/&quot;/g, '"').replace(/&amp;/g, '&').trim();
+        const description = cleanDescription(rawDescription);
 
         return { title, description, cover };
     } finally {
@@ -93,7 +123,7 @@ async function parseGumroad(url) {
     }
 }
 
-// Отправка сообщений Telegram (HTML)
+// Отправка сообщений Telegram (HTML-режим с гарантированной очисткой кодировки)
 async function sendTelegram(chatId, text, replyMarkup = null) {
     const url = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
     
@@ -142,11 +172,11 @@ module.exports = async (req, res) => {
             const text = update.message.text.trim();
             const lowerText = text.toLowerCase();
 
-            // 1. ХЕНДЛЕР УДАЛЕНИЯ
+            // 1. ХЕНДЛЕР УДАЛЕНИЯ КАРТОЧКИ
             if (text.startsWith('/delete') || lowerText.startsWith('удалить')) {
                 const urlMatch = text.match(/(https?:\/\/[^\s]+)/);
                 if (!urlMatch) {
-                    await sendTelegram(chatId, "🚨 Ошибка: Укажите ссылку для удаления через пробел.");
+                    await sendTelegram(chatId, "🚨 Ошибка: Укажите ссылку для удаления через пробел.\nПример: `удалить https://ridero.ru/books/...`");
                     return res.status(200).send("ОК");
                 }
                 
@@ -156,7 +186,7 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // 2. СВЯЗЫВАНИЕ GUMROAD С RIDERO
+            // 2. СВЯЗЫВАНИЕ GUMROAD С СУЩЕСТВУЮЩЕЙ КНИГОЙ RIDERO
             if (userSessions[chatId] && userSessions[chatId].gumroadUrl && userSessions[chatId].awaitingRideroBinding) {
                 if (text.includes("ridero.ru")) {
                     const cleanRideroUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0]?.split("?")[0] || text;
@@ -175,7 +205,7 @@ module.exports = async (req, res) => {
                 }
             }
 
-            // 3. ТЕКСТОВЫЙ ПЕРЕХВАТЧИК
+            // 3. ТЕКСТОВЫЙ ПЕРЕХВАТЧИК (Без лишних кликов по кнопкам)
             if (text.includes("gumroad.com") && (lowerText.includes("музыка") || lowerText.includes("аудио") || lowerText.includes("мерч") || lowerText.includes("арт"))) {
                 const cleanUrl = (text.match(/(https?:\/\/[^\s]+)/)?.[0] || text).split("?")[0].trim();
                 const targetCategory = (lowerText.includes("музыка") || lowerText.includes("аудио")) ? "music" : "merch";
@@ -186,7 +216,7 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // 4. ССЫЛКА GUMROAD
+            // 4. ССЫЛКА GUMROAD (Диалоговое меню)
             if (text.includes("gumroad.com")) {
                 const cleanUrl = (text.match(/(https?:\/\/[^\s]+)/)?.[0] || text).split("?")[0].trim();
                 userSessions[chatId] = { gumroadUrl: cleanUrl };
@@ -205,7 +235,7 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            // 5. ССЫЛКА RIDERO
+            // 5. ССЫЛКА RIDERO (Диалоговое меню)
             if (text.includes("ridero.ru")) {
                 const cleanUrl = text.match(/(https?:\/\/[^\s]+)/)?.[0] || text;
                 const urlParts = cleanUrl.split("?")[0].replace(/\/$/, "").split("/");
@@ -226,7 +256,7 @@ module.exports = async (req, res) => {
                 return res.status(200).send("ОК");
             }
 
-            await sendTelegram(chatId, "Приветствую. Отправьте ссылку на Ridero или Gumroad. Для удаления карточки введите: `удалить [ссылка]`.");
+            await sendTelegram(chatId, "Приветствую. Отправьте ссылку на Ridero или Gumroad.\nДля удаления введите: `удалить [ссылка]`.");
         }
 
         if (update.callback_query) {
@@ -284,7 +314,7 @@ module.exports = async (req, res) => {
     res.status(200).send("ОК");
 };
 
-// СОХРАНЕНИЕ И ИИ-ГЕНЕРАЦИЯ
+// СОХРАНЕНИЕ НА GITHUB И ИИ-ГЕНЕРАЦИЯ АНОНСА
 async function finalizeProductCreation(chatId, config) {
     let incomingProduct = {};
     let targetLinkForPromo = ""; 
@@ -304,7 +334,7 @@ async function finalizeProductCreation(chatId, config) {
             cover: data.cover,
             links: { 
                 ridero: bookUrl,
-                gumroad: config.extraGumroad || ""
+                gumroad: ""
             }
         };
         targetLinkForPromo = bookUrl;
@@ -399,7 +429,7 @@ async function finalizeProductCreation(chatId, config) {
 
     await sendTelegram(chatId, `${statusMessage}\n\n🔄 Генерация анонса...`);
 
-    // ИИ-генерация текста
+    // ИИ-генерация текста анонса
     try {
         if (!ai) throw new Error("GEMINI_API_KEY не установлен.");
 
@@ -412,11 +442,7 @@ async function finalizeProductCreation(chatId, config) {
             "Суть проекта и аннотация материала: ТЕКСТ АННОТАЦИИ ОДНИМ СПЛОШНЫМ АБЗАЦЕМ БЕЗ ЗНАЧКОВ.\n" +
             "Ссылка на проект: ССЫЛКА.";
 
-        const cleanDesc = (incomingProduct.description || "")
-            .replace(/[*#`]/g, "")
-            .replace(/[\-\•]\s+/g, "")
-            .replace(/\n+/g, " ")
-            .trim();
+        const cleanDesc = incomingProduct.description || "Описание отсутствует.";
 
         const prompt = `Сформируй сухой информационный текст. Проект: "${incomingProduct.title}". Аннотация: ${cleanDesc}. Ссылка: ${targetLinkForPromo}`;
 
@@ -450,7 +476,7 @@ async function finalizeProductCreation(chatId, config) {
     }
 }
 
-// УДАЛЕНИЕ КАРТОЧКИ
+// УДАЛЕНИЕ КАРТОЧКИ С GITHUB
 async function finalizeProductDeletion(chatId, targetUrl) {
     let currentContent = { products: [] };
     let sha = null;
@@ -482,7 +508,7 @@ async function finalizeProductDeletion(chatId, targetUrl) {
     });
 
     if (targetIndex === -1) {
-        await sendTelegram(chatId, `❌ Карточка с такой ссылкой не найдена.`);
+        await sendTelegram(chatId, `❌ Карточка с такой ссылкой не найдена в файле data.json.`);
         return;
     }
 
@@ -501,5 +527,5 @@ async function finalizeProductDeletion(chatId, targetUrl) {
         sha: sha
     });
 
-    await sendTelegram(chatId, `🗑️ Карточка проекта "${escapeHTML(deletedProductTitle)}" полностью удалена.`);
+    await sendTelegram(chatId, `🗑️ Карточка проекта "${escapeHTML(deletedProductTitle)}" успешно удалена из базы данных.`);
 }
