@@ -1,44 +1,41 @@
-# POST /api/bot
+const { GoogleGenAI } = require("@google/genai");
+const { Octokit } = require("@octokit/rest");
 
-Status: 500 (FUNCTION_INVOCATION_FAILED)
+module.exports = async (req, res) => {
+    // 1. Проверка метода запроса
+    if (req.method !== 'POST') {
+        return res.status(200).json({ status: "DOMUS ARCHITECTUS BOT API OPERATIONAL" });
+    }
 
-## Request
+    try {
+        // 2. Безопасное чтение ключей из окружения
+        const tgToken = process.env.TELEGRAM_TOKEN;
+        const ghToken = process.env.GITHUB_TOKEN;
+        const geminiKey = process.env.Gemini_API_Key || process.env.GEMINI_API_KEY;
 
-Started: Sep 13 22:34:18.49 GMT+3
+        if (!tgToken) {
+            console.error("CRITICAL: TELEGRAM_TOKEN отсутствует в Environment Variables");
+            return res.status(200).json({ error: "Missing TELEGRAM_TOKEN" });
+        }
 
-Request ID: 69g8s-1789328058495-c81f1eb36044
+        // 3. Инициализация клиентов внутри запроса (изоляция ошибок)
+        const ai = geminiKey ? new GoogleGenAI({ apiKey: geminiKey }) : null;
+        const octokit = ghToken ? new Octokit({ auth: ghToken }) : null;
 
-Path: /api/bot
+        const update = req.body;
+        if (!update || (!update.message && !update.callback_query)) {
+            return res.status(200).json({ status: "No update message" });
+        }
 
-Host: arhantic.vercel.app
+        // --- ЛОГИКА ОБРАБОТКИ КОМАНД И СООБЩЕНИЙ ---
+        // (Ваш основной код обработки update.message / update.callback_query)
 
-Error Code: FUNCTION_INVOCATION_FAILED
+        // Всегда возвращаем 200 OK для Telegram
+        return res.status(200).json({ status: "ok" });
 
-Received in Frankfurt, Germany (fra1)
-
-### Firewall
-
-Allowed
-
-Routed to Washington, D.C., USA (iad1)
-
-### Function Invocation
-
-Route: /api/bot
-
-Error Page: /api/bot
-
-Execution Duration: 121ms
-
-### External APIs
-
-No outgoing requests
-
-### Fluid
-
-Response finished in 245ms
-
-## Deployment Information
-Deployment ID: dpl_ARByTNfQSrAFNNq84jREmkLHC2hG
-Environment: production
-Branch: main
+    } catch (error) {
+        // Перехватываем ошибки исполнения, чтобы Telegram не зацикливал отправку
+        console.error("RUNTIME ERROR IN BOT HANDLER:", error.stack || error);
+        return res.status(200).json({ error: error.message });
+    }
+};
