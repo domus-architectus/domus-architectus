@@ -47,14 +47,14 @@
         extend: {
           colors: {
             domus: {
-              black: "#080808",
-              stone: "#111111",
-              stone2: "#181818",
-              steel: "#262626",
-              amber: "#c59b45",
-              amber2: "#e0b85d",
-              text: "#d6d1c7",
-              muted: "#85817a"
+              black: "#050505",
+              stone: "#0f0f11",
+              stone2: "#16161a",
+              steel: "#2a2a30",
+              amber: "#f59e0b",
+              amber2: "#fbbf24",
+              text: "#f3f4f6",
+              muted: "#9ca3af"
             }
           },
           fontFamily: {
@@ -68,15 +68,15 @@
 
   <style>
     :root {
-      --bg: #080808;
-      --surface: #111111;
-      --surface-2: #181818;
-      --steel: #262626;
-      --amber: #c59b45;
-      --amber-light: #e0b85d;
-      --text: #d6d1c7;
-      --muted: #85817a;
-      --border: rgba(197, 155, 69, 0.18);
+      --bg: #050505;
+      --surface: #0f0f11;
+      --surface-2: #16161a;
+      --steel: #2a2a30;
+      --amber: #f59e0b;       /* Яркий, сигнальный янтарь */
+      --amber-light: #fbbf24; /* Чистое золотое свечение */
+      --text: #f3f4f6;        /* Высококонтрастный светлый текст */
+      --muted: #9ca3af;       /* Четкий, читаемый серый */
+      --border: rgba(245, 158, 11, 0.35); /* Видимые янтарные границы */
     }
 
     * {
@@ -89,8 +89,8 @@
       background:
         radial-gradient(
           circle at 50% -10%,
-          rgba(197, 155, 69, 0.08),
-          transparent 35%
+          rgba(245, 158, 11, 0.18),
+          transparent 45%
         ),
         var(--bg);
       color: var(--text);
@@ -102,7 +102,7 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.025;
+      opacity: 0.03;
       background-image:
         linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
@@ -112,7 +112,7 @@
 
     ::selection {
       background: var(--amber);
-      color: #000;
+      color: #000000;
     }
 
     .container-domus {
@@ -135,6 +135,7 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       margin-bottom: 12px;
+      font-weight: 600;
     }
 
     .section-title {
@@ -142,7 +143,7 @@
       line-height: 1.05;
       font-weight: 700;
       letter-spacing: -0.035em;
-      color: #eeeae2;
+      color: #ffffff;
     }
 
     .section-description {
@@ -157,21 +158,24 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 13px 19px;
-      border: 1px solid rgba(197, 155, 69, 0.4);
-      background: rgba(197, 155, 69, 0.07);
+      padding: 13px 20px;
+      border: 1px solid var(--amber);
+      background: rgba(245, 158, 11, 0.12);
       color: var(--amber-light);
       font-family: monospace;
       font-size: 12px;
-      letter-spacing: 0.08em;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.15);
       transition: .25s ease;
     }
 
     .btn-domus:hover {
       background: var(--amber);
-      color: #080808;
+      color: #000000;
       border-color: var(--amber);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.45);
     }
 
     .btn-dark {
@@ -179,10 +183,10 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 13px 19px;
-      border: 1px solid #333;
-      background: #111;
-      color: #aaa;
+      padding: 13px 20px;
+      border: 1px solid #3b3b45;
+      background: #121216;
+      color: #d1d5db;
       font-family: monospace;
       font-size: 12px;
       letter-spacing: 0.08em;
@@ -191,14 +195,15 @@
     }
 
     .btn-dark:hover {
-      border-color: #555;
-      color: #eee;
-      background: #181818;
+      border-color: var(--amber);
+      color: #ffffff;
+      background: #1c1c24;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
     }
 
     .nav-link {
       position: relative;
-      color: #85817a;
+      color: #9ca3af;
       font-family: monospace;
       font-size: 11px;
       letter-spacing: .08em;
@@ -223,7 +228,7 @@
       position: absolute;
       width: 700px;
       height: 700px;
-      border: 1px solid rgba(197, 155, 69, .08);
+      border: 1px solid rgba(245, 158, 11, .12);
       border-radius: 50%;
       left: 50%;
       top: 50%;
@@ -239,12 +244,13 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      padding: 7px 11px;
-      border: 1px solid rgba(197, 155, 69, .2);
-      background: rgba(197, 155, 69, .04);
-      color: var(--amber);
+      padding: 7px 13px;
+      border: 1px solid rgba(245, 158, 11, .4);
+      background: rgba(245, 158, 11, .08);
+      color: var(--amber-light);
       font-family: monospace;
       font-size: 10px;
+      font-weight: 600;
       letter-spacing: .2em;
       text-transform: uppercase;
     }
@@ -255,11 +261,12 @@
       line-height: .88;
       font-weight: 800;
       letter-spacing: -.065em;
-      color: #eeeae2;
+      color: #ffffff;
     }
 
     .hero-title span {
       color: var(--amber);
+      text-shadow: 0 0 35px rgba(245, 158, 11, 0.3);
     }
 
     .hero-subtitle {
@@ -267,7 +274,7 @@
       max-width: 730px;
       font-size: clamp(18px, 2.5vw, 26px);
       line-height: 1.35;
-      color: #bcb7ad;
+      color: #e5e7eb;
       font-weight: 400;
     }
 
@@ -284,7 +291,7 @@
 
     .hero-system span {
       padding: 12px 14px;
-      color: #77736d;
+      color: #9ca3af;
       font-family: monospace;
       font-size: 10px;
       letter-spacing: .12em;
@@ -292,7 +299,8 @@
     }
 
     .hero-system span:first-child {
-      color: var(--amber);
+      color: var(--amber-light);
+      font-weight: 700;
     }
 
     .hero-actions {
@@ -308,7 +316,7 @@
       top: 50%;
       transform: translateY(-50%);
       width: min(360px, 30vw);
-      opacity: .13;
+      opacity: .18;
       filter: grayscale(1);
       z-index: 1;
     }
@@ -317,7 +325,7 @@
       .hero-mark {
         width: 250px;
         right: -60px;
-        opacity: .07;
+        opacity: .1;
       }
     }
 
@@ -339,73 +347,74 @@
     .architecture-card {
       min-height: 180px;
       padding: 24px;
-      border: 1px solid #252525;
-      background: linear-gradient(135deg, rgba(255,255,255,.018), rgba(255,255,255,0));
+      border: 1px solid #2a2a32;
+      background: linear-gradient(135deg, rgba(255,255,255,.025), rgba(255,255,255,0));
       transition: .25s ease;
       position: relative;
       overflow: hidden;
     }
 
-    .architecture-card:hover {
-      border-color: rgba(197, 155, 69, .35);
-      transform: translateY(-2px);
+    .architecture-card:hover,
+    .mode-card:hover,
+    .product-card:hover {
+      border-color: var(--amber) !important;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.22);
+      transform: translateY(-3px);
     }
 
     .architecture-number {
       font-family: monospace;
-      color: var(--amber);
+      color: var(--amber-light);
       font-size: 11px;
+      font-weight: 700;
     }
 
     .architecture-name {
       margin-top: 22px;
       font-size: 20px;
       font-weight: 700;
-      color: #e7e2d9;
+      color: #ffffff;
     }
 
     .architecture-text {
       margin-top: 10px;
-      color: #77736d;
+      color: #9ca3af;
       font-size: 13px;
       line-height: 1.65;
     }
 
     .mode-card {
-      border: 1px solid #252525;
+      border: 1px solid #2a2a32;
       padding: 22px;
-      background: #101010;
+      background: #0f0f12;
       transition: .25s ease;
       min-height: 165px;
     }
 
-    .mode-card:hover {
-      border-color: rgba(197,155,69,.4);
-    }
-
     .mode-code {
-      color: var(--amber);
+      color: var(--amber-light);
       font-family: monospace;
       font-size: 11px;
       letter-spacing: .12em;
+      font-weight: 600;
     }
 
     .mode-name {
-      color: #e5e1d9;
+      color: #ffffff;
       font-size: 18px;
       margin-top: 14px;
       font-weight: 700;
     }
 
     .mode-description {
-      color: #77736d;
+      color: #9ca3af;
       font-size: 13px;
       line-height: 1.6;
       margin-top: 8px;
     }
 
     .code-item {
-      border-top: 1px solid #292929;
+      border-top: 1px solid #2a2a32;
       padding: 20px 0;
       display: grid;
       grid-template-columns: 60px 1fr;
@@ -413,28 +422,29 @@
     }
 
     .code-number {
-      color: var(--amber);
+      color: var(--amber-light);
       font-family: monospace;
       font-size: 12px;
+      font-weight: 700;
     }
 
     .code-title {
-      color: #e4dfd6;
+      color: #ffffff;
       font-size: 17px;
       font-weight: 600;
     }
 
     .code-description {
       margin-top: 6px;
-      color: #74716b;
+      color: #9ca3af;
       font-size: 13px;
       line-height: 1.65;
     }
 
     .catalog-filter {
-      border: 1px solid #292929;
-      background: #101010;
-      color: #77736d;
+      border: 1px solid #374151;
+      background: #111116;
+      color: #9ca3af;
       padding: 10px 14px;
       font-family: monospace;
       font-size: 10px;
@@ -446,33 +456,30 @@
 
     .catalog-filter:hover,
     .catalog-filter.active {
-      color: #080808;
+      color: #000000;
       background: var(--amber);
       border-color: var(--amber);
+      font-weight: 700;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
     }
 
     .product-card {
-      border: 1px solid #252525;
-      background: #101010;
+      border: 1px solid #2a2a32;
+      background: #0f0f12;
       overflow: hidden;
       transition: .25s ease;
       display: flex;
       flex-direction: column;
     }
 
-    .product-card:hover {
-      border-color: rgba(197,155,69,.38);
-      transform: translateY(-3px);
-    }
-
     .product-cover {
       height: 280px;
-      background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+      background: linear-gradient(145deg, #1f1f26, #0a0a0d);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border-bottom: 1px solid #252525;
+      border-bottom: 1px solid #2a2a32;
     }
 
     .product-cover img {
@@ -489,23 +496,24 @@
     }
 
     .product-category {
-      color: var(--amber);
+      color: var(--amber-light);
       font-family: monospace;
       font-size: 9px;
       letter-spacing: .14em;
       text-transform: uppercase;
+      font-weight: 700;
     }
 
     .product-title {
-      color: #e5e1d9;
+      color: #ffffff;
       font-size: 18px;
-      font-weight: 650;
+      font-weight: 700;
       line-height: 1.25;
       margin-top: 10px;
     }
 
     .product-description {
-      color: #77736d;
+      color: #9ca3af;
       font-size: 12px;
       line-height: 1.65;
       margin-top: 10px;
@@ -522,8 +530,8 @@
       flex: 1;
       text-align: center;
       padding: 9px 7px;
-      border: 1px solid #292929;
-      color: #88837b;
+      border: 1px solid #374151;
+      color: #d1d5db;
       font-family: monospace;
       font-size: 9px;
       text-transform: uppercase;
@@ -532,23 +540,25 @@
     }
 
     .product-actions a:hover {
-      color: #080808;
+      color: #000000;
       background: var(--amber);
       border-color: var(--amber);
+      font-weight: 700;
     }
 
     .navigator {
-      background: linear-gradient(135deg, rgba(197,155,69,.08), rgba(197,155,69,.015));
-      border: 1px solid rgba(197,155,69,.25);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(245, 158, 11, 0.02));
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.08);
     }
 
     .navigator-input {
       width: 100%;
       min-height: 120px;
       resize: vertical;
-      background: #0a0a0a;
-      border: 1px solid #292929;
-      color: #ddd8cf;
+      background: #0a0a0d;
+      border: 1px solid #374151;
+      color: #f3f4f6;
       padding: 16px;
       outline: none;
       font-family: inherit;
@@ -557,33 +567,34 @@
     }
 
     .navigator-input:focus {
-      border-color: rgba(197,155,69,.5);
+      border-color: var(--amber);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
     }
 
     .chat-message {
       padding: 12px 14px;
       margin-bottom: 8px;
-      border: 1px solid #292929;
-      background: #0d0d0d;
-      color: #aaa;
+      border: 1px solid #2a2a32;
+      background: #0f0f12;
+      color: #d1d5db;
       font-size: 13px;
       line-height: 1.6;
     }
 
     .chat-message.user {
-      border-color: rgba(197,155,69,.2);
-      color: #ddd8cf;
+      border-color: rgba(245, 158, 11, 0.3);
+      color: #ffffff;
     }
 
     .chat-message.assistant {
-      color: #99958d;
+      color: #9ca3af;
     }
 
     .status-line {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      color: #65615b;
+      color: #9ca3af;
       font-family: monospace;
       font-size: 10px;
     }
@@ -591,13 +602,13 @@
     .status-dot {
       width: 6px;
       height: 6px;
-      background: var(--amber);
+      background: var(--amber-light);
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(197,155,69,.7);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.9);
     }
 
     footer {
-      border-top: 1px solid #202020;
+      border-top: 1px solid #202025;
     }
   </style>
 </head>
@@ -605,19 +616,19 @@
 <body>
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 border-b border-white/5 bg-black/85 backdrop-blur-xl">
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-xl">
     <div class="container-domus h-[72px] flex items-center justify-between">
 
       <a href="#top" class="flex items-center gap-3">
-        <div class="w-9 h-9 border border-amber-500/30 flex items-center justify-center">
-          <span class="text-amber-400 font-mono text-xs">DA</span>
+        <div class="w-9 h-9 border border-amber-500/50 bg-amber-500/10 flex items-center justify-center">
+          <span class="text-amber-400 font-mono text-xs font-bold">DA</span>
         </div>
 
         <div>
-          <div class="text-[13px] tracking-[.16em] text-gray-200 font-semibold">
+          <div class="text-[13px] tracking-[.16em] text-white font-bold">
             DOMUS ARCHITECTUS
           </div>
-          <div class="text-[9px] tracking-[.15em] text-gray-600 font-mono">
+          <div class="text-[9px] tracking-[.15em] text-amber-400/80 font-mono">
             RESILIENCE ARCHITECTURE
           </div>
         </div>
@@ -634,17 +645,17 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <button onclick="setLanguage('ru')" id="langRU" class="font-mono text-[10px] text-amber-400">RU</button>
-        <span class="text-gray-700">/</span>
-        <button onclick="setLanguage('en')" id="langEN" class="font-mono text-[10px] text-gray-600">EN</button>
-        <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-500 ml-2">
+        <button onclick="setLanguage('ru')" id="langRU" class="font-mono text-[10px] text-amber-400 font-bold">RU</button>
+        <span class="text-gray-600">/</span>
+        <button onclick="setLanguage('en')" id="langEN" class="font-mono text-[10px] text-gray-500">EN</button>
+        <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-400 ml-2">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden border-t border-white/5 bg-black px-5 py-5">
+    <div id="mobileMenu" class="hidden border-t border-white/10 bg-black px-5 py-5">
       <div class="flex flex-col gap-5">
         <a href="#methodology" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_method">Методология</a>
         <a href="#modes" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_modes">Режимы</a>
@@ -679,7 +690,7 @@
           Архитектура устойчивости человека в условиях нагрузки, хаоса и перемен.
         </p>
 
-        <p class="mt-5 max-w-2xl text-gray-600 text-sm leading-7">
+        <p class="mt-5 max-w-2xl text-gray-400 text-sm leading-7">
           <span data-i18n="hero_text">
             Когда прежняя система рушится, ты должен иметь возможность построить новую.
           </span>
@@ -716,50 +727,50 @@
 
 
     <!-- 01 / METHODOLOGY -->
-    <section id="methodology" class="py-28 border-t border-white/5">
+    <section id="methodology" class="py-28 border-t border-white/10">
       <div class="container-domus">
         <div class="section-label" data-i18n="method_label">01 / Архитектура</div>
         <h2 class="section-title"><span data-i18n="method_title">Архитектура устойчивости</span></h2>
         <p class="section-description mt-6"><span data-i18n="method_description">Устойчивость не возникает из мотивации. Она строится как система...</span></p>
 
-        <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#252525]">
-          <article class="architecture-card bg-[#111]">
+        <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#2a2a32]">
+          <article class="architecture-card bg-[#0f0f12]">
             <div class="architecture-number">01</div>
             <div class="architecture-name" data-i18n="card_state_title">СОСТОЯНИЕ</div>
             <div class="architecture-text" data-i18n="card_state_text">Стабилизация состояния. Тело и нервная система являются первым контуром управления.</div>
           </article>
 
-          <article class="architecture-card bg-[#111]">
+          <article class="architecture-card bg-[#0f0f12]">
             <div class="architecture-number">02</div>
             <div class="architecture-name" data-i18n="card_thinking_title">МЫШЛЕНИЕ</div>
             <div class="architecture-text" data-i18n="card_thinking_text">Диагностика реальности. Отделить факт от интерпретации.</div>
           </article>
 
-          <article class="architecture-card bg-[#111]">
+          <article class="architecture-card bg-[#0f0f12]">
             <div class="architecture-number">03</div>
             <div class="architecture-name" data-i18n="card_will_title">ВОЛЯ</div>
             <div class="architecture-text" data-i18n="card_will_text">Формирование внутренней вертикали и способности удерживать решение.</div>
           </article>
 
-          <article class="architecture-card bg-[#111]">
+          <article class="architecture-card bg-[#0f0f12]">
             <div class="architecture-number">04</div>
             <div class="architecture-name" data-i18n="card_action_title">ДЕЙСТВИЕ</div>
             <div class="architecture-text" data-i18n="card_action_text">Перевод решения в конкретное действие без лишней теории.</div>
           </article>
 
-          <article class="architecture-card bg-[#111]">
+          <article class="architecture-card bg-[#0f0f12]">
             <div class="architecture-number">05</div>
             <div class="architecture-name" data-i18n="card_structure_title">СТРУКТУРА</div>
             <div class="architecture-text" data-i18n="card_structure_text">Создание каркаса, который удерживает результат.</div>
           </article>
 
-          <article class="architecture-card bg-[#111]">
+          <article class="architecture-card bg-[#0f0f12]">
             <div class="architecture-number">06</div>
             <div class="architecture-name" data-i18n="card_adaptation_title">АДАПТАЦИЯ</div>
             <div class="architecture-text" data-i18n="card_adaptation_text">Изменение конструкции без потери несущих элементов.</div>
           </article>
 
-          <article class="architecture-card bg-[#111] sm:col-span-2 lg:col-span-2">
+          <article class="architecture-card bg-[#0f0f12] sm:col-span-2 lg:col-span-2">
             <div class="architecture-number">07</div>
             <div class="architecture-name" data-i18n="card_resilience_title">УСТОЙЧИВОСТЬ</div>
             <div class="architecture-text max-w-xl" data-i18n="card_resilience_text">Способность системы сохранять функциональность, восстанавливаться после нагрузки и перестраиваться.</div>
@@ -770,7 +781,7 @@
 
 
     <!-- 02 / MODES -->
-    <section id="modes" class="py-28 bg-[#0b0b0b] border-y border-white/5">
+    <section id="modes" class="py-28 bg-[#0a0a0d] border-y border-white/10">
       <div class="container-domus">
         <div class="section-label" data-i18n="modes_label">02 / Режимы работы</div>
         <h2 class="section-title" data-i18n="modes_title">Пять режимов работы</h2>
@@ -812,7 +823,7 @@
 
 
     <!-- 03 / AUDIO HUB SECTION -->
-    <section id="audio-hub" class="py-28 border-b border-white/5">
+    <section id="audio-hub" class="py-28 border-b border-white/10">
       <div class="container-domus">
 
         <div class="section-label" data-i18n="audio_label">03 / Звуковые Протоколы</div>
@@ -822,15 +833,15 @@
         </p>
 
         <!-- YouTube Channel Banner -->
-        <div class="mt-10 p-6 md:p-8 border border-amber-500/30 bg-[#111111] flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="mt-10 p-6 md:p-8 border border-amber-500/50 bg-[#0f0f12] flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg shadow-amber-500/5">
           <div class="flex items-center gap-5">
-            <div class="w-14 h-14 border border-red-500/40 bg-red-950/20 flex items-center justify-center text-red-500 text-2xl">
+            <div class="w-14 h-14 border border-red-500/60 bg-red-950/30 flex items-center justify-center text-red-500 text-2xl">
               <i class="fa-brands fa-youtube"></i>
             </div>
             <div>
-              <div class="text-xs font-mono text-amber-400 uppercase tracking-widest" data-i18n="yt_channel_tag">МЕДИА-ХАБ YOUTUBE</div>
-              <div class="text-xl font-bold text-gray-100 mt-1">@arh_antic | The Resilience Architect</div>
-              <div class="text-xs text-gray-500 mt-1" data-i18n="yt_channel_sub">Официальные аудио-протоколы, гимны и настройки состояния</div>
+              <div class="text-xs font-mono text-amber-400 uppercase tracking-widest font-bold" data-i18n="yt_channel_tag">МЕДИА-ХАБ YOUTUBE</div>
+              <div class="text-xl font-bold text-white mt-1">@arh_antic | The Resilience Architect</div>
+              <div class="text-xs text-gray-400 mt-1" data-i18n="yt_channel_sub">Официальные аудио-протоколы, гимны и настройки состояния</div>
             </div>
           </div>
           <a href="https://youtube.com/@arh_antic" target="_blank" rel="noopener noreferrer" class="btn-domus whitespace-nowrap">
@@ -868,7 +879,7 @@
 
 
     <!-- 05 / CATALOG (КНИГИ И ИНСТРУМЕНТЫ) -->
-    <section id="catalog" class="py-28 bg-[#0b0b0b] border-y border-white/5">
+    <section id="catalog" class="py-28 bg-[#0a0a0d] border-y border-white/10">
       <div class="container-domus">
         <div class="section-label" data-i18n="catalog_label">05 / Арсенал</div>
         <h2 class="section-title" data-i18n="catalog_title">Витрина системы</h2>
@@ -883,7 +894,7 @@
           <button class="catalog-filter" data-category="fiction" onclick="filterCategory('fiction')" data-i18n="cat_fiction">Художественные</button>
         </div>
 
-        <!-- Catalog Grid (Карточки книг) -->
+        <!-- Catalog Grid (Очищенные карточки книг) -->
         <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
 
           <!-- Книга 1 -->
@@ -894,7 +905,7 @@
             <div class="product-body">
               <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
               <div class="product-title">The 12-Week Inner Control Protocol</div>
-              <div class="product-description">Пошаговый 12-недельный алгоритм настройки ментальной и телесной дисциплины, работы с вниманием и стрессоустойчивостью.</div>
+              <div class="product-description" data-i18n="book_desc_1">12-недельный алгоритм настройки ментальной и телесной дисциплины, управления вниманием и восстановления стрессоустойчивости.</div>
               <div class="product-actions">
                 <a href="https://ridero.ru/books/the_12-week_inner_control_protocol/" target="_blank" rel="noopener noreferrer">Ridero</a>
               </div>
@@ -909,7 +920,7 @@
             <div class="product-body">
               <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
               <div class="product-title">Инженерия личной силы</div>
-              <div class="product-description">90 дней до полного контроля реальности. Практический протокол ментальной вертикали, психофизического ресурса и фокуса.</div>
+              <div class="product-description" data-i18n="book_desc_2">90-дневный протокол построения внутренней вертикали. Системное управление состоянием, психофизическим ресурсом и фокусом.</div>
               <div class="product-actions">
                 <a href="https://ridero.ru/books/inzheneriya_lichnoi_sily/" target="_blank" rel="noopener noreferrer">Ridero</a>
                 <a href="https://archantic.gumroad.com/l/catpvv" target="_blank" rel="noopener noreferrer">Gumroad</a>
@@ -925,7 +936,7 @@
             <div class="product-body">
               <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
               <div class="product-title">Финансовый периметр</div>
-              <div class="product-description">Как вырваться из кабалы финансового стресса. Построение системы финансовой безопасности и устранение дыр ресурса.</div>
+              <div class="product-description" data-i18n="book_desc_3">Алгоритм выхода из состояния финансового хаоса. Проектирование личного бюджета, устранение утечек ресурса и защита системы.</div>
               <div class="product-actions">
                 <a href="https://ridero.ru/books/finansovyi_perimetr/" target="_blank" rel="noopener noreferrer">Ridero</a>
               </div>
@@ -940,7 +951,7 @@
             <div class="product-body">
               <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
               <div class="product-title">Скрытая Мощь 2.0</div>
-              <div class="product-description">Антикризисный монолит. Построение физической и ментальной брони без зависимости от специальных условий и спортзалов.</div>
+              <div class="product-description" data-i18n="book_desc_4">Фундаментальный протокол телесной и ментальной саморегуляции. Построение запаса прочности без зависимости от внешних условий.</div>
               <div class="product-actions">
                 <a href="https://ridero.ru/books/skrytaya_mosh_2_0/" target="_blank" rel="noopener noreferrer">Ridero</a>
               </div>
@@ -955,7 +966,7 @@
             <div class="product-body">
               <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
               <div class="product-title">Крест Архитектора</div>
-              <div class="product-description">Пять фундаментальных модулей трансформации: состояние, воля, мышление, структура и адаптация.</div>
+              <div class="product-description" data-i18n="book_desc_5">Пять фундаментальных модулей трансформации: состояние, воля, мышление, структура и адаптация. Базовый каркас личной системы.</div>
               <div class="product-actions">
                 <a href="https://ridero.ru/books/krest_arkhitektora_konstruktor_osoznannosti/" target="_blank" rel="noopener noreferrer">Ridero</a>
               </div>
@@ -970,7 +981,7 @@
             <div class="product-body">
               <div class="product-category" data-i18n="cat_tag_fiction">ХУДОЖЕСТВЕННАЯ ЛИТЕРАТУРА</div>
               <div class="product-title">Хроники Архитектора — 4</div>
-              <div class="product-description">Проклятие древней руды. Постапокалиптический роман, демонстрирующий работу системы в условиях максимального давления.</div>
+              <div class="product-description" data-i18n="book_desc_6">Постапокалиптическая повесть. Демонстрация работы принципов устойчивости и выдержки человека в условиях разрушения порядка.</div>
               <div class="product-actions">
                 <a href="https://ridero.ru/books/khroniki_arkhitektora_4/" target="_blank" rel="noopener noreferrer">Ridero</a>
                 <a href="https://archantic.gumroad.com/l/rxfhap" target="_blank" rel="noopener noreferrer">Gumroad</a>
@@ -986,7 +997,7 @@
             <div class="product-body">
               <div class="product-category" data-i18n="cat_tag_fiction">ХУДОЖЕСТВЕННАЯ ЛИТЕРАТУРА</div>
               <div class="product-title">Сын степей: Заговор в Бонне</div>
-              <div class="product-description">Историко-психологический триллер. Казак-характерник в водовороте холодного противостояния разведок 1984 года.</div>
+              <div class="product-description" data-i18n="book_desc_7">Историко-психологический триллер. Дисциплина, холодный расчёт и сохранение управляемости в эпицентре противостояния 1984 года.</div>
               <div class="product-actions">
                 <a href="https://ridero.ru/books/syn_stepei/" target="_blank" rel="noopener noreferrer">Ridero</a>
               </div>
@@ -1001,7 +1012,7 @@
             <div class="product-body">
               <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
               <div class="product-title">Код самодисциплины</div>
-              <div class="product-description">Пошаговая система внедрения ответственности и формирования характера подростка на базе суворовского опыта.</div>
+              <div class="product-description" data-i18n="book_desc_8">Практическое руководство по воспитанию характера и ответственности. Пошаговый алгоритм формирования дисциплины без выгорания.</div>
               <div class="product-actions">
                 <a href="https://ridero.ru/books/kod_samodiscipliny_ekspert_strogoi_shkoly_konstruktivnoe_vospitanie/" target="_blank" rel="noopener noreferrer">Ridero</a>
                 <a href="https://archantic.gumroad.com/l/laclfl" target="_blank" rel="noopener noreferrer">Gumroad</a>
@@ -1025,10 +1036,10 @@
                 <span data-i18n="nav_title_1">AI</span><br />
                 <span class="amber" data-i18n="nav_title_2">Навигатор</span>
               </h2>
-              <p class="mt-6 text-gray-500 text-sm leading-7" data-i18n="nav_desc_1">Не ищи название книги. Опиши проблему.</p>
-              <p class="mt-3 text-gray-600 text-sm leading-7" data-i18n="nav_desc_2">Навигатор должен определить состояние, направление работы и подходящий инструмент.</p>
+              <p class="mt-6 text-gray-300 text-sm leading-7" data-i18n="nav_desc_1">Не ищи название книги. Опиши проблему.</p>
+              <p class="mt-3 text-gray-400 text-sm leading-7" data-i18n="nav_desc_2">Навигатор должен определить состояние, направление работы и подходящий инструмент.</p>
 
-              <div class="mt-8 space-y-2 text-[11px] font-mono text-gray-600">
+              <div class="mt-8 space-y-2 text-[11px] font-mono text-gray-400">
                 <div data-i18n="nav_step_1">01 — ПРОБЛЕМА</div>
                 <div data-i18n="nav_step_2">02 — ДИАГНОСТИКА</div>
                 <div data-i18n="nav_step_3">03 — НАПРАВЛЕНИЕ</div>
@@ -1039,7 +1050,7 @@
             </div>
 
             <div>
-              <label for="navigatorInput" class="block mb-3 text-[10px] uppercase tracking-[.15em] font-mono text-gray-600" data-i18n="nav_input_label">
+              <label for="navigatorInput" class="block mb-3 text-[10px] uppercase tracking-[.15em] font-mono text-gray-400 font-bold" data-i18n="nav_input_label">
                 Опиши проблему
               </label>
 
@@ -1058,7 +1069,7 @@
               </div>
 
               <div id="navigatorResult" class="hidden mt-8">
-                <div class="text-[10px] font-mono text-amber-500 uppercase tracking-[.15em] mb-3" data-i18n="nav_response_title">ОТВЕТ НАВИГАТОРА</div>
+                <div class="text-[10px] font-mono text-amber-400 uppercase tracking-[.15em] mb-3 font-bold" data-i18n="nav_response_title">ОТВЕТ НАВИГАТОРА</div>
                 <div id="navigatorMessages" class="max-h-[420px] overflow-y-auto"></div>
               </div>
             </div>
@@ -1069,7 +1080,7 @@
 
 
     <!-- 07 / AUTHOR -->
-    <section id="author" class="py-28 border-t border-white/5">
+    <section id="author" class="py-28 border-t border-white/10">
       <div class="container-domus">
         <div class="grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
           <div>
@@ -1081,14 +1092,14 @@
           </div>
 
           <div>
-            <p class="text-gray-400 text-lg leading-8" data-i18n="author_sub">
-              Автор и разработчик системы <strong class="text-gray-200">Architecture of Resilience</strong>.
+            <p class="text-gray-300 text-lg leading-8" data-i18n="author_sub">
+              Автор и разработчик системы <strong class="text-white">Architecture of Resilience</strong>.
             </p>
-            <p class="mt-6 text-gray-600 leading-7 text-sm" data-i18n="author_text">
+            <p class="mt-6 text-gray-400 leading-7 text-sm" data-i18n="author_text">
               Подход построен на стыке практической психологии, саморегуляции, НЛП, дисциплины и системного мышления. Основная задача — не создать иллюзию контроля, а восстановить способность действовать, когда привычная конструкция перестаёт работать.
             </p>
-            <div class="mt-8 border-l border-amber-500/30 pl-5">
-              <div class="text-gray-300 text-sm leading-7" data-i18n="author_quote">
+            <div class="mt-8 border-l border-amber-500/50 pl-5">
+              <div class="text-gray-200 text-sm leading-7" data-i18n="author_quote">
                 «Не учим жить. Учим строить себя и удерживать управление, когда прежняя система рушится».
               </div>
             </div>
@@ -1099,13 +1110,13 @@
 
 
     <!-- 08 / TELEGRAM NETWORK -->
-    <section class="py-20 bg-[#0b0b0b] border-y border-white/5">
+    <section class="py-20 bg-[#0a0a0d] border-y border-white/10">
       <div class="container-domus">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div>
             <div class="section-label" data-i18n="tg_label">08 / Сеть</div>
-            <h2 class="text-3xl font-bold text-gray-200" data-i18n="tg_title">Контур связи</h2>
-            <p class="text-gray-600 text-sm mt-3" data-i18n="tg_sub">Новости системы, новые материалы и рабочие протоколы.</p>
+            <h2 class="text-3xl font-bold text-white" data-i18n="tg_title">Контур связи</h2>
+            <p class="text-gray-400 text-sm mt-3" data-i18n="tg_sub">Новости системы, новые материалы и рабочие протоколы.</p>
           </div>
           <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener noreferrer" class="btn-domus">
             <i class="fa-brands fa-telegram"></i> Telegram
@@ -1122,12 +1133,12 @@
     <div class="container-domus">
       <div class="flex flex-col md:flex-row justify-between gap-8">
         <div>
-          <div class="font-mono text-xs tracking-[.15em] text-gray-400">DOMUS ARCHITECTUS</div>
-          <div class="mt-2 text-[10px] font-mono text-gray-700">THE RESILIENCE ARCHITECT</div>
+          <div class="font-mono text-xs tracking-[.15em] text-gray-300 font-bold">DOMUS ARCHITECTUS</div>
+          <div class="mt-2 text-[10px] font-mono text-gray-500">THE RESILIENCE ARCHITECT</div>
         </div>
         <div class="text-left md:text-right">
-          <div class="text-[10px] font-mono text-gray-700">ARCHITECTURE OF RESILIENCE</div>
-          <div class="mt-2 text-[10px] font-mono text-gray-800">© <span id="currentYear"></span> DOMUS ARCHITECTUS</div>
+          <div class="text-[10px] font-mono text-gray-500">ARCHITECTURE OF RESILIENCE</div>
+          <div class="mt-2 text-[10px] font-mono text-gray-600">© <span id="currentYear"></span> DOMUS ARCHITECTUS</div>
         </div>
       </div>
     </div>
@@ -1222,6 +1233,15 @@
         cat_fiction: "Художественные",
         cat_tag_applied: "ПРИКЛАДНАЯ СИСТЕМА",
         cat_tag_fiction: "ХУДОЖЕСТВЕННАЯ ЛИТЕРАТУРА",
+
+        book_desc_1: "12-недельный алгоритм настройки ментальной и телесной дисциплины, управления вниманием и восстановления стрессоустойчивости.",
+        book_desc_2: "90-дневный протокол построения внутренней вертикали. Системное управление состоянием, психофизическим ресурсом и фокусом.",
+        book_desc_3: "Алгоритм выхода из состояния финансового хаоса. Проектирование личного бюджета, устранение утечек ресурса и защита системы.",
+        book_desc_4: "Фундаментальный протокол телесной и ментальной саморегуляции. Построение запаса прочности без зависимости от внешних условий.",
+        book_desc_5: "Пять фундаментальных модулей трансформации: состояние, воля, мышление, структура и адаптация. Базовый каркас личной системы.",
+        book_desc_6: "Постапокалиптическая повесть. Демонстрация работы принципов устойчивости и выдержки человека в условиях разрушения порядка.",
+        book_desc_7: "Историко-психологический триллер. Дисциплина, холодный расчёт и сохранение управляемости в эпицентре противостояния 1984 года.",
+        book_desc_8: "Практическое руководство по воспитанию характера и ответственности. Пошаговый алгоритм формирования дисциплины без выгорания.",
 
         nav_label: "06 / Навигатор",
         nav_title_1: "AI",
@@ -1333,6 +1353,15 @@
         cat_fiction: "Fiction",
         cat_tag_applied: "APPLIED SYSTEM",
         cat_tag_fiction: "FICTION LITERATURE",
+
+        book_desc_1: "A 12-week step-by-step algorithm to build mental discipline, master focus, and restore resilience under pressure.",
+        book_desc_2: "A 90-day protocol for building internal core stability, systemic energy management, and razor-sharp concentration.",
+        book_desc_3: "A practical framework to eliminate financial chaos, secure your resource perimeter, and rebuild personal stability.",
+        book_desc_4: "A foundational self-regulation protocol designed to build physical and mental endurance under any conditions.",
+        book_desc_5: "Five core modules of personal architecture: State, Will, Thinking, Structure, and Adaptation.",
+        book_desc_6: "A post-apocalyptic narrative illustrating the Resilience Architect principles tested under extreme structural crisis.",
+        book_desc_7: "A historical psychological thriller demonstrating poise, tactical intelligence, and control during the 1984 cold war.",
+        book_desc_8: "A practical guide to character building and responsibility, providing a discipline framework without burnout.",
 
         nav_label: "06 / Navigator",
         nav_title_1: "AI",
@@ -1496,15 +1525,15 @@
       const en = document.getElementById("langEN");
 
       if (lang === "ru") {
-        ru.classList.remove("text-gray-600");
-        ru.classList.add("text-amber-400");
-        en.classList.remove("text-amber-400");
-        en.classList.add("text-gray-600");
+        ru.classList.remove("text-gray-500");
+        ru.classList.add("text-amber-400", "font-bold");
+        en.classList.remove("text-amber-400", "font-bold");
+        en.classList.add("text-gray-500");
       } else {
-        en.classList.remove("text-gray-600");
-        en.classList.add("text-amber-400");
-        ru.classList.remove("text-amber-400");
-        ru.classList.add("text-gray-600");
+        en.classList.remove("text-gray-500");
+        en.classList.add("text-amber-400", "font-bold");
+        ru.classList.remove("text-amber-400", "font-bold");
+        ru.classList.add("text-gray-500");
       }
 
       renderCode();
@@ -1519,7 +1548,7 @@
         globalProducts = normalizeCatalog(data);
         renderCatalog();
       } catch (error) {
-        console.error("DOMUS catalog notice: Using built-in book catalog.");
+        console.warn("DOMUS catalog notice: Using built-in book catalog.");
       }
     }
 
@@ -1562,7 +1591,7 @@
       if (!products.length) {
         grid.innerHTML = `
           <div class="col-span-full py-20 text-center">
-            <div class="font-mono text-xs text-gray-700">НЕТ МАТЕРИАЛОВ В ДАННОМ СЕКТОРЕ</div>
+            <div class="font-mono text-xs text-gray-500">НЕТ МАТЕРИАЛОВ В ДАННОМ СЕКТОРЕ</div>
           </div>
         `;
         return;
@@ -1612,9 +1641,9 @@
           const cardCat = card.querySelector(".product-category")?.textContent;
           if (category === "all") {
             card.style.display = "flex";
-          } else if (category === "applied" && cardCat?.includes("ПРИКЛАДНАЯ")) {
+          } else if (category === "applied" && (cardCat?.includes("ПРИКЛАДНАЯ") || cardCat?.includes("APPLIED"))) {
             card.style.display = "flex";
-          } else if (category === "fiction" && cardCat?.includes("ХУДОЖЕСТВЕННАЯ")) {
+          } else if (category === "fiction" && (cardCat?.includes("ХУДОЖЕСТВЕННАЯ") || cardCat?.includes("FICTION"))) {
             card.style.display = "flex";
           } else {
             card.style.display = "none";
