@@ -1,2433 +1,3814 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOMUS ARCHITECTUS | Архитектор Антикризис</title>
 
-  <title>DOMUS ARCHITECTUS | Архитектура устойчивости</title>
+    <meta
+        name="description"
+        content="DOMUS ARCHITECTUS — архитектура устойчивости человека. Книги, протоколы и инструменты для сохранения управления в условиях нагрузки, хаоса и перемен."
+    >
 
-  <meta
-    name="description"
-    content="DOMUS ARCHITECTUS — система архитектуры устойчивости. Книги, протоколы и инструменты для сохранения управления в условиях нагрузки, хаоса и перемен."
-  />
+    <meta name="theme-color" content="#080808">
 
-  <meta
-    name="keywords"
-    content="DOMUS ARCHITECTUS, Архитектор Антикризис, архитектура устойчивости, саморегуляция, кризис, дисциплина, психология, НЛП, протоколы"
-  />
+    <link rel="icon" href="Gerb.png">
 
-  <meta name="author" content="Архитектор Антикризис" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Google Search Console -->
-  <meta
-    name="google-site-verification"
-    content="KEvLUMbX..."
-  />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="DOMUS ARCHITECTUS | Архитектура устойчивости" />
-  <meta
-    property="og:description"
-    content="Когда прежняя система рушится, ты должен иметь возможность построить новую."
-  />
-  <meta property="og:url" content="https://domusarchitectus.vercel.app/" />
-  <meta property="og:image" content="/images/Gerb.png" />
+    <!-- Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 
-  <link rel="icon" href="/favicon.png" />
+    <style>
+        /* =========================================================
+           DOMUS ARCHITECTUS
+           FRONTEND v2
+           ========================================================= */
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+        :root {
+            --black: #080808;
+            --black-2: #0c0c0c;
+            --stone: #111111;
+            --stone-2: #171717;
+            --stone-3: #1d1d1d;
+            --steel: #292929;
 
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  />
+            --amber: #c59b45;
+            --amber-light: #e0b85d;
+            --amber-dark: #806328;
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            domus: {
-              black: "#080808",
-              stone: "#111111",
-              stone2: "#181818",
-              steel: "#262626",
-              amber: "#c59b45",
-              amber2: "#e0b85d",
-              text: "#d6d1c7",
-              muted: "#85817a"
-            }
-          },
-          fontFamily: {
-            sans: [
-              "Inter",
-              "Segoe UI",
-              "Arial",
-              "sans-serif"
-            ],
-            mono: [
-              "JetBrains Mono",
-              "Consolas",
-              "monospace"
-            ]
-          }
+            --text: #d8d3c8;
+            --text-light: #eee9df;
+            --muted: #85817a;
+            --muted-2: #5e5b56;
+
+            --border: rgba(197, 155, 69, 0.22);
+            --border-soft: rgba(255, 255, 255, 0.07);
+
+            --max: 1440px;
+            --header-height: 76px;
+
+            --radius: 2px;
+            --transition: 180ms ease;
         }
-      }
-    };
-  </script>
-
-  <style>
-    :root {
-      --bg: #080808;
-      --surface: #111111;
-      --surface-2: #181818;
-      --steel: #262626;
-      --amber: #c59b45;
-      --amber-light: #e0b85d;
-      --text: #d6d1c7;
-      --muted: #85817a;
-      --border: rgba(197, 155, 69, 0.18);
-    }
-
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background:
-        radial-gradient(
-          circle at 50% -10%,
-          rgba(197, 155, 69, 0.08),
-          transparent 35%
-        ),
-        var(--bg);
-      color: var(--text);
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.025;
-      background-image:
-        linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
-      background-size: 50px 50px;
-      z-index: 9999;
-    }
-
-    ::selection {
-      background: var(--amber);
-      color: #000;
-    }
-
-    .container-domus {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .amber {
-      color: var(--amber-light);
-    }
-
-    .mono {
-      font-family: "JetBrains Mono", Consolas, monospace;
-    }
-
-    .section-label {
-      color: var(--amber);
-      font-family: monospace;
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-size: clamp(30px, 5vw, 52px);
-      line-height: 1.05;
-      font-weight: 700;
-      letter-spacing: -0.035em;
-      color: #eeeae2;
-    }
-
-    .section-description {
-      max-width: 700px;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 15px;
-    }
-
-    .glass {
-      background: rgba(17, 17, 17, 0.78);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-    }
-
-    .grid-line {
-      position: relative;
-    }
-
-    .grid-line::before,
-    .grid-line::after {
-      content: "";
-      position: absolute;
-      background: var(--border);
-    }
-
-    .grid-line::before {
-      width: 1px;
-      top: 0;
-      bottom: 0;
-      left: -1px;
-    }
-
-    .grid-line::after {
-      height: 1px;
-      left: 0;
-      right: 0;
-      top: -1px;
-    }
-
-    .btn-domus {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 13px 19px;
-      border: 1px solid rgba(197, 155, 69, 0.4);
-      background: rgba(197, 155, 69, 0.07);
-      color: var(--amber-light);
-      font-family: monospace;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: .25s ease;
-    }
-
-    .btn-domus:hover {
-      background: var(--amber);
-      color: #080808;
-      border-color: var(--amber);
-    }
-
-    .btn-dark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 13px 19px;
-      border: 1px solid #333;
-      background: #111;
-      color: #aaa;
-      font-family: monospace;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: .25s ease;
-    }
-
-    .btn-dark:hover {
-      border-color: #555;
-      color: #eee;
-      background: #181818;
-    }
-
-    .nav-link {
-      position: relative;
-      color: #85817a;
-      font-family: monospace;
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      transition: .2s;
-    }
-
-    .nav-link:hover {
-      color: var(--amber-light);
-    }
-
-    .hero {
-      min-height: calc(100vh - 72px);
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 700px;
-      height: 700px;
-      border: 1px solid rgba(197, 155, 69, .08);
-      border-radius: 50%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 450px;
-      height: 450px;
-      border: 1px solid rgba(197, 155, 69, .05);
-      border-radius: 50%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 11px;
-      border: 1px solid rgba(197, 155, 69, .2);
-      background: rgba(197, 155, 69, .04);
-      color: var(--amber);
-      font-family: monospace;
-      font-size: 10px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      margin-top: 25px;
-      font-size: clamp(48px, 10vw, 108px);
-      line-height: .88;
-      font-weight: 800;
-      letter-spacing: -.065em;
-      color: #eeeae2;
-    }
-
-    .hero-title span {
-      color: var(--amber);
-    }
-
-    .hero-subtitle {
-      margin-top: 30px;
-      max-width: 730px;
-      font-size: clamp(18px, 2.5vw, 26px);
-      line-height: 1.35;
-      color: #bcb7ad;
-      font-weight: 400;
-    }
-
-    .hero-subtitle strong {
-      color: #eeeae2;
-      font-weight: 600;
-    }
-
-    .hero-system {
-      margin-top: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      width: fit-content;
-      max-width: 100%;
-    }
-
-    .hero-system span {
-      padding: 12px 14px;
-      color: #77736d;
-      font-family: monospace;
-      font-size: 10px;
-      letter-spacing: .12em;
-      border-right: 1px solid var(--border);
-    }
-
-    .hero-system span:first-child {
-      color: var(--amber);
-    }
-
-    .hero-actions {
-      margin-top: 35px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .hero-mark {
-      position: absolute;
-      right: 5%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: min(360px, 30vw);
-      opacity: .13;
-      filter: grayscale(1);
-      z-index: 1;
-    }
-
-    @media (max-width: 900px) {
-      .hero-mark {
-        width: 250px;
-        right: -60px;
-        opacity: .07;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container-domus {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .hero {
-        min-height: calc(100vh - 64px);
-      }
-
-      .hero-title {
-        font-size: 55px;
-      }
-
-      .hero-system span {
-        padding: 9px 10px;
-      }
-    }
-
-    .architecture-card {
-      min-height: 180px;
-      padding: 24px;
-      border: 1px solid #252525;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.018),
-          rgba(255,255,255,0)
-        );
-      transition: .25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .architecture-card:hover {
-      border-color: rgba(197, 155, 69, .35);
-      transform: translateY(-2px);
-    }
-
-    .architecture-card::after {
-      content: "";
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      right: -35px;
-      bottom: -35px;
-      border: 1px solid rgba(197,155,69,.2);
-      transform: rotate(45deg);
-    }
-
-    .architecture-number {
-      font-family: monospace;
-      color: var(--amber);
-      font-size: 11px;
-    }
-
-    .architecture-name {
-      margin-top: 22px;
-      font-size: 23px;
-      font-weight: 700;
-      color: #e7e2d9;
-    }
-
-    .architecture-text {
-      margin-top: 10px;
-      color: #77736d;
-      font-size: 13px;
-      line-height: 1.65;
-    }
-
-    .mode-card {
-      border: 1px solid #252525;
-      padding: 22px;
-      background: #101010;
-      transition: .25s ease;
-      min-height: 165px;
-    }
-
-    .mode-card:hover {
-      border-color: rgba(197,155,69,.4);
-    }
-
-    .mode-code {
-      color: var(--amber);
-      font-family: monospace;
-      font-size: 11px;
-      letter-spacing: .12em;
-    }
-
-    .mode-name {
-      color: #e5e1d9;
-      font-size: 22px;
-      margin-top: 14px;
-      font-weight: 700;
-    }
-
-    .mode-description {
-      color: #77736d;
-      font-size: 13px;
-      line-height: 1.6;
-      margin-top: 8px;
-    }
-
-    .code-item {
-      border-top: 1px solid #292929;
-      padding: 20px 0;
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 15px;
-    }
-
-    .code-number {
-      color: var(--amber);
-      font-family: monospace;
-      font-size: 12px;
-    }
-
-    .code-title {
-      color: #e4dfd6;
-      font-size: 17px;
-      font-weight: 600;
-    }
-
-    .code-description {
-      margin-top: 6px;
-      color: #74716b;
-      font-size: 13px;
-      line-height: 1.65;
-    }
-
-    .catalog-filter {
-      border: 1px solid #292929;
-      background: #101010;
-      color: #77736d;
-      padding: 10px 14px;
-      font-family: monospace;
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .catalog-filter:hover,
-    .catalog-filter.active {
-      color: #080808;
-      background: var(--amber);
-      border-color: var(--amber);
-    }
-
-    .product-card {
-      border: 1px solid #252525;
-      background: #101010;
-      overflow: hidden;
-      transition: .25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-card:hover {
-      border-color: rgba(197,155,69,.38);
-      transform: translateY(-3px);
-    }
-
-    .product-cover {
-      height: 260px;
-      background:
-        linear-gradient(
-          145deg,
-          #1a1a1a,
-          #0d0d0d
-        );
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-bottom: 1px solid #252525;
-    }
-
-    .product-cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .product-cover-placeholder {
-      color: #444;
-      font-family: monospace;
-      font-size: 40px;
-    }
-
-    .product-body {
-      padding: 19px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .product-category {
-      color: var(--amber);
-      font-family: monospace;
-      font-size: 9px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .product-title {
-      color: #e5e1d9;
-      font-size: 19px;
-      font-weight: 650;
-      line-height: 1.2;
-      margin-top: 10px;
-    }
-
-    .product-description {
-      color: #77736d;
-      font-size: 12px;
-      line-height: 1.65;
-      margin-top: 10px;
-      flex: 1;
-    }
-
-    .product-actions {
-      display: flex;
-      gap: 7px;
-      margin-top: 18px;
-    }
-
-    .product-actions a {
-      flex: 1;
-      text-align: center;
-      padding: 9px 7px;
-      border: 1px solid #292929;
-      color: #88837b;
-      font-family: monospace;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      transition: .2s;
-    }
-
-    .product-actions a:hover {
-      color: #080808;
-      background: var(--amber);
-      border-color: var(--amber);
-    }
-
-    .navigator {
-      background:
-        linear-gradient(
-          135deg,
-          rgba(197,155,69,.08),
-          rgba(197,155,69,.015)
-        );
-      border: 1px solid rgba(197,155,69,.25);
-    }
-
-    .navigator-input {
-      width: 100%;
-      min-height: 120px;
-      resize: vertical;
-      background: #0a0a0a;
-      border: 1px solid #292929;
-      color: #ddd8cf;
-      padding: 16px;
-      outline: none;
-      font-family: inherit;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .navigator-input:focus {
-      border-color: rgba(197,155,69,.5);
-    }
-
-    .chat-message {
-      padding: 12px 14px;
-      margin-bottom: 8px;
-      border: 1px solid #292929;
-      background: #0d0d0d;
-      color: #aaa;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .chat-message.user {
-      border-color: rgba(197,155,69,.2);
-      color: #ddd8cf;
-    }
-
-    .chat-message.assistant {
-      color: #99958d;
-    }
-
-    .status-line {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      color: #65615b;
-      font-family: monospace;
-      font-size: 10px;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--amber);
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(197,155,69,.7);
-    }
-
-    footer {
-      border-top: 1px solid #202020;
-    }
-  </style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(
+                    rgba(8, 8, 8, 0.97),
+                    rgba(8, 8, 8, 0.97)
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 39px,
+                    rgba(255,255,255,0.018) 40px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 39px,
+                    rgba(255,255,255,0.018) 40px
+                );
+            color: var(--text);
+            font-family: "Inter", sans-serif;
+            line-height: 1.6;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ::selection {
+            background: var(--amber);
+            color: var(--black);
+        }
+
+        .container {
+            width: min(calc(100% - 40px), var(--max));
+            margin: 0 auto;
+        }
+
+        .mono {
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        /* =========================================================
+           HEADER
+           ========================================================= */
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+
+            background: rgba(8, 8, 8, 0.94);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .header-inner {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .brand img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.9;
+        }
+
+        .brand-text {
+            line-height: 1.1;
+        }
+
+        .brand-title {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            color: var(--text-light);
+        }
+
+        .brand-subtitle {
+            margin-top: 4px;
+            color: var(--amber);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .main-nav a {
+            padding: 10px 12px;
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: var(--transition);
+        }
+
+        .main-nav a:hover {
+            color: var(--amber-light);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            min-width: 36px;
+            height: 32px;
+            border: 1px solid var(--border-soft);
+            background: transparent;
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            border-color: var(--amber);
+            color: var(--amber-light);
+        }
+
+        .mobile-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border-soft);
+            background: transparent;
+            color: var(--text);
+            font-size: 18px;
+        }
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding: 150px 0 90px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 75% 35%,
+                    rgba(197,155,69,0.08),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    90deg,
+                    transparent 0,
+                    rgba(197,155,69,0.04) 50%,
+                    transparent 100%
+                );
+
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 22px;
+
+            color: var(--amber);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .hero-kicker::before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: var(--amber);
+        }
+
+        .hero h1 {
+            max-width: 850px;
+
+            font-size: clamp(42px, 6vw, 88px);
+            line-height: 0.95;
+            letter-spacing: -0.045em;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        .hero h1 span {
+            color: var(--amber);
+        }
+
+        .hero-lead {
+            max-width: 680px;
+            margin-top: 30px;
+
+            font-size: clamp(17px, 2vw, 21px);
+            color: var(--text);
+        }
+
+        .hero-note {
+            max-width: 610px;
+            margin-top: 22px;
+
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            min-height: 46px;
+            padding: 0 20px;
+
+            border: 1px solid var(--border);
+            background: var(--stone);
+            color: var(--text);
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            border-color: var(--amber);
+            color: var(--amber-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--amber);
+            border-color: var(--amber);
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            background: var(--amber-light);
+            color: var(--black);
+        }
+
+        .hero-system {
+            border: 1px solid var(--border);
+            background: rgba(17,17,17,0.72);
+            padding: 24px;
+        }
+
+        .system-label {
+            margin-bottom: 18px;
+
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .system-chain {
+            display: grid;
+            gap: 7px;
+        }
+
+        .system-node {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            min-height: 48px;
+            padding: 0 15px;
+
+            border-left: 2px solid var(--amber);
+            background: var(--stone-2);
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+        }
+
+        .system-node small {
+            color: var(--muted-2);
+            font-size: 9px;
+        }
+
+        .system-node:last-child {
+            background: rgba(197,155,69,0.08);
+        }
+
+        /* =========================================================
+           SECTION
+           ========================================================= */
+
+        section {
+            position: relative;
+            padding: 110px 0;
+            border-top: 1px solid var(--border-soft);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .section-kicker {
+            margin-bottom: 10px;
+
+            color: var(--amber);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            color: var(--text-light);
+            font-size: clamp(32px, 4vw, 54px);
+            line-height: 1;
+            letter-spacing: -0.035em;
+            text-transform: uppercase;
+        }
+
+        .section-description {
+            max-width: 560px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================================================
+           ARCHITECTURE
+           ========================================================= */
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border-soft);
+        }
+
+        .architecture-card {
+            min-height: 220px;
+            padding: 25px;
+
+            background: var(--stone);
+
+            transition: var(--transition);
+        }
+
+        .architecture-card:hover {
+            background: var(--stone-2);
+        }
+
+        .architecture-index {
+            color: var(--amber);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+        }
+
+        .architecture-card h3 {
+            margin-top: 40px;
+
+            color: var(--text-light);
+            font-size: 20px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .architecture-card p {
+            margin-top: 12px;
+
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* =========================================================
+           MODES
+           ========================================================= */
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .mode-card {
+            padding: 22px;
+
+            border: 1px solid var(--border-soft);
+            background: var(--stone);
+
+            min-height: 170px;
+        }
+
+        .mode-card strong {
+            color: var(--amber);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+        }
+
+        .mode-card h3 {
+            margin-top: 30px;
+
+            color: var(--text-light);
+            font-size: 17px;
+            text-transform: uppercase;
+        }
+
+        .mode-card p {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* =========================================================
+           CODEX
+           ========================================================= */
+
+        .codex {
+            background: #0b0b0b;
+        }
+
+        .codex-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border-soft);
+        }
+
+        .codex-item {
+            min-height: 150px;
+            padding: 22px;
+            background: var(--stone);
+        }
+
+        .codex-number {
+            color: var(--amber);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+        }
+
+        .codex-item p {
+            margin-top: 20px;
+
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        /* =========================================================
+           CATALOG
+           ========================================================= */
+
+        .catalog-section {
+            background:
+                linear-gradient(
+                    180deg,
+                    #0b0b0b 0%,
+                    #101010 100%
+                );
+        }
+
+        .catalog-toolbar {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 15px;
+
+            padding: 16px;
+
+            border: 1px solid var(--border-soft);
+            background: var(--stone);
+        }
+
+        .catalog-search {
+            position: relative;
+        }
+
+        .catalog-search i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            color: var(--muted-2);
+        }
+
+        .catalog-search input {
+            width: 100%;
+            height: 46px;
+
+            padding: 0 15px 0 44px;
+
+            border: 1px solid var(--border-soft);
+            outline: none;
+
+            background: var(--black);
+            color: var(--text-light);
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+        }
+
+        .catalog-search input:focus {
+            border-color: var(--amber);
+        }
+
+        .catalog-sort {
+            min-width: 200px;
+
+            padding: 0 14px;
+
+            border: 1px solid var(--border-soft);
+            outline: none;
+
+            background: var(--black);
+            color: var(--text);
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+        }
+
+        .catalog-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 15px;
+        }
+
+        .filter-btn {
+            min-height: 38px;
+            padding: 0 14px;
+
+            border: 1px solid var(--border-soft);
+            background: var(--stone);
+            color: var(--muted);
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--amber);
+            background: rgba(197,155,69,0.08);
+            color: var(--amber-light);
+        }
+
+        .catalog-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin: 18px 0 22px;
+
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .catalog-status {
+            color: var(--amber);
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        /* =========================================================
+           BOOK CARD
+           ========================================================= */
+
+        .book-card {
+            position: relative;
+            overflow: hidden;
+
+            border: 1px solid var(--border-soft);
+            background: var(--stone);
+
+            transition:
+                border-color var(--transition),
+                transform var(--transition),
+                background var(--transition);
+        }
+
+        .book-card:hover {
+            border-color: var(--border);
+            background: var(--stone-2);
+            transform: translateY(-3px);
+        }
+
+        .book-cover {
+            position: relative;
+            aspect-ratio: 0.68;
+
+            overflow: hidden;
+
+            background: #0c0c0c;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .book-cover::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent 60%,
+                    rgba(0,0,0,0.65)
+                );
+
+            pointer-events: none;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 400ms ease,
+                opacity 200ms ease;
+        }
+
+        .book-card:hover .book-cover img {
+            transform: scale(1.025);
+        }
+
+        .cover-placeholder {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111 0%,
+                    #191919 50%,
+                    #0c0c0c 100%
+                );
+        }
+
+        .cover-placeholder span {
+            color: var(--amber);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .book-category {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 3;
+
+            padding: 5px 7px;
+
+            background: rgba(8,8,8,0.86);
+            border: 1px solid var(--border);
+
+            color: var(--amber-light);
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 8px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .book-content {
+            padding: 18px;
+        }
+
+        .book-number {
+            color: var(--muted-2);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9px;
+        }
+
+        .book-title {
+            margin-top: 8px;
+
+            color: var(--text-light);
+
+            font-size: 16px;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+
+        .book-description {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+
+            overflow: hidden;
+
+            margin-top: 11px;
+
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.55;
+
+            min-height: 74px;
+        }
+
+        .book-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+
+            margin-top: 18px;
+        }
+
+        .book-link {
+            flex: 1 1 auto;
+
+            min-height: 34px;
+            padding: 0 10px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+
+            border: 1px solid var(--border-soft);
+            background: var(--black);
+
+            color: var(--muted);
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9px;
+            text-transform: uppercase;
+
+            transition: var(--transition);
+        }
+
+        .book-link:hover {
+            border-color: var(--amber);
+            color: var(--amber-light);
+        }
+
+        .book-link.ridero {
+            border-color: rgba(197,155,69,0.3);
+            color: var(--amber);
+        }
+
+        .book-link.telegram {
+            color: #a7b5c5;
+        }
+
+        .catalog-empty {
+            grid-column: 1 / -1;
+
+            padding: 80px 20px;
+
+            border: 1px solid var(--border-soft);
+            background: var(--stone);
+
+            text-align: center;
+        }
+
+        .catalog-empty i {
+            color: var(--amber);
+            font-size: 28px;
+        }
+
+        .catalog-empty h3 {
+            margin-top: 18px;
+            color: var(--text-light);
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .catalog-empty p {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .catalog-loading {
+            grid-column: 1 / -1;
+
+            padding: 80px 20px;
+
+            color: var(--muted);
+            text-align: center;
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .loading-line {
+            width: 150px;
+            height: 1px;
+
+            margin: 15px auto 0;
+
+            background: var(--amber);
+
+            animation: loading 1.2s infinite ease-in-out;
+        }
+
+        @keyframes loading {
+            0%, 100% {
+                transform: scaleX(0.25);
+                opacity: 0.35;
+            }
+
+            50% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+        }
+
+        /* =========================================================
+           NAVIGATOR
+           ========================================================= */
+
+        .navigator {
+            background: #090909;
+        }
+
+        .navigator-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 45px;
+        }
+
+        .navigator-copy h2 {
+            max-width: 600px;
+        }
+
+        .navigator-copy p {
+            max-width: 580px;
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .navigator-terminal {
+            border: 1px solid var(--border);
+            background: var(--black);
+        }
+
+        .terminal-head {
+            min-height: 44px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 15px;
+
+            border-bottom: 1px solid var(--border-soft);
+
+            color: var(--muted);
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9px;
+            text-transform: uppercase;
+        }
+
+        .terminal-status {
+            color: var(--amber);
+        }
+
+        .terminal-messages {
+            min-height: 250px;
+            max-height: 420px;
+
+            overflow-y: auto;
+
+            padding: 18px;
+        }
+
+        .terminal-message {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .terminal-message:last-child {
+            border-bottom: 0;
+        }
+
+        .terminal-message-label {
+            color: var(--amber);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 9px;
+            text-transform: uppercase;
+        }
+
+        .terminal-message-text {
+            margin-top: 6px;
+            color: var(--text);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        .terminal-form {
+            display: flex;
+
+            border-top: 1px solid var(--border-soft);
+        }
+
+        .terminal-form textarea {
+            flex: 1;
+
+            min-height: 100px;
+            resize: vertical;
+
+            padding: 15px;
+
+            border: 0;
+            outline: 0;
+
+            background: var(--stone);
+            color: var(--text-light);
+
+            font-size: 13px;
+        }
+
+        .terminal-send {
+            width: 100px;
+
+            border: 0;
+            border-left: 1px solid var(--border-soft);
+
+            background: var(--amber);
+            color: var(--black);
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .terminal-send:hover {
+            background: var(--amber-light);
+        }
+
+        /* =========================================================
+           AUTHOR
+           ========================================================= */
+
+        .author-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 70px;
+            align-items: start;
+        }
+
+        .author-mark {
+            padding: 30px;
+
+            border: 1px solid var(--border);
+            background: var(--stone);
+        }
+
+        .author-mark-title {
+            color: var(--amber);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .author-mark-main {
+            margin-top: 30px;
+
+            color: var(--text-light);
+
+            font-size: clamp(28px, 4vw, 52px);
+            line-height: 1;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .author-copy p {
+            margin-bottom: 17px;
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        .author-copy strong {
+            color: var(--text-light);
+        }
+
+        /* =========================================================
+           NETWORK
+           ========================================================= */
+
+        .network {
+            background: #0b0b0b;
+        }
+
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .network-card {
+            padding: 28px;
+
+            border: 1px solid var(--border-soft);
+            background: var(--stone);
+        }
+
+        .network-card i {
+            color: var(--amber);
+            font-size: 22px;
+        }
+
+        .network-card h3 {
+            margin-top: 22px;
+            color: var(--text-light);
+            font-size: 17px;
+            text-transform: uppercase;
+        }
+
+        .network-card p {
+            margin-top: 9px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        footer {
+            padding: 45px 0;
+
+            border-top: 1px solid var(--border-soft);
+            background: var(--black);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-brand {
+            color: var(--text-light);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .footer-copy {
+            margin-top: 6px;
+            color: var(--muted-2);
+            font-size: 11px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .footer-links a:hover {
+            color: var(--amber);
+        }
+
+        /* =========================================================
+           MOBILE NAV
+           ========================================================= */
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: var(--header-height) 0 0;
+
+            z-index: 999;
+
+            padding: 25px;
+
+            background: rgba(8,8,8,0.98);
+            border-top: 1px solid var(--border-soft);
+        }
+
+        .mobile-nav.open {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+
+            padding: 16px 0;
+
+            border-bottom: 1px solid var(--border-soft);
+
+            color: var(--text);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 1200px) {
+            .catalog-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .architecture-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modes-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .navigator-grid,
+            .author-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-system {
+                max-width: 650px;
+            }
+
+            .catalog-toolbar {
+                grid-template-columns: 1fr;
+            }
+
+            .catalog-sort {
+                min-height: 46px;
+            }
+
+            .catalog-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .codex-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .network-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: min(calc(100% - 24px), var(--max));
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .hero {
+                padding: 125px 0 70px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .section-header {
+                display: block;
+                margin-bottom: 30px;
+            }
+
+            .section-description {
+                margin-top: 15px;
+            }
+
+            .architecture-grid,
+            .codex-grid,
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modes-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .book-cover {
+                aspect-ratio: 0.72;
+            }
+
+            .footer-inner {
+                display: block;
+            }
+
+            .footer-links {
+                margin-top: 20px;
+            }
+
+            .brand-subtitle {
+                display: none;
+            }
+
+            .terminal-form {
+                display: block;
+            }
+
+            .terminal-send {
+                width: 100%;
+                height: 45px;
+                border-left: 0;
+                border-top: 1px solid var(--border-soft);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- ========================================================= -->
-  <!-- HEADER -->
-  <!-- ========================================================= -->
+<!-- =============================================================
+     HEADER
+     ============================================================= -->
 
-  <header
-    class="sticky top-0 z-50 border-b border-white/5 bg-black/85 backdrop-blur-xl"
-  >
-    <div class="container-domus h-[72px] flex items-center justify-between">
+<header class="site-header">
+    <div class="container header-inner">
 
-      <a href="#top" class="flex items-center gap-3">
-        <div
-          class="w-9 h-9 border border-amber-500/30 flex items-center justify-center"
-        >
-          <span class="text-amber-400 font-mono text-xs">DA</span>
+        <a href="#top" class="brand">
+            <img
+                src="Gerb.png"
+                alt="DOMUS ARCHITECTUS"
+                onerror="this.style.display='none'"
+            >
+
+            <div class="brand-text">
+                <div class="brand-title">DOMUS ARCHITECTUS</div>
+                <div class="brand-subtitle">The Resilience Architect</div>
+            </div>
+        </a>
+
+        <nav class="main-nav">
+            <a href="#methodology" data-i18n="nav_methodology">Методология</a>
+            <a href="#modes" data-i18n="nav_modes">Режимы</a>
+            <a href="#codex" data-i18n="nav_codex">Кодекс</a>
+            <a href="#catalog" data-i18n="nav_catalog">Каталог</a>
+            <a href="#navigator" data-i18n="nav_navigator">AI Navigator</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <button
+                class="lang-btn active"
+                id="langRu"
+                onclick="setLanguage('ru')"
+            >
+                RU
+            </button>
+
+            <button
+                class="lang-btn"
+                id="langEn"
+                onclick="setLanguage('en')"
+            >
+                EN
+            </button>
+
+            <button
+                class="mobile-toggle"
+                id="mobileToggle"
+                onclick="toggleMobileMenu()"
+                aria-label="Menu"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
         </div>
+    </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+
+    <a href="#methodology" onclick="toggleMobileMenu()" data-i18n="nav_methodology">
+        Методология
+    </a>
+
+    <a href="#modes" onclick="toggleMobileMenu()" data-i18n="nav_modes">
+        Режимы
+    </a>
+
+    <a href="#codex" onclick="toggleMobileMenu()" data-i18n="nav_codex">
+        Кодекс
+    </a>
+
+    <a href="#catalog" onclick="toggleMobileMenu()" data-i18n="nav_catalog">
+        Каталог
+    </a>
+
+    <a href="#navigator" onclick="toggleMobileMenu()" data-i18n="nav_navigator">
+        AI Navigator
+    </a>
+
+</nav>
+
+<!-- =============================================================
+     HERO
+     ============================================================= -->
+
+<main id="top">
+
+<section class="hero">
+
+    <div class="container hero-grid">
 
         <div>
-          <div class="text-[13px] tracking-[.16em] text-gray-200 font-semibold">
-            DOMUS ARCHITECTUS
-          </div>
-          <div class="text-[9px] tracking-[.15em] text-gray-600 font-mono">
-            RESILIENCE ARCHITECTURE
-          </div>
+
+            <div class="hero-kicker">
+                DOMUS ARCHITECTUS
+            </div>
+
+            <h1>
+                <span data-i18n="hero_question">
+                    ТВОЯ СИСТЕМА ДАЛА СБОЙ?
+                </span>
+            </h1>
+
+            <p class="hero-lead" data-i18n="hero_lead">
+                Не учим жить. Учим строить себя и удерживать контроль,
+                когда прежняя система рушится.
+            </p>
+
+            <p class="hero-note" data-i18n="hero_note">
+                Архитектура устойчивости человека в условиях нагрузки,
+                хаоса и перемен.
+            </p>
+
+            <div class="hero-actions">
+
+                <a
+                    href="#catalog"
+                    class="btn btn-primary"
+                    data-i18n="hero_catalog"
+                >
+                    <i class="fa-solid fa-book"></i>
+                    Открыть каталог
+                </a>
+
+                <a
+                    href="#methodology"
+                    class="btn"
+                    data-i18n="hero_methodology"
+                >
+                    Методология
+                </a>
+
+            </div>
+
         </div>
-      </a>
-
-      <nav class="hidden lg:flex items-center gap-7">
-
-        <a href="#methodology" class="nav-link" data-i18n="nav_method">
-          Методология
-        </a>
-
-        <a href="#modes" class="nav-link" data-i18n="nav_modes">
-          Режимы
-        </a>
-
-        <a href="#code" class="nav-link" data-i18n="nav_code">
-          Кодекс
-        </a>
-
-        <a href="#catalog" class="nav-link" data-i18n="nav_catalog">
-          Каталог
-        </a>
-
-        <a href="#navigator" class="nav-link" data-i18n="nav_ai">
-          AI Navigator
-        </a>
-
-        <a
-          href="https://t.me/AntiKrizis_Strateg"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="nav-link"
-        >
-          Telegram
-        </a>
-
-      </nav>
-
-      <div class="flex items-center gap-3">
-
-        <button
-          onclick="setLanguage('ru')"
-          id="langRU"
-          class="font-mono text-[10px] text-amber-400"
-        >
-          RU
-        </button>
-
-        <span class="text-gray-700">/</span>
-
-        <button
-          onclick="setLanguage('en')"
-          id="langEN"
-          class="font-mono text-[10px] text-gray-600"
-        >
-          EN
-        </button>
-
-        <button
-          onclick="toggleMobileMenu()"
-          class="lg:hidden text-gray-500 ml-2"
-        >
-          <i class="fa-solid fa-bars"></i>
-        </button>
-
-      </div>
-    </div>
-
-    <!-- Mobile menu -->
-
-    <div
-      id="mobileMenu"
-      class="hidden border-t border-white/5 bg-black px-5 py-5"
-    >
-      <div class="flex flex-col gap-5">
-
-        <a href="#methodology" onclick="toggleMobileMenu()" class="nav-link">
-          Методология
-        </a>
-
-        <a href="#modes" onclick="toggleMobileMenu()" class="nav-link">
-          Режимы
-        </a>
-
-        <a href="#code" onclick="toggleMobileMenu()" class="nav-link">
-          Кодекс
-        </a>
-
-        <a href="#catalog" onclick="toggleMobileMenu()" class="nav-link">
-          Каталог
-        </a>
-
-        <a href="#navigator" onclick="toggleMobileMenu()" class="nav-link">
-          AI Navigator
-        </a>
-
-        <a
-          href="https://t.me/AntiKrizis_Strateg"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="nav-link"
-        >
-          Telegram
-        </a>
-
-      </div>
-    </div>
-  </header>
-
-
-  <main id="top">
-
-    <!-- ========================================================= -->
-    <!-- HERO -->
-    <!-- ========================================================= -->
-
-    <section class="hero">
-
-      <img
-        src="/images/Gerb.png"
-        alt=""
-        class="hero-mark"
-      />
-
-      <div class="container-domus hero-content">
-
-        <div class="hero-kicker">
-          <span class="status-dot"></span>
-          <span data-i18n="hero_kicker">
-            SYSTEM ONLINE / DOMUS ARCHITECTUS
-          </span>
-        </div>
-
-        <h1 class="hero-title">
-          DOMUS<br />
-          <span>ARCHITECTUS</span>
-        </h1>
-
-        <p class="hero-subtitle" data-i18n="hero_subtitle">
-          Архитектура устойчивости человека
-          <br class="hidden sm:block" />
-          в условиях нагрузки, хаоса и перемен.
-        </p>
-
-        <p class="mt-5 max-w-2xl text-gray-600 text-sm leading-7">
-          <span data-i18n="hero_text">
-            Когда прежняя система рушится, ты должен иметь возможность
-            построить новую.
-          </span>
-        </p>
 
         <div class="hero-system">
 
-          <span>STATE</span>
-          <span>THINKING</span>
-          <span>WILL</span>
-          <span>ACTION</span>
-          <span>STRUCTURE</span>
-          <span>ADAPTATION</span>
-          <span>RESILIENCE</span>
-
-        </div>
-
-        <div class="hero-actions">
-
-          <a href="#methodology" class="btn-domus">
-            <i class="fa-solid fa-compass"></i>
-            <span data-i18n="hero_method_button">
-              Исследовать систему
-            </span>
-          </a>
-
-          <a href="#catalog" class="btn-dark">
-            <i class="fa-solid fa-layer-group"></i>
-            <span data-i18n="hero_catalog_button">
-              Открыть каталог
-            </span>
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================================================= -->
-    <!-- METHODOLOGY -->
-    <!-- ========================================================= -->
-
-    <section
-      id="methodology"
-      class="py-28 border-t border-white/5"
-    >
-
-      <div class="container-domus">
-
-        <div class="section-label">
-          01 / Architecture
-        </div>
-
-        <h2 class="section-title">
-          <span data-i18n="method_title">
-            Архитектура устойчивости
-          </span>
-        </h2>
-
-        <p class="section-description mt-6">
-          <span data-i18n="method_description">
-            Устойчивость не возникает из мотивации. Она строится как система.
-            Сначала состояние. Затем мышление. Затем воля, действие и структура.
-            После этого — адаптация. Результат — способность сохранять управление
-            под нагрузкой.
-          </span>
-        </p>
-
-
-        <div
-          class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#252525]"
-        >
-
-          <article class="architecture-card bg-[#111]">
-            <div class="architecture-number">01</div>
-            <div class="architecture-name">STATE</div>
-            <div class="architecture-text">
-              Стабилизация состояния. Тело и нервная система являются первым
-              контуром управления.
-            </div>
-          </article>
-
-          <article class="architecture-card bg-[#111]">
-            <div class="architecture-number">02</div>
-            <div class="architecture-name">THINKING</div>
-            <div class="architecture-text">
-              Диагностика реальности. Отделить факт от интерпретации.
-            </div>
-          </article>
-
-          <article class="architecture-card bg-[#111]">
-            <div class="architecture-number">03</div>
-            <div class="architecture-name">WILL</div>
-            <div class="architecture-text">
-              Формирование внутренней вертикали и способности удерживать решение.
-            </div>
-          </article>
-
-          <article class="architecture-card bg-[#111]">
-            <div class="architecture-number">04</div>
-            <div class="architecture-name">ACTION</div>
-            <div class="architecture-text">
-              Перевод решения в конкретное действие без лишней теории.
-            </div>
-          </article>
-
-          <article class="architecture-card bg-[#111]">
-            <div class="architecture-number">05</div>
-            <div class="architecture-name">STRUCTURE</div>
-            <div class="architecture-text">
-              Создание каркаса, который удерживает результат.
-            </div>
-          </article>
-
-          <article class="architecture-card bg-[#111]">
-            <div class="architecture-number">06</div>
-            <div class="architecture-name">ADAPTATION</div>
-            <div class="architecture-text">
-              Изменение конструкции без потери несущих элементов.
-            </div>
-          </article>
-
-          <article
-            class="architecture-card bg-[#111] sm:col-span-2 lg:col-span-2"
-          >
-            <div class="architecture-number">07</div>
-            <div class="architecture-name">
-              RESILIENCE
-            </div>
-            <div class="architecture-text max-w-xl">
-              Способность системы сохранять функциональность,
-              восстанавливаться после нагрузки и перестраиваться,
-              когда прежняя конфигурация больше не работает.
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================================================= -->
-    <!-- MODES -->
-    <!-- ========================================================= -->
-
-    <section
-      id="modes"
-      class="py-28 bg-[#0b0b0b] border-y border-white/5"
-    >
-
-      <div class="container-domus">
-
-        <div class="section-label">
-          02 / Operating Modes
-        </div>
-
-        <h2 class="section-title">
-          Пять режимов работы
-        </h2>
-
-        <p class="section-description mt-6">
-          Система не предлагает универсальный совет.
-          Сначала определяется режим, в котором находится человек.
-          Затем выбирается инструмент.
-        </p>
-
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 mt-14">
-
-          <article class="mode-card">
-            <div class="mode-code">MODE 01</div>
-            <div class="mode-name">STABILIZE</div>
-            <div class="mode-description">
-              Остановить разрушение. Вернуть контроль над состоянием.
-            </div>
-          </article>
-
-          <article class="mode-card">
-            <div class="mode-code">MODE 02</div>
-            <div class="mode-name">CONTROL</div>
-            <div class="mode-description">
-              Определить периметр влияния и убрать лишний шум.
-            </div>
-          </article>
-
-          <article class="mode-card">
-            <div class="mode-code">MODE 03</div>
-            <div class="mode-name">REBUILD</div>
-            <div class="mode-description">
-              Собрать новую конструкцию из доступных ресурсов.
-            </div>
-          </article>
-
-          <article class="mode-card">
-            <div class="mode-code">MODE 04</div>
-            <div class="mode-name">ADAPT</div>
-            <div class="mode-description">
-              Изменить конфигурацию без потери ядра системы.
-            </div>
-          </article>
-
-          <article class="mode-card">
-            <div class="mode-code">MODE 05</div>
-            <div class="mode-name">TEST</div>
-            <div class="mode-description">
-              Проверить конструкцию нагрузкой и найти слабое место.
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================================================= -->
-    <!-- CODE -->
-    <!-- ========================================================= -->
-
-    <section id="code" class="py-28">
-
-      <div class="container-domus">
-
-        <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-16">
-
-          <div>
-
-            <div class="section-label">
-              03 / Code
+            <div class="system-label">
+                SYSTEM ARCHITECTURE / CORE CHAIN
             </div>
 
-            <h2 class="section-title">
-              Кодекс<br />
-              <span class="amber">Архитектора</span>
-            </h2>
+            <div class="system-chain">
 
-            <p class="section-description mt-6">
-              Кодекс — не набор красивых формулировок.
-              Это базовые принципы, на которых строится система.
-            </p>
-
-            <div class="mt-8 status-line">
-              <span class="status-dot"></span>
-              OPERATIONAL PRINCIPLES
-            </div>
-
-          </div>
-
-          <div id="codeList"></div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================================================= -->
-    <!-- CATALOG -->
-    <!-- ========================================================= -->
-
-    <section
-      id="catalog"
-      class="py-28 bg-[#0b0b0b] border-y border-white/5"
-    >
-
-      <div class="container-domus">
-
-        <div class="section-label">
-          04 / Arsenal
-        </div>
-
-        <h2 class="section-title">
-          Витрина системы
-        </h2>
-
-        <p class="section-description mt-6">
-          Книги, аудио и прикладные материалы рассматриваются не как
-          отдельные произведения, а как инструменты внутри системы.
-        </p>
-
-
-        <!-- Filters -->
-
-        <div
-          id="catalogFilters"
-          class="flex flex-wrap gap-2 mt-10"
-        >
-
-          <button
-            class="catalog-filter active"
-            data-category="all"
-            onclick="filterCategory('all')"
-          >
-            Все
-          </button>
-
-          <button
-            class="catalog-filter"
-            data-category="Прикладные руководства"
-            onclick="filterCategory('Прикладные руководства')"
-          >
-            Прикладные системы
-          </button>
-
-          <button
-            class="catalog-filter"
-            data-category="Художественные книги"
-            onclick="filterCategory('Художественные книги')"
-          >
-            Художественные
-          </button>
-
-          <button
-            class="catalog-filter"
-            data-category="Музыка и Аудио"
-            onclick="filterCategory('Музыка и Аудио')"
-          >
-            Аудио
-          </button>
-
-          <button
-            class="catalog-filter"
-            data-category="Мерч и Арт"
-            onclick="filterCategory('Мерч и Арт')"
-          >
-            Арт
-          </button>
-
-        </div>
-
-
-        <!-- Catalog -->
-
-        <div
-          id="catalogGrid"
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10"
-        >
-
-          <div class="col-span-full py-20 text-center">
-            <div class="text-gray-700 font-mono text-xs">
-              LOADING DOMUS CATALOG...
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================================================= -->
-    <!-- AI NAVIGATOR -->
-    <!-- ========================================================= -->
-
-    <section id="navigator" class="py-28">
-
-      <div class="container-domus">
-
-        <div class="navigator p-7 md:p-12">
-
-          <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-12">
-
-            <div>
-
-              <div class="section-label">
-                05 / Navigator
-              </div>
-
-              <h2 class="section-title text-4xl md:text-5xl">
-                AI<br />
-                <span class="amber">Navigator</span>
-              </h2>
-
-              <p class="mt-6 text-gray-500 text-sm leading-7">
-                Не ищи название книги.
-                Опиши проблему.
-              </p>
-
-              <p class="mt-3 text-gray-600 text-sm leading-7">
-                Навигатор должен определить состояние,
-                направление работы и подходящий инструмент.
-              </p>
-
-              <div class="mt-8 space-y-2 text-[11px] font-mono text-gray-600">
-                <div>01 — PROBLEM</div>
-                <div>02 — DIAGNOSIS</div>
-                <div>03 — DIRECTION</div>
-                <div>04 — TOOL</div>
-                <div>05 — PROTOCOL</div>
-                <div>06 — NEXT STEP</div>
-              </div>
-
-            </div>
-
-
-            <div>
-
-              <label
-                for="navigatorInput"
-                class="block mb-3 text-[10px] uppercase tracking-[.15em] font-mono text-gray-600"
-              >
-                Опиши проблему
-              </label>
-
-              <textarea
-                id="navigatorInput"
-                class="navigator-input"
-                placeholder="Например: я потерял контроль над режимом, постоянно откладываю действия и не могу собрать себя..."
-              ></textarea>
-
-              <div class="mt-3 flex justify-between items-center">
-
-                <div class="status-line">
-                  <span class="status-dot"></span>
-                  <span id="aiStatus">
-                    NAVIGATOR READY
-                  </span>
+                <div class="system-node">
+                    <span>STATE</span>
+                    <small>01</small>
                 </div>
 
-                <button
-                  onclick="askNavigator()"
-                  class="btn-domus"
-                >
-                  <i class="fa-solid fa-crosshairs"></i>
-                  Определить направление
-                </button>
-
-              </div>
-
-
-              <div
-                id="navigatorResult"
-                class="hidden mt-8"
-              >
-
-                <div class="text-[10px] font-mono text-amber-500 uppercase tracking-[.15em] mb-3">
-                  Navigator response
+                <div class="system-node">
+                    <span>THINKING</span>
+                    <small>02</small>
                 </div>
 
-                <div
-                  id="navigatorMessages"
-                  class="max-h-[420px] overflow-y-auto"
-                ></div>
+                <div class="system-node">
+                    <span>WILL</span>
+                    <small>03</small>
+                </div>
 
-              </div>
+                <div class="system-node">
+                    <span>ACTION</span>
+                    <small>04</small>
+                </div>
 
-            </div>
+                <div class="system-node">
+                    <span>STRUCTURE</span>
+                    <small>05</small>
+                </div>
 
-          </div>
+                <div class="system-node">
+                    <span>ADAPTATION</span>
+                    <small>06</small>
+                </div>
 
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================================================= -->
-    <!-- AUTHOR -->
-    <!-- ========================================================= -->
-
-    <section
-      id="author"
-      class="py-28 border-t border-white/5"
-    >
-
-      <div class="container-domus">
-
-        <div class="grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
-
-          <div>
-
-            <div class="section-label">
-              06 / Architect
-            </div>
-
-            <h2 class="section-title">
-              Архитектор<br />
-              <span class="amber">Антикризис</span>
-            </h2>
-
-          </div>
-
-          <div>
-
-            <p class="text-gray-400 text-lg leading-8">
-              Автор и разработчик системы
-              <strong class="text-gray-200">
-                Architecture of Resilience
-              </strong>.
-            </p>
-
-            <p class="mt-6 text-gray-600 leading-7 text-sm">
-              Подход построен на стыке практической психологии,
-              саморегуляции, НЛП, дисциплины и системного мышления.
-              Основная задача — не создать иллюзию контроля,
-              а восстановить способность действовать,
-              когда привычная конструкция перестаёт работать.
-            </p>
-
-            <div class="mt-8 border-l border-amber-500/30 pl-5">
-
-              <div class="text-gray-300 text-sm leading-7">
-                «Не учим жить.
-                Учим строить себя и удерживать управление,
-                когда прежняя система рушится».
-              </div>
+                <div class="system-node">
+                    <span>RESILIENCE</span>
+                    <small>07</small>
+                </div>
 
             </div>
 
-          </div>
-
         </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================================================= -->
-    <!-- TELEGRAM -->
-    <!-- ========================================================= -->
-
-    <section class="py-20 bg-[#0b0b0b] border-y border-white/5">
-
-      <div class="container-domus">
-
-        <div
-          class="flex flex-col md:flex-row md:items-center justify-between gap-8"
-        >
-
-          <div>
-
-            <div class="section-label">
-              07 / Network
-            </div>
-
-            <h2 class="text-3xl font-bold text-gray-200">
-              Контур связи
-            </h2>
-
-            <p class="text-gray-600 text-sm mt-3">
-              Новости системы, новые материалы и рабочие протоколы.
-            </p>
-
-          </div>
-
-          <a
-            href="https://t.me/AntiKrizis_Strateg"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-domus"
-          >
-            <i class="fa-brands fa-telegram"></i>
-            Telegram
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- ========================================================= -->
-  <!-- FOOTER -->
-  <!-- ========================================================= -->
-
-  <footer class="py-12">
-
-    <div class="container-domus">
-
-      <div
-        class="flex flex-col md:flex-row justify-between gap-8"
-      >
-
-        <div>
-
-          <div class="font-mono text-xs tracking-[.15em] text-gray-400">
-            DOMUS ARCHITECTUS
-          </div>
-
-          <div class="mt-2 text-[10px] font-mono text-gray-700">
-            THE RESILIENCE ARCHITECT
-          </div>
-
-        </div>
-
-        <div class="text-left md:text-right">
-
-          <div class="text-[10px] font-mono text-gray-700">
-            ARCHITECTURE OF RESILIENCE
-          </div>
-
-          <div class="mt-2 text-[10px] font-mono text-gray-800">
-            © <span id="currentYear"></span> DOMUS ARCHITECTUS
-          </div>
-
-        </div>
-
-      </div>
 
     </div>
 
-  </footer>
+</section>
+
+<!-- =============================================================
+     METHODOLOGY
+     ============================================================= -->
+
+<section id="methodology">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+                <div class="section-kicker">
+                    SYSTEM / 01
+                </div>
+
+                <h2 class="section-title" data-i18n="method_title">
+                    Архитектура
+                </h2>
+            </div>
+
+            <p
+                class="section-description"
+                data-i18n="method_description"
+            >
+                Система строится не вокруг мотивации, а вокруг
+                управляемых уровней состояния и действия.
+            </p>
+
+        </div>
+
+        <div class="architecture-grid" id="architectureGrid"></div>
+
+    </div>
+
+</section>
+
+<!-- =============================================================
+     MODES
+     ============================================================= -->
+
+<section id="modes">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+                <div class="section-kicker">
+                    SYSTEM / 02
+                </div>
+
+                <h2 class="section-title" data-i18n="modes_title">
+                    Режимы
+                </h2>
+            </div>
+
+            <p
+                class="section-description"
+                data-i18n="modes_description"
+            >
+                Разные состояния системы требуют разных протоколов.
+            </p>
+
+        </div>
+
+        <div class="modes-grid">
+
+            <article class="mode-card">
+                <strong>01</strong>
+                <h3>STABILIZE</h3>
+                <p data-i18n="mode_stabilize">
+                    Вернуть базовую управляемость.
+                </p>
+            </article>
+
+            <article class="mode-card">
+                <strong>02</strong>
+                <h3>CONTROL</h3>
+                <p data-i18n="mode_control">
+                    Зафиксировать ключевые параметры.
+                </p>
+            </article>
+
+            <article class="mode-card">
+                <strong>03</strong>
+                <h3>REBUILD</h3>
+                <p data-i18n="mode_rebuild">
+                    Восстановить рабочий каркас.
+                </p>
+            </article>
+
+            <article class="mode-card">
+                <strong>04</strong>
+                <h3>ADAPT</h3>
+                <p data-i18n="mode_adapt">
+                    Перестроить систему под новую среду.
+                </p>
+            </article>
+
+            <article class="mode-card">
+                <strong>05</strong>
+                <h3>TEST</h3>
+                <p data-i18n="mode_test">
+                    Проверить систему под нагрузкой.
+                </p>
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =============================================================
+     CODEX
+     ============================================================= -->
+
+<section id="codex" class="codex">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+                <div class="section-kicker">
+                    SYSTEM / 03
+                </div>
+
+                <h2 class="section-title" data-i18n="codex_title">
+                    Кодекс
+                </h2>
+            </div>
+
+            <p
+                class="section-description"
+                data-i18n="codex_description"
+            >
+                Принципы, определяющие конструкцию устойчивой системы.
+            </p>
+
+        </div>
+
+        <div class="codex-grid" id="codexGrid"></div>
+
+    </div>
+
+</section>
+
+<!-- =============================================================
+     CATALOG
+     ============================================================= -->
+
+<section id="catalog" class="catalog-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+                <div class="section-kicker">
+                    SYSTEM / 04
+                </div>
+
+                <h2 class="section-title" data-i18n="catalog_title">
+                    Витрина системы
+                </h2>
+            </div>
+
+            <p
+                class="section-description"
+                data-i18n="catalog_description"
+            >
+                Книги и прикладные материалы DOMUS ARCHITECTUS.
+                Каталог загружается из единого массива данных.
+            </p>
+
+        </div>
+
+        <!-- TOOLBAR -->
+
+        <div class="catalog-toolbar">
+
+            <div class="catalog-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    id="catalogSearch"
+                    type="search"
+                    autocomplete="off"
+                    data-i18n-placeholder="catalog_search"
+                    placeholder="Поиск по каталогу..."
+                    oninput="handleSearch(this.value)"
+                >
+
+            </div>
+
+            <select
+                class="catalog-sort"
+                id="catalogSort"
+                onchange="handleSort(this.value)"
+            >
+
+                <option value="default" data-i18n="sort_default">
+                    Порядок каталога
+                </option>
+
+                <option value="title-asc" data-i18n="sort_title_asc">
+                    Название А → Я
+                </option>
+
+                <option value="title-desc" data-i18n="sort_title_desc">
+                    Название Я → А
+                </option>
+
+                <option value="category" data-i18n="sort_category">
+                    По категории
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- FILTERS -->
+
+        <div class="catalog-filters">
+
+            <button
+                class="filter-btn active"
+                data-category="all"
+                onclick="filterCategory('all')"
+                data-i18n="filter_all"
+            >
+                Все
+            </button>
+
+            <button
+                class="filter-btn"
+                data-category="applied"
+                onclick="filterCategory('applied')"
+                data-i18n="filter_applied"
+            >
+                Прикладные руководства
+            </button>
+
+            <button
+                class="filter-btn"
+                data-category="fiction"
+                onclick="filterCategory('fiction')"
+                data-i18n="filter_fiction"
+            >
+                Художественные книги
+            </button>
+
+        </div>
+
+        <!-- META -->
+
+        <div class="catalog-meta">
+
+            <span id="catalogCount">
+                0
+            </span>
+
+            <span
+                id="catalogStatus"
+                class="catalog-status"
+            >
+                INITIALIZING...
+            </span>
+
+        </div>
+
+        <!-- GRID -->
+
+        <div
+            class="catalog-grid"
+            id="catalogGrid"
+        >
+
+            <div class="catalog-loading">
+
+                LOADING CATALOG
+
+                <div class="loading-line"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =============================================================
+     AI NAVIGATOR
+     ============================================================= -->
+
+<section id="navigator" class="navigator">
+
+    <div class="container navigator-grid">
+
+        <div class="navigator-copy">
+
+            <div class="section-kicker">
+                SYSTEM / 05
+            </div>
+
+            <h2
+                class="section-title"
+                data-i18n="navigator_title"
+            >
+                AI Navigator
+            </h2>
+
+            <p data-i18n="navigator_description">
+                Навигатор помогает определить, какой материал
+                каталога соответствует вашей текущей задаче.
+            </p>
+
+        </div>
+
+        <div class="navigator-terminal">
+
+            <div class="terminal-head">
+
+                <span>
+                    DOMUS / NAVIGATOR
+                </span>
+
+                <span class="terminal-status">
+                    ● ONLINE
+                </span>
+
+            </div>
+
+            <div
+                class="terminal-messages"
+                id="navigatorMessages"
+            >
+
+                <div class="terminal-message">
+
+                    <div class="terminal-message-label">
+                        SYSTEM
+                    </div>
+
+                    <div
+                        class="terminal-message-text"
+                        data-i18n="navigator_start"
+                    >
+                        Опишите проблему, состояние или задачу.
+                        Навигатор сопоставит её с системой материалов.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <form
+                class="terminal-form"
+                onsubmit="event.preventDefault(); askNavigator();"
+            >
+
+                <textarea
+                    id="navigatorInput"
+                    data-i18n-placeholder="navigator_placeholder"
+                    placeholder="Опишите задачу..."
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="terminal-send"
+                    data-i18n="navigator_send"
+                >
+                    Отправить
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =============================================================
+     AUTHOR
+     ============================================================= -->
+
+<section id="author">
+
+    <div class="container author-grid">
+
+        <div class="author-mark">
+
+            <div class="author-mark-title">
+                ARCHITECT / AUTHOR
+            </div>
+
+            <div class="author-mark-main">
+                Архитектор<br>
+                Антикризис
+            </div>
+
+        </div>
+
+        <div class="author-copy">
+
+            <p data-i18n="author_p1">
+                <strong>DOMUS ARCHITECTUS</strong> — система,
+                объединяющая практическую психологию, техники
+                саморегуляции и архитектурный подход к управлению
+                человеком в условиях нагрузки.
+            </p>
+
+            <p data-i18n="author_p2">
+                Здесь нет задачи научить человека жить «правильно».
+                Задача — восстановить внутреннюю конструкцию,
+                вернуть управление и создать рабочую систему,
+                способную выдерживать давление среды.
+            </p>
+
+            <p data-i18n="author_p3">
+                Книги и протоколы являются отдельными элементами
+                одной экосистемы.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =============================================================
+     NETWORK
+     ============================================================= -->
+
+<section class="network">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+                <div class="section-kicker">
+                    SYSTEM / 06
+                </div>
+
+                <h2
+                    class="section-title"
+                    data-i18n="network_title"
+                >
+                    Сеть
+                </h2>
+            </div>
+
+            <p
+                class="section-description"
+                data-i18n="network_description"
+            >
+                Каналы экосистемы и точки доступа к материалам.
+            </p>
+
+        </div>
+
+        <div class="network-grid">
+
+            <a
+                class="network-card"
+                href="https://t.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <i class="fa-brands fa-telegram"></i>
+
+                <h3>Telegram</h3>
+
+                <p data-i18n="network_telegram">
+                    Новости, материалы и оперативные публикации.
+                </p>
+
+            </a>
+
+            <a
+                class="network-card"
+                href="#catalog"
+            >
+
+                <i class="fa-solid fa-book-open"></i>
+
+                <h3>Library</h3>
+
+                <p data-i18n="network_library">
+                    Единый каталог книг и прикладных материалов.
+                </p>
+
+            </a>
+
+            <a
+                class="network-card"
+                href="#navigator"
+            >
+
+                <i class="fa-solid fa-terminal"></i>
+
+                <h3>AI Navigator</h3>
+
+                <p data-i18n="network_ai">
+                    Интерфейс поиска подходящего материала.
+                </p>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- =============================================================
+     FOOTER
+     ============================================================= -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <div>
+
+            <div class="footer-brand">
+                DOMUS ARCHITECTUS
+            </div>
+
+            <div class="footer-copy">
+                © <span id="year"></span> The Resilience Architect
+            </div>
+
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#methodology">
+                Methodology
+            </a>
+
+            <a href="#catalog">
+                Library
+            </a>
+
+            <a href="#navigator">
+                Navigator
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- =============================================================
+     JAVASCRIPT
+     ============================================================= -->
+
+<script>
+
+/* =============================================================
+   GLOBAL STATE
+   ============================================================= */
+
+let currentLanguage = "ru";
+
+let globalProducts = [];
+
+let filteredProducts = [];
+
+let currentCategory = "all";
+
+let currentSearch = "";
+
+let currentSort = "default";
 
 
-  <!-- ========================================================= -->
-  <!-- JAVASCRIPT -->
-  <!-- ========================================================= -->
+/* =============================================================
+   TRANSLATIONS
+   ============================================================= */
 
-  <script>
+const translations = {
 
-    /*
-     * ============================================================
-     * DOMUS ARCHITECTUS — FRONTEND CORE
-     * ============================================================
-     */
+    ru: {
 
-    let currentLanguage = "ru";
-    let globalProducts = [];
-    let currentCategory = "all";
-
-
-    /*
-     * ============================================================
-     * TRANSLATIONS
-     * ============================================================
-     */
-
-    const translations = {
-
-      ru: {
-
-        nav_method: "Методология",
+        nav_methodology: "Методология",
         nav_modes: "Режимы",
-        nav_code: "Кодекс",
+        nav_codex: "Кодекс",
         nav_catalog: "Каталог",
-        nav_ai: "AI Navigator",
+        nav_navigator: "AI Navigator",
 
-        hero_kicker: "SYSTEM ONLINE / DOMUS ARCHITECTUS",
+        hero_question:
+            "ТВОЯ СИСТЕМА ДАЛА СБОЙ?",
 
-        hero_subtitle:
-          "Архитектура устойчивости человека в условиях нагрузки, хаоса и перемен.",
+        hero_lead:
+            "Не учим жить. Учим строить себя и удерживать контроль, когда прежняя система рушится.",
 
-        hero_text:
-          "Когда прежняя система рушится, ты должен иметь возможность построить новую.",
+        hero_note:
+            "Архитектура устойчивости человека в условиях нагрузки, хаоса и перемен.",
 
-        hero_method_button:
-          "Исследовать систему",
+        hero_catalog:
+            "Открыть каталог",
 
-        hero_catalog_button:
-          "Открыть каталог",
+        hero_methodology:
+            "Методология",
 
         method_title:
-          "Архитектура устойчивости",
+            "Архитектура",
 
         method_description:
-          "Устойчивость не возникает из мотивации. Она строится как система. Сначала состояние. Затем мышление. Затем воля, действие и структура. После этого — адаптация. Результат — способность сохранять управление под нагрузкой."
+            "Система строится не вокруг мотивации, а вокруг управляемых уровней состояния и действия.",
 
-      },
+        modes_title:
+            "Режимы",
 
-      en: {
+        modes_description:
+            "Разные состояния системы требуют разных протоколов.",
 
-        nav_method: "Methodology",
+        codex_title:
+            "Кодекс",
+
+        codex_description:
+            "Принципы, определяющие конструкцию устойчивой системы.",
+
+        catalog_title:
+            "Витрина системы",
+
+        catalog_description:
+            "Книги и прикладные материалы DOMUS ARCHITECTUS. Каталог загружается из единого массива данных.",
+
+        catalog_search:
+            "Поиск по каталогу...",
+
+        sort_default:
+            "Порядок каталога",
+
+        sort_title_asc:
+            "Название А → Я",
+
+        sort_title_desc:
+            "Название Я → А",
+
+        sort_category:
+            "По категории",
+
+        filter_all:
+            "Все",
+
+        filter_applied:
+            "Прикладные руководства",
+
+        filter_fiction:
+            "Художественные книги",
+
+        navigator_title:
+            "AI Navigator",
+
+        navigator_description:
+            "Навигатор помогает определить, какой материал каталога соответствует вашей текущей задаче.",
+
+        navigator_start:
+            "Опишите проблему, состояние или задачу. Навигатор сопоставит её с системой материалов.",
+
+        navigator_placeholder:
+            "Опишите задачу...",
+
+        navigator_send:
+            "Отправить",
+
+        author_p1:
+            "DOMUS ARCHITECTUS — система, объединяющая практическую психологию, техники саморегуляции и архитектурный подход к управлению человеком в условиях нагрузки.",
+
+        author_p2:
+            "Здесь нет задачи научить человека жить «правильно». Задача — восстановить внутреннюю конструкцию, вернуть управление и создать рабочую систему, способную выдерживать давление среды.",
+
+        author_p3:
+            "Книги и протоколы являются отдельными элементами одной экосистемы.",
+
+        network_title:
+            "Сеть",
+
+        network_description:
+            "Каналы экосистемы и точки доступа к материалам.",
+
+        network_telegram:
+            "Новости, материалы и оперативные публикации.",
+
+        network_library:
+            "Единый каталог книг и прикладных материалов.",
+
+        network_ai:
+            "Интерфейс поиска подходящего материала.",
+
+        count_books:
+            "материалов",
+
+        loading:
+            "ЗАГРУЗКА",
+
+        ready:
+            "СИСТЕМА ГОТОВА",
+
+        error:
+            "ОШИБКА ЗАГРУЗКИ",
+
+        no_results:
+            "Материалы не найдены",
+
+        no_results_description:
+            "Измените поисковый запрос или параметры фильтра.",
+
+        ridero:
+            "Ridero",
+
+        gumroad:
+            "Gumroad",
+
+        telegram:
+            "Telegram",
+
+        category_applied:
+            "Прикладное",
+
+        category_fiction:
+            "Художественное",
+
+        unknown:
+            "Материал"
+
+    },
+
+    en: {
+
+        nav_methodology: "Methodology",
         nav_modes: "Modes",
-        nav_code: "Code",
-        nav_catalog: "Catalog",
-        nav_ai: "AI Navigator",
+        nav_codex: "Codex",
+        nav_catalog: "Library",
+        nav_navigator: "AI Navigator",
 
-        hero_kicker:
-          "SYSTEM ONLINE / DOMUS ARCHITECTUS",
+        hero_question:
+            "HAS YOUR SYSTEM FAILED?",
 
-        hero_subtitle:
-          "Architecture of human resilience under pressure, chaos and change.",
+        hero_lead:
+            "We do not teach you how to live. We teach you how to rebuild yourself and retain control when the previous system collapses.",
 
-        hero_text:
-          "When the old system fails, you must be able to build a new one.",
+        hero_note:
+            "Architecture of human resilience under pressure, chaos and change.",
 
-        hero_method_button:
-          "Explore the system",
+        hero_catalog:
+            "Open Library",
 
-        hero_catalog_button:
-          "Open catalog",
+        hero_methodology:
+            "Methodology",
 
         method_title:
-          "Architecture of Resilience",
+            "Architecture",
 
         method_description:
-          "Resilience is not produced by motivation. It is built as a system. First state. Then thinking. Then will, action and structure. After that — adaptation. The result is the ability to maintain control under load."
+            "The system is built not around motivation, but around controllable levels of state and action.",
 
-      }
+        modes_title:
+            "Modes",
 
-    };
+        modes_description:
+            "Different system states require different protocols.",
 
+        codex_title:
+            "Codex",
 
-    /*
-     * ============================================================
-     * CODEX
-     * ============================================================
-     */
+        codex_description:
+            "Principles defining the construction of a resilient system.",
 
-    const codePrinciples = [
+        catalog_title:
+            "System Library",
 
-      {
-        number: "01",
-        title: "Состояние — первый контур управления.",
-        text: "Не принимай стратегические решения из разрушенного состояния."
-      },
+        catalog_description:
+            "Books and practical materials of DOMUS ARCHITECTUS. The library is loaded from a unified data source.",
 
-      {
-        number: "02",
-        title: "Сначала факт. Потом интерпретация.",
-        text: "Отделяй то, что произошло, от того, что ты об этом думаешь."
-      },
+        catalog_search:
+            "Search library...",
 
-      {
-        number: "03",
-        title: "Контроль начинается с периметра.",
-        text: "Определи, на что ты действительно можешь воздействовать."
-      },
+        sort_default:
+            "Catalog order",
 
-      {
-        number: "04",
-        title: "Воля — несущая конструкция.",
-        text: "Решение имеет значение только тогда, когда выдерживает нагрузку."
-      },
+        sort_title_asc:
+            "Title A → Z",
 
-      {
-        number: "05",
-        title: "Действие важнее намерения.",
-        text: "Система проверяется не мыслями, а поведением."
-      },
+        sort_title_desc:
+            "Title Z → A",
 
-      {
-        number: "06",
-        title: "Каркас важнее импровизации.",
-        text: "Рабочая структура должна выдерживать плохие дни."
-      },
+        sort_category:
+            "By category",
 
-      {
-        number: "07",
-        title: "Дисциплина снижает цену хаоса.",
-        text: "Чем меньше лишних решений, тем больше ресурса остаётся для главного."
-      },
+        filter_all:
+            "All",
 
-      {
-        number: "08",
-        title: "Адаптация не означает капитуляцию.",
-        text: "Меняй конструкцию. Не отдавай ядро системы."
-      },
+        filter_applied:
+            "Practical Guides",
 
-      {
-        number: "09",
-        title: "Автономность требует ответственности.",
-        text: "Свобода без способности отвечать за последствия превращается в зависимость."
-      },
+        filter_fiction:
+            "Fiction",
 
-      {
-        number: "10",
-        title: "Слабое место должно быть найдено заранее.",
-        text: "Тестируй систему до того, как это сделает кризис."
-      },
+        navigator_title:
+            "AI Navigator",
 
-      {
-        number: "11",
-        title: "Устойчивость строится повторением.",
-        text: "Один правильный поступок ничего не меняет. Система меняется практикой."
-      },
+        navigator_description:
+            "The Navigator helps identify which material in the library corresponds to your current task.",
 
-      {
-        number: "12",
-        title: "Не впечатлять. Работать.",
-        text: "Любая методика оценивается по результату."
-      }
+        navigator_start:
+            "Describe the problem, state or task. The Navigator will match it against the material system.",
 
-    ];
+        navigator_placeholder:
+            "Describe the task...",
 
+        navigator_send:
+            "Send",
 
-    /*
-     * ============================================================
-     * RENDER CODEX
-     * ============================================================
-     */
+        author_p1:
+            "DOMUS ARCHITECTUS is a system combining practical psychology, self-regulation techniques and an architectural approach to human control under pressure.",
 
-    function renderCode() {
+        author_p2:
+            "The objective is not to teach a person how to live «correctly». The objective is to restore internal structure, regain control and build a working system capable of withstanding environmental pressure.",
 
-      const container =
-        document.getElementById("codeList");
+        author_p3:
+            "Books and protocols are separate elements of one ecosystem.",
 
-      if (!container) return;
+        network_title:
+            "Network",
 
-      container.innerHTML = "";
+        network_description:
+            "Ecosystem channels and access points to the materials.",
 
-      codePrinciples.forEach(item => {
+        network_telegram:
+            "News, materials and operational publications.",
 
-        const article =
-          document.createElement("article");
+        network_library:
+            "Unified library of books and practical materials.",
 
-        article.className = "code-item";
+        network_ai:
+            "Interface for finding relevant materials.",
 
-        article.innerHTML = `
-          <div class="code-number">${escapeHTML(item.number)}</div>
+        count_books:
+            "materials",
 
-          <div>
-            <div class="code-title">
-              ${escapeHTML(item.title)}
-            </div>
+        loading:
+            "LOADING",
 
-            <div class="code-description">
-              ${escapeHTML(item.text)}
-            </div>
-          </div>
-        `;
+        ready:
+            "SYSTEM READY",
 
-        container.appendChild(article);
+        error:
+            "LOAD ERROR",
 
-      });
+        no_results:
+            "No materials found",
+
+        no_results_description:
+            "Change the search query or filter parameters.",
+
+        ridero:
+            "Ridero",
+
+        gumroad:
+            "Gumroad",
+
+        telegram:
+            "Telegram",
+
+        category_applied:
+            "Practical",
+
+        category_fiction:
+            "Fiction",
+
+        unknown:
+            "Material"
 
     }
 
+};
+
+
+/* =============================================================
+   ARCHITECTURE DATA
+   ============================================================= */
 
-    /*
-     * ============================================================
-     * LANGUAGE
-     * ============================================================
-     */
+const architectureData = {
 
-    function setLanguage(lang) {
+    ru: [
+        ["01", "STATE", "Управляемое состояние является фундаментом системы."],
+        ["02", "THINKING", "Мышление определяет качество решений под нагрузкой."],
+        ["03", "WILL", "Воля удерживает направление, когда исчезает внешняя опора."],
+        ["04", "ACTION", "Действие переводит внутреннюю конструкцию в реальность."],
+        ["05", "STRUCTURE", "Каркас удерживает систему от распада."],
+        ["06", "ADAPTATION", "Адаптация позволяет перестраиваться без потери ядра."],
+        ["07", "RESILIENCE", "Устойчивость является результатом всей конструкции."]
+    ],
 
-      currentLanguage = lang;
+    en: [
+        ["01", "STATE", "A controllable state is the foundation of the system."],
+        ["02", "THINKING", "Thinking determines the quality of decisions under pressure."],
+        ["03", "WILL", "Will maintains direction when external support disappears."],
+        ["04", "ACTION", "Action translates internal structure into reality."],
+        ["05", "STRUCTURE", "Structure prevents the system from collapsing."],
+        ["06", "ADAPTATION", "Adaptation enables restructuring without losing the core."],
+        ["07", "RESILIENCE", "Resilience is the result of the entire architecture."]
+    ]
 
-      document.documentElement.lang = lang;
+};
 
-      document.querySelectorAll("[data-i18n]")
-        .forEach(element => {
 
-          const key =
-            element.dataset.i18n;
+/* =============================================================
+   CODEX
+   ============================================================= */
 
-          if (
-            translations[lang] &&
-            translations[lang][key]
-          ) {
+const codePrinciples = {
 
-            element.textContent =
-              translations[lang][key];
+    ru: [
+        "Сначала стабилизируй состояние. Потом принимай решения.",
+        "Не трать ресурс на то, что не находится в твоём контуре управления.",
+        "Периметр должен быть определён до начала действия.",
+        "Система должна работать даже тогда, когда мотивация отсутствует.",
+        "Воля не заменяет структуру. Структура поддерживает волю.",
+        "Любое решение должно иметь следующий конкретный шаг.",
+        "Не строй систему, которую невозможно поддерживать.",
+        "Слабое звено определяет предел всей конструкции.",
+        "Адаптация не означает отказ от ядра.",
+        "Контроль начинается с контроля собственного состояния.",
+        "Проверяй систему нагрузкой до того, как нагрузка проверит её сама.",
+        "Устойчивость — это не отсутствие давления. Это способность сохранять функцию под давлением."
+    ],
 
-          }
+    en: [
+        "Stabilize the state first. Then make decisions.",
+        "Do not spend resources on what lies outside your control perimeter.",
+        "Define the perimeter before initiating action.",
+        "The system must function even when motivation is absent.",
+        "Will does not replace structure. Structure supports will.",
+        "Every decision must have a concrete next action.",
+        "Do not build a system that cannot be maintained.",
+        "The weakest link defines the limit of the entire structure.",
+        "Adaptation does not mean abandoning the core.",
+        "Control begins with control of your own state.",
+        "Test the system under load before the load tests it for you.",
+        "Resilience is not the absence of pressure. It is the ability to preserve function under pressure."
+    ]
 
-        });
+};
 
-      const ru =
-        document.getElementById("langRU");
 
-      const en =
-        document.getElementById("langEN");
+/* =============================================================
+   UTILITIES
+   ============================================================= */
 
-      if (lang === "ru") {
+function t(key) {
 
-        ru.classList.remove("text-gray-600");
-        ru.classList.add("text-amber-400");
+    return (
+        translations[currentLanguage] &&
+        translations[currentLanguage][key]
+    ) || key;
 
-        en.classList.remove("text-amber-400");
-        en.classList.add("text-gray-600");
+}
 
-      } else {
 
-        en.classList.remove("text-gray-600");
-        en.classList.add("text-amber-400");
+function escapeHTML(value) {
 
-        ru.classList.remove("text-amber-400");
-        ru.classList.add("text-gray-600");
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-      }
+}
 
-      renderCatalog();
 
-    }
+function safeURL(value) {
 
+    if (!value) return "";
 
-    /*
-     * ============================================================
-     * CATALOG
-     * ============================================================
-     */
+    try {
 
-    async function loadHubData() {
-
-      try {
-
-        const response =
-          await fetch(
-            "data.json?v=" + Date.now(),
-            {
-              cache: "no-store"
-            }
-          );
-
-        if (!response.ok) {
-          throw new Error("Catalog unavailable");
-        }
-
-        const data =
-          await response.json();
-
-        globalProducts =
-          normalizeCatalog(data);
-
-        renderCatalog();
-
-      } catch (error) {
-
-        console.error(
-          "DOMUS catalog error:",
-          error
-        );
-
-        const grid =
-          document.getElementById("catalogGrid");
-
-        grid.innerHTML = `
-          <div class="col-span-full border border-red-900/30 bg-red-950/10 p-8">
-            <div class="font-mono text-xs text-red-700">
-              CATALOG DATA UNAVAILABLE
-            </div>
-
-            <div class="mt-2 text-sm text-gray-600">
-              Проверь наличие файла data.json в корне проекта.
-            </div>
-          </div>
-        `;
-
-      }
-
-    }
-
-
-    /*
-     * ============================================================
-     * CATALOG ADAPTER
-     *
-     * Сейчас поддерживает старый data.json.
-     * Позже сюда подключим новую архитектуру.
-     * ============================================================
-     */
-
-    function normalizeCatalog(data) {
-
-      let products = [];
-
-      if (Array.isArray(data)) {
-
-        products = data;
-
-      } else if (Array.isArray(data.products)) {
-
-        products = data.products;
-
-      } else if (Array.isArray(data.catalog)) {
-
-        products = data.catalog;
-
-      } else {
-
-        console.warn(
-          "Unknown catalog structure"
-        );
-
-        return [];
-
-      }
-
-      return products.map((p, index) => {
-
-        return {
-
-          id:
-            p.id ||
-            `product-${index + 1}`,
-
-          title:
-            p.title ||
-            p.name ||
-            "Без названия",
-
-          title_ru:
-            p.title_ru ||
-            p.title ||
-            p.name ||
-            "Без названия",
-
-          title_en:
-            p.title_en ||
-            p.title ||
-            p.name ||
-            "Untitled",
-
-          description:
-            p.description ||
-            p.description_ru ||
-            p.annotation ||
-            "",
-
-          description_ru:
-            p.description_ru ||
-            p.description ||
-            p.annotation ||
-            "",
-
-          description_en:
-            p.description_en ||
-            p.description ||
-            "",
-
-          category:
-            p.category ||
-            "Без категории",
-
-          type:
-            p.type ||
-            "book",
-
-          line:
-            p.line ||
-            "",
-
-          domain:
-            p.domain ||
-            "",
-
-          mode:
-            p.mode ||
-            "",
-
-          cover:
-            p.cover ||
-            p.image ||
-            "",
-
-          links:
-            p.links ||
-            {
-
-              ridero:
-                p.ridero ||
-                "",
-
-              gumroad:
-                p.gumroad ||
-                ""
-
-            },
-
-          tg_link:
-            p.tg_link ||
-            ""
-
-        };
-
-      });
-
-    }
-
-
-    /*
-     * ============================================================
-     * CATALOG RENDER
-     * ============================================================
-     */
-
-    function renderCatalog() {
-
-      const grid =
-        document.getElementById("catalogGrid");
-
-      if (!grid) return;
-
-      let products =
-        globalProducts;
-
-      if (currentCategory !== "all") {
-
-        products =
-          products.filter(
-            p =>
-              String(p.category)
-                .toLowerCase()
-                ===
-              String(currentCategory)
-                .toLowerCase()
-          );
-
-      }
-
-      if (!products.length) {
-
-        grid.innerHTML = `
-          <div class="col-span-full py-20 text-center">
-            <div class="font-mono text-xs text-gray-700">
-              NO PRODUCTS IN THIS SECTOR
-            </div>
-          </div>
-        `;
-
-        return;
-
-      }
-
-      grid.innerHTML = "";
-
-      products.forEach(product => {
-
-        const title =
-          currentLanguage === "en"
-            ? product.title_en
-            : product.title_ru;
-
-        const description =
-          currentLanguage === "en"
-            ? product.description_en
-            : product.description_ru;
-
-        const article =
-          document.createElement("article");
-
-        article.className =
-          "product-card";
-
-        const coverHTML =
-          product.cover
-            ? `
-              <img
-                src="${safeURL(product.cover)}"
-                alt="${escapeHTML(title)}"
-                loading="lazy"
-              />
-            `
-            : `
-              <div class="product-cover-placeholder">
-                <i class="fa-solid fa-cube"></i>
-              </div>
-            `;
-
-        article.innerHTML = `
-
-          <div class="product-cover">
-            ${coverHTML}
-          </div>
-
-          <div class="product-body">
-
-            <div class="product-category">
-              ${escapeHTML(product.category)}
-            </div>
-
-            <div class="product-title">
-              ${escapeHTML(title)}
-            </div>
-
-            <div class="product-description">
-              ${escapeHTML(
-                truncate(description, 180)
-              )}
-            </div>
-
-            <div class="product-actions">
-
-              ${
-                product.links.ridero
-                  ? `
-                    <a
-                      href="${safeURL(product.links.ridero)}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Ridero
-                    </a>
-                  `
-                  : ""
-              }
-
-              ${
-                product.links.gumroad
-                  ? `
-                    <a
-                      href="${safeURL(product.links.gumroad)}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Gumroad
-                    </a>
-                  `
-                  : ""
-              }
-
-              ${
-                product.tg_link
-                  ? `
-                    <a
-                      href="${safeURL(product.tg_link)}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Telegram
-                    </a>
-                  `
-                  : ""
-              }
-
-            </div>
-
-          </div>
-        `;
-
-        grid.appendChild(article);
-
-      });
-
-    }
-
-
-    /*
-     * ============================================================
-     * FILTER
-     * ============================================================
-     */
-
-    function filterCategory(category) {
-
-      currentCategory =
-        category;
-
-      document
-        .querySelectorAll(".catalog-filter")
-        .forEach(button => {
-
-          button.classList.remove("active");
-
-          if (
-            button.dataset.category
-              === category
-          ) {
-
-            button.classList.add("active");
-
-          }
-
-        });
-
-      renderCatalog();
-
-    }
-
-
-    /*
-     * ============================================================
-     * AI NAVIGATOR
-     * ============================================================
-     */
-
-    async function askNavigator() {
-
-      const input =
-        document.getElementById(
-          "navigatorInput"
-        );
-
-      const result =
-        document.getElementById(
-          "navigatorResult"
-        );
-
-      const messages =
-        document.getElementById(
-          "navigatorMessages"
-        );
-
-      const status =
-        document.getElementById(
-          "aiStatus"
-        );
-
-      const query =
-        input.value.trim();
-
-      if (!query) {
-
-        input.focus();
-
-        return;
-
-      }
-
-      result.classList.remove("hidden");
-
-      appendNavigatorMessage(
-        query,
-        "user"
-      );
-
-      status.textContent =
-        "ANALYZING...";
-
-      const thinking =
-        appendNavigatorMessage(
-          "Диагностика системы...",
-          "assistant"
-        );
-
-      try {
-
-        const response =
-          await fetch(
-            "/api/chat",
-            {
-              method: "POST",
-
-              headers: {
-                "Content-Type":
-                  "application/json"
-              },
-
-              body: JSON.stringify({
-
-                query,
-
-                lang:
-                  currentLanguage,
-
-                context:
-                  globalProducts
-
-              })
-
-            }
-          );
-
-        if (!response.ok) {
-          throw new Error(
-            "AI request failed"
-          );
-        }
-
-        const data =
-          await response.json();
-
-        thinking.remove();
-
-        const answer =
-          data.answer ||
-          data.response ||
-          data.message ||
-          "Навигатор не получил ответа.";
-
-        appendNavigatorMessage(
-          answer,
-          "assistant"
-        );
-
-        status.textContent =
-          "NAVIGATOR ONLINE";
-
-      } catch (error) {
-
-        console.error(
-          "Navigator error:",
-          error
-        );
-
-        thinking.remove();
-
-        appendNavigatorMessage(
-          "AI Navigator временно недоступен. Проверь endpoint /api/chat.",
-          "assistant"
-        );
-
-        status.textContent =
-          "CONNECTION ERROR";
-
-      }
-
-    }
-
-
-    function appendNavigatorMessage(
-      text,
-      type
-    ) {
-
-      const container =
-        document.getElementById(
-          "navigatorMessages"
-        );
-
-      const message =
-        document.createElement("div");
-
-      message.className =
-        `chat-message ${type}`;
-
-      message.textContent =
-        text;
-
-      container.appendChild(message);
-
-      container.scrollTop =
-        container.scrollHeight;
-
-      return message;
-
-    }
-
-
-    /*
-     * ============================================================
-     * MOBILE MENU
-     * ============================================================
-     */
-
-    function toggleMobileMenu() {
-
-      const menu =
-        document.getElementById(
-          "mobileMenu"
-        );
-
-      menu.classList.toggle(
-        "hidden"
-      );
-
-    }
-
-
-    /*
-     * ============================================================
-     * SECURITY HELPERS
-     * ============================================================
-     */
-
-    function escapeHTML(value) {
-
-      return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-    }
-
-
-    function safeURL(value) {
-
-      try {
-
-        const url =
-          new URL(
-            String(value),
-            window.location.origin
-          );
-
-        const allowedProtocols =
-          [
-            "http:",
-            "https:"
-          ];
+        const url = new URL(value);
 
         if (
-          !allowedProtocols.includes(
-            url.protocol
-          )
+            url.protocol === "https:" ||
+            url.protocol === "http:"
         ) {
-
-          return "#";
-
+            return url.href;
         }
 
-        return url.href;
+    } catch (error) {}
 
-      } catch {
+    return "";
 
-        return "#";
+}
 
-      }
 
+function truncate(text, maxLength = 300) {
+
+    const value = String(text || "").trim();
+
+    if (value.length <= maxLength) {
+        return value;
     }
 
+    return value.slice(0, maxLength).trim() + "…";
 
-    function truncate(
-      value,
-      length
-    ) {
+}
 
-      const text =
-        String(value ?? "");
 
-      if (
-        text.length <= length
-      ) {
+/* =============================================================
+   DESCRIPTION CLEANER
+   ============================================================= */
 
-        return text;
+function cleanDescription(raw, title = "") {
 
-      }
-
-      return (
-        text.substring(0, length)
-        + "..."
-      );
-
+    if (!raw) {
+        return "";
     }
 
+    let text = String(raw);
 
     /*
-     * ============================================================
-     * ENTER TO SEND
-     * ============================================================
+     * Remove HTML entities.
+     */
+    const temp = document.createElement("textarea");
+    temp.innerHTML = text;
+    text = temp.value;
+
+    /*
+     * Remove common Ridero SEO construction.
+     */
+    text = text
+        .replace(/^Книга\s+/i, "")
+        .replace(/^Book\s+/i, "")
+        .replace(/\s*-\s*The Resilience Architect\s*-\s*/gi, " ")
+        .replace(/\s*-\s*печатная,\s*электронная:.*$/i, "")
+        .replace(/\s*-\s*print,\s*electronic:.*$/i, "")
+        .replace(/\s*-\s*\d{10,13}\s*$/i, "");
+
+    /*
+     * Remove ISBN-like strings at the end.
+     */
+    text = text.replace(
+        /\s*-\s*(?:ISBN[:\s]*)?\d[\d-]{9,20}\s*$/i,
+        ""
+    );
+
+    /*
+     * Remove duplicate title prefix.
+     */
+    if (title) {
+
+        const normalizedTitle = String(title)
+            .trim()
+            .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+        text = text.replace(
+            new RegExp("^" + normalizedTitle + "\\s*[-:—]?\\s*", "i"),
+            ""
+        );
+
+    }
+
+    /*
+     * Normalize whitespace.
+     */
+    text = text
+        .replace(/\s+/g, " ")
+        .replace(/\s+([,.!?;:])/g, "$1")
+        .trim();
+
+    return truncate(text, 360);
+
+}
+
+
+/* =============================================================
+   NORMALIZE CATALOG
+   ============================================================= */
+
+function normalizeCatalog(data) {
+
+    let source = [];
+
+    if (Array.isArray(data)) {
+
+        source = data;
+
+    } else if (
+        data &&
+        Array.isArray(data.products)
+    ) {
+
+        source = data.products;
+
+    } else if (
+        data &&
+        Array.isArray(data.catalog)
+    ) {
+
+        source = data.catalog;
+
+    } else if (
+        data &&
+        Array.isArray(data.items)
+    ) {
+
+        source = data.items;
+
+    }
+
+    return source
+        .map((product, index) => {
+
+            if (!product || typeof product !== "object") {
+                return null;
+            }
+
+            const links =
+                product.links &&
+                typeof product.links === "object"
+                    ? product.links
+                    : {};
+
+            const ridero =
+                safeURL(links.ridero) ||
+                safeURL(product.ridero) ||
+                "";
+
+            const gumroad =
+                safeURL(links.gumroad) ||
+                safeURL(product.gumroad) ||
+                "";
+
+            const telegram =
+                safeURL(links.telegram) ||
+                safeURL(product.telegram) ||
+                "";
+
+            const title =
+                String(
+                    product.title ||
+                    product.name ||
+                    "Untitled"
+                ).trim();
+
+            const description =
+                cleanDescription(
+                    product.description ||
+                    product.annotation ||
+                    product.description_ru ||
+                    "",
+                    title
+                );
+
+            const cover =
+                safeURL(
+                    product.cover ||
+                    product.image ||
+                    product.image_url ||
+                    ""
+                );
+
+            const category =
+                String(
+                    product.category ||
+                    "unknown"
+                )
+                .trim()
+                .toLowerCase();
+
+            return {
+
+                id:
+                    product.id ||
+                    product.slug ||
+                    `product-${index + 1}`,
+
+                index: index + 1,
+
+                title,
+
+                title_en:
+                    product.title_en ||
+                    product.titleEn ||
+                    "",
+
+                description,
+
+                description_en:
+                    product.description_en ||
+                    product.descriptionEn ||
+                    "",
+
+                category,
+
+                cover,
+
+                links: {
+                    ridero,
+                    gumroad,
+                    telegram
+                }
+
+            };
+
+        })
+        .filter(Boolean);
+
+}
+
+
+/* =============================================================
+   LOAD DATA
+   ============================================================= */
+
+async function loadHubData() {
+
+    const status = document.getElementById("catalogStatus");
+
+    status.textContent = t("loading");
+
+    try {
+
+        /*
+         * IMPORTANT:
+         * Current project file is data(2).json.
+         *
+         * If you rename it later to data.json,
+         * change only this line.
+         */
+        const response = await fetch(
+            "data(2).json?v=" + Date.now(),
+            {
+                cache: "no-store"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                `HTTP ${response.status}`
+            );
+        }
+
+        const data = await response.json();
+
+        globalProducts = normalizeCatalog(data);
+
+        if (!globalProducts.length) {
+            throw new Error("Catalog is empty.");
+        }
+
+        status.textContent =
+            `${t("ready")} / ${globalProducts.length}`;
+
+        applyCatalog();
+
+    } catch (error) {
+
+        console.error(
+            "DOMUS catalog loading error:",
+            error
+        );
+
+        status.textContent = t("error");
+
+        document.getElementById("catalogGrid").innerHTML = `
+
+            <div class="catalog-empty">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <h3>
+                    ${escapeHTML(t("error"))}
+                </h3>
+
+                <p>
+                    Не удалось загрузить data(2).json.
+                    Проверьте имя файла и его расположение
+                    в корне проекта.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =============================================================
+   FILTER
+   ============================================================= */
+
+function filterCategory(category) {
+
+    currentCategory = category;
+
+    document
+        .querySelectorAll(".filter-btn")
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.category === category
+            );
+
+        });
+
+    applyCatalog();
+
+}
+
+
+/* =============================================================
+   SEARCH
+   ============================================================= */
+
+function handleSearch(value) {
+
+    currentSearch =
+        String(value || "")
+            .trim()
+            .toLowerCase();
+
+    applyCatalog();
+
+}
+
+
+/* =============================================================
+   SORT
+   ============================================================= */
+
+function handleSort(value) {
+
+    currentSort = value;
+
+    applyCatalog();
+
+}
+
+
+/* =============================================================
+   APPLY CATALOG
+   ============================================================= */
+
+function applyCatalog() {
+
+    let result = [...globalProducts];
+
+    /*
+     * CATEGORY
+     */
+
+    if (currentCategory !== "all") {
+
+        result = result.filter(
+            product =>
+                product.category === currentCategory
+        );
+
+    }
+
+    /*
+     * SEARCH
+     */
+
+    if (currentSearch) {
+
+        result = result.filter(product => {
+
+            const searchable = [
+
+                product.title,
+
+                product.title_en,
+
+                product.description,
+
+                product.description_en,
+
+                product.category
+
+            ]
+                .join(" ")
+                .toLowerCase();
+
+            return searchable.includes(
+                currentSearch
+            );
+
+        });
+
+    }
+
+    /*
+     * SORT
+     */
+
+    if (currentSort === "title-asc") {
+
+        result.sort(
+            (a, b) =>
+                a.title.localeCompare(
+                    b.title,
+                    currentLanguage === "ru"
+                        ? "ru"
+                        : "en"
+                )
+        );
+
+    }
+
+    if (currentSort === "title-desc") {
+
+        result.sort(
+            (a, b) =>
+                b.title.localeCompare(
+                    a.title,
+                    currentLanguage === "ru"
+                        ? "ru"
+                        : "en"
+                )
+        );
+
+    }
+
+    if (currentSort === "category") {
+
+        result.sort(
+            (a, b) =>
+                a.category.localeCompare(
+                    b.category
+                )
+        );
+
+    }
+
+    filteredProducts = result;
+
+    renderCatalog();
+
+}
+
+
+/* =============================================================
+   CATEGORY LABEL
+   ============================================================= */
+
+function categoryLabel(category) {
+
+    if (category === "applied") {
+        return t("category_applied");
+    }
+
+    if (category === "fiction") {
+        return t("category_fiction");
+    }
+
+    return t("unknown");
+
+}
+
+
+/* =============================================================
+   TITLE
+   ============================================================= */
+
+function getProductTitle(product) {
+
+    if (
+        currentLanguage === "en" &&
+        product.title_en
+    ) {
+        return product.title_en;
+    }
+
+    return product.title;
+
+}
+
+
+/* =============================================================
+   DESCRIPTION
+   ============================================================= */
+
+function getProductDescription(product) {
+
+    if (
+        currentLanguage === "en" &&
+        product.description_en
+    ) {
+        return cleanDescription(
+            product.description_en,
+            getProductTitle(product)
+        );
+    }
+
+    return product.description;
+
+}
+
+
+/* =============================================================
+   COVER HTML
+   ============================================================= */
+
+function renderCover(product) {
+
+    if (product.cover) {
+
+        const title =
+            escapeHTML(
+                getProductTitle(product)
+            );
+
+        const src =
+            escapeHTML(product.cover);
+
+        return `
+            <img
+                src="${src}"
+                alt="${title}"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            >
+
+            <div
+                class="cover-placeholder"
+                style="display:none"
+            >
+                <span>
+                    ${title}
+                </span>
+            </div>
+        `;
+
+    }
+
+    return `
+
+        <div class="cover-placeholder">
+
+            <span>
+                ${escapeHTML(
+                    getProductTitle(product)
+                )}
+            </span>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =============================================================
+   BOOK CARD
+   ============================================================= */
+
+function renderBookCard(product) {
+
+    const title =
+        escapeHTML(
+            getProductTitle(product)
+        );
+
+    const description =
+        escapeHTML(
+            getProductDescription(product)
+        );
+
+    const category =
+        escapeHTML(
+            categoryLabel(product.category)
+        );
+
+    const ridero =
+        safeURL(product.links.ridero);
+
+    const gumroad =
+        safeURL(product.links.gumroad);
+
+    const telegram =
+        safeURL(product.links.telegram);
+
+    let actions = "";
+
+    if (ridero) {
+
+        actions += `
+
+            <a
+                class="book-link ridero"
+                href="${escapeHTML(ridero)}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                ${escapeHTML(t("ridero"))}
+            </a>
+
+        `;
+
+    }
+
+    if (gumroad) {
+
+        actions += `
+
+            <a
+                class="book-link"
+                href="${escapeHTML(gumroad)}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <i class="fa-solid fa-store"></i>
+                ${escapeHTML(t("gumroad"))}
+            </a>
+
+        `;
+
+    }
+
+    if (telegram) {
+
+        actions += `
+
+            <a
+                class="book-link telegram"
+                href="${escapeHTML(telegram)}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <i class="fa-brands fa-telegram"></i>
+                ${escapeHTML(t("telegram"))}
+            </a>
+
+        `;
+
+    }
+
+    return `
+
+        <article class="book-card">
+
+            <div class="book-cover">
+
+                <div class="book-category">
+                    ${category}
+                </div>
+
+                ${renderCover(product)}
+
+            </div>
+
+            <div class="book-content">
+
+                <div class="book-number">
+                    ${String(product.index).padStart(3, "0")}
+                </div>
+
+                <h3 class="book-title">
+                    ${title}
+                </h3>
+
+                <p class="book-description">
+                    ${description || ""}
+                </p>
+
+                <div class="book-actions">
+
+                    ${actions}
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =============================================================
+   RENDER CATALOG
+   ============================================================= */
+
+function renderCatalog() {
+
+    const grid =
+        document.getElementById(
+            "catalogGrid"
+        );
+
+    const count =
+        document.getElementById(
+            "catalogCount"
+        );
+
+    count.textContent =
+        `${filteredProducts.length} ${t("count_books")}`;
+
+    if (!filteredProducts.length) {
+
+        grid.innerHTML = `
+
+            <div class="catalog-empty">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <h3>
+                    ${escapeHTML(t("no_results"))}
+                </h3>
+
+                <p>
+                    ${escapeHTML(
+                        t("no_results_description")
+                    )}
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    grid.innerHTML =
+        filteredProducts
+            .map(renderBookCard)
+            .join("");
+
+}
+
+
+/* =============================================================
+   ARCHITECTURE
+   ============================================================= */
+
+function renderArchitecture() {
+
+    const grid =
+        document.getElementById(
+            "architectureGrid"
+        );
+
+    const items =
+        architectureData[
+            currentLanguage
+        ];
+
+    grid.innerHTML =
+        items
+            .map(item => `
+
+                <article class="architecture-card">
+
+                    <div class="architecture-index">
+                        ${item[0]}
+                    </div>
+
+                    <h3>
+                        ${escapeHTML(item[1])}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(item[2])}
+                    </p>
+
+                </article>
+
+            `)
+            .join("");
+
+}
+
+
+/* =============================================================
+   CODEX
+   ============================================================= */
+
+function renderCode() {
+
+    const grid =
+        document.getElementById(
+            "codexGrid"
+        );
+
+    const principles =
+        codePrinciples[
+            currentLanguage
+        ];
+
+    grid.innerHTML =
+        principles
+            .map((text, index) => `
+
+                <article class="codex-item">
+
+                    <div class="codex-number">
+                        ${String(index + 1).padStart(2, "0")}
+                    </div>
+
+                    <p>
+                        ${escapeHTML(text)}
+                    </p>
+
+                </article>
+
+            `)
+            .join("");
+
+}
+
+
+/* =============================================================
+   LANGUAGE
+   ============================================================= */
+
+function setLanguage(lang) {
+
+    if (
+        lang !== "ru" &&
+        lang !== "en"
+    ) {
+        return;
+    }
+
+    currentLanguage = lang;
+
+    document.documentElement.lang = lang;
+
+    /*
+     * TEXT
      */
 
     document
-      .getElementById("navigatorInput")
-      .addEventListener(
-        "keydown",
-        event => {
+        .querySelectorAll("[data-i18n]")
+        .forEach(element => {
 
-          if (
+            const key =
+                element.dataset.i18n;
+
+            if (
+                translations[lang] &&
+                translations[lang][key]
+            ) {
+
+                element.textContent =
+                    translations[lang][key];
+
+            }
+
+        });
+
+    /*
+     * PLACEHOLDERS
+     */
+
+    document
+        .querySelectorAll("[data-i18n-placeholder]")
+        .forEach(element => {
+
+            const key =
+                element.dataset.i18nPlaceholder;
+
+            if (
+                translations[lang] &&
+                translations[lang][key]
+            ) {
+
+                element.placeholder =
+                    translations[lang][key];
+
+            }
+
+        });
+
+    /*
+     * LANGUAGE BUTTONS
+     */
+
+    document
+        .getElementById("langRu")
+        .classList.toggle(
+            "active",
+            lang === "ru"
+        );
+
+    document
+        .getElementById("langEn")
+        .classList.toggle(
+            "active",
+            lang === "en"
+        );
+
+    /*
+     * RE-RENDER DYNAMIC CONTENT
+     */
+
+    renderArchitecture();
+
+    renderCode();
+
+    applyCatalog();
+
+}
+
+
+/* =============================================================
+   MOBILE MENU
+   ============================================================= */
+
+function toggleMobileMenu() {
+
+    const nav =
+        document.getElementById(
+            "mobileNav"
+        );
+
+    const button =
+        document.getElementById(
+            "mobileToggle"
+        );
+
+    const open =
+        nav.classList.toggle("open");
+
+    document.body.classList.toggle(
+        "menu-open",
+        open
+    );
+
+    button.innerHTML = open
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+
+}
+
+
+/* =============================================================
+   AI NAVIGATOR
+   ============================================================= */
+
+async function askNavigator() {
+
+    const input =
+        document.getElementById(
+            "navigatorInput"
+        );
+
+    const messages =
+        document.getElementById(
+            "navigatorMessages"
+        );
+
+    const query =
+        input.value.trim();
+
+    if (!query) {
+        return;
+    }
+
+    /*
+     * USER MESSAGE
+     */
+
+    messages.insertAdjacentHTML(
+        "beforeend",
+        `
+
+            <div class="terminal-message">
+
+                <div class="terminal-message-label">
+                    USER
+                </div>
+
+                <div class="terminal-message-text">
+                    ${escapeHTML(query)}
+                </div>
+
+            </div>
+
+        `
+    );
+
+    input.value = "";
+
+    messages.scrollTop =
+        messages.scrollHeight;
+
+    /*
+     * TEMPORARY STATUS
+     */
+
+    const waitingId =
+        "navigator-waiting-" +
+        Date.now();
+
+    messages.insertAdjacentHTML(
+        "beforeend",
+        `
+
+            <div
+                class="terminal-message"
+                id="${waitingId}"
+            >
+
+                <div class="terminal-message-label">
+                    NAVIGATOR
+                </div>
+
+                <div class="terminal-message-text">
+                    ...
+                </div>
+
+            </div>
+
+        `
+    );
+
+    messages.scrollTop =
+        messages.scrollHeight;
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/chat",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        query,
+
+                        lang:
+                            currentLanguage,
+
+                        context:
+                            globalProducts.map(
+                                product => ({
+                                    title:
+                                        product.title,
+
+                                    category:
+                                        product.category,
+
+                                    description:
+                                        product.description,
+
+                                    ridero:
+                                        product.links.ridero,
+
+                                    gumroad:
+                                        product.links.gumroad
+                                })
+                            )
+
+                    })
+
+                }
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                `HTTP ${response.status}`
+            );
+        }
+
+        const data =
+            await response.json();
+
+        const answer =
+            data.answer ||
+            data.response ||
+            data.message ||
+            "No response.";
+
+        const waiting =
+            document.getElementById(
+                waitingId
+            );
+
+        if (waiting) {
+
+            waiting.querySelector(
+                ".terminal-message-text"
+            ).textContent = answer;
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Navigator error:",
+            error
+        );
+
+        const waiting =
+            document.getElementById(
+                waitingId
+            );
+
+        if (waiting) {
+
+            waiting.querySelector(
+                ".terminal-message-text"
+            ).textContent =
+                currentLanguage === "ru"
+                    ? "Навигатор временно недоступен."
+                    : "Navigator is temporarily unavailable.";
+
+        }
+
+    }
+
+    messages.scrollTop =
+        messages.scrollHeight;
+
+}
+
+
+/* =============================================================
+   KEYBOARD
+   ============================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        /*
+         * Ctrl + Enter in Navigator
+         */
+
+        if (
+            event.ctrlKey &&
             event.key === "Enter" &&
-            event.ctrlKey
-          ) {
+            document.activeElement &&
+            document.activeElement.id ===
+                "navigatorInput"
+        ) {
+
+            event.preventDefault();
 
             askNavigator();
 
-          }
+        }
+
+        /*
+         * Escape closes mobile menu
+         */
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            const nav =
+                document.getElementById(
+                    "mobileNav"
+                );
+
+            if (
+                nav.classList.contains(
+                    "open"
+                )
+            ) {
+
+                toggleMobileMenu();
+
+            }
 
         }
-      );
+
+    }
+);
 
 
-    /*
-     * ============================================================
-     * INIT
-     * ============================================================
-     */
+/* =============================================================
+   INITIALIZATION
+   ============================================================= */
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
         document.getElementById(
-          "currentYear"
+            "year"
         ).textContent =
-          new Date().getFullYear();
+            new Date().getFullYear();
+
+        renderArchitecture();
 
         renderCode();
 
@@ -2435,10 +3816,10 @@
 
         loadHubData();
 
-      }
-    );
+    }
+);
 
-  </script>
+</script>
 
 </body>
 </html>
