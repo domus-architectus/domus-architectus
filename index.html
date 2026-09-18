@@ -48,10 +48,10 @@
           colors: {
             domus: {
               black: "#000000",
-              stone: "#0a0a0c",
-              stone2: "#121215",
+              stone: "#050505",
+              stone2: "#0a0a0c",
               steel: "#27272a",
-              silver: "#e2e8f0",
+              silver: "#f1f5f9",
               silverMuted: "#94a3b8",
               gold: "#ffd700",
               goldLight: "#fef08a"
@@ -68,15 +68,15 @@
 
   <style>
     :root {
-      --bg: #000000;
-      --surface: #0a0a0c;
-      --surface-2: #121215;
+      --bg: #000000;            /* Абсолютно чистый чёрный */
+      --surface: #050505;      /* Глубокий тёмный для карточек */
+      --surface-2: #0a0a0d;
       --steel: #27272a;
       --silver: #f1f5f9;       /* Чистое серебро */
       --silver-muted: #94a3b8; /* Матовое серебро */
       --gold: #ffd700;         /* Насыщенное яркое золото */
       --gold-light: #fef08a;   /* Светлое золотое свечение */
-      --border-silver: rgba(241, 245, 249, 0.15);
+      --border-silver: rgba(241, 245, 249, 0.12);
       --border-gold: rgba(255, 215, 0, 0.4);
     }
 
@@ -87,28 +87,9 @@
 
     body {
       margin: 0;
-      background:
-        radial-gradient(
-          circle at 50% -10%,
-          rgba(255, 215, 0, 0.15),
-          transparent 45%
-        ),
-        var(--bg);
+      background: #000000;     /* Чёрный фон без градиентов под гербом */
       color: var(--silver);
       font-family: Inter, "Segoe UI", Arial, sans-serif;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.03;
-      background-image:
-        linear-gradient(rgba(255,255,255,.4) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.4) 1px, transparent 1px);
-      background-size: 50px 50px;
-      z-index: 9999;
     }
 
     ::selection {
@@ -161,7 +142,7 @@
       gap: 10px;
       padding: 13px 20px;
       border: 1px solid var(--gold);
-      background: rgba(255, 215, 0, 0.12);
+      background: rgba(255, 215, 0, 0.1);
       color: var(--gold);
       font-family: monospace;
       font-size: 12px;
@@ -186,7 +167,7 @@
       gap: 10px;
       padding: 13px 20px;
       border: 1px solid var(--silver-muted);
-      background: #0d0d10;
+      background: #050505;
       color: var(--silver);
       font-family: monospace;
       font-size: 12px;
@@ -198,7 +179,7 @@
     .btn-dark:hover {
       border-color: var(--gold);
       color: #ffffff;
-      background: #18181c;
+      background: #111115;
       box-shadow: 0 0 15px rgba(255, 215, 0, 0.25);
     }
 
@@ -222,18 +203,7 @@
       align-items: center;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 700px;
-      height: 700px;
-      border: 1px solid rgba(255, 215, 0, .15);
-      border-radius: 50%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      background: #000000;
     }
 
     .hero-content {
@@ -311,22 +281,22 @@
       gap: 10px;
     }
 
-    /* ЯРКИЙ ЗОЛОТОЙ ГЕРБ */
+    /* ИДЕАЛЬНО ВПИСАННЫЙ ГЕРБ НА ЧЕРНОМ ФОНЕ */
     .hero-mark {
       position: absolute;
       right: 5%;
       top: 50%;
       transform: translateY(-50%);
-      width: min(380px, 32vw);
-      opacity: 0.85;
-      filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.55));
+      width: min(400px, 34vw);
+      opacity: 0.9;
+      filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.5));
       z-index: 1;
       transition: .3s ease;
     }
 
     .hero-mark:hover {
       opacity: 1;
-      filter: drop-shadow(0 0 45px rgba(255, 215, 0, 0.8));
+      filter: drop-shadow(0 0 55px rgba(255, 215, 0, 0.8));
     }
 
     @media (max-width: 900px) {
@@ -355,8 +325,8 @@
     .architecture-card {
       min-height: 180px;
       padding: 24px;
-      border: 1px solid rgba(241, 245, 249, 0.12);
-      background: linear-gradient(135deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+      border: 1px solid rgba(241, 245, 249, 0.1);
+      background: #050507;
       transition: .25s ease;
       position: relative;
       overflow: hidden;
@@ -392,9 +362,9 @@
     }
 
     .mode-card {
-      border: 1px solid rgba(241, 245, 249, 0.12);
+      border: 1px solid rgba(241, 245, 249, 0.1);
       padding: 22px;
-      background: #0a0a0c;
+      background: #050507;
       transition: .25s ease;
       min-height: 165px;
     }
@@ -422,7 +392,7 @@
     }
 
     .code-item {
-      border-top: 1px solid rgba(241, 245, 249, 0.12);
+      border-top: 1px solid rgba(241, 245, 249, 0.1);
       padding: 20px 0;
       display: grid;
       grid-template-columns: 60px 1fr;
@@ -451,7 +421,7 @@
 
     .catalog-filter {
       border: 1px solid var(--silver-muted);
-      background: #0d0d10;
+      background: #050507;
       color: var(--silver-muted);
       padding: 10px 14px;
       font-family: monospace;
@@ -472,8 +442,8 @@
     }
 
     .product-card {
-      border: 1px solid rgba(241, 245, 249, 0.12);
-      background: #0a0a0c;
+      border: 1px solid rgba(241, 245, 249, 0.1);
+      background: #050507;
       overflow: hidden;
       transition: .25s ease;
       display: flex;
@@ -482,12 +452,12 @@
 
     .product-cover {
       height: 280px;
-      background: linear-gradient(145deg, #18181f, #050507);
+      background: #000000;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border-bottom: 1px solid rgba(241, 245, 249, 0.12);
+      border-bottom: 1px solid rgba(241, 245, 249, 0.1);
     }
 
     .product-cover img {
@@ -555,7 +525,7 @@
     }
 
     .navigator {
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 215, 0, 0.02));
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 0, 0, 0.9));
       border: 1px solid var(--gold);
       box-shadow: 0 0 35px rgba(255, 215, 0, 0.12);
     }
@@ -564,7 +534,7 @@
       width: 100%;
       min-height: 120px;
       resize: vertical;
-      background: #050507;
+      background: #000000;
       border: 1px solid var(--silver-muted);
       color: #ffffff;
       padding: 16px;
@@ -582,8 +552,8 @@
     .chat-message {
       padding: 12px 14px;
       margin-bottom: 8px;
-      border: 1px solid rgba(241, 245, 249, 0.12);
-      background: #0a0a0c;
+      border: 1px solid rgba(241, 245, 249, 0.1);
+      background: #050507;
       color: var(--silver);
       font-size: 13px;
       line-height: 1.6;
@@ -616,7 +586,8 @@
     }
 
     footer {
-      border-top: 1px solid rgba(241, 245, 249, 0.12);
+      border-top: 1px solid rgba(241, 245, 249, 0.1);
+      background: #000000;
     }
   </style>
 </head>
@@ -624,7 +595,7 @@
 <body>
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-xl">
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-black/95 backdrop-blur-xl">
     <div class="container-domus h-[72px] flex items-center justify-between">
 
       <a href="#top" class="flex items-center gap-3">
@@ -735,50 +706,50 @@
 
 
     <!-- 01 / METHODOLOGY -->
-    <section id="methodology" class="py-28 border-t border-white/10">
+    <section id="methodology" class="py-28 border-t border-white/10 bg-black">
       <div class="container-domus">
         <div class="section-label" data-i18n="method_label">01 / Архитектура</div>
         <h2 class="section-title"><span data-i18n="method_title">Архитектура устойчивости</span></h2>
         <p class="section-description mt-6"><span data-i18n="method_description">Устойчивость не возникает из мотивации. Она строится как система...</span></p>
 
         <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#27272a]">
-          <article class="architecture-card bg-[#0a0a0c]">
+          <article class="architecture-card">
             <div class="architecture-number">01</div>
             <div class="architecture-name" data-i18n="card_state_title">СОСТОЯНИЕ</div>
             <div class="architecture-text" data-i18n="card_state_text">Стабилизация состояния. Тело и нервная система являются первым контуром управления.</div>
           </article>
 
-          <article class="architecture-card bg-[#0a0a0c]">
+          <article class="architecture-card">
             <div class="architecture-number">02</div>
             <div class="architecture-name" data-i18n="card_thinking_title">МЫШЛЕНИЕ</div>
             <div class="architecture-text" data-i18n="card_thinking_text">Диагностика реальности. Отделить факт от интерпретации.</div>
           </article>
 
-          <article class="architecture-card bg-[#0a0a0c]">
+          <article class="architecture-card">
             <div class="architecture-number">03</div>
             <div class="architecture-name" data-i18n="card_will_title">ВОЛЯ</div>
             <div class="architecture-text" data-i18n="card_will_text">Формирование внутренней вертикали и способности удерживать решение.</div>
           </article>
 
-          <article class="architecture-card bg-[#0a0a0c]">
+          <article class="architecture-card">
             <div class="architecture-number">04</div>
             <div class="architecture-name" data-i18n="card_action_title">ДЕЙСТВИЕ</div>
             <div class="architecture-text" data-i18n="card_action_text">Перевод решения в конкретное действие без лишней теории.</div>
           </article>
 
-          <article class="architecture-card bg-[#0a0a0c]">
+          <article class="architecture-card">
             <div class="architecture-number">05</div>
             <div class="architecture-name" data-i18n="card_structure_title">СТРУКТУРА</div>
             <div class="architecture-text" data-i18n="card_structure_text">Создание каркаса, который удерживает результат.</div>
           </article>
 
-          <article class="architecture-card bg-[#0a0a0c]">
+          <article class="architecture-card">
             <div class="architecture-number">06</div>
             <div class="architecture-name" data-i18n="card_adaptation_title">АДАПТАЦИЯ</div>
             <div class="architecture-text" data-i18n="card_adaptation_text">Изменение конструкции без потери несущих элементов.</div>
           </article>
 
-          <article class="architecture-card bg-[#0a0a0c] sm:col-span-2 lg:col-span-2">
+          <article class="architecture-card sm:col-span-2 lg:col-span-2">
             <div class="architecture-number">07</div>
             <div class="architecture-name" data-i18n="card_resilience_title">УСТОЙЧИВОСТЬ</div>
             <div class="architecture-text max-w-xl" data-i18n="card_resilience_text">Способность системы сохранять функциональность, восстанавливаться после нагрузки и перестраиваться.</div>
@@ -789,7 +760,7 @@
 
 
     <!-- 02 / MODES -->
-    <section id="modes" class="py-28 bg-[#0a0a0c] border-y border-white/10">
+    <section id="modes" class="py-28 bg-black border-y border-white/10">
       <div class="container-domus">
         <div class="section-label" data-i18n="modes_label">02 / Режимы работы</div>
         <h2 class="section-title" data-i18n="modes_title">Пять режимов работы</h2>
@@ -831,7 +802,7 @@
 
 
     <!-- 03 / AUDIO HUB SECTION -->
-    <section id="audio-hub" class="py-28 border-b border-white/10">
+    <section id="audio-hub" class="py-28 border-b border-white/10 bg-black">
       <div class="container-domus">
 
         <div class="section-label" data-i18n="audio_label">03 / Звуковые Протоколы</div>
@@ -841,7 +812,7 @@
         </p>
 
         <!-- YouTube Channel Banner -->
-        <div class="mt-10 p-6 md:p-8 border border-yellow-500/60 bg-[#0a0a0c] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-yellow-500/10">
+        <div class="mt-10 p-6 md:p-8 border border-yellow-500/60 bg-[#050507] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-yellow-500/10">
           <div class="flex items-center gap-5">
             <div class="w-14 h-14 border border-red-500/80 bg-red-950/40 flex items-center justify-center text-red-500 text-2xl">
               <i class="fa-brands fa-youtube"></i>
@@ -863,7 +834,7 @@
 
 
     <!-- 04 / CODE -->
-    <section id="code" class="py-28">
+    <section id="code" class="py-28 bg-black">
       <div class="container-domus">
         <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-16">
           <div>
@@ -887,7 +858,7 @@
 
 
     <!-- 05 / CATALOG (КНИГИ И ИНСТРУМЕНТЫ) -->
-    <section id="catalog" class="py-28 bg-[#0a0a0c] border-y border-white/10">
+    <section id="catalog" class="py-28 bg-black border-y border-white/10">
       <div class="container-domus">
         <div class="section-label" data-i18n="catalog_label">05 / Арсенал</div>
         <h2 class="section-title" data-i18n="catalog_title">Витрина системы</h2>
@@ -1034,7 +1005,7 @@
 
 
     <!-- 06 / AI NAVIGATOR -->
-    <section id="navigator" class="py-28">
+    <section id="navigator" class="py-28 bg-black">
       <div class="container-domus">
         <div class="navigator p-7 md:p-12">
           <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-12">
@@ -1088,7 +1059,7 @@
 
 
     <!-- 07 / AUTHOR -->
-    <section id="author" class="py-28 border-t border-white/10">
+    <section id="author" class="py-28 border-t border-white/10 bg-black">
       <div class="container-domus">
         <div class="grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
           <div>
@@ -1118,7 +1089,7 @@
 
 
     <!-- 08 / TELEGRAM NETWORK -->
-    <section class="py-20 bg-[#0a0a0c] border-y border-white/10">
+    <section class="py-20 bg-black border-y border-white/10">
       <div class="container-domus">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div>
