@@ -2,6 +2,16 @@
   "products": [
     {
       "category": "applied",
+      "title": "Планета Сурка",
+      "description": "Книга \"Планета Сурка\". \"Смена вектора за 5 недель\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - «Планета Сурка: смена вектора за 5 недель» — это протокол реконструкции, опирающийся на фундаментальную последовательность: Состояние→ Мышление → Воля - 978-5-0071-2624-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-09/6aab80c4912fb6bf8c39a1f4/rev.2026-09-17T05:55:24.378Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/planeta_surka/",
+        "gumroad": ""
+      }
+    },
+    {
+      "category": "applied",
       "title": "The 12-Week Inner Control Protocol",
       "description": "Книга \"The 12-Week Inner Control Protocol\" - The Resilience Architect - печатная, электронная: epub, fb2, pdfRead, mobi - Inner Control System combines posture, breathing, focused attention, mental imagery, kinesthetic anchoring, scenario rehearsal, and strategic goal-set - 978-5-0071-1722-7",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-09/6a9ab259912fb6bf8c61b89b/rev.2026-09-04T11:58:27.310Z/cover-front.png&amp;format=original",
