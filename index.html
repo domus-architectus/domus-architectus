@@ -87,7 +87,7 @@
 
     body {
       margin: 0;
-      background: #000000;     /* Чёрный фон без градиентов под гербом */
+      background: #000000;
       color: var(--silver);
       font-family: Inter, "Segoe UI", Arial, sans-serif;
     }
@@ -334,7 +334,8 @@
 
     .architecture-card:hover,
     .mode-card:hover,
-    .product-card:hover {
+    .product-card:hover,
+    .network-card:hover {
       border-color: var(--gold) !important;
       box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
       transform: translateY(-3px);
@@ -585,6 +586,16 @@
       box-shadow: 0 0 12px rgba(255, 215, 0, 0.9);
     }
 
+    .network-card {
+      border: 1px solid rgba(241, 245, 249, 0.12);
+      background: #050507;
+      padding: 24px;
+      transition: .25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     footer {
       border-top: 1px solid rgba(241, 245, 249, 0.1);
       background: #000000;
@@ -620,7 +631,7 @@
         <a href="#code" class="nav-link" data-i18n="nav_code">Кодекс</a>
         <a href="#catalog" class="nav-link" data-i18n="nav_catalog">Каталог</a>
         <a href="#navigator" class="nav-link" data-i18n="nav_ai">AI Навигатор</a>
-        <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener noreferrer" class="nav-link">Telegram</a>
+        <a href="#network" class="nav-link" data-i18n="nav_network">Сеть</a>
       </nav>
 
       <div class="flex items-center gap-3">
@@ -642,7 +653,7 @@
         <a href="#code" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_code">Кодекс</a>
         <a href="#catalog" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_catalog">Каталог</a>
         <a href="#navigator" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_ai">AI Навигатор</a>
-        <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener noreferrer" class="nav-link">Telegram</a>
+        <a href="#network" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_network">Сеть</a>
       </div>
     </div>
   </header>
@@ -1088,18 +1099,69 @@
     </section>
 
 
-    <!-- 08 / TELEGRAM NETWORK -->
-    <section class="py-20 bg-black border-y border-white/10">
+    <!-- 08 / NETWORK (Единый контур медиа-каналов) -->
+    <section id="network" class="py-28 bg-black border-y border-white/10">
       <div class="container-domus">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <div>
-            <div class="section-label" data-i18n="tg_label">08 / Сеть</div>
-            <h2 class="text-3xl font-bold text-white" data-i18n="tg_title">Контур связи</h2>
-            <p class="text-slate-400 text-sm mt-3" data-i18n="tg_sub">Новости системы, новые материалы и рабочие протоколы.</p>
-          </div>
-          <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener noreferrer" class="btn-domus">
-            <i class="fa-brands fa-telegram"></i> Telegram
+        <div class="section-label" data-i18n="net_label">08 / Сеть</div>
+        <h2 class="section-title" data-i18n="net_title">Контур связи</h2>
+        <p class="section-description mt-6 mb-12" data-i18n="net_sub">
+          Официальные каналы вещания, практические алгоритмы и прямая демонстрация системы в действии.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+          <!-- Telegram -->
+          <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener noreferrer" class="network-card group">
+            <div>
+              <div class="text-yellow-400 text-2xl mb-4"><i class="fa-brands fa-telegram"></i></div>
+              <div class="text-white font-bold text-lg">Telegram</div>
+              <div class="text-xs font-mono text-slate-400 mt-1">@AntiKrizis_Strateg</div>
+              <p class="text-xs text-slate-500 mt-3 leading-5" data-i18n="net_tg_desc">Главный операционный канал. Системные разборы, аналитика и протоколы.</p>
+            </div>
+            <div class="mt-6 text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold group-hover:underline flex items-center gap-2">
+              <span data-i18n="net_btn_tg">Перейти в канал</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
           </a>
+
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@arhantic" target="_blank" rel="noopener noreferrer" class="network-card group">
+            <div>
+              <div class="text-yellow-400 text-2xl mb-4"><i class="fa-brands fa-tiktok"></i></div>
+              <div class="text-white font-bold text-lg">TikTok</div>
+              <div class="text-xs font-mono text-slate-400 mt-1">@arhantic</div>
+              <p class="text-xs text-slate-500 mt-3 leading-5" data-i18n="net_tt_desc">Короткие видео-сигналы, концентраты мыслей и визуальные протоколы.</p>
+            </div>
+            <div class="mt-6 text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold group-hover:underline flex items-center gap-2">
+              <span data-i18n="net_btn_tt">Смотреть сигналы</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/arhantic" target="_blank" rel="noopener noreferrer" class="network-card group">
+            <div>
+              <div class="text-yellow-400 text-2xl mb-4"><i class="fa-brands fa-instagram"></i></div>
+              <div class="text-white font-bold text-lg">Instagram</div>
+              <div class="text-xs font-mono text-slate-400 mt-1">@arhantic</div>
+              <p class="text-xs text-slate-500 mt-3 leading-5" data-i18n="net_ig_desc">Полевые заметки, визуальная философия брендинга и практическая выдержка.</p>
+            </div>
+            <div class="mt-6 text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold group-hover:underline flex items-center gap-2">
+              <span data-i18n="net_btn_ig">Открыть профиль</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </a>
+
+          <!-- Threads -->
+          <a href="https://www.threads.net/@arh_antic" target="_blank" rel="noopener noreferrer" class="network-card group">
+            <div>
+              <div class="text-yellow-400 text-2xl mb-4"><i class="fa-brands fa-threads"></i></div>
+              <div class="text-white font-bold text-lg">Threads</div>
+              <div class="text-xs font-mono text-slate-400 mt-1">@arh_antic</div>
+              <p class="text-xs text-slate-500 mt-3 leading-5" data-i18n="net_th_desc">Короткие рефлексии, микро-тезисы, код и наблюдения из практики.</p>
+            </div>
+            <div class="mt-6 text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold group-hover:underline flex items-center gap-2">
+              <span data-i18n="net_btn_th">Читать записи</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </a>
+
         </div>
       </div>
     </section>
@@ -1138,6 +1200,7 @@
         nav_code: "Кодекс",
         nav_catalog: "Каталог",
         nav_ai: "AI Навигатор",
+        nav_network: "Сеть",
 
         hero_kicker: "СИСТЕМА В СЕТИ / DOMUS ARCHITECTUS",
         hero_subtitle: "Архитектура устойчивости человека в условиях нагрузки, хаоса и перемен.",
@@ -1246,9 +1309,17 @@
         author_text: "Подход построен на стыке практической психологии, саморегуляции, НЛП, дисциплины и системного мышления. Основная задача — не создать иллюзию контроля, а восстановить способность действовать, когда привычная конструкция перестаёт работать.",
         author_quote: "«Не учим жить. Учим строить себя и удерживать управление, когда прежняя система рушится».",
 
-        tg_label: "08 / Сеть",
-        tg_title: "Контур связи",
-        tg_sub: "Новости системы, новые материалы и рабочие протоколы."
+        net_label: "08 / Сеть",
+        net_title: "Контур связи",
+        net_sub: "Официальные каналы вещания, практические алгоритмы и прямая демонстрация системы в действии.",
+        net_tg_desc: "Главный операционный канал. Системные разборы, аналитика и протоколы.",
+        net_tt_desc: "Короткие видео-сигналы, концентраты мыслей и визуальные протоколы.",
+        net_ig_desc: "Полевые заметки, визуальная философия брендинга и практическая выдержка.",
+        net_th_desc: "Короткие рефлексии, микро-тезисы, код и наблюдения из практики.",
+        net_btn_tg: "Перейти в канал",
+        net_btn_tt: "Смотреть сигналы",
+        net_btn_ig: "Открыть профиль",
+        net_btn_th: "Читать записи"
       },
 
       en: {
@@ -1258,6 +1329,7 @@
         nav_code: "Code",
         nav_catalog: "Catalog",
         nav_ai: "AI Navigator",
+        nav_network: "Network",
 
         hero_kicker: "SYSTEM ONLINE / DOMUS ARCHITECTUS",
         hero_subtitle: "Architecture of human resilience under pressure, chaos and change.",
@@ -1366,9 +1438,17 @@
         author_text: "The framework blends practical psychology, self-regulation, NLP, discipline, and systems thinking. The primary goal is not to create an illusion of control, but to restore action under pressure.",
         author_quote: "“We do not teach how to live. We teach how to build yourself and maintain control when the old system fails.”",
 
-        tg_label: "08 / Network",
-        tg_title: "Network Circuit",
-        tg_sub: "System news, new materials, and operational protocols."
+        net_label: "08 / Network",
+        net_title: "Network Circuit",
+        net_sub: "Official media channels, practical algorithms, and live system demonstrations.",
+        net_tg_desc: "Main operating channel. System breakdowns, analytics, and protocols.",
+        net_tt_desc: "Short video signals, condensed thoughts, and visual protocols.",
+        net_ig_desc: "Field notes, visual brand philosophy, and practical endurance.",
+        net_th_desc: "Short reflections, micro-theses, code, and practical observations.",
+        net_btn_tg: "Open Channel",
+        net_btn_tt: "Watch Signals",
+        net_btn_ig: "View Profile",
+        net_btn_th: "Read Notes"
       }
     };
 
