@@ -525,49 +525,6 @@
       font-weight: 800;
     }
 
-    .navigator {
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 0, 0, 0.9));
-      border: 1px solid var(--gold);
-      box-shadow: 0 0 35px rgba(255, 215, 0, 0.12);
-    }
-
-    .navigator-input {
-      width: 100%;
-      min-height: 120px;
-      resize: vertical;
-      background: #000000;
-      border: 1px solid var(--silver-muted);
-      color: #ffffff;
-      padding: 16px;
-      outline: none;
-      font-family: inherit;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .navigator-input:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-    }
-
-    .chat-message {
-      padding: 12px 14px;
-      margin-bottom: 8px;
-      border: 1px solid rgba(241, 245, 249, 0.1);
-      background: #050507;
-      color: var(--silver);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .chat-message.user {
-      border-color: var(--gold);
-      color: #ffffff;
-    }
-
-    .chat-message.assistant {
-      color: var(--silver-muted);
-    }
 
     .status-line {
       display: inline-flex;
@@ -630,7 +587,6 @@
         <a href="#audio-hub" class="nav-link" data-i18n="nav_audio">Аудио Хаб</a>
         <a href="#code" class="nav-link" data-i18n="nav_code">Кодекс</a>
         <a href="#catalog" class="nav-link" data-i18n="nav_catalog">Каталог</a>
-        <a href="#navigator" class="nav-link" data-i18n="nav_ai">AI Навигатор</a>
         <a href="#network" class="nav-link" data-i18n="nav_network">Сеть</a>
       </nav>
 
@@ -652,7 +608,6 @@
         <a href="#audio-hub" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_audio">Аудио Хаб</a>
         <a href="#code" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_code">Кодекс</a>
         <a href="#catalog" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_catalog">Каталог</a>
-        <a href="#navigator" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_ai">AI Навигатор</a>
         <a href="#network" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_network">Сеть</a>
       </div>
     </div>
@@ -868,208 +823,30 @@
     </section>
 
 
-    <!-- 05 / CATALOG (КНИГИ И ИНСТРУМЕНТЫ) -->
+    <!-- 05 / CATALOG -->
+    <!-- Каталог не хранится в index.html. Данные загружаются исключительно из data.json. -->
     <section id="catalog" class="py-28 bg-black border-y border-white/10">
-      <div class="container-domus">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="section-label" data-i18n="catalog_label">05 / Арсенал</div>
         <h2 class="section-title" data-i18n="catalog_title">Витрина системы</h2>
         <p class="section-description mt-6" data-i18n="catalog_description">
-          Книги, практические руководства и прикладные материалы рассматриваются не как отдельные произведения, а как инструменты внутри единой системы.
+          Прикладные системы, художественные книги, аудио и другие материалы.
         </p>
 
-        <!-- Filters -->
         <div id="catalogFilters" class="flex flex-wrap gap-2 mt-10">
           <button class="catalog-filter active" data-category="all" onclick="filterCategory('all')" data-i18n="cat_all">Все</button>
           <button class="catalog-filter" data-category="applied" onclick="filterCategory('applied')" data-i18n="cat_applied">Прикладные системы</button>
           <button class="catalog-filter" data-category="fiction" onclick="filterCategory('fiction')" data-i18n="cat_fiction">Художественные</button>
         </div>
 
-        <!-- Catalog Grid -->
         <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
-
-          <!-- Книга 1 -->
-          <article class="product-card">
-            <div class="product-cover">
-              <img src="https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-09/6a9ab259912fb6bf8c61b89b/rev.2026-09-04T11:58:27.310Z/cover-front.png&amp;format=original" alt="The 12-Week Inner Control Protocol" loading="lazy" />
-            </div>
-            <div class="product-body">
-              <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
-              <div class="product-title">The 12-Week Inner Control Protocol</div>
-              <div class="product-description" data-i18n="book_desc_1">12-недельный алгоритм настройки ментальной и телесной дисциплины, управления вниманием и восстановления стрессоустойчивости.</div>
-              <div class="product-actions">
-                <a href="https://ridero.ru/books/the_12-week_inner_control_protocol/" target="_blank" rel="noopener noreferrer">Ridero</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Книга 2 -->
-          <article class="product-card">
-            <div class="product-cover">
-              <img src="https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-08/6a882124dce5b2b3e83963b8/rev.2026-08-21T09:58:04.193Z/cover-front.png&amp;format=original" alt="Инженерия личной силы" loading="lazy" />
-            </div>
-            <div class="product-body">
-              <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
-              <div class="product-title">Инженерия личной силы</div>
-              <div class="product-description" data-i18n="book_desc_2">90-дневный протокол построения внутренней вертикали. Системное управление состоянием, психофизическим ресурсом и фокусом.</div>
-              <div class="product-actions">
-                <a href="https://ridero.ru/books/inzheneriya_lichnoi_sily/" target="_blank" rel="noopener noreferrer">Ridero</a>
-                <a href="https://archantic.gumroad.com/l/catpvv" target="_blank" rel="noopener noreferrer">Gumroad</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Книга 3 -->
-          <article class="product-card">
-            <div class="product-cover">
-              <img src="https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-08/6a8d8bc7dce5b2b3e8c9c693/rev.2026-08-25T12:34:23.751Z/cover-front.png&amp;format=original" alt="Финансовый периметр" loading="lazy" />
-            </div>
-            <div class="product-body">
-              <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
-              <div class="product-title">Финансовый периметр</div>
-              <div class="product-description" data-i18n="book_desc_3">Алгоритм выхода из состояния финансового хаоса. Проектирование личного бюджета, устранение утечек ресурса и защита системы.</div>
-              <div class="product-actions">
-                <a href="https://ridero.ru/books/finansovyi_perimetr/" target="_blank" rel="noopener noreferrer">Ridero</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Книга 4 -->
-          <article class="product-card">
-            <div class="product-cover">
-              <img src="https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69ce66f0054f37ebcf7578f5/rev.2026-04-02T12:54:16.950Z/cover-front.jpg&amp;format=original" alt="Скрытая Мощь 2.0" loading="lazy" />
-            </div>
-            <div class="product-body">
-              <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
-              <div class="product-title">Скрытая Мощь 2.0</div>
-              <div class="product-description" data-i18n="book_desc_4">Фундаментальный протокол телесной и ментальной саморегуляции. Построение запаса прочности без зависимости от внешних условий.</div>
-              <div class="product-actions">
-                <a href="https://ridero.ru/books/skrytaya_mosh_2_0/" target="_blank" rel="noopener noreferrer">Ridero</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Книга 5 -->
-          <article class="product-card">
-            <div class="product-cover">
-              <img src="https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-01/697ca5ebb1e852e995de9246/rev.2026-01-30T12:37:08.035Z/cover-front.png&amp;format=original" alt="Крест Архитектора" loading="lazy" />
-            </div>
-            <div class="product-body">
-              <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
-              <div class="product-title">Крест Архитектора</div>
-              <div class="product-description" data-i18n="book_desc_5">Пять фундаментальных модулей трансформации: состояние, воля, мышление, структура и адаптация. Базовый каркас личной системы.</div>
-              <div class="product-actions">
-                <a href="https://ridero.ru/books/krest_arkhitektora_konstruktor_osoznannosti/" target="_blank" rel="noopener noreferrer">Ridero</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Книга 6 -->
-          <article class="product-card">
-            <div class="product-cover">
-              <img src="https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-08/6a858909dce5b2b3e8f3eba2/rev.2026-08-19T10:44:33.270Z/cover-front.png&amp;format=original" alt="Хроники Архитектора — 4" loading="lazy" />
-            </div>
-            <div class="product-body">
-              <div class="product-category" data-i18n="cat_tag_fiction">ХУДОЖЕСТВЕННАЯ ЛИТЕРАТУРА</div>
-              <div class="product-title">Хроники Архитектора — 4</div>
-              <div class="product-description" data-i18n="book_desc_6">Постапокалиптическая повесть. Демонстрация работы принципов устойчивости и выдержки человека в условиях разрушения порядка.</div>
-              <div class="product-actions">
-                <a href="https://ridero.ru/books/khroniki_arkhitektora_4/" target="_blank" rel="noopener noreferrer">Ridero</a>
-                <a href="https://archantic.gumroad.com/l/rxfhap" target="_blank" rel="noopener noreferrer">Gumroad</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Книга 7 -->
-          <article class="product-card">
-            <div class="product-cover">
-              <img src="https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-04/69e6245ef26910eab0c70577/rev.2026-04-20T13:04:39.916Z/cover-front.png&amp;format=original" alt="Сын степей" loading="lazy" />
-            </div>
-            <div class="product-body">
-              <div class="product-category" data-i18n="cat_tag_fiction">ХУДОЖЕСТВЕННАЯ ЛИТЕРАТУРА</div>
-              <div class="product-title">Сын степей: Заговор в Бонне</div>
-              <div class="product-description" data-i18n="book_desc_7">Историко-психологический триллер. Дисциплина, холодный расчёт и сохранение управляемости в эпицентре противостояния 1984 года.</div>
-              <div class="product-actions">
-                <a href="https://ridero.ru/books/syn_stepei/" target="_blank" rel="noopener noreferrer">Ridero</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Книга 8 -->
-          <article class="product-card">
-            <div class="product-cover">
-              <img src="https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2025-11/692827b03e728e5d2a549ad1/rev.2026-04-13T15:42:03.855Z/cover-front.png&amp;format=original" alt="Код самодисциплины" loading="lazy" />
-            </div>
-            <div class="product-body">
-              <div class="product-category" data-i18n="cat_tag_applied">ПРИКЛАДНАЯ СИСТЕМА</div>
-              <div class="product-title">Код самодисциплины</div>
-              <div class="product-description" data-i18n="book_desc_8">Практическое руководство по воспитанию характера и ответственности. Пошаговый алгоритм формирования дисциплины без выгорания.</div>
-              <div class="product-actions">
-                <a href="https://ridero.ru/books/kod_samodiscipliny_ekspert_strogoi_shkoly_konstruktivnoe_vospitanie/" target="_blank" rel="noopener noreferrer">Ridero</a>
-                <a href="https://archantic.gumroad.com/l/laclfl" target="_blank" rel="noopener noreferrer">Gumroad</a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 06 / AI NAVIGATOR -->
-    <section id="navigator" class="py-28 bg-black">
-      <div class="container-domus">
-        <div class="navigator p-7 md:p-12">
-          <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-12">
-            <div>
-              <div class="section-label" data-i18n="nav_label">06 / Навигатор</div>
-              <h2 class="section-title text-4xl md:text-5xl">
-                <span data-i18n="nav_title_1">AI</span><br />
-                <span class="amber" data-i18n="nav_title_2">Навигатор</span>
-              </h2>
-              <p class="mt-6 text-slate-200 text-sm leading-7" data-i18n="nav_desc_1">Не ищи название книги. Опиши проблему.</p>
-              <p class="mt-3 text-slate-400 text-sm leading-7" data-i18n="nav_desc_2">Навигатор должен определить состояние, направление работы и подходящий инструмент.</p>
-
-              <div class="mt-8 space-y-2 text-[11px] font-mono text-slate-400 font-semibold">
-                <div data-i18n="nav_step_1">01 — ПРОБЛЕМА</div>
-                <div data-i18n="nav_step_2">02 — ДИАГНОСТИКА</div>
-                <div data-i18n="nav_step_3">03 — НАПРАВЛЕНИЕ</div>
-                <div data-i18n="nav_step_4">04 — ИНСТРУМЕНТ</div>
-                <div data-i18n="nav_step_5">05 — ПРОТОКОЛ</div>
-                <div data-i18n="nav_step_6">06 — СЛЕДУЮЩИЙ ШАГ</div>
-              </div>
-            </div>
-
-            <div>
-              <label for="navigatorInput" class="block mb-3 text-[10px] uppercase tracking-[.15em] font-mono text-slate-300 font-bold" data-i18n="nav_input_label">
-                Опиши проблему
-              </label>
-
-              <textarea id="navigatorInput" class="navigator-input" data-i18n-placeholder="nav_placeholder" placeholder="Например: я потерял контроль над режимом, постоянно откладываю действия..."></textarea>
-
-              <div class="mt-3 flex justify-between items-center">
-                <div class="status-line">
-                  <span class="status-dot"></span>
-                  <span id="aiStatus" data-i18n="nav_status_ready">НАВИГАТОР ГОТОВ</span>
-                </div>
-
-                <button onclick="askNavigator()" class="btn-domus">
-                  <i class="fa-solid fa-crosshairs"></i>
-                  <span data-i18n="nav_btn">Определить направление</span>
-                </button>
-              </div>
-
-              <div id="navigatorResult" class="hidden mt-8">
-                <div class="text-[10px] font-mono text-yellow-400 uppercase tracking-[.15em] mb-3 font-bold" data-i18n="nav_response_title">ОТВЕТ НАВИГАТОРА</div>
-                <div id="navigatorMessages" class="max-h-[420px] overflow-y-auto"></div>
-              </div>
-            </div>
+          <div class="col-span-full py-20 text-center">
+            <div class="font-mono text-xs text-gray-500">ЗАГРУЗКА КАТАЛОГА...</div>
           </div>
         </div>
       </div>
     </section>
-
-
-    <!-- 07 / AUTHOR -->
+<!-- 06 / AUTHOR -->
     <section id="author" class="py-28 border-t border-white/10 bg-black">
       <div class="container-domus">
         <div class="grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
@@ -1099,16 +876,32 @@
     </section>
 
 
-    <!-- 08 / NETWORK (Единый контур медиа-каналов) -->
+    <!-- 07 / NETWORK (Единый контур медиа-каналов) -->
     <section id="network" class="py-28 bg-black border-y border-white/10">
       <div class="container-domus">
-        <div class="section-label" data-i18n="net_label">08 / Сеть</div>
+        <div class="section-label" data-i18n="net_label">07 / Сеть</div>
         <h2 class="section-title" data-i18n="net_title">Контур связи</h2>
         <p class="section-description mt-6 mb-12" data-i18n="net_sub">
           Официальные каналы вещания, практические алгоритмы и прямая демонстрация системы в действии.
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Author.Today -->
+          <a href="https://author.today/u/arhantic" target="_blank" rel="noopener noreferrer" class="network-card group">
+            <div>
+              <div class="text-yellow-400 text-2xl mb-4"><i class="fa-solid fa-book-open"></i></div>
+              <div class="text-white font-bold text-lg">Author.Today</div>
+              <div class="text-xs font-mono text-slate-400 mt-1">@arhantic</div>
+              <p class="text-xs text-slate-500 mt-3 leading-5">
+                Черновики, ознакомительные фрагменты и книги, ещё не опубликованные в магазинах.
+              </p>
+            </div>
+            <div class="mt-6 text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold group-hover:underline flex items-center gap-2">
+              <span>Открыть профиль</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+            </div>
+          </a>
+
+
 
           <!-- Telegram -->
           <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener noreferrer" class="network-card group">
@@ -1199,7 +992,6 @@
         nav_audio: "Аудио Хаб",
         nav_code: "Кодекс",
         nav_catalog: "Каталог",
-        nav_ai: "AI Навигатор",
         nav_network: "Сеть",
 
         hero_kicker: "СИСТЕМА В СЕТИ / DOMUS ARCHITECTUS",
@@ -1284,23 +1076,8 @@
         book_desc_6: "Постапокалиптическая повесть. Демонстрация работы принципов устойчивости и выдержки человека в условиях разрушения порядка.",
         book_desc_7: "Историко-психологический триллер. Дисциплина, холодный расчёт и сохранение управляемости в эпицентре противостояния 1984 года.",
         book_desc_8: "Практическое руководство по воспитанию характера и ответственности. Пошаговый алгоритм формирования дисциплины без выгорания.",
-
-        nav_label: "06 / Навигатор",
-        nav_title_1: "AI",
-        nav_title_2: "Навигатор",
-        nav_desc_1: "Не ищи название книги. Опиши проблему.",
-        nav_desc_2: "Навигатор должен определить состояние, направление работы и подходящий инструмент.",
-        nav_step_1: "01 — ПРОБЛЕМА",
-        nav_step_2: "02 — ДИАГНОСТИКА",
-        nav_step_3: "03 — НАПРАВЛЕНИЕ",
-        nav_step_4: "04 — ИНСТРУМЕНТ",
         nav_step_5: "05 — ПРОТОКОЛ",
         nav_step_6: "06 — СЛЕДУЮЩИЙ ШАГ",
-        nav_input_label: "Опиши проблему",
-        nav_placeholder: "Например: я потерял контроль над режимом, постоянно откладываю действия...",
-        nav_btn: "Определить направление",
-        nav_status_ready: "НАВИГАТОР ГОТОВ",
-        nav_response_title: "ОТВЕТ НАВИГАТОРА",
 
         author_label: "07 / Архитектор",
         author_name_1: "Архитектор",
@@ -1328,7 +1105,6 @@
         nav_audio: "Audio Hub",
         nav_code: "Code",
         nav_catalog: "Catalog",
-        nav_ai: "AI Navigator",
         nav_network: "Network",
 
         hero_kicker: "SYSTEM ONLINE / DOMUS ARCHITECTUS",
@@ -1413,23 +1189,8 @@
         book_desc_6: "A post-apocalyptic narrative illustrating the Resilience Architect principles tested under extreme structural crisis.",
         book_desc_7: "A historical psychological thriller demonstrating poise, tactical intelligence, and control during the 1984 cold war.",
         book_desc_8: "A practical guide to character building and responsibility, providing a discipline framework without burnout.",
-
-        nav_label: "06 / Navigator",
-        nav_title_1: "AI",
-        nav_title_2: "Navigator",
-        nav_desc_1: "Don't look for a book title. Describe the problem.",
-        nav_desc_2: "The Navigator determines your state mode, direction, and matching tool.",
-        nav_step_1: "01 — PROBLEM",
-        nav_step_2: "02 — DIAGNOSIS",
-        nav_step_3: "03 — DIRECTION",
-        nav_step_4: "04 — TOOL",
         nav_step_5: "05 — PROTOCOL",
         nav_step_6: "06 — NEXT STEP",
-        nav_input_label: "Describe the problem",
-        nav_placeholder: "Example: I lost control over my routine, constantly procrastinating...",
-        nav_btn: "Determine direction",
-        nav_status_ready: "NAVIGATOR READY",
-        nav_response_title: "NAVIGATOR RESPONSE",
 
         author_label: "07 / Architect",
         author_name_1: "The Resilience",
@@ -1607,7 +1368,15 @@
         globalProducts = normalizeCatalog(data);
         renderCatalog();
       } catch (error) {
-        console.warn("DOMUS catalog notice: Using built-in book catalog.");
+        console.warn("DOMUS catalog: data.json unavailable.", error);
+        const grid = document.getElementById("catalogGrid");
+        if (grid) {
+          grid.innerHTML = `
+            <div class="col-span-full py-20 text-center">
+              <div class="font-mono text-xs text-gray-500">КАТАЛОГ DATA.JSON НЕДОСТУПЕН</div>
+            </div>
+          `;
+        }
       }
     }
 
@@ -1693,80 +1462,9 @@
         if (button.dataset.category === category) button.classList.add("active");
       });
 
-      if (globalProducts.length) {
-        renderCatalog();
-      } else {
-        document.querySelectorAll("#catalogGrid .product-card").forEach(card => {
-          const cardCat = card.querySelector(".product-category")?.textContent;
-          if (category === "all") {
-            card.style.display = "flex";
-          } else if (category === "applied" && (cardCat?.includes("ПРИКЛАДНАЯ") || cardCat?.includes("APPLIED"))) {
-            card.style.display = "flex";
-          } else if (category === "fiction" && (cardCat?.includes("ХУДОЖЕСТВЕННАЯ") || cardCat?.includes("FICTION"))) {
-            card.style.display = "flex";
-          } else {
-            card.style.display = "none";
-          }
-        });
-      }
+      renderCatalog();
     }
-
-    async function askNavigator() {
-      const input = document.getElementById("navigatorInput");
-      const result = document.getElementById("navigatorResult");
-      const status = document.getElementById("aiStatus");
-      const query = input.value.trim();
-
-      if (!query) {
-        input.focus();
-        return;
-      }
-
-      result.classList.remove("hidden");
-      appendNavigatorMessage(query, "user");
-      status.textContent = currentLanguage === 'en' ? "ANALYZING..." : "АНАЛИЗ...";
-
-      const thinking = appendNavigatorMessage(
-        currentLanguage === 'en' ? "System diagnostics..." : "Диагностика системы...", 
-        "assistant"
-      );
-
-      try {
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ query, lang: currentLanguage, context: globalProducts })
-        });
-
-        if (!response.ok) throw new Error("AI request failed");
-        const data = await response.json();
-        thinking.remove();
-
-        const answer = data.answer || data.response || data.message || (currentLanguage === 'en' ? "Navigator returned no response." : "Навигатор не получил ответа.");
-        appendNavigatorMessage(answer, "assistant");
-        status.textContent = currentLanguage === 'en' ? "NAVIGATOR ONLINE" : "НАВИГАТОР В СЕТИ";
-      } catch (error) {
-        console.error("Navigator error:", error);
-        thinking.remove();
-        appendNavigatorMessage(
-          currentLanguage === 'en' ? "AI Navigator is temporarily offline." : "AI Навигатор временно недоступен.", 
-          "assistant"
-        );
-        status.textContent = currentLanguage === 'en' ? "CONNECTION ERROR" : "ОШИБКА СВЯЗИ";
-      }
-    }
-
-    function appendNavigatorMessage(text, type) {
-      const container = document.getElementById("navigatorMessages");
-      const message = document.createElement("div");
-      message.className = `chat-message ${type}`;
-      message.textContent = text;
-      container.appendChild(message);
-      container.scrollTop = container.scrollHeight;
-      return message;
-    }
-
-    function toggleMobileMenu() {
+function toggleMobileMenu() {
       document.getElementById("mobileMenu").classList.toggle("hidden");
     }
 
@@ -1794,12 +1492,7 @@
       if (text.length <= length) return text;
       return text.substring(0, length) + "...";
     }
-
-    document.getElementById("navigatorInput").addEventListener("keydown", event => {
-      if (event.key === "Enter" && event.ctrlKey) askNavigator();
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("currentYear").textContent = new Date().getFullYear();
       const savedLang = localStorage.getItem("arch_lang") || "ru";
       setLanguage(savedLang);
