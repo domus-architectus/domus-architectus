@@ -2,6 +2,16 @@
   "products": [
     {
       "category": "applied",
+      "title": "Архитектура Жизненной Рамки",
+      "description": "Книга \"Архитектура Жизненной Рамки\". \"Протоколы взлома автопилотов и защиты личного периметра\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Большинство повседневных решений и эмоциональных реакций человека происходят в режиме социального автопилота. Это делает поведение экономичным, но дел - 978-5-0071-3632-7",
+      "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-09/6aba91ac912fb6bf8cc317a0/rev.2026-09-28T16:11:32.251Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/arkhitektura_zhiznennoi_ramki/",
+        "gumroad": ""
+      }
+    },
+    {
+      "category": "applied",
       "title": "Внутренний Периметр",
       "description": "Книга \"Внутренний Периметр\". \"Учебно-методическое пособие\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Данное учебно-методическое пособие предлагает подход к воспитанию суворовцев, нахимовцев и кадетов, объединяющий проверенную временем отечественную во - 978-5-0071-3630-3",
       "cover": "https://store.ridero.ru/images/h450?bucket=yc:store-raw-data.ridero.store&amp;key=ridero/sku/2026-09/6aba91c7912fb6bf8cc3184a/rev.2026-09-28T16:11:58.824Z/cover-front.png&amp;format=original",
