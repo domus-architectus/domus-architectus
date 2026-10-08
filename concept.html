@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Скрижали Архитектора | DOMUS ARCHITECTUS</title>
+
+  <meta
+    name="description"
+    content="Скрижали Архитектора: Концепция, 7 контуров устойчивости, 5 режимов работы и 12 заповедей Кодекса Архитектора."
+  />
+
+  <link rel="icon" href="/favicon.png" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <!-- Fonts: Cinzel Decorative / Serif for Ancient Tablets Vibe -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Marcellus&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #040405;
+      --tablet-stone: #0a0a0d;
+      --gold-solid: #ffd700;
+      --gold-light: #fff3a1;
+      --gold-dim: #b89628;
+      --gold-border: rgba(255, 215, 0, 0.35);
+      --silver-text: #e2e8f0;
+      --silver-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-dark);
+      color: var(--silver-text);
+      font-family: 'Montserrat', sans-serif;
+      background-image: 
+        radial-gradient(circle at 50% 10%, rgba(255, 215, 0, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 50% 90%, rgba(255, 215, 0, 0.04) 0%, transparent 70%);
+      background-attachment: fixed;
+    }
+
+    /* ЗОЛОТАЯ ГРАВИРОВКА И ШРИФТ СКРИЖАЛЕЙ */
+    .tablet-heading {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #fff2a3 0%, #ffd700 50%, #caa123 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+    }
+
+    .tablet-subheading {
+      font-family: 'Marcellus', serif;
+      color: var(--gold-solid);
+      letter-spacing: 0.08em;
+    }
+
+    .roman-num {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-solid);
+      font-weight: 800;
+    }
+
+    /* МОНУМЕНТАЛЬНАЯ ПЛИТА СКРИЖАЛИ */
+    .stone-tablet {
+      background: linear-gradient(180deg, #0e0e12 0%, #060608 100%);
+      border: 1px solid var(--gold-border);
+      box-shadow: 
+        0 0 30px rgba(0, 0, 0, 0.9),
+        inset 0 0 25px rgba(255, 215, 0, 0.03);
+      position: relative;
+      padding: 40px;
+      margin-bottom: 60px;
+    }
+
+    .stone-tablet::before {
+      content: "";
+      position: absolute;
+      top: 6px; left: 6px; right: 6px; bottom: 6px;
+      border: 1px dashed rgba(255, 215, 0, 0.15);
+      pointer-events: none;
+    }
+
+    .tablet-ornament {
+      text-align: center;
+      color: var(--gold-dim);
+      font-size: 18px;
+      letter-spacing: 0.5em;
+      margin: 25px 0;
+    }
+
+    .inscription-line {
+      border-bottom: 1px solid rgba(255, 215, 0, 0.12);
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+    }
+
+    .btn-return {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border: 1px solid var(--gold-solid);
+      background: rgba(255, 215, 0, 0.08);
+      color: var(--gold-solid);
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: .3s;
+    }
+
+    .btn-return:hover {
+      background: var(--gold-solid);
+      color: #000;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+    }
+
+    @media (max-width: 640px) {
+      .stone-tablet {
+        padding: 24px 18px;
+      }
+      header .max-w-5xl { height: auto; min-height: 70px; padding-top: 10px; padding-bottom: 10px; gap: 12px; }
+      .btn-return { max-width: calc(100vw - 110px); padding: 10px 12px; font-size: 9px; letter-spacing: .06em; }
+      header .btn-return { white-space: normal; line-height: 1.35; }
+      header .flex.items-center.gap-3.font-mono { flex-shrink: 0; }
+      main { overflow-wrap: anywhere; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER NAVBAR -->
+  <header class="sticky top-0 z-50 border-b border-yellow-500/20 bg-black/90 backdrop-blur-xl">
+    <div class="max-w-5xl mx-auto px-6 h-[70px] flex items-center justify-between">
+      
+      <a href="index.html" class="btn-return">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span data-i18n="back_to_shop">Вернуться в Арсенал</span>
+      </a>
+
+      <div class="flex items-center gap-3 font-mono text-xs">
+        <button onclick="setLanguage('ru')" id="langRU" class="text-yellow-400 font-bold">RU</button>
+        <span class="text-gray-600">/</span>
+        <button onclick="setLanguage('en')" id="langEN" class="text-gray-500">EN</button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- CONTENT MAIN CONTAINER -->
+  <main class="max-w-4xl mx-auto px-4 py-16">
+
+    <!-- HEADER TITLE -->
+    <div class="text-center mb-16">
+      <img src="/images/Gerb.png" alt="Герб Архитектора" class="w-32 mx-auto mb-6 opacity-90 filter drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]" />
+      
+      <div class="text-yellow-500 font-mono text-xs tracking-[0.3em] uppercase mb-2">
+        DOMUS ARCHITECTUS ⚜ SACRED CODE
+      </div>
+      
+      <h1 class="tablet-heading text-3xl md:text-5xl font-black">
+        Скрижали Архитектора
+      </h1>
+      
+      <p class="tablet-subheading text-lg md:text-xl mt-4 max-w-2xl mx-auto text-slate-300">
+        Фундаментальная методология, 5 режимов управления и 12 заповедей Кодекса Архитектора.
+      </p>
+
+      <div class="tablet-ornament">⚜ ⚜ ⚜</div>
+    </div>
+
+
+    <!-- TABLET I: ARCHITECTURE OF RESILIENCE -->
+    <section class="stone-tablet">
+      <div class="text-center mb-8">
+        <span class="roman-num text-sm tracking-widest uppercase">Скрижаль I</span>
+        <h2 class="tablet-heading text-2xl md:text-3xl mt-1">Архитектура Устойчивости</h2>
+        <div class="text-xs text-yellow-500/80 font-mono mt-1">ARCHITECTURE OF RESILIENCE</div>
+      </div>
+
+      <p class="text-slate-300 text-base leading-relaxed text-center max-w-2xl mx-auto mb-10">
+        Устойчивость не возникает из эмоций или случайной мотивации. Она проектируется как непрерывная несущая конструкция. Когда прежний порядок рушится, человек восстанавливает управление последовательно по семи контурам:
+      </p>
+
+      <div class="space-y-6">
+        
+        <div class="inscription-line flex gap-4 items-start">
+          <span class="roman-num text-xl min-w-[35px]">I.</span>
+          <div>
+            <div class="tablet-subheading font-bold text-lg">СОСТОЯНИЕ</div>
+            <div class="text-slate-300 text-sm mt-1 leading-relaxed">
+              Стабилизация нервной системы и телесного ресурса. Физиология — первый контур управления.
+            </div>
+          </div>
+        </div>
+
+        <div class="inscription-line flex gap-4 items-start">
+          <span class="roman-num text-xl min-w-[35px]">II.</span>
+          <div>
+            <div class="tablet-subheading font-bold text-lg">МЫШЛЕНИЕ</div>
+            <div class="text-slate-300 text-sm mt-1 leading-relaxed">
+              Диагностика реальности. Отделение твердого факта от эмоциональной интерпретации и внешнего шума.
+            </div>
+          </div>
+        </div>
+
+        <div class="inscription-line flex gap-4 items-start">
+          <span class="roman-num text-xl min-w-[35px]">III.</span>
+          <div>
+            <div class="tablet-subheading font-bold text-lg">ВОЛЯ</div>
+            <div class="text-slate-300 text-sm mt-1 leading-relaxed">
+              Формирование внутренней вертикали. Способность удерживать принятое решение под внешним давлением.
+            </div>
+          </div>
+        </div>
+
+        <div class="inscription-line flex gap-4 items-start">
+          <span class="roman-num text-xl min-w-[35px]">IV.</span>
+          <div>
+            <div class="tablet-subheading font-bold text-lg">ДЕЙСТВИЕ</div>
+            <div class="text-slate-300 text-sm mt-1 leading-relaxed">
+              Перевод внутренней дисциплины в точные, регулярные и проверяемые поступки.
+            </div>
+          </div>
+        </div>
+
+        <div class="inscription-line flex gap-4 items-start">
+          <span class="roman-num text-xl min-w-[35px]">V.</span>
+          <div>
+            <div class="tablet-subheading font-bold text-lg">СТРУКТУРА</div>
+            <div class="text-slate-300 text-sm mt-1 leading-relaxed">
+              Создание внешнего каркаса: порядок, границы, правила, ритм жизни и зона ответственности.
+            </div>
+          </div>
+        </div>
+
+        <div class="inscription-line flex gap-4 items-start">
+          <span class="roman-num text-xl min-w-[35px]">VI.</span>
+          <div>
+            <div class="tablet-subheading font-bold text-lg">АДАПТАЦИЯ</div>
+            <div class="text-slate-300 text-sm mt-1 leading-relaxed">
+              Способность гибко перестраивать конфигурацию системы, не отдавая и не разрушая её ядро.
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start pt-2">
+          <span class="roman-num text-xl min-w-[35px]">VII.</span>
+          <div>
+            <div class="tablet-subheading font-bold text-lg">УСТОЙЧИВОСТЬ</div>
+            <div class="text-slate-300 text-sm mt-1 leading-relaxed">
+              Итоговый результат: способность выдерживать шторм, сохранять ясность ума и восстанавливаться после нагрузки.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- TABLET II: FIVE OPERATING MODES -->
+    <section class="stone-tablet">
+      <div class="text-center mb-8">
+        <span class="roman-num text-sm tracking-widest uppercase">Скрижаль II</span>
+        <h2 class="tablet-heading text-2xl md:text-3xl mt-1">Пять Режимов Управления</h2>
+        <div class="text-xs text-yellow-500/80 font-mono mt-1">SYSTEM MODES</div>
+      </div>
+
+      <div class="space-y-6">
+
+        <div class="inscription-line">
+          <div class="flex items-center justify-between">
+            <span class="tablet-subheading font-bold text-lg">01. СТАБИЛИЗАЦИЯ</span>
+            <span class="roman-num text-xs">MODE_01</span>
+          </div>
+          <p class="text-slate-300 text-sm mt-2 leading-relaxed">
+            Остановить процесс разрушения, купировать панику, восстановить дыхание, сон и базовый телесный ресурс.
+          </p>
+        </div>
+
+        <div class="inscription-line">
+          <div class="flex items-center justify-between">
+            <span class="tablet-subheading font-bold text-lg">02. КОНТРОЛЬ</span>
+            <span class="roman-num text-xs">MODE_02</span>
+          </div>
+          <p class="text-slate-300 text-sm mt-2 leading-relaxed">
+            Очертить периметр прямого влияния. Отсечь чужие ожидания, информационный шум и то, на что нельзя повлиять прямо сейчас.
+          </p>
+        </div>
+
+        <div class="inscription-line">
+          <div class="flex items-center justify-between">
+            <span class="tablet-subheading font-bold text-lg">03. РЕКОНСТРУКЦИЯ</span>
+            <span class="roman-num text-xs">MODE_03</span>
+          </div>
+          <p class="text-slate-300 text-sm mt-2 leading-relaxed">
+            Собрать новую рабочую конструкцию жизни из сохранившихся ресурсов и доступных опор.
+          </p>
+        </div>
+
+        <div class="inscription-line">
+          <div class="flex items-center justify-between">
+            <span class="tablet-subheading font-bold text-lg">04. АДАПТАЦИЯ</span>
+            <span class="roman-num text-xs">MODE_04</span>
+          </div>
+          <p class="text-slate-300 text-sm mt-2 leading-relaxed">
+            Встроить систему в изменившиеся внешние условия. Проявлять гибкость в методах при сохранении верности принципам.
+          </p>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="tablet-subheading font-bold text-lg">05. ТЕСТИРОВАНИЕ</span>
+            <span class="roman-num text-xs">MODE_05</span>
+          </div>
+          <p class="text-slate-300 text-sm mt-2 leading-relaxed">
+            Намеренно проверить обновленный каркас контролируемой нагрузкой, чтобы выявить и укрепить уязвимые места.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- TABLET III: THE ARCHITECT'S CODE (12 COMMANDMENTS) -->
+    <section class="stone-tablet">
+      <div class="text-center mb-8">
+        <span class="roman-num text-sm tracking-widest uppercase">Скрижаль III</span>
+        <h2 class="tablet-heading text-2xl md:text-3xl mt-1">Кодекс Архитектора</h2>
+        <div class="text-xs text-yellow-500/80 font-mono mt-1">12 OPERATIONAL PRINCIPLES</div>
+      </div>
+
+      <div class="space-y-6">
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">I.</span>
+          <strong class="text-white ml-2">Состояние — первый контур управления.</strong>
+          <p class="text-slate-300 text-sm mt-1">Не принимай стратегические решения из разрушенного или истощенного состояния.</p>
+        </div>
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">II.</span>
+          <strong class="text-white ml-2">Сначала факт. Потом интерпретация.</strong>
+          <p class="text-slate-300 text-sm mt-1">Отделяй объективную реальность от того, что ты о ней домысливаешь.</p>
+        </div>
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">III.</span>
+          <strong class="text-white ml-2">Контроль начинается с периметра.</strong>
+          <p class="text-slate-300 text-sm mt-1">Определи, на что можешь воздействовать лично, и не трать силы на то, что вне твоего контроля.</p>
+        </div>
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">IV.</span>
+          <strong class="text-white ml-2">Воля — несущая конструкция.</strong>
+          <p class="text-slate-300 text-sm mt-1">Решение имеет значение лишь тогда, когда выдерживает прямое давление обстоятельств.</p>
+        </div>
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">V.</span>
+          <strong class="text-white ml-2">Действие важнее намерения.</strong>
+          <p class="text-slate-300 text-sm mt-1">Система проверяется и утверждается не мыслями, а конкретным поведением.</p>
+        </div>
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">VI.</span>
+          <strong class="text-white ml-2">Каркас важнее импровизации.</strong>
+          <p class="text-slate-300 text-sm mt-1">Рабочая структура должна удерживать тебя и твою жизнь в самые плохие дни.</p>
+        </div>
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">VII.</span>
+          <strong class="text-white ml-2">Дисциплина снижает цену хаоса.</strong>
+          <p class="text-slate-300 text-sm mt-1">Чем меньше лишних сомнений и рутинных выборов, тем больше ресурса для главного.</p>
+        </div>
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">VIII.</span>
+          <strong class="text-white ml-2">Адаптация не означает капитуляцию.</strong>
+          <p class="text-slate-300 text-sm mt-1">Меняй тактику и формы. Никогда не отдавай ядро своей личности.</p>
+        </div>
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">IX.</span>
+          <strong class="text-white ml-2">Автономность требует ответственности.</strong>
+          <p class="text-slate-300 text-sm mt-1">Свобода без готовности отвечать за последствия немедленно превращается в зависимость.</p>
+        </div>
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">X.</span>
+          <strong class="text-white ml-2">Слабое место должно быть найдено заранее.</strong>
+          <p class="text-slate-300 text-sm mt-1">Тестируй свою систему самостоятельно до того, как это сделает реальный кризис.</p>
+        </div>
+
+        <div class="inscription-line">
+          <span class="roman-num font-bold text-yellow-400">XI.</span>
+          <strong class="text-white ml-2">Устойчивость строится повторением.</strong>
+          <p class="text-slate-300 text-sm mt-1">Один разовый порыв не меняет судьбу. Человек перестраивается регулярной практикой.</p>
+        </div>
+
+        <div>
+          <span class="roman-num font-bold text-yellow-400">XII.</span>
+          <strong class="text-white ml-2">Не впечатлять. Работать.</strong>
+          <p class="text-slate-300 text-sm mt-1">Любая методология оценивается исключительно по реальному результату.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FOOTER NAV -->
+    <div class="text-center py-8">
+      <a href="index.html" class="btn-return py-4 px-8 text-sm">
+        <i class="fa-solid fa-arrow-left mr-2"></i>
+        <span>Перейти к Каталогу и Книгам</span>
+      </a>
+      <div class="text-xs font-mono text-slate-500 mt-6">
+        © DOMUS ARCHITECTUS ⚜ THE RESILIENCE ARCHITECT
+      </div>
+    </div>
+
+  </main>
+
+
+  <script>
+    const conceptEnglish = {
+      "Скрижали Архитектора | DOMUS ARCHITECTUS":"The Architect's Tablets | DOMUS ARCHITECTUS",
+      "Вернуться в Арсенал":"Back to the Arsenal",
+      "Скрижали Архитектора":"The Architect's Tablets",
+      "Фундаментальная методология, 5 режимов управления и 12 заповедей Кодекса Архитектора.":"A foundational methodology, five operating modes, and the twelve principles of the Architect's Code.",
+      "Скрижаль I":"Tablet I", "Архитектура Устойчивости":"The Architecture of Resilience",
+      "Устойчивость не возникает из эмоций или случайной мотивации. Она проектируется как непрерывная несущая конструкция. Когда прежний порядок рушится, человек восстанавливает управление последовательно по семи контурам:":"Resilience does not arise from emotion or momentary motivation. It is engineered as a continuous load-bearing structure. When the old order collapses, a person regains control through seven successive layers:",
+      "СОСТОЯНИЕ":"STATE", "Стабилизация нервной системы и телесного ресурса. Физиология — первый контур управления.":"Stabilize the nervous system and physical resources. Physiology is the first layer of control.",
+      "МЫШЛЕНИЕ":"THINKING", "Диагностика реальности. Отделение твердого факта от эмоциональной интерпретации и внешнего шума.":"Assess reality. Separate hard facts from emotional interpretation and external noise.",
+      "ВОЛЯ":"WILL", "Формирование внутренней вертикали. Способность удерживать принятое решение под внешним давлением.":"Build an inner line of command: the ability to hold a decision under external pressure.",
+      "ДЕЙСТВИЕ":"ACTION", "Перевод внутренней дисциплины в точные, регулярные и проверяемые поступки.":"Translate inner discipline into precise, consistent, and verifiable actions.",
+      "СТРУКТУРА":"STRUCTURE", "Создание внешнего каркаса: порядок, границы, правила, ритм жизни и зона ответственности.":"Build an external framework: order, boundaries, rules, daily rhythm, and areas of responsibility.",
+      "АДАПТАЦИЯ":"ADAPTATION", "Способность гибко перестраивать конфигурацию системы, не отдавая и не разрушая её ядро.":"Adapt the system's configuration without surrendering or destroying its core.",
+      "УСТОЙЧИВОСТЬ":"RESILIENCE", "Итоговый результат: способность выдерживать шторм, сохранять ясность ума и восстанавливаться после нагрузки.":"The integrated outcome: withstand pressure, maintain clarity, and recover after strain.",
+      "Скрижаль II":"Tablet II", "Пять Режимов Управления":"Five Operating Modes",
+      "01. СТАБИЛИЗАЦИЯ":"01. STABILIZATION", "Остановить процесс разрушения, купировать панику, восстановить дыхание, сон и базовый телесный ресурс.":"Stop the downward spiral, contain panic, and restore breathing, sleep, and basic physical resources.",
+      "02. КОНТРОЛЬ":"02. CONTROL", "Очертить периметр прямого влияния. Отсечь чужие ожидания, информационный шум и то, на что нельзя повлиять прямо сейчас.":"Define the perimeter of direct influence. Set aside others' expectations, information noise, and matters you cannot change right now.",
+      "03. РЕКОНСТРУКЦИЯ":"03. RECONSTRUCTION", "Собрать новую рабочую конструкцию жизни из сохранившихся ресурсов и доступных опор.":"Build a new, workable life structure from the resources and supports that remain.",
+      "04. АДАПТАЦИЯ":"04. ADAPTATION", "Встроить систему в изменившиеся внешние условия. Проявлять гибкость в методах при сохранении верности принципам.":"Adapt the system to changed external conditions. Remain flexible in methods while staying true to your principles.",
+      "05. ТЕСТИРОВАНИЕ":"05. TESTING", "Намеренно проверить обновленный каркас контролируемой нагрузкой, чтобы выявить и укрепить уязвимые места.":"Test the updated framework under controlled load to identify and reinforce weak points.",
+      "Скрижаль III":"Tablet III", "Кодекс Архитектора":"The Architect's Code",
+      "Состояние — первый контур управления.":"State is the first layer of control.", "Не принимай стратегические решения из разрушенного или истощенного состояния.":"Do not make strategic decisions when destabilized or depleted.",
+      "Сначала факт. Потом интерпретация.":"Facts first. Interpretation second.", "Отделяй объективную реальность от того, что ты о ней домысливаешь.":"Separate objective reality from the assumptions you add to it.",
+      "Контроль начинается с периметра.":"Control begins with the perimeter.", "Определи, на что можешь воздействовать лично, и не трать силы на то, что вне твоего контроля.":"Identify what you can influence directly. Do not waste energy on what lies beyond your control.",
+      "Воля — несущая конструкция.":"Will is a load-bearing structure.", "Решение имеет значение лишь тогда, когда выдерживает прямое давление обстоятельств.":"A decision matters only if it withstands direct pressure from circumstances.",
+      "Действие важнее намерения.":"Action matters more than intention.", "Система проверяется и утверждается не мыслями, а конкретным поведением.":"A system is tested and validated through concrete behavior, not thoughts.",
+      "Каркас важнее импровизации.":"A framework matters more than improvisation.", "Рабочая структура должна удерживать тебя и твою жизнь в самые плохие дни.":"A working structure must support you and your life on the worst days.",
+      "Дисциплина снижает цену хаоса.":"Discipline reduces the cost of chaos.", "Чем меньше лишних сомнений и рутинных выборов, тем больше ресурса для главного.":"The fewer unnecessary doubts and routine decisions, the more energy remains for what matters.",
+      "Адаптация не означает капитуляцию.":"Adaptation is not surrender.", "Меняй тактику и формы. Никогда не отдавай ядро своей личности.":"Change tactics and forms. Never surrender the core of your identity.",
+      "Автономность требует ответственности.":"Autonomy requires responsibility.", "Свобода без готовности отвечать за последствия немедленно превращается в зависимость.":"Freedom without willingness to accept consequences quickly turns into dependence.",
+      "Слабое место должно быть найдено заранее.":"Find the weak point in advance.", "Тестируй свою систему самостоятельно до того, как это сделает реальный кризис.":"Test your system yourself before a real crisis does it for you.",
+      "Устойчивость строится повторением.":"Resilience is built through repetition.", "Один разовый порыв не меняет судьбу. Человек перестраивается регулярной практикой.":"A single burst of effort does not change a life. People rebuild through regular practice.",
+      "Не впечатлять. Работать.":"Do not impress. Do the work.", "Любая методология оценивается исключительно по реальному результату.":"Any methodology is judged solely by its real-world results.",
+      "Перейти к Каталогу и Книгам":"Return to the Catalog and Books"
+    };
+
+    function setLanguage(lang) {
+      const language = lang === "en" ? "en" : "ru";
+      document.documentElement.lang = language;
+      try { localStorage.setItem("arch_lang", language); } catch (_) {}
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let node;
+      while ((node = walker.nextNode())) {
+        const parent = node.parentElement;
+        if (!parent || /^(SCRIPT|STYLE|NOSCRIPT)$/.test(parent.tagName) || parent.closest('button#langRU,button#langEN')) continue;
+        if (!node.__domusOriginal) node.__domusOriginal = node.nodeValue;
+        const original = node.__domusOriginal;
+        const trimmed = original.trim();
+        if (!trimmed) continue;
+        const translated = language === "en" ? (conceptEnglish[trimmed] || trimmed) : trimmed;
+        node.nodeValue = original.replace(trimmed, translated);
+      }
+      const title = document.querySelector('title');
+      if (title) title.textContent = language === 'en' ? conceptEnglish['Скрижали Архитектора | DOMUS ARCHITECTUS'] : 'Скрижали Архитектора | DOMUS ARCHITECTUS';
+      const crest = document.querySelector('img[alt]');
+      if (crest) crest.alt = language === 'en' ? "Architect's Crest" : 'Герб Архитектора';
+      const ru = document.getElementById("langRU"), en = document.getElementById("langEN");
+      if (ru && en) {
+        ru.classList.toggle("text-yellow-400", language === "ru");
+        ru.classList.toggle("font-bold", language === "ru");
+        ru.classList.toggle("text-gray-500", language !== "ru");
+        en.classList.toggle("text-yellow-400", language === "en");
+        en.classList.toggle("font-bold", language === "en");
+        en.classList.toggle("text-gray-500", language !== "en");
+      }
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      let savedLang = "ru";
+      try { savedLang = localStorage.getItem("arch_lang") || "ru"; } catch (_) {}
+      setLanguage(savedLang === "en" ? "en" : "ru");
+    });
+  </script>
+
+</body>
+</html>
