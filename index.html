@@ -4,31 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>DOMUS ARCHITECTUS | Архитектура устойчивости</title>
+  <title>DOMUS ARCHITECTUS | Витрина системы</title>
 
   <meta
     name="description"
-    content="DOMUS ARCHITECTUS — система архитектуры устойчивости. Книги, протоколы и инструменты для сохранения управления в условиях нагрузки, хаоса и перемен."
+    content="DOMUS ARCHITECTUS — Каталог книг, прикладных протоколов и аудио-систем Архитектора Антикризиса."
   />
-
-  <meta
-    name="keywords"
-    content="DOMUS ARCHITECTUS, Архитектор Антикризис, The Resilience Architect, архитектура устойчивости, саморегуляция, кризис, дисциплина, психология, НЛП, протоколы"
-  />
-
-  <meta name="author" content="Архитектор Антикризис" />
-
-  <!-- Google Search Console -->
-  <meta name="google-site-verification" content="KEvLUMbX..." />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="DOMUS ARCHITECTUS | Архитектура устойчивости" />
-  <meta
-    property="og:description"
-    content="Когда прежняя система рушится, ты должен иметь возможность построить новую."
-  />
-  <meta property="og:url" content="https://domusarchitectus.vercel.app/" />
-  <meta property="og:image" content="/images/Gerb.png" />
 
   <link rel="icon" href="/favicon.png" />
 
@@ -49,8 +30,6 @@
             domus: {
               black: "#000000",
               stone: "#050505",
-              stone2: "#0a0a0c",
-              steel: "#27272a",
               silver: "#f1f5f9",
               silverMuted: "#94a3b8",
               gold: "#ffd700",
@@ -68,14 +47,12 @@
 
   <style>
     :root {
-      --bg: #000000;            /* Абсолютно чистый чёрный */
-      --surface: #050505;      /* Глубокий тёмный для карточек */
-      --surface-2: #0a0a0d;
-      --steel: #27272a;
-      --silver: #f1f5f9;       /* Чистое серебро */
-      --silver-muted: #94a3b8; /* Матовое серебро */
-      --gold: #ffd700;         /* Насыщенное яркое золото */
-      --gold-light: #fef08a;   /* Светлое золотое свечение */
+      --bg: #000000;
+      --surface: #050507;
+      --silver: #f1f5f9;
+      --silver-muted: #94a3b8;
+      --gold: #ffd700;
+      --gold-light: #fef08a;
       --border-silver: rgba(241, 245, 249, 0.12);
       --border-gold: rgba(255, 215, 0, 0.4);
     }
@@ -102,62 +79,28 @@
       margin: 0 auto;
     }
 
-    .amber, .gold {
-      color: var(--gold);
-    }
-
-    .mono {
-      font-family: "JetBrains Mono", Consolas, monospace;
-    }
-
-    .section-label {
-      color: var(--gold);
-      font-family: monospace;
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-
-    .section-title {
-      font-size: clamp(30px, 5vw, 52px);
-      line-height: 1.05;
-      font-weight: 800;
-      letter-spacing: -0.035em;
-      color: #ffffff;
-    }
-
-    .section-description {
-      max-width: 700px;
-      color: var(--silver-muted);
-      line-height: 1.8;
-      font-size: 15px;
-    }
-
     .btn-domus {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 13px 20px;
+      padding: 12px 22px;
       border: 1px solid var(--gold);
-      background: rgba(255, 215, 0, 0.1);
+      background: rgba(255, 215, 0, 0.08);
       color: var(--gold);
       font-family: monospace;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
       transition: .25s ease;
     }
 
     .btn-domus:hover {
       background: var(--gold);
       color: #000000;
-      border-color: var(--gold);
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
     }
 
     .btn-dark {
@@ -165,12 +108,12 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 13px 20px;
-      border: 1px solid var(--silver-muted);
-      background: #050505;
+      padding: 12px 22px;
+      border: 1px solid rgba(241, 245, 249, 0.2);
+      background: #050507;
       color: var(--silver);
       font-family: monospace;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       transition: .25s ease;
@@ -180,11 +123,9 @@
       border-color: var(--gold);
       color: #ffffff;
       background: #111115;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.25);
     }
 
     .nav-link {
-      position: relative;
       color: var(--silver-muted);
       font-family: monospace;
       font-size: 11px;
@@ -197,234 +138,26 @@
       color: var(--gold);
     }
 
-    .hero {
-      min-height: calc(100vh - 72px);
-      display: flex;
-      align-items: center;
+    .hero-mini {
+      padding: 50px 0 30px;
       position: relative;
-      overflow: hidden;
-      background: #000000;
+      background: radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 60%);
+      border-bottom: 1px solid rgba(255, 215, 0, 0.15);
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 13px;
-      border: 1px solid var(--gold);
-      background: rgba(255, 215, 0, .08);
-      color: var(--gold);
-      font-family: monospace;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      margin-top: 25px;
-      font-size: clamp(48px, 10vw, 108px);
-      line-height: .88;
-      font-weight: 800;
-      letter-spacing: -.065em;
-      color: #ffffff;
-    }
-
-    .hero-title span {
-      color: var(--gold);
-      text-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
-    }
-
-    .hero-subtitle {
-      margin-top: 30px;
-      max-width: 730px;
-      font-size: clamp(18px, 2.5vw, 26px);
-      line-height: 1.35;
-      color: var(--silver);
-      font-weight: 400;
-    }
-
-    .hero-system {
-      margin-top: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      border-top: 1px solid var(--border-gold);
-      border-bottom: 1px solid var(--border-gold);
-      width: fit-content;
-      max-width: 100%;
-    }
-
-    .hero-system span {
-      padding: 12px 14px;
-      color: var(--silver-muted);
-      font-family: monospace;
-      font-size: 10px;
-      letter-spacing: .12em;
-      border-right: 1px solid var(--border-gold);
-    }
-
-    .hero-system span:first-child {
-      color: var(--gold);
-      font-weight: 800;
-    }
-
-    .hero-actions {
-      margin-top: 35px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    /* ИДЕАЛЬНО ВПИСАННЫЙ ГЕРБ НА ЧЕРНОМ ФОНЕ */
-    .hero-mark {
-      position: absolute;
-      right: 5%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: min(400px, 34vw);
-      opacity: 0.9;
-      filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.5));
-      z-index: 1;
-      transition: .3s ease;
-    }
-
-    .hero-mark:hover {
-      opacity: 1;
-      filter: drop-shadow(0 0 55px rgba(255, 215, 0, 0.8));
-    }
-
-    @media (max-width: 900px) {
-      .hero-mark {
-        width: 260px;
-        right: -40px;
-        opacity: .4;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container-domus {
-        width: min(100% - 28px, 1180px);
-      }
-      .hero {
-        min-height: calc(100vh - 64px);
-      }
-      .hero-title {
-        font-size: 55px;
-      }
-      .hero-system span {
-        padding: 9px 10px;
-      }
-    }
-
-    .architecture-card {
-      min-height: 180px;
-      padding: 24px;
-      border: 1px solid rgba(241, 245, 249, 0.1);
-      background: #050507;
-      transition: .25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .architecture-card:hover,
-    .mode-card:hover,
-    .product-card:hover,
-    .network-card:hover {
-      border-color: var(--gold) !important;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
-      transform: translateY(-3px);
-    }
-
-    .architecture-number {
-      font-family: monospace;
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .architecture-name {
-      margin-top: 22px;
-      font-size: 20px;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    .architecture-text {
-      margin-top: 10px;
-      color: var(--silver-muted);
-      font-size: 13px;
-      line-height: 1.65;
-    }
-
-    .mode-card {
-      border: 1px solid rgba(241, 245, 249, 0.1);
-      padding: 22px;
-      background: #050507;
-      transition: .25s ease;
-      min-height: 165px;
-    }
-
-    .mode-code {
-      color: var(--gold);
-      font-family: monospace;
-      font-size: 11px;
-      letter-spacing: .12em;
-      font-weight: 700;
-    }
-
-    .mode-name {
-      color: #ffffff;
-      font-size: 18px;
-      margin-top: 14px;
-      font-weight: 700;
-    }
-
-    .mode-description {
-      color: var(--silver-muted);
-      font-size: 13px;
-      line-height: 1.6;
-      margin-top: 8px;
-    }
-
-    .code-item {
-      border-top: 1px solid rgba(241, 245, 249, 0.1);
-      padding: 20px 0;
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 15px;
-    }
-
-    .code-number {
-      color: var(--gold);
-      font-family: monospace;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .code-title {
-      color: #ffffff;
-      font-size: 17px;
-      font-weight: 700;
-    }
-
-    .code-description {
-      margin-top: 6px;
-      color: var(--silver-muted);
-      font-size: 13px;
-      line-height: 1.65;
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.9);
     }
 
     .catalog-filter {
       border: 1px solid var(--silver-muted);
       background: #050507;
       color: var(--silver-muted);
-      padding: 10px 14px;
+      padding: 10px 16px;
       font-family: monospace;
       font-size: 10px;
       letter-spacing: .08em;
@@ -439,7 +172,7 @@
       background: var(--gold);
       border-color: var(--gold);
       font-weight: 800;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
 
     .product-card {
@@ -449,6 +182,12 @@
       transition: .25s ease;
       display: flex;
       flex-direction: column;
+    }
+
+    .product-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+      transform: translateY(-3px);
     }
 
     .product-cover {
@@ -468,7 +207,7 @@
     }
 
     .product-body {
-      padding: 19px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -525,32 +264,19 @@
       font-weight: 800;
     }
 
-
-    .status-line {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      color: var(--silver-muted);
-      font-family: monospace;
-      font-size: 10px;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--gold);
-      border-radius: 50%;
-      box-shadow: 0 0 12px rgba(255, 215, 0, 0.9);
-    }
-
     .network-card {
       border: 1px solid rgba(241, 245, 249, 0.12);
       background: #050507;
-      padding: 24px;
+      padding: 22px;
       transition: .25s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    .network-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
     }
 
     footer {
@@ -566,27 +292,26 @@
   <header class="sticky top-0 z-50 border-b border-white/10 bg-black/95 backdrop-blur-xl">
     <div class="container-domus h-[72px] flex items-center justify-between">
 
-      <a href="#top" class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-3">
         <div class="w-9 h-9 border border-yellow-500/60 bg-yellow-500/10 flex items-center justify-center">
           <span class="text-yellow-400 font-mono text-xs font-bold">DA</span>
         </div>
-
         <div>
           <div class="text-[13px] tracking-[.16em] text-white font-bold">
             DOMUS ARCHITECTUS
           </div>
           <div class="text-[9px] tracking-[.15em] text-yellow-400/90 font-mono">
-            RESILIENCE ARCHITECTURE
+            SYSTEM CATALOG
           </div>
         </div>
       </a>
 
       <nav class="hidden lg:flex items-center gap-7">
-        <a href="#methodology" class="nav-link" data-i18n="nav_method">Методология</a>
-        <a href="#modes" class="nav-link" data-i18n="nav_modes">Режимы</a>
+        <a href="#catalog" class="nav-link" data-i18n="nav_catalog">Витрина</a>
+        <a href="concept.html" class="nav-link text-yellow-400 font-bold hover:underline">
+          <i class="fa-solid fa-scroll mr-1"></i><span data-i18n="nav_concept">Скрижали Концепции</span>
+        </a>
         <a href="#audio-hub" class="nav-link" data-i18n="nav_audio">Аудио Хаб</a>
-        <a href="#code" class="nav-link" data-i18n="nav_code">Кодекс</a>
-        <a href="#catalog" class="nav-link" data-i18n="nav_catalog">Каталог</a>
         <a href="#network" class="nav-link" data-i18n="nav_network">Сеть</a>
       </nav>
 
@@ -603,195 +328,117 @@
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden border-t border-white/10 bg-black px-5 py-5">
       <div class="flex flex-col gap-5">
-        <a href="#methodology" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_method">Методология</a>
-        <a href="#modes" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_modes">Режимы</a>
+        <a href="#catalog" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_catalog">Витрина</a>
+        <a href="concept.html" onclick="toggleMobileMenu()" class="nav-link text-yellow-400 font-bold">
+          <i class="fa-solid fa-scroll mr-1"></i><span data-i18n="nav_concept">Скрижали Концепции</span>
+        </a>
         <a href="#audio-hub" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_audio">Аудио Хаб</a>
-        <a href="#code" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_code">Кодекс</a>
-        <a href="#catalog" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_catalog">Каталог</a>
         <a href="#network" onclick="toggleMobileMenu()" class="nav-link" data-i18n="nav_network">Сеть</a>
       </div>
     </div>
   </header>
 
 
-  <main id="top">
+  <main>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <img src="/images/Gerb.png" alt="Герб Архитектора" class="hero-mark" />
-
-      <div class="container-domus hero-content">
-        <div class="hero-kicker">
-          <span class="status-dot"></span>
-          <span data-i18n="hero_kicker">СИСТЕМА В СЕТИ / DOMUS ARCHITECTUS</span>
+    <!-- HERO COMPACT / VITRINA TOP -->
+    <section class="hero-mini">
+      <div class="container-domus flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 border border-yellow-500/40 bg-yellow-500/10 text-yellow-400 font-mono text-[10px] font-bold uppercase tracking-widest">
+            <span class="status-dot"></span>
+            <span data-i18n="hero_kicker">АРСЕНАЛ И ВИТРИНА СИСТЕМЫ</span>
+          </div>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-white mt-3 tracking-tight">
+            DOMUS <span class="text-yellow-400">ARCHITECTUS</span>
+          </h1>
+          <p class="text-slate-300 text-sm md:text-base mt-2 max-w-xl" data-i18n="hero_sub">
+            Книги, практические протоколы и инструменты для сохранения управления под нагрузкой.
+          </p>
         </div>
 
-        <h1 class="hero-title">
-          DOMUS<br />
-          <span>ARCHITECTUS</span>
-        </h1>
-
-        <p class="hero-subtitle" data-i18n="hero_subtitle">
-          Архитектура устойчивости человека в условиях нагрузки, хаоса и перемен.
-        </p>
-
-        <p class="mt-5 max-w-2xl text-slate-300 text-sm leading-7">
-          <span data-i18n="hero_text">
-            Когда прежняя система рушится, ты должен иметь возможность построить новую.
-          </span>
-        </p>
-
-        <div class="hero-system">
-          <span data-i18n="hero_seq_1">СОСТОЯНИЕ</span>
-          <span data-i18n="hero_seq_2">МЫШЛЕНИЕ</span>
-          <span data-i18n="hero_seq_3">ВОЛЯ</span>
-          <span data-i18n="hero_seq_4">ДЕЙСТВИЕ</span>
-          <span data-i18n="hero_seq_5">СТРУКТУРА</span>
-          <span data-i18n="hero_seq_6">АДАПТАЦИЯ</span>
-          <span data-i18n="hero_seq_7">УСТОЙЧИВОСТЬ</span>
-        </div>
-
-        <div class="hero-actions">
-          <a href="#methodology" class="btn-domus">
-            <i class="fa-solid fa-compass"></i>
-            <span data-i18n="hero_method_button">Исследовать систему</span>
+        <div class="flex flex-wrap gap-3">
+          <a href="concept.html" class="btn-domus">
+            <i class="fa-solid fa-scroll"></i>
+            <span data-i18n="btn_scriptures">Скрижали Концепции</span>
           </a>
-
-          <a href="#audio-hub" class="btn-domus">
-            <i class="fa-brands fa-youtube"></i>
-            <span data-i18n="hero_audio_button">Аудио Хаб</span>
-          </a>
-
-          <a href="#catalog" class="btn-dark">
-            <i class="fa-solid fa-layer-group"></i>
-            <span data-i18n="hero_catalog_button">Открыть каталог</span>
+          <a href="#network" class="btn-dark">
+            <i class="fa-solid fa-network-wired"></i>
+            <span data-i18n="btn_network">Сеть</span>
           </a>
         </div>
       </div>
     </section>
 
 
-    <!-- 01 / METHODOLOGY -->
-    <section id="methodology" class="py-28 border-t border-white/10 bg-black">
+    <!-- CATALOG SECTION (ИДЁТ СРАЗУ В НАЧАЛЕ) -->
+    <section id="catalog" class="py-16 bg-black">
       <div class="container-domus">
-        <div class="section-label" data-i18n="method_label">01 / Архитектура</div>
-        <h2 class="section-title"><span data-i18n="method_title">Архитектура устойчивости</span></h2>
-        <p class="section-description mt-6"><span data-i18n="method_description">Устойчивость не возникает из мотивации. Она строится как система...</span></p>
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
+          <div>
+            <div class="text-yellow-400 font-mono text-xs font-bold tracking-widest uppercase" data-i18n="cat_label">01 / ВИТРИНА МАТЕРИАЛОВ</div>
+            <h2 class="text-2xl md:text-4xl font-bold text-white mt-1" data-i18n="cat_title">Каталог решений</h2>
+          </div>
 
-        <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#27272a]">
-          <article class="architecture-card">
-            <div class="architecture-number">01</div>
-            <div class="architecture-name" data-i18n="card_state_title">СОСТОЯНИЕ</div>
-            <div class="architecture-text" data-i18n="card_state_text">Стабилизация состояния. Тело и нервная система являются первым контуром управления.</div>
-          </article>
-
-          <article class="architecture-card">
-            <div class="architecture-number">02</div>
-            <div class="architecture-name" data-i18n="card_thinking_title">МЫШЛЕНИЕ</div>
-            <div class="architecture-text" data-i18n="card_thinking_text">Диагностика реальности. Отделить факт от интерпретации.</div>
-          </article>
-
-          <article class="architecture-card">
-            <div class="architecture-number">03</div>
-            <div class="architecture-name" data-i18n="card_will_title">ВОЛЯ</div>
-            <div class="architecture-text" data-i18n="card_will_text">Формирование внутренней вертикали и способности удерживать решение.</div>
-          </article>
-
-          <article class="architecture-card">
-            <div class="architecture-number">04</div>
-            <div class="architecture-name" data-i18n="card_action_title">ДЕЙСТВИЕ</div>
-            <div class="architecture-text" data-i18n="card_action_text">Перевод решения в конкретное действие без лишней теории.</div>
-          </article>
-
-          <article class="architecture-card">
-            <div class="architecture-number">05</div>
-            <div class="architecture-name" data-i18n="card_structure_title">СТРУКТУРА</div>
-            <div class="architecture-text" data-i18n="card_structure_text">Создание каркаса, который удерживает результат.</div>
-          </article>
-
-          <article class="architecture-card">
-            <div class="architecture-number">06</div>
-            <div class="architecture-name" data-i18n="card_adaptation_title">АДАПТАЦИЯ</div>
-            <div class="architecture-text" data-i18n="card_adaptation_text">Изменение конструкции без потери несущих элементов.</div>
-          </article>
-
-          <article class="architecture-card sm:col-span-2 lg:col-span-2">
-            <div class="architecture-number">07</div>
-            <div class="architecture-name" data-i18n="card_resilience_title">УСТОЙЧИВОСТЬ</div>
-            <div class="architecture-text max-w-xl" data-i18n="card_resilience_text">Способность системы сохранять функциональность, восстанавливаться после нагрузки и перестраиваться.</div>
-          </article>
+          <div id="catalogFilters" class="flex flex-wrap gap-2">
+            <button class="catalog-filter active" data-category="all" onclick="filterCategory('all')" data-i18n="cat_all">Все</button>
+            <button class="catalog-filter" data-category="applied" onclick="filterCategory('applied')" data-i18n="cat_applied">Прикладные системы</button>
+            <button class="catalog-filter" data-category="fiction" onclick="filterCategory('fiction')" data-i18n="cat_fiction">Художественные</button>
+          </div>
         </div>
+
+        <!-- Catalog Grid -->
+        <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+          <div class="col-span-full py-20 text-center">
+            <div class="font-mono text-xs text-gray-500">ЗАГРУЗКА КАТАЛОГА...</div>
+          </div>
+        </div>
+
       </div>
     </section>
 
 
-    <!-- 02 / MODES -->
-    <section id="modes" class="py-28 bg-black border-y border-white/10">
-      <div class="container-domus">
-        <div class="section-label" data-i18n="modes_label">02 / Режимы работы</div>
-        <h2 class="section-title" data-i18n="modes_title">Пять режимов работы</h2>
-        <p class="section-description mt-6" data-i18n="modes_description">Система не предлагает универсальный совет. Сначала определяется режим, в котором находится человек. Затем выбирается инструмент.</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 mt-14">
-          <article class="mode-card">
-            <div class="mode-code" data-i18n="mode_01_code">РЕЖИМ 01</div>
-            <div class="mode-name" data-i18n="mode_01_title">СТАБИЛИЗАЦИЯ</div>
-            <div class="mode-description" data-i18n="mode_01_text">Остановить разрушение. Вернуть контроль над состоянием.</div>
-          </article>
-
-          <article class="mode-card">
-            <div class="mode-code" data-i18n="mode_02_code">РЕЖИМ 02</div>
-            <div class="mode-name" data-i18n="mode_02_title">КОНТРОЛЬ</div>
-            <div class="mode-description" data-i18n="mode_02_text">Определить периметр влияния и убрать лишний шум.</div>
-          </article>
-
-          <article class="mode-card">
-            <div class="mode-code" data-i18n="mode_03_code">РЕЖИМ 03</div>
-            <div class="mode-name" data-i18n="mode_03_title">РЕКОНСТРУКЦИЯ</div>
-            <div class="mode-description" data-i18n="mode_03_text">Собрать новую конструкцию из доступных ресурсов.</div>
-          </article>
-
-          <article class="mode-card">
-            <div class="mode-code" data-i18n="mode_04_code">РЕЖИМ 04</div>
-            <div class="mode-name" data-i18n="mode_04_title">АДАПТАЦИЯ</div>
-            <div class="mode-description" data-i18n="mode_04_text">Изменить конфигурацию без потери ядра системы.</div>
-          </article>
-
-          <article class="mode-card">
-            <div class="mode-code" data-i18n="mode_05_code">РЕЖИМ 05</div>
-            <div class="mode-name" data-i18n="mode_05_title">ТЕСТИРОВАНИЕ</div>
-            <div class="mode-description" data-i18n="mode_05_text">Проверить конструкцию нагрузкой и найти слабое место.</div>
-          </article>
+    <!-- BANNER TO CONCEPT TABLETS -->
+    <section class="py-16 bg-[#050507] border-y border-yellow-500/20">
+      <div class="container-domus text-center max-w-3xl">
+        <div class="text-yellow-400 font-mono text-xs font-bold uppercase tracking-widest mb-3">
+          ⚜ ARCHITECTURE OF RESILIENCE ⚜
         </div>
-      </div>
-    </section>
-
-
-    <!-- 03 / AUDIO HUB SECTION -->
-    <section id="audio-hub" class="py-28 border-b border-white/10 bg-black">
-      <div class="container-domus">
-
-        <div class="section-label" data-i18n="audio_label">03 / Звуковые Протоколы</div>
-        <h2 class="section-title" data-i18n="audio_title">Аудио Хаб</h2>
-        <p class="section-description mt-6" data-i18n="audio_description">
-          Музыка как инструмент прямого управления состоянием. Настройка фокусировки, мобилизация воли и детокс восприятия.
+        <h3 class="text-2xl md:text-4xl font-extrabold text-white" data-i18n="concept_question">
+          Желаете изучить философию и кодекс системы?
+        </h3>
+        <p class="text-slate-400 text-sm leading-relaxed mt-4" data-i18n="concept_blurb">
+          Методология, 5 режимов работы, 7 контуров устойчивости и 12 заповедей Кодекса Архитектора выгравированы на отдельной концептуальной странице.
         </p>
+        <div class="mt-8">
+          <a href="concept.html" class="btn-domus text-sm py-4 px-8">
+            <i class="fa-solid fa-scroll text-base mr-2"></i>
+            <span data-i18n="open_concept">Открыть Скрижали Концепции</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-        <!-- YouTube Channel Banner -->
-        <div class="mt-10 p-6 md:p-8 border border-yellow-500/60 bg-[#050507] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-yellow-500/10">
+
+    <!-- AUDIO HUB -->
+    <section id="audio-hub" class="py-20 border-b border-white/10 bg-black">
+      <div class="container-domus">
+
+        <div class="p-6 md:p-8 border border-yellow-500/60 bg-[#050507] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-yellow-500/5">
           <div class="flex items-center gap-5">
             <div class="w-14 h-14 border border-red-500/80 bg-red-950/40 flex items-center justify-center text-red-500 text-2xl">
               <i class="fa-brands fa-youtube"></i>
             </div>
             <div>
-              <div class="text-xs font-mono text-yellow-400 uppercase tracking-widest font-extrabold" data-i18n="yt_channel_tag">МЕДИА-ХАБ YOUTUBE</div>
+              <div class="text-xs font-mono text-yellow-400 uppercase tracking-widest font-extrabold" data-i18n="yt_tag">ЗВУКОВЫЕ ПРОТОКОЛЫ YOUTUBE</div>
               <div class="text-xl font-bold text-white mt-1">@arh_antic | The Resilience Architect</div>
-              <div class="text-xs text-slate-300 mt-1" data-i18n="yt_channel_sub">Официальные аудио-протоколы и настройки состояния</div>
+              <div class="text-xs text-slate-300 mt-1" data-i18n="yt_sub">Аудио-настройки состояния, фокуса и мобилизации воли</div>
             </div>
           </div>
           <a href="https://youtube.com/@arh_antic" target="_blank" rel="noopener noreferrer" class="btn-domus whitespace-nowrap">
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            <span data-i18n="yt_open_btn">Перейти на YouTube-канал</span>
+            <span data-i18n="yt_btn">Слушать на YouTube</span>
           </a>
         </div>
 
@@ -799,160 +446,57 @@
     </section>
 
 
-    <!-- 04 / CODE -->
-    <section id="code" class="py-28 bg-black">
+    <!-- NETWORK -->
+    <section id="network" class="py-20 bg-black">
       <div class="container-domus">
-        <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-16">
-          <div>
-            <div class="section-label" data-i18n="code_label">04 / Кодекс</div>
-            <h2 class="section-title">
-              <span data-i18n="code_title_1">Кодекс</span><br />
-              <span class="amber" data-i18n="code_title_2">Архитектора</span>
-            </h2>
-            <p class="section-description mt-6" data-i18n="code_description">
-              Кодекс — это базовые принципы, на которых строится система.
-            </p>
-            <div class="mt-8 status-line">
-              <span class="status-dot"></span> <span data-i18n="code_status">ОПЕРАЦИОННЫЕ ПРИНЦИПЫ</span>
-            </div>
-          </div>
+        <div class="text-yellow-400 font-mono text-xs font-bold uppercase tracking-widest" data-i18n="net_label">03 / СЕТЬ</div>
+        <h2 class="text-2xl md:text-4xl font-bold text-white mt-1 mb-8" data-i18n="net_title">Контур связи</h2>
 
-          <div id="codeList"></div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 05 / CATALOG -->
-    <!-- Каталог не хранится в index.html. Данные загружаются исключительно из data.json. -->
-    <section id="catalog" class="py-28 bg-black border-y border-white/10">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="section-label" data-i18n="catalog_label">05 / Арсенал</div>
-        <h2 class="section-title" data-i18n="catalog_title">Витрина системы</h2>
-        <p class="section-description mt-6" data-i18n="catalog_description">
-          Прикладные системы, художественные книги, аудио и другие материалы.
-        </p>
-
-        <div id="catalogFilters" class="flex flex-wrap gap-2 mt-10">
-          <button class="catalog-filter active" data-category="all" onclick="filterCategory('all')" data-i18n="cat_all">Все</button>
-          <button class="catalog-filter" data-category="applied" onclick="filterCategory('applied')" data-i18n="cat_applied">Прикладные системы</button>
-          <button class="catalog-filter" data-category="fiction" onclick="filterCategory('fiction')" data-i18n="cat_fiction">Художественные</button>
-        </div>
-
-        <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
-          <div class="col-span-full py-20 text-center">
-            <div class="font-mono text-xs text-gray-500">ЗАГРУЗКА КАТАЛОГА...</div>
-          </div>
-        </div>
-      </div>
-    </section>
-<!-- 06 / AUTHOR -->
-    <section id="author" class="py-28 border-t border-white/10 bg-black">
-      <div class="container-domus">
-        <div class="grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
-          <div>
-            <div class="section-label" data-i18n="author_label">07 / Архитектор</div>
-            <h2 class="section-title">
-              <span data-i18n="author_name_1">Архитектор</span><br />
-              <span class="amber" data-i18n="author_name_2">Антикризис</span>
-            </h2>
-          </div>
-
-          <div>
-            <p class="text-slate-200 text-lg leading-8" data-i18n="author_sub">
-              Автор и разработчик системы <strong class="text-white">Architecture of Resilience</strong>.
-            </p>
-            <p class="mt-6 text-slate-400 leading-7 text-sm" data-i18n="author_text">
-              Подход построен на стыке практической психологии, саморегуляции, НЛП, дисциплины и системного мышления. Основная задача — не создать иллюзию контроля, а восстановить способность действовать, когда привычная конструкция перестаёт работать.
-            </p>
-            <div class="mt-8 border-l-2 border-yellow-500 pl-5">
-              <div class="text-slate-200 text-sm leading-7 font-medium" data-i18n="author_quote">
-                «Не учим жить. Учим строить себя и удерживать управление, когда прежняя система рушится».
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- 07 / NETWORK (Единый контур медиа-каналов) -->
-    <section id="network" class="py-28 bg-black border-y border-white/10">
-      <div class="container-domus">
-        <div class="section-label" data-i18n="net_label">07 / Сеть</div>
-        <h2 class="section-title" data-i18n="net_title">Контур связи</h2>
-        <p class="section-description mt-6 mb-12" data-i18n="net_sub">
-          Официальные каналы вещания, практические алгоритмы и прямая демонстрация системы в действии.
-        </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Author.Today -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          
           <a href="https://author.today/u/arhantic" target="_blank" rel="noopener noreferrer" class="network-card group">
             <div>
-              <div class="text-yellow-400 text-2xl mb-4"><i class="fa-solid fa-book-open"></i></div>
-              <div class="text-white font-bold text-lg">Author.Today</div>
-              <div class="text-xs font-mono text-slate-400 mt-1">@arhantic</div>
-              <p class="text-xs text-slate-500 mt-3 leading-5">
-                Мастерская Архитектора: черновики, ознакомительные фрагменты и книги, ещё не опубликованные в магазинах.
-              </p>
+              <div class="text-yellow-400 text-2xl mb-3"><i class="fa-solid fa-book-open"></i></div>
+              <div class="text-white font-bold text-base">Author.Today</div>
+              <p class="text-xs text-slate-500 mt-2" data-i18n="network_author_desc">Черновики и эксклюзивные фрагменты книг.</p>
             </div>
-            <div class="mt-6 text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold group-hover:underline flex items-center gap-2">
-              <span>Открыть профиль</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
-            </div>
+            <div class="mt-4 text-[10px] font-mono text-yellow-400 uppercase font-bold group-hover:underline" data-i18n="open">Открыть</div>
           </a>
 
-
-
-          <!-- Telegram -->
           <a href="https://t.me/AntiKrizis_Strateg" target="_blank" rel="noopener noreferrer" class="network-card group">
             <div>
-              <div class="text-yellow-400 text-2xl mb-4"><i class="fa-brands fa-telegram"></i></div>
-              <div class="text-white font-bold text-lg">Telegram</div>
-              <div class="text-xs font-mono text-slate-400 mt-1">@AntiKrizis_Strateg</div>
-              <p class="text-xs text-slate-500 mt-3 leading-5" data-i18n="net_tg_desc">Главный операционный канал. Системные разборы, аналитика и протоколы.</p>
+              <div class="text-yellow-400 text-2xl mb-3"><i class="fa-brands fa-telegram"></i></div>
+              <div class="text-white font-bold text-base">Telegram</div>
+              <p class="text-xs text-slate-500 mt-2" data-i18n="network_tg_desc">Операционный канал и системные протоколы.</p>
             </div>
-            <div class="mt-6 text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold group-hover:underline flex items-center gap-2">
-              <span data-i18n="net_btn_tg">Перейти в канал</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
-            </div>
+            <div class="mt-4 text-[10px] font-mono text-yellow-400 uppercase font-bold group-hover:underline" data-i18n="visit">Перейти</div>
           </a>
 
-          <!-- TikTok -->
           <a href="https://www.tiktok.com/@arhantic" target="_blank" rel="noopener noreferrer" class="network-card group">
             <div>
-              <div class="text-yellow-400 text-2xl mb-4"><i class="fa-brands fa-tiktok"></i></div>
-              <div class="text-white font-bold text-lg">TikTok</div>
-              <div class="text-xs font-mono text-slate-400 mt-1">@arhantic</div>
-              <p class="text-xs text-slate-500 mt-3 leading-5" data-i18n="net_tt_desc">Короткие медиа-сигналы, концентраты мыслей и визуальные протоколы.</p>
+              <div class="text-yellow-400 text-2xl mb-3"><i class="fa-brands fa-tiktok"></i></div>
+              <div class="text-white font-bold text-base">TikTok</div>
+              <p class="text-xs text-slate-500 mt-2" data-i18n="network_tiktok_desc">Короткие медиа-сигналы и концентраты мыслей.</p>
             </div>
-            <div class="mt-6 text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold group-hover:underline flex items-center gap-2">
-              <span data-i18n="net_btn_tt">Смотреть медиа</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
-            </div>
+            <div class="mt-4 text-[10px] font-mono text-yellow-400 uppercase font-bold group-hover:underline" data-i18n="watch">Смотреть</div>
           </a>
 
-          <!-- Instagram -->
           <a href="https://www.instagram.com/arh_antic" target="_blank" rel="noopener noreferrer" class="network-card group">
             <div>
-              <div class="text-yellow-400 text-2xl mb-4"><i class="fa-brands fa-instagram"></i></div>
-              <div class="text-white font-bold text-lg">Instagram</div>
-              <div class="text-xs font-mono text-slate-400 mt-1">@arh_antic</div>
-              <p class="text-xs text-slate-500 mt-3 leading-5" data-i18n="net_ig_desc">Полевые заметки, визуальная философия брендинга и практическая выдержка.</p>
+              <div class="text-yellow-400 text-2xl mb-3"><i class="fa-brands fa-instagram"></i></div>
+              <div class="text-white font-bold text-base">Instagram</div>
+              <p class="text-xs text-slate-500 mt-2" data-i18n="network_instagram_desc">Полевые заметки и визуальная философия.</p>
             </div>
-            <div class="mt-6 text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold group-hover:underline flex items-center gap-2">
-              <span data-i18n="net_btn_ig">Открыть профиль</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
-            </div>
+            <div class="mt-4 text-[10px] font-mono text-yellow-400 uppercase font-bold group-hover:underline" data-i18n="profile">Профиль</div>
           </a>
 
-          <!-- Threads -->
           <a href="https://www.threads.net/@arh_antic" target="_blank" rel="noopener noreferrer" class="network-card group">
             <div>
-              <div class="text-yellow-400 text-2xl mb-4"><i class="fa-brands fa-threads"></i></div>
-              <div class="text-white font-bold text-lg">Threads</div>
-              <div class="text-xs font-mono text-slate-400 mt-1">@arh_antic</div>
-              <p class="text-xs text-slate-500 mt-3 leading-5" data-i18n="net_th_desc">Короткие рефлексии, микро-тезисы, код и наблюдения из практики.</p>
+              <div class="text-yellow-400 text-2xl mb-3"><i class="fa-brands fa-threads"></i></div>
+              <div class="text-white font-bold text-base">Threads</div>
+              <p class="text-xs text-slate-500 mt-2" data-i18n="network_threads_desc">Короткие тезисы и код системы.</p>
             </div>
-            <div class="mt-6 text-[10px] font-mono text-yellow-400 uppercase tracking-wider font-bold group-hover:underline flex items-center gap-2">
-              <span data-i18n="net_btn_th">Читать записи</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
-            </div>
+            <div class="mt-4 text-[10px] font-mono text-yellow-400 uppercase font-bold group-hover:underline" data-i18n="read">Читать</div>
           </a>
 
         </div>
@@ -963,23 +507,27 @@
 
 
   <!-- FOOTER -->
-  <footer class="py-12">
-    <div class="container-domus">
-      <div class="flex flex-col md:flex-row justify-between gap-8">
-        <div>
-          <div class="font-mono text-xs tracking-[.15em] text-slate-200 font-bold">DOMUS ARCHITECTUS</div>
-          <div class="mt-2 text-[10px] font-mono text-slate-500">THE RESILIENCE ARCHITECT</div>
-        </div>
-        <div class="text-left md:text-right">
-          <div class="text-[10px] font-mono text-slate-500">ARCHITECTURE OF RESILIENCE</div>
-          <div class="mt-2 text-[10px] font-mono text-slate-600">© <span id="currentYear"></span> DOMUS ARCHITECTUS</div>
-        </div>
+  <footer class="py-10 border-t border-white/10 bg-black">
+    <div class="container-domus flex flex-col md:flex-row justify-between items-center gap-6">
+      <div>
+        <div class="font-mono text-xs tracking-[.15em] text-slate-200 font-bold">DOMUS ARCHITECTUS</div>
+        <div class="mt-1 text-[10px] font-mono text-slate-500">THE RESILIENCE ARCHITECT</div>
+      </div>
+
+      <div>
+        <a href="concept.html" class="text-xs font-mono text-yellow-400 hover:underline">
+          <i class="fa-solid fa-scroll mr-1"></i> <span data-i18n="nav_concept">Скрижали Концепции</span>
+        </a>
+      </div>
+
+      <div class="text-[10px] font-mono text-slate-600">
+        © <span id="currentYear"></span> DOMUS ARCHITECTUS
       </div>
     </div>
   </footer>
 
 
-  <!-- JAVASCRIPT CORE -->
+  <!-- SCRIPT -->
   <script>
     let currentLanguage = "ru";
     let globalProducts = [];
@@ -987,357 +535,68 @@
 
     const translations = {
       ru: {
-        nav_method: "Методология",
-        nav_modes: "Режимы",
+        nav_catalog: "Витрина",
+        nav_concept: "Скрижали Концепции",
         nav_audio: "Аудио Хаб",
-        nav_code: "Кодекс",
-        nav_catalog: "Каталог",
         nav_network: "Сеть",
-
-        hero_kicker: "СИСТЕМА В СЕТИ / DOMUS ARCHITECTUS",
-        hero_subtitle: "Архитектура устойчивости человека в условиях нагрузки, хаоса и перемен.",
-        hero_text: "Когда прежняя система рушится, ты должен иметь возможность построить новую.",
-        hero_method_button: "Исследовать систему",
-        hero_audio_button: "Аудио Хаб",
-        hero_catalog_button: "Открыть каталог",
-        hero_seq_1: "СОСТОЯНИЕ",
-        hero_seq_2: "МЫШЛЕНИЕ",
-        hero_seq_3: "ВОЛЯ",
-        hero_seq_4: "ДЕЙСТВИЕ",
-        hero_seq_5: "СТРУКТУРА",
-        hero_seq_6: "АДАПТАЦИЯ",
-        hero_seq_7: "УСТОЙЧИВОСТЬ",
-
-        method_label: "01 / Архитектура",
-        method_title: "Архитектура устойчивости",
-        method_description: "Устойчивость не возникает из мотивации. Она строится как система. Сначала состояние. Затем мышление. Затем воля, действие и структура. После этого — адаптация. Результат — способность сохранять управление под нагрузкой.",
-
-        card_state_title: "СОСТОЯНИЕ",
-        card_state_text: "Стабилизация состояния. Тело и нервная система являются первым контуром управления.",
-        card_thinking_title: "МЫШЛЕНИЕ",
-        card_thinking_text: "Диагностика реальности. Отделить факт от интерпретации.",
-        card_will_title: "ВОЛЯ",
-        card_will_text: "Формирование внутренней вертикали и способности удерживать решение.",
-        card_action_title: "ДЕЙСТВИЕ",
-        card_action_text: "Перевод решения в конкретное действие без лишней теории.",
-        card_structure_title: "СТРУКТУРА",
-        card_structure_text: "Создание каркаса, который удерживает результат.",
-        card_adaptation_title: "АДАПТАЦИЯ",
-        card_adaptation_text: "Изменение конструкции без потери несущих элементов.",
-        card_resilience_title: "УСТОЙЧИВОСТЬ",
-        card_resilience_text: "Способность системы сохранять функциональность, восстанавливаться после нагрузки и перестраиваться.",
-
-        modes_label: "02 / Режимы работы",
-        modes_title: "Пять режимов работы",
-        modes_description: "Система не предлагает универсальный совет. Сначала определяется режим, в котором находится человек. Затем выбирается инструмент.",
-        mode_01_code: "РЕЖИМ 01",
-        mode_01_title: "СТАБИЛИЗАЦИЯ",
-        mode_01_text: "Остановить разрушение. Вернуть контроль над состоянием.",
-        mode_02_code: "РЕЖИМ 02",
-        mode_02_title: "КОНТРОЛЬ",
-        mode_02_text: "Определить периметр влияния и убрать лишний шум.",
-        mode_03_code: "РЕЖИМ 03",
-        mode_03_title: "РЕКОНСТРУКЦИЯ",
-        mode_03_text: "Собрать новую конструкцию из доступных ресурсов.",
-        mode_04_code: "РЕЖИМ 04",
-        mode_04_title: "АДАПТАЦИЯ",
-        mode_04_text: "Изменить конфигурацию без потери ядра системы.",
-        mode_05_code: "РЕЖИМ 05",
-        mode_05_title: "ТЕСТИРОВАНИЕ",
-        mode_05_text: "Проверить конструкцию нагрузкой и найти слабое место.",
-
-        audio_label: "03 / Звуковые Протоколы",
-        audio_title: "Аудио Хаб",
-        audio_description: "Музыка как инструмент прямого управления состоянием. Настройка фокусировки, мобилизация воли и детокс восприятия.",
-        yt_channel_tag: "МЕДИА-ХАБ YOUTUBE",
-        yt_channel_sub: "Официальные аудио-протоколы, гимны и настройки состояния",
-        yt_open_btn: "Перейти на YouTube-канал",
-
-        code_label: "04 / Кодекс",
-        code_title_1: "Кодекс",
-        code_title_2: "Архитектора",
-        code_description: "Кодекс — это базовые принципы, на которых строится система.",
-        code_status: "ОПЕРАЦИОННЫЕ ПРИНЦИПЫ",
-
-        catalog_label: "05 / Арсенал",
-        catalog_title: "Витрина системы",
-        catalog_description: "Книги, практические руководства и прикладные материалы рассматриваются не как отдельные произведения, а как инструменты внутри единой системы.",
+        hero_kicker: "АРСЕНАЛ И ВИТРИНА СИСТЕМЫ",
+        hero_sub: "Книги, практические протоколы и инструменты для сохранения управления под нагрузкой.",
+        btn_scriptures: "Скрижали Концепции",
+        btn_network: "Сеть",
+        cat_label: "01 / ВИТРИНА МАТЕРИАЛОВ",
+        cat_title: "Каталог решений",
         cat_all: "Все",
         cat_applied: "Прикладные системы",
         cat_fiction: "Художественные",
-        cat_tag_applied: "ПРИКЛАДНАЯ СИСТЕМА",
-        cat_tag_fiction: "ХУДОЖЕСТВЕННАЯ ЛИТЕРАТУРА",
-
-        book_desc_1: "12-недельный алгоритм настройки ментальной и телесной дисциплины, управления вниманием и восстановления стрессоустойчивости.",
-        book_desc_2: "90-дневный протокол построения внутренней вертикали. Системное управление состоянием, психофизическим ресурсом и фокусом.",
-        book_desc_3: "Алгоритм выхода из состояния финансового хаоса. Проектирование личного бюджета, устранение утечек ресурса и защита системы.",
-        book_desc_4: "Фундаментальный протокол телесной и ментальной саморегуляции. Построение запаса прочности без зависимости от внешних условий.",
-        book_desc_5: "Пять фундаментальных модулей трансформации: состояние, воля, мышление, структура и адаптация. Базовый каркас личной системы.",
-        book_desc_6: "Постапокалиптическая повесть. Демонстрация работы принципов устойчивости и выдержки человека в условиях разрушения порядка.",
-        book_desc_7: "Историко-психологический триллер. Дисциплина, холодный расчёт и сохранение управляемости в эпицентре противостояния 1984 года.",
-        book_desc_8: "Практическое руководство по воспитанию характера и ответственности. Пошаговый алгоритм формирования дисциплины без выгорания.",
-        nav_step_5: "05 — ПРОТОКОЛ",
-        nav_step_6: "06 — СЛЕДУЮЩИЙ ШАГ",
-
-        author_label: "07 / Архитектор",
-        author_name_1: "Архитектор",
-        author_name_2: "Антикризис",
-        author_sub: "Автор и разработчик системы Architecture of Resilience.",
-        author_text: "Подход построен на стыке практической психологии, саморегуляции, НЛП, дисциплины и системного мышления. Основная задача — не создать иллюзию контроля, а восстановить способность действовать, когда привычная конструкция перестаёт работать.",
-        author_quote: "«Не учим жить. Учим строить себя и удерживать управление, когда прежняя система рушится».",
-
-        net_label: "08 / Сеть",
+        yt_tag: "ЗВУКОВЫЕ ПРОТОКОЛЫ YOUTUBE",
+        yt_sub: "Аудио-настройки состояния, фокуса и мобилизации воли",
+        yt_btn: "Слушать на YouTube",
+        net_label: "03 / СЕТЬ",
         net_title: "Контур связи",
-        net_sub: "Официальные каналы вещания, практические алгоритмы и прямая демонстрация системы в действии.",
-        net_tg_desc: "Главный операционный канал. Системные разборы, аналитика и протоколы.",
-        net_tt_desc: "Короткие видео-сигналы, концентраты мыслей и визуальные протоколы.",
-        net_ig_desc: "Полевые заметки, визуальная философия брендинга и практическая выдержка.",
-        net_th_desc: "Короткие рефлексии, микро-тезисы, код и наблюдения из практики.",
-        net_btn_tg: "Перейти в канал",
-        net_btn_tt: "Смотреть сигналы",
-        net_btn_ig: "Открыть профиль",
-        net_btn_th: "Читать записи"
+        concept_question: "Желаете изучить философию и кодекс системы?",
+        concept_blurb: "Методология, 5 режимов работы, 7 контуров устойчивости и 12 заповедей Кодекса Архитектора выгравированы на отдельной концептуальной странице.",
+        open_concept: "Открыть Скрижали Концепции",
+        network_author_desc: "Черновики и эксклюзивные фрагменты книг.", network_tg_desc: "Операционный канал и системные протоколы.",
+        network_tiktok_desc: "Короткие медиа-сигналы и концентраты мыслей.", network_instagram_desc: "Полевые заметки и визуальная философия.", network_threads_desc: "Короткие тезисы и код системы.",
+        open: "Открыть", visit: "Перейти", watch: "Смотреть", profile: "Профиль", read: "Читать"
       },
-
       en: {
-        nav_method: "Methodology",
-        nav_modes: "Modes",
-        nav_audio: "Audio Hub",
-        nav_code: "Code",
         nav_catalog: "Catalog",
+        nav_concept: "Concept Tablets",
+        nav_audio: "Audio Hub",
         nav_network: "Network",
-
-        hero_kicker: "SYSTEM ONLINE / DOMUS ARCHITECTUS",
-        hero_subtitle: "Architecture of human resilience under pressure, chaos and change.",
-        hero_text: "When the old system fails, you must be able to build a new one.",
-        hero_method_button: "Explore the system",
-        hero_audio_button: "Audio Hub",
-        hero_catalog_button: "Open catalog",
-        hero_seq_1: "STATE",
-        hero_seq_2: "THINKING",
-        hero_seq_3: "WILL",
-        hero_seq_4: "ACTION",
-        hero_seq_5: "STRUCTURE",
-        hero_seq_6: "ADAPTATION",
-        hero_seq_7: "RESILIENCE",
-
-        method_label: "01 / Architecture",
-        method_title: "Architecture of Resilience",
-        method_description: "Resilience is not produced by motivation. It is built as a system. First state. Then thinking. Then will, action and structure. After that — adaptation. The result is the ability to maintain control under load.",
-
-        card_state_title: "STATE",
-        card_state_text: "State stabilization. Body and nervous system are the primary control circuit.",
-        card_thinking_title: "THINKING",
-        card_thinking_text: "Reality diagnostics. Separate fact from interpretation.",
-        card_will_title: "WILL",
-        card_will_text: "Building the internal vertical and capacity to hold decisions.",
-        card_action_title: "ACTION",
-        card_action_text: "Translating decisions into concrete actions without useless theory.",
-        card_structure_title: "STRUCTURE",
-        card_structure_text: "Creating a framework that holds the results.",
-        card_adaptation_title: "ADAPTATION",
-        card_adaptation_text: "Modifying the structure without losing load-bearing elements.",
-        card_resilience_title: "RESILIENCE",
-        card_resilience_text: "The system's capacity to maintain functionality, recover after stress and rebuild.",
-
-        modes_label: "02 / Operating Modes",
-        modes_title: "Five Operating Modes",
-        modes_description: "The system does not offer one-size-fits-all advice. First, identify your state mode. Then choose the tool.",
-        mode_01_code: "MODE 01",
-        mode_01_title: "STABILIZE",
-        mode_01_text: "Halt destruction. Reclaim control over your state.",
-        mode_02_code: "MODE 02",
-        mode_02_title: "CONTROL",
-        mode_02_text: "Define your perimeter of influence and remove noise.",
-        mode_03_code: "MODE 03",
-        mode_03_title: "REBUILD",
-        mode_03_text: "Assemble a new structure from available resources.",
-        mode_04_code: "MODE 04",
-        mode_04_title: "ADAPT",
-        mode_04_text: "Change configuration without losing the core system.",
-        mode_05_code: "MODE 05",
-        mode_05_title: "TEST",
-        mode_05_text: "Stress-test the structure to find weak spots.",
-
-        audio_label: "03 / Sound Protocols",
-        audio_title: "Audio Hub",
-        audio_description: "Music as an instrument of state control. Focus tuning, willpower mobilization, and sensory recovery.",
-        yt_channel_tag: "YOUTUBE MEDIA HUB",
-        yt_channel_sub: "Official audio protocols, anthems, and state tuning tracks",
-        yt_open_btn: "Open Channel",
-
-        code_label: "04 / Code",
-        code_title_1: "The Architect's",
-        code_title_2: "Code",
-        code_description: "The Code is not a list of empty phrases. It represents the foundational principles of the system.",
-        code_status: "OPERATIONAL PRINCIPLES",
-
-        catalog_label: "05 / Arsenal",
-        catalog_title: "System Showcase",
-        catalog_description: "Books, tools, and practical manuals are approached as functional instruments inside the system.",
+        hero_kicker: "SYSTEM CATALOG & ARSENAL",
+        hero_sub: "Books, practical protocols, and tools to maintain control under load.",
+        btn_scriptures: "Concept Tablets",
+        btn_network: "Network",
+        cat_label: "01 / SYSTEM CATALOG",
+        cat_title: "Solution Arsenal",
         cat_all: "All",
         cat_applied: "Applied Systems",
         cat_fiction: "Fiction",
-        cat_tag_applied: "APPLIED SYSTEM",
-        cat_tag_fiction: "FICTION LITERATURE",
-
-        book_desc_1: "A 12-week step-by-step algorithm to build mental discipline, master focus, and restore resilience under pressure.",
-        book_desc_2: "A 90-day protocol for building internal core stability, systemic energy management, and razor-sharp concentration.",
-        book_desc_3: "A practical framework to eliminate financial chaos, secure your resource perimeter, and rebuild personal stability.",
-        book_desc_4: "A foundational self-regulation protocol designed to build physical and mental endurance under any conditions.",
-        book_desc_5: "Five core modules of personal architecture: State, Will, Thinking, Structure, and Adaptation.",
-        book_desc_6: "A post-apocalyptic narrative illustrating the Resilience Architect principles tested under extreme structural crisis.",
-        book_desc_7: "A historical psychological thriller demonstrating poise, tactical intelligence, and control during the 1984 cold war.",
-        book_desc_8: "A practical guide to character building and responsibility, providing a discipline framework without burnout.",
-        nav_step_5: "05 — PROTOCOL",
-        nav_step_6: "06 — NEXT STEP",
-
-        author_label: "07 / Architect",
-        author_name_1: "The Resilience",
-        author_name_2: "Architect",
-        author_sub: "Author and creator of the Architecture of Resilience system.",
-        author_text: "The framework blends practical psychology, self-regulation, NLP, discipline, and systems thinking. The primary goal is not to create an illusion of control, but to restore action under pressure.",
-        author_quote: "“We do not teach how to live. We teach how to build yourself and maintain control when the old system fails.”",
-
-        net_label: "08 / Network",
-        net_title: "Network Circuit",
-        net_sub: "Official media channels, practical algorithms, and live system demonstrations.",
-        net_tg_desc: "Main operating channel. System breakdowns, analytics, and protocols.",
-        net_tt_desc: "Short video signals, condensed thoughts, and visual protocols.",
-        net_ig_desc: "Field notes, visual brand philosophy, and practical endurance.",
-        net_th_desc: "Short reflections, micro-theses, code, and practical observations.",
-        net_btn_tg: "Open Channel",
-        net_btn_tt: "Watch Signals",
-        net_btn_ig: "View Profile",
-        net_btn_th: "Read Notes"
+        yt_tag: "YOUTUBE SOUND PROTOCOLS",
+        yt_sub: "Audio tuning for state, focus, and willpower mobilization",
+        yt_btn: "Listen on YouTube",
+        net_label: "03 / NETWORK",
+        net_title: "Communications",
+        concept_question: "Would you like to explore the system's philosophy and code?",
+        concept_blurb: "The methodology, five operating modes, seven resilience contours, and twelve principles of the Architect's Code are presented on a dedicated concept page.",
+        open_concept: "Open the Concept Tablets",
+        network_author_desc: "Drafts and exclusive book excerpts.", network_tg_desc: "Operational channel and system protocols.",
+        network_tiktok_desc: "Short media signals and condensed ideas.", network_instagram_desc: "Field notes and visual philosophy.", network_threads_desc: "Concise statements and the system code.",
+        open: "Open", visit: "Visit", watch: "Watch", profile: "Profile", read: "Read"
       }
     };
-
-    const codePrinciples = [
-      {
-        number: "01",
-        title_ru: "Состояние — первый контур управления.",
-        text_ru: "Не принимай стратегические решения из разрушенного состояния.",
-        title_en: "State is the primary control circuit.",
-        text_en: "Never make strategic decisions from a broken mental state."
-      },
-      {
-        number: "02",
-        title_ru: "Сначала факт. Потом интерпретация.",
-        text_ru: "Отделяй то, что произошло, от того, что ты об этом думаешь.",
-        title_en: "Fact first. Interpretation second.",
-        text_en: "Separate what actually happened from what you think about it."
-      },
-      {
-        number: "03",
-        title_ru: "Контроль начинается с периметра.",
-        text_ru: "Определи, на что ты действительно можешь воздействовать.",
-        title_en: "Control starts at the perimeter.",
-        text_en: "Identify what you can actually influence and discard the rest."
-      },
-      {
-        number: "04",
-        title_ru: "Воля — несущая конструкция.",
-        text_ru: "Решение имеет значение только тогда, когда выдерживает нагрузку.",
-        title_en: "Willpower is the load-bearing pillar.",
-        text_en: "A decision only matters if it withstands pressure."
-      },
-      {
-        number: "05",
-        title_ru: "Действие важнее намерения.",
-        text_ru: "Система проверяется не мыслями, а поведением.",
-        title_en: "Action overrides intent.",
-        text_en: "A system is tested by execution, not by thoughts."
-      },
-      {
-        number: "06",
-        title_ru: "Каркас важнее импровизации.",
-        text_ru: "Рабочая структура должна выдерживать плохие дни.",
-        title_en: "Structure outweighs improvisation.",
-        text_en: "A working system must endure bad days."
-      },
-      {
-        number: "07",
-        title_ru: "Дисциплина снижает цену хаоса.",
-        text_ru: "Чем меньше лишних решений, тем больше ресурса остаётся для главного.",
-        title_en: "Discipline reduces the cost of chaos.",
-        text_en: "Fewer unnecessary decisions leave more energy for what matters."
-      },
-      {
-        number: "08",
-        title_ru: "Адаптация не означает капитуляцию.",
-        text_ru: "Меняй конструкцию. Не отдавай ядро системы.",
-        title_en: "Adaptation is not surrender.",
-        text_en: "Modify the layout. Never give up the core system."
-      },
-      {
-        number: "09",
-        title_ru: "Автономность требует ответственности.",
-        text_ru: "Свобода без способности отвечать за последствия превращается в зависимость.",
-        title_en: "Autonomy requires responsibility.",
-        text_en: "Freedom without accountability leads straight into dependency."
-      },
-      {
-        number: "10",
-        title_ru: "Слабое место должно быть найдено заранее.",
-        text_ru: "Тестируй систему до того, как это сделает кризис.",
-        title_en: "Find vulnerabilities early.",
-        text_en: "Stress-test your system before crisis does it for you."
-      },
-      {
-        number: "11",
-        title_ru: "Устойчивость строится повторением.",
-        text_ru: "Один правильный поступок ничего не меняет. Система меняется практикой.",
-        title_en: "Resilience is built through repetition.",
-        text_en: "A single good action changes nothing. Systems change via practice."
-      },
-      {
-        number: "12",
-        title_ru: "Не впечатлять. Работать.",
-        text_ru: "Любая методика оценивается по результату.",
-        title_en: "Execute over impression.",
-        text_en: "Any methodology is judged solely by its outcome."
-      }
-    ];
-
-    function renderCode() {
-      const container = document.getElementById("codeList");
-      if (!container) return;
-      container.innerHTML = "";
-
-      codePrinciples.forEach(item => {
-        const article = document.createElement("article");
-        article.className = "code-item";
-        const title = currentLanguage === "en" ? item.title_en : item.title_ru;
-        const text = currentLanguage === "en" ? item.text_en : item.text_ru;
-
-        article.innerHTML = `
-          <div class="code-number">${escapeHTML(item.number)}</div>
-          <div>
-            <div class="code-title">${escapeHTML(title)}</div>
-            <div class="code-description">${escapeHTML(text)}</div>
-          </div>
-        `;
-        container.appendChild(article);
-      });
-    }
 
     function setLanguage(lang) {
       currentLanguage = lang;
       document.documentElement.lang = lang;
-      localStorage.setItem("arch_lang", lang);
+      try { localStorage.setItem("arch_lang", lang); } catch (_) {}
 
       document.querySelectorAll("[data-i18n]").forEach(element => {
         const key = element.dataset.i18n;
         if (translations[lang] && translations[lang][key]) {
           element.textContent = translations[lang][key];
-        }
-      });
-
-      document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
-        const key = element.dataset.i18nPlaceholder;
-        if (translations[lang] && translations[lang][key]) {
-          element.placeholder = translations[lang][key];
         }
       });
 
@@ -1356,7 +615,6 @@
         ru.classList.add("text-gray-500");
       }
 
-      renderCode();
       renderCatalog();
     }
 
@@ -1368,14 +626,10 @@
         globalProducts = normalizeCatalog(data);
         renderCatalog();
       } catch (error) {
-        console.warn("DOMUS catalog: data.json unavailable.", error);
+        console.warn("Catalog data fetch error:", error);
         const grid = document.getElementById("catalogGrid");
         if (grid) {
-          grid.innerHTML = `
-            <div class="col-span-full py-20 text-center">
-              <div class="font-mono text-xs text-gray-500">КАТАЛОГ DATA.JSON НЕДОСТУПЕН</div>
-            </div>
-          `;
+          grid.innerHTML = `<div class="col-span-full py-20 text-center"><div class="font-mono text-xs text-gray-500">${currentLanguage === "en" ? "CATALOG DATA.JSON IS UNAVAILABLE" : "КАТАЛОГ DATA.JSON НЕДОСТУПЕН"}</div></div>`;
         }
       }
     }
@@ -1395,8 +649,8 @@
         description_en: p.description_en || p.description || "",
         category: p.category || "applied",
         cover: p.cover || p.image || "",
-        links: p.links || { ridero: p.ridero || "", gumroad: p.gumroad || "" },
-        tg_link: p.tg_link || ""
+        links: (p.links && typeof p.links === "object") ? p.links : { ridero: p.ridero || "", gumroad: p.gumroad || "" },
+        tg_link: p.tg_link || p.links?.telegram || ""
       }));
     }
 
@@ -1409,7 +663,11 @@
 
     function renderCatalog() {
       const grid = document.getElementById("catalogGrid");
-      if (!grid || !globalProducts.length) return;
+      if (!grid) return;
+      if (!globalProducts.length) {
+        grid.innerHTML = `<div class="col-span-full py-20 text-center"><div class="font-mono text-xs text-gray-500">${currentLanguage === "en" ? "NO CATALOG ITEMS FOUND" : "В КАТАЛОГЕ ПОКА НЕТ МАТЕРИАЛОВ"}</div></div>`;
+        return;
+      }
 
       let products = globalProducts;
       if (currentCategory !== "all") {
@@ -1417,36 +675,32 @@
       }
 
       if (!products.length) {
-        grid.innerHTML = `
-          <div class="col-span-full py-20 text-center">
-            <div class="font-mono text-xs text-gray-500">НЕТ МАТЕРИАЛОВ В ДАННОМ СЕКТОРЕ</div>
-          </div>
-        `;
+        grid.innerHTML = `<div class="col-span-full py-20 text-center"><div class="font-mono text-xs text-gray-500">${currentLanguage === "en" ? "NO ITEMS IN THIS CATEGORY" : "НЕТ МАТЕРИАЛОВ В ДАННОМ СЕКТОРЕ"}</div></div>`;
         return;
       }
 
       grid.innerHTML = "";
 
       products.forEach(product => {
-        const title = currentLanguage === "en" ? product.title_en : product.title_ru;
-        const description = currentLanguage === "en" ? product.description_en : product.description_ru;
+        const title = currentLanguage === "en" ? (product.title_en || product.title_ru) : product.title_ru;
+        const description = currentLanguage === "en" ? (product.description_en || product.description_ru) : product.description_ru;
         const categoryDisplay = getCategoryLabel(product.category);
         const article = document.createElement("article");
         article.className = "product-card";
 
         const coverHTML = product.cover
           ? `<img src="${safeURL(product.cover)}" alt="${escapeHTML(title)}" loading="lazy" />`
-          : `<div class="product-cover-placeholder"><i class="fa-solid fa-cube"></i></div>`;
+          : `<div class="p-10 text-center text-gray-600 font-mono text-xs"><i class="fa-solid fa-cube text-3xl mb-2"></i><br/>NO COVER</div>`;
 
         article.innerHTML = `
           <div class="product-cover">${coverHTML}</div>
           <div class="product-body">
             <div class="product-category">${escapeHTML(categoryDisplay)}</div>
             <div class="product-title">${escapeHTML(title)}</div>
-            <div class="product-description">${escapeHTML(truncate(description, 170))}</div>
+            <div class="product-description">${escapeHTML(truncate(description, 160))}</div>
             <div class="product-actions">
-              ${product.links.ridero ? `<a href="${safeURL(product.links.ridero)}" target="_blank" rel="noopener noreferrer">Ridero</a>` : ""}
-              ${product.links.gumroad ? `<a href="${safeURL(product.links.gumroad)}" target="_blank" rel="noopener noreferrer">Gumroad</a>` : ""}
+              ${product.links?.ridero ? `<a href="${safeURL(product.links.ridero)}" target="_blank" rel="noopener noreferrer">Ridero</a>` : ""}
+              ${product.links?.gumroad ? `<a href="${safeURL(product.links.gumroad)}" target="_blank" rel="noopener noreferrer">Gumroad</a>` : ""}
               ${product.tg_link ? `<a href="${safeURL(product.tg_link)}" target="_blank" rel="noopener noreferrer">Telegram</a>` : ""}
             </div>
           </div>
@@ -1464,7 +718,8 @@
 
       renderCatalog();
     }
-function toggleMobileMenu() {
+
+    function toggleMobileMenu() {
       document.getElementById("mobileMenu").classList.toggle("hidden");
     }
 
@@ -1492,10 +747,12 @@ function toggleMobileMenu() {
       if (text.length <= length) return text;
       return text.substring(0, length) + "...";
     }
-document.addEventListener("DOMContentLoaded", () => {
+
+    document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("currentYear").textContent = new Date().getFullYear();
-      const savedLang = localStorage.getItem("arch_lang") || "ru";
-      setLanguage(savedLang);
+      let savedLang = "ru";
+      try { savedLang = localStorage.getItem("arch_lang") || "ru"; } catch (_) {}
+      setLanguage(savedLang === "en" ? "en" : "ru");
       loadHubData();
     });
   </script>
