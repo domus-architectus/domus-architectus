@@ -1,6 +1,16 @@
 {
   "products": [
     {
+      "category": "fiction",
+      "title": "Проект «Domus Architectus»",
+      "description": "Книга \"Проект «Domus Architectus»\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Система не состоит из стен или запасов. Система состоит из связей и правил. Не нужно контролировать весь мир. Верни управление собственной системой —  - 978-5-0071-6700-0",
+      "cover": "https://store.ridero.ru/images/h450?bucket=gs:ru-store-raw-data&amp;key=ridero/sku/2026-11/6af448f238c9a9e9da573bd0/rev.2026-11-11T10:52:43.517Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/proekt_domus_architectus/",
+        "gumroad": ""
+      }
+    },
+    {
       "category": "applied",
       "title": "Архитектура Жизненной Рамки",
       "description": "Книга \"Архитектура Жизненной Рамки\". \"Протоколы взлома автопилотов и защиты личного периметра\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Большинство повседневных решений и эмоциональных реакций человека происходят в режиме социального автопилота. Это делает поведение экономичным, но дел - 978-5-0071-3632-7",
