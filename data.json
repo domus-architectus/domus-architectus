@@ -1,6 +1,16 @@
 {
   "products": [
     {
+      "category": "applied",
+      "title": "Я — Архитектор! Том 0: Архитектор Духа",
+      "description": "Книга \"Я — Архитектор! Том 0: Архитектор Духа\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Когда внешние системы разрушены, финансовые ресурсы равны нулю, а биологический организм истощен, в строю остается только то, что зафиксировано на это - 978-5-0071-7521-0",
+      "cover": "https://store.ridero.ru/images/h450?bucket=gs:ru-store-raw-data&amp;key=ridero/sku/2026-11/6afeed3a9b06c814b6c7b575/rev.2026-11-19T12:36:18.993Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/ya_arkhitektor_tom_0_arkhitektor_dukha/",
+        "gumroad": ""
+      }
+    },
+    {
       "category": "fiction",
       "title": "Проект «Domus Architectus»",
       "description": "Книга \"Проект «Domus Architectus»\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Система не состоит из стен или запасов. Система состоит из связей и правил. Не нужно контролировать весь мир. Верни управление собственной системой —  - 978-5-0071-6700-0",
