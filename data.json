@@ -2,6 +2,16 @@
   "products": [
     {
       "category": "applied",
+      "title": "Я — Архитектор! Том 3: Архитектор Финансов",
+      "description": "Книга \"Я — Архитектор! Том 3: Архитектор Финансов\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Том 3 отвечает за экономический каркас всей системы. В методологии Архитектуры Устойчивости финансы — это не инструмент бытового потребления или социа - 978-5-0071-8226-3",
+      "cover": "https://store.ridero.ru/images/h450?bucket=gs:ru-store-raw-data&amp;key=ridero/sku/2026-11/6b081a1529eca555adfca9e2/rev.2026-11-26T11:38:05.938Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/ya_arkhitektor_tom_3_arkhitektor_finansov/",
+        "gumroad": ""
+      }
+    },
+    {
+      "category": "applied",
       "title": "Я — Архитектор! Том 1: Архитектор Себя",
       "description": "Книга \"Я — Архитектор! Том 1: Архитектор Себя\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Том 1 — это операционный центр всей системы. Если Том 0 («Архитектор Духа») определяет смысловой замок и ответит на вопрос «Зачем?», то Том 1 строит а - 978-5-0071-8166-2",
       "cover": "https://store.ridero.ru/images/h450?bucket=gs:ru-store-raw-data&amp;key=ridero/sku/2026-11/6b07f01229eca555adfbbdb2/rev.2026-11-26T08:38:49.988Z/cover-front.png&amp;format=original",
