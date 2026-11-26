@@ -2,6 +2,16 @@
   "products": [
     {
       "category": "applied",
+      "title": "Я — Архитектор! Том 1: Архитектор Себя",
+      "description": "Книга \"Я — Архитектор! Том 1: Архитектор Себя\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Том 1 — это операционный центр всей системы. Если Том 0 («Архитектор Духа») определяет смысловой замок и ответит на вопрос «Зачем?», то Том 1 строит а - 978-5-0071-8166-2",
+      "cover": "https://store.ridero.ru/images/h450?bucket=gs:ru-store-raw-data&amp;key=ridero/sku/2026-11/6b07f01229eca555adfbbdb2/rev.2026-11-26T08:38:49.988Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/ya_arkhitektor_tom_1_arkhitektor_sebya/",
+        "gumroad": ""
+      }
+    },
+    {
+      "category": "applied",
       "title": "Я — Архитектор! Том 2: Архитектор Семьи",
       "description": "Книга \"Я — Архитектор! Том 2: Архитектор Семьи\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Том 2 переносит архитектурные принципы управления от индивидуального автономии («Архитектор Себя») на уровень первого сложного коллективного контура — - 978-5-0071-7577-7",
       "cover": "https://store.ridero.ru/images/h450?bucket=gs:ru-store-raw-data&amp;key=ridero/sku/2026-11/6afffa8e9b06c814b6ce6ee5/rev.2026-11-20T07:45:26.268Z/cover-front.png&amp;format=original",
