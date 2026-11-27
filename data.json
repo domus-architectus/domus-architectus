@@ -1,6 +1,16 @@
 {
   "products": [
     {
+      "category": "applied",
+      "title": "Я — Архитектор! Том 4: Архитектор Окружения",
+      "description": "Книга \"Я — Архитектор! Том 4: Архитектор Окружения\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - Том 4 переносит системный порядок на уровень внешних социальных связей. В методологии Архитектуры Устойчивости окружение — это не просто «круг общения - 978-5-0071-8420-5",
+      "cover": "https://store.ridero.ru/images/h450?bucket=gs:ru-store-raw-data&amp;key=ridero/sku/2026-11/6b09b4ffc082cc614fe0f664/rev.2026-11-27T16:51:18.872Z/cover-front.png&amp;format=original",
+      "links": {
+        "ridero": "https://ridero.ru/books/ya_arkhitektor_tom_4_arkhitektor_okruzheniya/",
+        "gumroad": ""
+      }
+    },
+    {
       "category": "fiction",
       "title": "Притчи Архитектора",
       "description": "Книга \"Притчи Архитектора\" - Архитектор Антикризис - печатная, электронная: epub, fb2, pdfRead, mobi - «Притчи Архитектора» от проекта Архитектор Антикризис (экосистема Domus Architectus, «От фундамента — к свету») — это притчи о том, как устроена внутр - 978-5-0071-8272-0",
